@@ -59,6 +59,7 @@ function noticias_custom_post(){
 			'comments'
 			
 		),
+		
 		'menu_position' => 5,
 		'taxonomies'            => array( 'category', 'post_tag' ),
 		'hierarchical'          => false,
