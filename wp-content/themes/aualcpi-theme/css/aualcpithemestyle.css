@@ -1,0 +1,80 @@
+/* header*/
+
+#menuAdicional1{
+	padding: 25px;
+}
+#menuAdicional1 ul{
+	border: #bbb solid 1px;
+}
+#menuAdicional1 ul li,#menuAdicional1 ul li a{
+	background-color: #dfdfdf;
+	color: black;
+}
+#menuAdicional1 ul li:hover,#menuAdicional1 ul li a:hover{
+	background-color: blue;
+	color:white;
+}
+.thumbnail{
+	border:none;
+}
+
+.blockquote-reverse{
+	border-right: 0;
+}
+.menuPrimary, .menuPrimary li, .navbar-default .navbar-nav>li>a{
+	background-color: #525256;
+	color: white;
+}
+
+.menuPrimary li:hover, .navbar-default .navbar-nav>li>a:hover,
+.menuPrimary li:active, .navbar-default .navbar-nav>li>a:active{
+	background-color: #fff;
+	color: black;
+}
+.menuPrimary li{
+	border-right: 1px solid #fff;
+}
+
+.menuPrimary li .dropdown-menu li{
+	background-color: #fff;
+	padding: 10px 0;
+}
+.menuPrimary li .dropdown-menu li a{
+	color:#21386f;
+}
+.menuPrimary li .dropdown-menu li:hover, 
+.menuPrimary li .dropdown-menu li:active{
+	
+	background-color: #d6d6d6;
+	border-bottom:1px solid #959595;
+	border-top:1px solid #959595;
+}
+
+.menuPrimary li .dropdown-menu li a:hover,
+.menuPrimary li .dropdown-menu li a:active{
+	background-color: #d6d6d6;
+	color:#000;
+}
+
+/* footer*/
+#footer1{
+	background-color: #000;
+	border-left: 3px solid #4472aa;
+	padding: 10px;
+}
+#footer1 .row p{
+	margin: 10px;
+	padding: 10px;
+	color:white;
+}
+.navFooter li, .navFooter ul{
+	list-style:none;
+}
+.navFooter a{
+	color:#fff;
+}
+
+#footer2{
+	background-color: #1f3445;
+	height: 25px;
+}

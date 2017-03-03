@@ -20,26 +20,30 @@
 <body <?php body_class($aualcpiTheme_classes)?> >
 	<div class="container">
 		<div class="row">
-			<div class ="col-xs-12 col-md-8"></div>
-			<div class ="col-xs-12 col-md-4">
-				<div class="row">
+			<div class ="col-xs-12 col-md-7">
+				<a class="thumbnail">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_aualcpi.png" alt="" width="" height="" />
+				</a>
+			</div>
+			<div class ="col-xs-12 col-md-5">
+				<div id="menuAdicional1" class="row">
 					<?php 
 					wp_nav_menu(array(
 						'theme_location'=> 'tertiary',
 						'container' => false,
-						'menu_class' => 'nav nav-pills nav-justified'
+						'menu_class' => 'nav nav-justified'
 						)
 					); 
 					?>
 				</div>
-				<div id="sidebar-1" class="widgets-area">
-					<?php dynamic_sidebar('sidebar-1'); ?>
+				<div id="Search1" class="blockquote-reverse">
+					<?php get_search_form(); ?>
 				</div>
 			</div>
 		</div>
 		<div class="row">	
 			<div class= "col-xs-12">
-					<nav class="navbar navbar-default">
+					<nav class="navbar navbar-default menuPrimary">
 						<div class="container-fluid">
 						    <!-- Brand and toggle get grouped for better mobile display -->
 						    <div class="navbar-header">
@@ -66,5 +70,3 @@
 					</nav>
 			</div>
 		</div>
-		<?php echo( get_header_image()."hola" ); ?>
-		<img src="<?php echo( get_header_image() ); ?>" alt="<?php echo( get_bloginfo( 'title' ) ); ?>" />

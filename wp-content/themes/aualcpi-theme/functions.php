@@ -13,7 +13,7 @@
 		
 		//css
 		wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7' , 'all' );
-		//wp_enqueue_style( 'customstyle', get_template_directory_uri() . '/css/myfirstheme.css', array(), '1.0.0' , 'all' );
+		wp_enqueue_style( 'customstyle', get_template_directory_uri() . '/css/aualcpithemestyle.css', array(), '1.0.0' , 'all' );
 		
 		//js
 		wp_enqueue_script( 'jquery');
@@ -249,20 +249,20 @@ require get_template_directory().'/inc/walker.php';
 		===================================
 		Widgets
 		===================================
-	*/
-function aualcpiTheme_Search_widget_setup () {
-	register_sidebar(
-		array(			
-			'name' => 'Search',
-			'id' => 'sidebar-1',
-			'class'         => 'custom',
-		    'description'   => 'Sidebar for search',
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
-			'before_title'  => '<h1 class="widget-title">',
-			'after_title'   => '</h1>',
-			)
-	);
-}
+*/
+// function aualcpiTheme_Search_widget_setup () {
+// 	register_sidebar(
+// 		array(			
+// 			'name' => 'Search',
+// 			'id' => 'sidebar-1',
+// 			'class'         => 'custom',
+// 		    'description'   => 'Sidebar for search',
+// 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+// 			'after_widget'  => '</aside>',
+// 			'before_title'  => '<h1 class="widget-title">',
+// 			'after_title'   => '</h1>',
+// 			)
+// 	);
+// }
 	
-add_action ('widgets_init', 'aualcpiTheme_Search_widget_setup');
+// add_action ('widgets_init', 'aualcpiTheme_Search_widget_setup');
