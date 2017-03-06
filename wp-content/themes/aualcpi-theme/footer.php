@@ -4,10 +4,10 @@
 	-->
 	<footer>
 	<div id="footer1" class="col-xs-12">
-		<div class="row">
+		<div id="redes" class="row">
 			<p>Logo y redes sociales</p>
 		</div>
-		<div class="row">
+		<div id="menuFooter" class="row">
 		<?php wp_nav_menu(array('theme_location'=>'secondary',
 								'container' => false,
 							    'menu_class' => 'nav navbar-nav navFooter')); ?>

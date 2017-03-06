@@ -28,6 +28,7 @@ add_action( 'wp_enqueue_scripts', 'aualcpiTheme_script_enqueue' );
 add_theme_support( 'custom-background' );
 add_theme_support( 'custom-header' );
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'html5',array('search-form'));
 
 	/*
 		===================================
@@ -41,6 +42,7 @@ function aualcpiTheme_setup () {
 	
 		add_theme_support('menus');
 		register_nav_menu('primary', 'Header navigation' );
+		register_nav_menu('email', 'Header navigation email' );
 		register_nav_menu('secondary', 'Footer navigation' );
 		register_nav_menu('tertiary','Additional header menu');		
 }		

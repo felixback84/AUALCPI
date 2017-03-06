@@ -1,0 +1,146 @@
+@BackgroundMenuPrimary: #525256;
+
+/* header*/
+
+#idiomas1{
+	margin: 50px 0 15px;
+		width: 100px;
+		height: 26px;
+}
+
+.menuAdicional {
+	margin: 0 25px 25px 0;
+	background-color: #dfdfdf;
+	ul{
+		border-left: #bbb solid 1px;
+	}
+	li{
+		border-right: 1px solid #bbb;
+		&.active{
+			background-color: #3765ae;
+			color:white;
+		}
+	}
+	li, a{
+		color: black;
+		height: 50px;
+		line-height: 30px;
+	}
+	&.navbar-default .navbar-nav>.active>a{
+		background-color: #3765ae !important;
+		color:white;
+	}
+	&.navbar-default .navbar-nav>li>a{
+		color:black;
+	}
+}
+
+#Search1{
+	padding-right: 25px;
+}
+#form-search{
+		width: 270px;
+		input, button{
+			height: 50px;
+			line-height: 30px;
+		}
+	}
+.thumbnail{
+	border:none;
+}
+
+#logoAualcpi{
+	margin: 50px 0  28px 20px;
+}
+
+.blockquote-reverse{
+	border-right: 0;
+}
+
+.menuPrimary{
+	background-color: @BackgroundMenuPrimary;
+	ul:first-child{
+		border-left:1px solid #fff;
+	}
+	li{
+		background-color: @BackgroundMenuPrimary;
+		color: white;
+		border-right: 1px solid #fff;
+		&:hover, &:active{
+			background-color: #fff;
+			color: black;
+		}
+		.dropdown-menu li{
+			background-color: #fff;
+			color:#21386f;
+			a{
+				color:#21386f;
+				height: 42px;
+				line-height: 30px;
+				&:active,&:hover{
+					background-color: #d6d6d6;
+					color:#000;
+				}
+			}
+			&:active,&:hover{
+				background-color: #d6d6d6;
+				border-bottom:1px solid #959595;
+				border-top:1px solid #959595;
+			}
+		}
+	}
+
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover{
+		background-color: #d6d6d6; 
+	}
+	#menu-email{
+		li{
+			border:none;	
+		}
+	}
+	.navbar-nav>li>a{
+		background-color: @BackgroundMenuPrimary;
+		color: white;
+		height: 68px;
+		line-height: 35px;
+		&:hover,&active{
+			background-color: #fff;
+			color: black;
+		}
+	}
+}
+
+/* Footer*/
+#footer1{
+	background-color: #000;
+	border-left: 3px solid #4472aa;
+	padding-left: 25px;
+	.row p{
+		margin: 10px;
+		padding: 10px;
+		color:white;
+	}
+	#redes{
+		height: 140px;
+		padding-top: 12px;
+		margin-left: 25px;
+	}
+
+	#menuFooter{
+		height: 190px;
+		margin-left: 25px;
+	}
+}
+.navFooter {
+	li, ul{
+		list-style:none;
+	}
+	a{
+	color:#fff;
+	}
+}
+
+#footer2{
+	background-color: #1f3445;
+	height: 45px;
+}
