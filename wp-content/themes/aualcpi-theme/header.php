@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title> My Fisrt Theme</title>
+	<title>Aualcpi</title>
 	<?php wp_head(); ?>
 </head>
 <?php

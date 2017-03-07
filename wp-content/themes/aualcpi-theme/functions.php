@@ -18,7 +18,7 @@
 		//js
 		wp_enqueue_script( 'jquery');
 		wp_enqueue_script( 'bootstrapjs', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '3.3.7', true );
-		//wp_enqueue_script( 'customjs', get_template_directory_uri() . '/js/myfirstheme.js', array(), '1.0.0', true );
+		wp_enqueue_script( 'customjs', get_template_directory_uri() . '/js/aualcpithemejavascript.js', array(), '1.0.0', true );
 	}
 	
 add_action( 'wp_enqueue_scripts', 'aualcpiTheme_script_enqueue' );
@@ -200,7 +200,7 @@ function publicacion_custom_post(){
 		'name' => 'Publicaciones',
 		'Singlular' => 'Publicación',
 		'add_new' => 'Añadir publicacion',
-		'all_items' => 'Todos las becas',
+		'all_items' => 'Todos las publicaciones',
 		'add_new_item' => 'Nueva publicacion',
 		'edit_item' => 'Editar publicacion',
 		'new_item' => 'Nueva publicacion',
