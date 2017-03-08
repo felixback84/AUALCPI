@@ -95,12 +95,12 @@ function investigacion_custom_post(){
 			'editor',
 			'autor',
 			'thumbnail',
-			'comments'
-			
+			'comments',
+			'custom-fields'
 		),
 		
 		'menu_position' => 5,
-		'taxonomies'            => array( 'category', 'post_tag' ),
+		'taxonomies'            => array( 'category', 'post_tag','universidades' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -111,6 +111,7 @@ function investigacion_custom_post(){
 		'has_archive'           => true,		
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
+		'menu_icon'           	=> 'dashicons-media-document',
 		'exclude_from_search' => true
 		
 	);
@@ -184,7 +185,8 @@ function beca_custom_post(){
 		'has_archive'           => true,		
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
+		'menu_icon'          	=> 'dashicons-welcome-learn-more',
+		'capability_type'       => 'post',
 	);
 	register_post_type( 'becas', $args );
 }
@@ -229,7 +231,8 @@ function publicacion_custom_post(){
 		'has_archive'           => true,		
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
+		'menu_icon'           	=> 'dashicons-format-aside',
+		'capability_type'       => 'post',
 	);
 	register_post_type( 'publicacion', $args );
 }

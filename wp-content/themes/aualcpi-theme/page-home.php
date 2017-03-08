@@ -7,6 +7,9 @@ get_header(); ?>
 			<?php $args = array (
 				'post_type' => 'investigacion',
 				'posts_per_page' => 6, 
+				'orderby' => 'id',
+				'order'   => 'DESC',
+
 			);
 			$lastBlog = new WP_Query ($args);
 			$cont=0;
@@ -24,7 +27,7 @@ get_header(); ?>
 			    			<div class="row">
 					<?php } ?> 
 								<div class="col-xs-12 col-sm-4">
-									<?php get_template_part('content'); ?>
+									<?php get_template_part('targetas'); ?>
 								</div>
 			    	
 				 <?php $cont++; endwhile;
