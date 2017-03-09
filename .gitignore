@@ -1,3 +1,5 @@
-#folders ignored
+# Object file
 wp-admin/
-wp-include/
+wp-includes/
+
+# Ada Library Information
