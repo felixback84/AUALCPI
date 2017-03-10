@@ -9,37 +9,55 @@
 }
 
 .menuAdicional {
-	margin: 0 25px 25px 0;
-	background-color: #dfdfdf;
+	/*margin: 0 25px 25px 0;*/
+	padding:0;
+	background-color: transparent;
+	border: none;
 	ul{
 		border-left: #bbb solid 1px;
 	}
 	li{
 		border-right: 1px solid #bbb;
-		&.active{
-			background-color: #3765ae;
-			color:white;
-		}
+		border-bottom: 1px solid #bbb;
+		border-top: 1px solid #bbb;
 	}
 	li, a{
 		color: black;
 		height: 50px;
 		line-height: 30px;
+		&.active,&:hover{
+			background-color: #4986e7;
+			color:white;
+		}
+	}
+	a{
+		height: 48px;
 	}
 	&.navbar-default .navbar-nav>.active>a{
-		background-color: #3765ae !important;
+		background-color: #3765ae;
+		color:white;
+	}
+
+	&.navbar-default .navbar-nav>li .active:hover{
+		background-color: red;
 		color:white;
 	}
 	&.navbar-default .navbar-nav>li>a{
 		color:black;
+		&:hover{
+			color:white;
+		}
+	}
+	.navbar-header{
+		background-color: #bbb;
 	}
 }
 
 #Search1{
-	padding-right: 25px;
+	/*padding-right: 35px;*/
 }
 #form-search{
-		width: 270px;
+		/*width: 270px;*/
 		input, button{
 			height: 50px;
 			line-height: 30px;
@@ -47,10 +65,11 @@
 	}
 .thumbnail{
 	border:none;
+	background-color: transparent;
 }
 
 #logoAualcpi{
-	margin: 50px 0  28px 20px;
+	margin: 50px 0  28px 0px;
 }
 
 .blockquote-reverse{
@@ -95,7 +114,8 @@
 	}
 	#menu-email{
 		li{
-			border:none;	
+			border:none;
+			border: 1px solid #fff;	
 		}
 	}
 	.navbar-nav>li>a{
@@ -113,7 +133,6 @@
 /* Footer*/
 #footer1{
 	background-color: #000;
-	border-left: 3px solid #4472aa;
 	padding-left: 25px;
 	.row p{
 		margin: 10px;
@@ -122,21 +141,55 @@
 	}
 	#redes{
 		height: 140px;
-		padding-top: 12px;
-		margin-left: 25px;
+		padding-top: 20px;
+		.redes{
+			display: inline-block;
+			width: 36px;
+			margin:5px;
+		}
+		.redFacebook{
+			background: url('../images/redes.png') no-repeat;
+			width: 36px;
+    		height: 36px;
+		}	
+		.redtwiter{
+			background: url('../images/redes.png') -39px 0 no-repeat;
+			width: 36px;
+    		height: 36px;
+		}	
 	}
 
 	#menuFooter{
-		height: 190px;
+		min-height: 190px;
 		margin-left: 25px;
 	}
 }
 .navFooter {
+	padding:10px 0 25px;
 	li, ul{
 		list-style:none;
 	}
+	&.nav>li>a:focus, &.nav>li>a:hover{
+		background:transparent;
+	}
+	&>li>a{
+		border-bottom: 1px solid #333;
+	}	
+	li{ 
+		max-width: 150px;
+		ul{
+			padding-left:16px;
+		}
+		 li{
+			white-space:normal;
+			width: 150px;
+			margin:10px 0;
+			border-bottom: 1px solid #333;
+		}
+	}
 	a{
-	color:#fff;
+		color:#fff;
+		text-decoration:none;
 	}
 }
 
@@ -148,11 +201,53 @@
 /*
 carousel 
 ----------------*/
-.carousel-nav{background-color: #bbb;height:50px; padding: 5px;margin: 5px 0; a:focus, a:hover{color:#ddd; }}
+.carousel-nav{background-color: #525256;height:40px; padding: 7px;margin: 5px 0; a:focus, a:hover{color:#ddd; }}
 .controlcarousel{
-	width:50px; font-size: 30px; color: #fff; 
-	
+	width:30px; font-size: 15px; color: #fff; 	
 }
 .carousel-inner .item{ background: transparent;}
+.tituloNavegacionCarousel{
+	color:#00a4cb;
+	padding: 3px 10px 0 0;
+}
 
+/*
+Panel
+----------------*/
 
+.carousel-inner{
+	margin:10px;
+}
+.bloqueTargeta {
+	padding: 20px;
+	.panel>{
+		margin: 0 11px;
+		-webkit-box-shadow: 3px 3px 7px 0.5px #B8B8B8;
+		box-shadow: 3px 3px 7px 0.5px #B8B8B8;
+		border-bottom: 1px solid #ffa600;
+		.panel-body{
+			padding: 0;
+			
+			.thumbnail{
+				padding: 3px 0;
+			}
+			p,h4{
+				padding: 0 10px;
+			}
+			h4{
+				font-weight: bold;
+			}
+			.post-meta{
+				margin: 0px;
+				padding:0 0 0 10px;
+				li{
+					list-style:none;
+				}
+			}
+			a{
+				margin: 0 10px 10px 0;
+
+			}
+		}
+	}
+}

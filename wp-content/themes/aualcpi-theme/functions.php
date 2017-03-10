@@ -100,7 +100,6 @@ function investigacion_custom_post(){
 		),
 		
 		'menu_position' => 5,
-		'taxonomies'            => array( 'category', 'post_tag','universidades' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -137,42 +136,20 @@ function beca_custom_post(){
 		'not_found' => 'No se encuentra la beca',
 		'not_found_in_trash' => 'No se encuentra la beca',
 		'parent_item_colon' => 'Articulo principal'
-
-		// 'name'                  => _x( 'Becas', 'Post Type General Name', 'text_domain' ),
-		// 'singular_name'         => _x( 'Beca', 'Post Type Singular Name', 'text_domain' ),
-		// 'menu_name'             => __( 'Post Types', 'text_domain' ),
-		// 'name_admin_bar'        => __( 'Post Type', 'text_domain' ),
-		// 'archives'              => __( 'Item Archives', 'text_domain' ),
-		// 'attributes'            => __( 'Item Attributes', 'text_domain' ),
-		// 'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-		// 'all_items'             => __( 'All Items', 'text_domain' ),
-		// 'add_new_item'          => __( 'Add New Item', 'text_domain' ),
-		// 'add_new'               => __( 'Add New', 'text_domain' ),
-		// 'new_item'              => __( 'New Item', 'text_domain' ),
-		// 'edit_item'             => __( 'Edit Item', 'text_domain' ),
-		// 'update_item'           => __( 'Update Item', 'text_domain' ),
-		// 'view_item'             => __( 'View Item', 'text_domain' ),
-		// 'view_items'            => __( 'View Items', 'text_domain' ),
-		// 'search_items'          => __( 'Search Item', 'text_domain' ),
-		// 'not_found'             => __( 'Not found', 'text_domain' ),
-		// 'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
-		// 'featured_image'        => __( 'Featured Image', 'text_domain' ),
-		// 'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
-		// 'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
-		// 'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
-		// 'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
-		// 'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
-		// 'items_list'            => __( 'Items list', 'text_domain' ),
-		// 'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
-		// 'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
-		
 	);
 	
 	$args = array(
 		'labels' => $labels,
 		'query_var' => true,
 		'rewrite' => true,
-		'supports'              => array( ),
+		'supports' => array(
+			'title',
+			'editor',
+			'autor',
+			'thumbnail',
+			'comments',
+			'custom-fields'
+		),
 		'taxonomies'            => array( 'category', 'post_tag' ),
 		'hierarchical'          => false,
 		'public'                => true,
@@ -271,3 +248,105 @@ require get_template_directory().'/inc/walker.php';
 // }
 	
 // add_action ('widgets_init', 'aualcpiTheme_Search_widget_setup');
+
+/*
+		===================================
+		taxonomies
+		===================================
+*/
+
+function awesome_custom_taxonomies_categorias() {
+	
+	//add new taxonomy hierarchical
+	$labels = array(
+		'name' => 'Categorias',
+		'singular_name' => 'Categoria',
+		'search_items' => 'Search Types',
+		'all_items' => 'All Types',
+		'parent_item' => 'Parent Type',
+		'parent_item_colon' => 'Parent Type:',
+		'edit_item' => 'Edit Type',
+		'update_item' => 'Update Type',
+		'add_new_item' => 'Add New Work Type',
+		'new_item_name' => 'New Type Name',
+		'menu_name' => 'Categorias'
+	);
+	
+	$args = array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'type' )
+	);
+
+	register_taxonomy('type', array('investigacion'), $args);
+
+}	
+add_action( 'init' , 'awesome_custom_taxonomies_categorias');
+
+
+
+function awesome_custom_taxonomies_tipo_beca() {
+	//add new taxonomy hierarchical
+	$labels1 = array(
+		'name' => 'Tipos becas',
+		'singular_name' => 'Tipo beca',
+		'search_items' => 'Search Types',
+		'all_items' => 'All Types',
+		'parent_item' => 'Parent Type',
+		'parent_item_colon' => 'Parent Type:',
+		'edit_item' => 'Edit Type',
+		'update_item' => 'Update Type',
+		'add_new_item' => 'Add New Work Type',
+		'new_item_name' => 'New Type Name',
+		'menu_name' => 'Becas'
+	);
+	$args1 = array(
+		'hierarchical' => true,
+		'labels' => $labels1,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'book' )
+	);
+	register_taxonomy('book', array('investigacion'), $args1);
+}
+
+add_action( 'init' , 'awesome_custom_taxonomies_tipo_beca');
+
+
+function awesome_custom_file_taxonomies() {
+	//add new taxonomy hierarchical
+	$labels1 = array(
+		'name' => 'Books',
+		'singular_name' => 'Book',
+		'search_items' => 'Search Types',
+		'all_items' => 'All Types',
+		'parent_item' => 'Parent Type',
+		'parent_item_colon' => 'Parent Type:',
+		'edit_item' => 'Edit Type',
+		'update_item' => 'Update Type',
+		'add_new_item' => 'Add New Work Type',
+		'new_item_name' => 'New Type Name',
+		'menu_name' => 'Books'
+	);
+	$args1 = array(
+		'hierarchical' => false,
+		'labels' => $labels1,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'file' )
+	);
+	register_taxonomy('file', array('investigacion'), $args1);
+}
+
+add_action( 'init' , 'awesome_custom_file_taxonomies');
+
+// function wpdocs_register_meta_boxes() {
+//     add_meta_box( 'meta-box-id', 'metabox', 'wpdocs_my_display_callback', 'post' );
+// }
+// add_action( 'add_meta_boxes', 'wpdocs_register_meta_boxes' );
+

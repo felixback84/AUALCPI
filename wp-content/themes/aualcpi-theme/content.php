@@ -3,7 +3,7 @@
 	este archivo por jerarquia se suporpone al index.php
 	
 	-->
-
+<div class="container">
 <article id="post-<?php the_ID();?>" <?php post_class(); ?>>
 	<header class= "entry-header">
 		<?php the_title( sprintf('<h4 class="entry-title"><a href="%s">', esc_url(get_permalink() )),'</a></h4>'); ?>
@@ -29,6 +29,7 @@
 			<?php if(comments_open()){ comments_template();
 				}else{ echo '<h5 class"text-center">No hay comentarios</h5>'; } ?>
 		</div>
-</article>		
+</article>
+</div>	
 		
 		
