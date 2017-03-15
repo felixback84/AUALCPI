@@ -13,6 +13,7 @@
 		
 		//css
 		wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7' , 'all' );
+		wp_enqueue_style( 'customstyleBoostrap', get_template_directory_uri() . '/css/bootstrap.vertical-tabs.min.css', array(), '1.0.0' , 'all' );
 		wp_enqueue_style( 'customstyle', get_template_directory_uri() . '/css/aualcpithemestyle.css', array(), '1.0.0' , 'all' );
 		
 		//js
@@ -220,50 +221,9 @@ function publicacion_custom_post(){
 	register_post_type( 'publicacion', $args );
 }
 
-/*
-		===================================
-		Slider Home
-		===================================
-*/
 
-// function slider_home_custom_post(){
-// 	$labels = array(
-// 		'name' => 'Slider',
-// 		'Singlular' => 'Publicación',
-// 		'add_new' => 'Añadir publicacion',
-// 		'all_items' => 'Todos las publicaciones',
-// 		'add_new_item' => 'Nueva publicacion',
-// 		'edit_item' => 'Editar publicacion',
-// 		'new_item' => 'Nueva publicacion',
-// 		'view_item' => 'Ver publicacion',
-// 		'search_item' => 'Buscar publicacion',
-// 		'not_found' => 'No se encuentra la publicacion',
-// 		'not_found_in_trash' => 'No se encuentra la publicacion',
-// 		'parent_item_colon' => 'Articulo principal'
-		
-// 	);
-	
-// 	$args = array(
-// 		'labels' => $labels,
-// 		'query_var' => true,
-// 		'rewrite' => true,
-// 		'supports'              => array( ),
-// 		'hierarchical'          => false,
-// 		'public'                => true,
-// 		'show_ui'               => true,
-// 		'show_in_menu'          => true,
-// 		'menu_position'         => 7,
-// 		'show_in_admin_bar'     => true,
-// 		'show_in_nav_menus'     => true,
-// 		'can_export'            => true,
-// 		'has_archive'           => true,		
-// 		'exclude_from_search'   => false,
-// 		'publicly_queryable'    => true,
-// 		'menu_icon'           	=> 'dashicons-format-aside',
-// 		'capability_type'       => 'post',
-// 	);
-// 	register_post_type( 'publicacion', $args );
-// }
+
+
 
 add_action( 'init', 'investigacion_custom_post' );
 add_action( 'init', 'beca_custom_post' );
@@ -283,23 +243,80 @@ require get_template_directory().'/inc/walker.php';
 		Widgets
 		===================================
 */
-// function aualcpiTheme_Search_widget_setup () {
-// 	register_sidebar(
-// 		array(			
-// 			'name' => 'Search',
-// 			'id' => 'sidebar-1',
-// 			'class'         => 'custom',
-// 		    'description'   => 'Sidebar for search',
-// 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-// 			'after_widget'  => '</aside>',
-// 			'before_title'  => '<h1 class="widget-title">',
-// 			'after_title'   => '</h1>',
-// 			)
-// 	);
-// }
-	
-// add_action ('widgets_init', 'aualcpiTheme_Search_widget_setup');
 
+/*
+		===================================
+		Slider Home
+		===================================
+*/
+function aualcpiTheme_Noticias_widget_setup () {
+	register_sidebar(
+		array(			
+			'name' => 'Noticias',
+			'id' => 'sidebar-1',
+			'class'         => 'custom',
+		    'description'   => 'Sidebar for search',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h1 class="widget-title">',
+			'after_title'   => '</h1>',
+			)
+	);
+}
+	
+add_action ('widgets_init', 'aualcpiTheme_Noticias_widget_setup');
+
+function aualcpiTheme_Investigacion_widget_setup () {
+	register_sidebar(
+		array(			
+			'name' => 'Investigaciones',
+			'id' => 'sidebar-2',
+			'class'         => 'custom',
+		    'description'   => 'Sidebar for search',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h1 class="widget-title">',
+			'after_title'   => '</h1>',
+			)
+	);
+}
+	
+add_action ('widgets_init', 'aualcpiTheme_Investigacion_widget_setup');
+
+function aualcpiTheme_Becas_widget_setup () {
+	register_sidebar(
+		array(			
+			'name' => 'Becas',
+			'id' => 'sidebar-3',
+			'class'         => 'custom',
+		    'description'   => 'Sidebar for search',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h1 class="widget-title">',
+			'after_title'   => '</h1>',
+			)
+	);
+}
+	
+add_action ('widgets_init', 'aualcpiTheme_Becas_widget_setup');
+
+
+function aualcpiTheme_Publicaciones_widget_setup () {
+	register_sidebar(
+		array(			
+			'name' => 'Publicacion',
+			'id' => 'sidebar-4',
+			'class'         => 'custom',
+		    'description'   => 'Sidebar for search',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h1 class="widget-title">',
+			'after_title'   => '</h1>',
+			)
+	);
+}
+	
+add_action ('widgets_init', 'aualcpiTheme_Publicaciones_widget_setup');
 /*
 		===================================
 		taxonomies - Becas
@@ -339,7 +356,7 @@ add_action( 'init' , 'awesome_custom_taxonomies_categorias');
 
 
 
-function awesome_custom_taxonomies_tipo_beca() {
+function awesome_custom_taxonomies_tipo_becas() {
 	//add new taxonomy hierarchical
 	$labels = array(
 		'name' => 'Tipos becas',
@@ -360,12 +377,12 @@ function awesome_custom_taxonomies_tipo_beca() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'becas' )
+		'rewrite' => array( 'slug' => 'tipo_beca' )
 	);
-	register_taxonomy('becas', array('becas'), $args);
+	register_taxonomy('tipo_beca', array('becas'), $args);
 }
 
-add_action( 'init' , 'awesome_custom_taxonomies_tipo_beca');
+add_action( 'init' , 'awesome_custom_taxonomies_tipo_becas');
 
 
 function awesome_custom_taxonomies_pais_ciudad() {
@@ -395,6 +412,34 @@ function awesome_custom_taxonomies_pais_ciudad() {
 }
 
 add_action( 'init' , 'awesome_custom_taxonomies_pais_ciudad');
+
+function awesome_custom_taxonomies_cantidad_becas() {
+	//add new taxonomy hierarchical
+	$labels = array(
+		'name' => 'Cantidad becas',
+		'singular_name' => 'Cantidad beca',
+		'search_items' => 'Search Types',
+		'all_items' => 'All Types',
+		'parent_item' => 'Parent Type',
+		'parent_item_colon' => 'Parent Type:',
+		'edit_item' => 'Edit Type',
+		'update_item' => 'Update Type',
+		'add_new_item' => 'Add New Work Type',
+		'new_item_name' => 'New Type Name',
+		'menu_name' => 'Cantidad becas'
+	);
+	$args = array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'cantidad_becas' )
+	);
+	register_taxonomy('cantidad_becas', array('becas'), $args);
+}
+
+add_action( 'init' , 'awesome_custom_taxonomies_cantidad_becas');
 
 function awesome_custom_taxonomies_becas_tag() {
 	//add new taxonomy no hierarchical
@@ -482,9 +527,9 @@ function awesome_custom_taxonomies_universidades() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'universidades' )
+		'rewrite' => array( 'slug' => 'universidades_investigacion' )
 	);
-	register_taxonomy('universidades', array('investigacion'), $args);
+	register_taxonomy('universidades_investigacion', array('investigacion'), $args);
 }
 
 add_action( 'init' , 'awesome_custom_taxonomies_universidades');
@@ -511,9 +556,9 @@ function awesome_custom_taxonomies_status() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'status' )
+		'rewrite' => array( 'slug' => 'status_investigacion' )
 	);
-	register_taxonomy('status', array('investigacion'), $args);
+	register_taxonomy('status_investigacion', array('investigacion'), $args);
 }
 
 add_action( 'init' , 'awesome_custom_taxonomies_status');
@@ -694,15 +739,17 @@ new MultiPostThumbnails(array(
 
 /*
 		===================================
-		functions
+		functions term function
 		===================================
 */
 
  function mostrarCategorias($lista,$division){
 	$i=0;
+	$imprimir='';
 		foreach ($lista as $term) {
 				$i++;
-				if($i>1){ echo ' '.$division.' ';}
-				echo $term->name;
+				if($i>1){ $imprimir.= $division.' ';}
+				$imprimir.= '<a href="'.get_term_link($term).'" >'.$term->name.'</a>';
 		}
+	return $imprimir;
 }

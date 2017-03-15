@@ -1,4 +1,41 @@
 @BackgroundMenuPrimary: #525256;
+.row{
+	margin-top: 20px;
+}
+@font-face {
+    font-family: 'IcoMoon-Free';
+    src: url('../Fonts/Font/IcoMoon-Free.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'IcoMoon-Free' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    
+    /* Enable Ligatures ================ */
+    letter-spacing: 0;
+    -webkit-font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga=1";
+    -moz-font-feature-settings: "liga";
+    -ms-font-feature-settings: "liga" 1;
+    -o-font-feature-settings: "liga";
+    font-feature-settings: "liga";
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.quitarEspacio{
+	padding:0px;
+	margin:0px;
+}
 
 /* header*/
 
@@ -78,6 +115,7 @@
 
 .menuPrimary{
 	background-color: @BackgroundMenuPrimary;
+	margin-bottom: 0px;
 	ul:first-child{
 		/*border-left:1px solid #fff;*/
 	}
@@ -131,9 +169,15 @@
 			/*background-color: #fff;*/
 			color: black;
 		}
+		
 	}
 }
 
+/*#menu-email.navbar-nav>li>a{
+	&::after{
+			content: url(../images/iconosModalBecasWhatsApp.png);
+		}
+}*/
 /* Footer*/
 #footer1{
 	background-color: #000;
@@ -156,11 +200,42 @@
 			width: 36px;
     		height: 36px;
 		}	
-		.redtwiter{
+		.redTumblr{
 			background: url('../images/redes.png') -39px 0 no-repeat;
 			width: 36px;
     		height: 36px;
-		}	
+		}
+		.redPinterest{
+			background: url('../images/redes.png') -78px 0 no-repeat;
+			width: 36px;
+    		height: 36px;
+		}
+		.redTwiter{
+			background: url('../images/redes.png') -117px 0 no-repeat;
+			width: 36px;
+    		height: 36px;
+		}
+		.redYoutube{
+			background: url('../images/redes.png')  0 -39px no-repeat;
+			width: 36px;
+    		height: 36px;
+		}
+		.redlinkedin{
+			background: url('../images/redes.png') -39px -39px no-repeat;
+			width: 36px;
+    		height: 36px;
+		}
+		.redVimeo{
+			background: url('../images/redes.png') -78px -39px no-repeat;
+			width: 36px;
+    		height: 36px;
+		}
+		.redGoogleplus{
+			background: url('../images/redes.png') -117px -39px no-repeat;
+			width: 36px;
+    		height: 36px;
+		}
+
 	}
 
 	#menuFooter{
@@ -214,14 +289,40 @@ carousel
 	color:#00a4cb;
 	padding: 3px 10px 0 0;
 }
-
+#carousel-example-generic-noticias{
+	.carousel-nav{background-color: #525256;height:40px; padding: 7px;margin: 0px; a:focus, a:hover{color:#ddd; }}
+}
+/*
+carousel -noticias
+----------------*/
+#carousel-example-generic-noticias{ 
+	.thumbnail{
+		margin-bottom: 0px;
+		padding:0px;
+	}
+	.carousel-caption{
+		text-align: left;
+		right: 0%;
+		left: 0%;
+		padding: 20px;
+		bottom: 40px;
+		background-color: rgba(250,250,250,0.5);
+		h4{
+			color:black;
+			margin-bottom: 10px;
+		}
+		p{
+			color:black;
+			font-size: 12px;
+		}
+		a{
+			color: white;
+		}
+	}
+}
 /*
 Panel
 ----------------*/
-
-.carousel-inner{
-	margin:10px;
-}
 .bloqueTargeta {
 	padding: 20px;
 	.panel>{
@@ -229,14 +330,26 @@ Panel
 		-webkit-box-shadow: 3px 3px 7px 0.5px #B8B8B8;
 		box-shadow: 3px 3px 7px 0.5px #B8B8B8;
 		border-bottom: 1px solid #ffa600;
-		.panel-body{
-			padding: 0;
-			
 			.thumbnail{
 				padding: 3px 0;
 			}
+			.panel-body{
+			padding: 0;
 			p,h4{
 				padding: 0 10px;
+				
+			}
+			p{
+				color: #aaa;
+				margin-bottom: 5px;
+				span{
+					&.textoAzul{
+						color: #337ab7;
+					}
+					&.textoGrisClaro{
+						color: #999;
+					}
+				}
 			}
 			h4{
 				font-weight: bold;
@@ -253,5 +366,107 @@ Panel
 
 			}
 		}
+	}
+}
+
+.tab-content{
+	.contenido-tabs{
+		height: 300px; 
+		overflow-y: scroll;
+		padding: 2px;
+		webkit-border-radius: 2px 2px 2px 2px;
+		border-radius: 2px 2px 2px 2px;
+	}
+}
+
+#imagenTop{
+	.carousel-caption{
+		bottom: 25%;
+	}
+}
+/*
+google maps
+__________________________*/
+.google-maps {
+position: relative;
+padding-bottom: 75%; // This is the aspect ratio
+height: 0;
+overflow: hidden;
+}
+.google-maps iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100% !important;
+height: 100% !important;
+}
+
+/*
+nuestra -sociedad page
+__________________________*/
+.bordetabVerticalNegro{
+	border-bottom: 1px solid gray;
+	/*.col-xs-3{
+		padding: 0;
+	}*/
+}
+.tabVerticalNegro{
+	.tab-pane{
+		padding:10px 5px 0;
+		&#home-r,&#mision-r,&#vision-r{
+			padding:40px 5px 10px;
+		}
+	} 
+	ul{
+		background: black;
+		padding:25px 10px;
+	}
+	li, a{
+		height: 70px;
+		line-height: 40px;
+	}
+	li{
+		border: none;
+		&.active>a{
+			border: none;
+			background: black;
+			
+			color:#00b9f7;
+			&:hover,&:focus{
+				color:#00b9f7;
+			}
+		}
+		&:hover{
+		background-color: black;
+		}
+	}
+	a{
+		color: white;
+	}
+	.nav>li>a{
+		font-size: 16px;
+		line-height: 40px;
+		&:hover{
+		background-color: black;
+		color: #00b9f7;
+		border: none;
+		}
+	}
+}
+.divAsociados{
+	img{
+		margin-left: 20px;
+	}
+}
+.tarjetasQuienes{
+	.panel{
+		-webkit-box-shadow: 0 2px 5px 5px #ddd;
+		box-shadow: 0 2px 5px 5px #ddd;
+	}
+	.ico-pag,.correo{
+		color:#00b9f7;
+	}
+	.correo{
+		margin-top: -7px;
 	}
 }

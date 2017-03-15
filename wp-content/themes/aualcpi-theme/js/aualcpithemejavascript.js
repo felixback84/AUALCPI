@@ -1,13 +1,13 @@
 jQuery(function ($) {
 // console.log( "ready!" );
+  //--muestra el contenido de los submenus cuando el mouse pasa sobre el 
 	$("nav.menuPrimary ul.nav li").hover(function () { //When trigger is hovered...
         $(this).children("ul.dropdown-menu").slideDown('fast');
     }, function () {
         $(this).children("ul.dropdown-menu").slideUp('slow');
     });
-
+    //--al desplazarse verticalmente define si el menu principal debe fijarse o no 
     var $win = $(window);
-  	// definir mediente $pos la altura en píxeles desde el borde superior de la ventana del navegador y el elemento
   	var $pos = 225;
   	$win.scroll(function () {
       if( $(document).width() > 782){
@@ -20,6 +20,11 @@ jQuery(function ($) {
           $('.menuPrimary').removeClass('navbar-fixed-top');
        }
    });
+  //---  popover funciona
+    $('[data-toggle="popover"]').popover();   
+
+//- inactivar carousel
+
 
   if($(document).width() < 783){
       $('#mostrarCars').removeClass('row');
@@ -29,20 +34,30 @@ jQuery(function ($) {
 
 
 $('.carousel[data-type="multi"] .item').each(function(){
+  if($(document).width() > 782){
   var next = $(this).next();
   if (!next.length) {
     next = $(this).siblings(':first');
   }
   next.children(':first-child').clone().appendTo($(this));
   
-  for (var i=0;i<2;i++) {
+  for (var i=0;i<1;i++) {
     next=next.next();
     if (!next.length) {
       next = $(this).siblings(':first');
     }
     
-    // next.children(':first-child').clone().appendTo($(this));
+    next.children(':first-child').clone().appendTo($(this));
   }
+}
 });
+
+function cambiarNumeracionNoticias(){
+  $("#carousel-example-generic-noticias #pagN").text($("#carousel-example-generic-noticias .active").attr("cont"));
+}
+
+setInterval(function(){
+   cambiarNumeracionNoticias()
+},1000);
 
 });
