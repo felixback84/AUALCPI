@@ -60,4 +60,18 @@ setInterval(function(){
    cambiarNumeracionNoticias()
 },1000);
 
+$('#carousel-dual-members').carousel({
+    interval: false
+}); 
+$('#carousel-dual-members .left').css("display","none");
+
+$('#carousel-dual-members a.right').click(function () {
+  $('#carousel-dual-members .left').css("display","block");
+  $('#carousel-dual-members .right').css("display","none");
+})
+$('#carousel-dual-members a.left').click(function () {
+  $('#carousel-dual-members .right').css("display","block");
+  $('#carousel-dual-members .left').css("display","none");
+})
+
 });
