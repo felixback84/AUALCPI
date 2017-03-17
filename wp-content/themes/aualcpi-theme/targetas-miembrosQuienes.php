@@ -8,8 +8,8 @@
 							<h4><?php "Cargo:"?></h4>
 							<p>Nombre Usuario</p>
 							<p class="correo">Correo usuario</p>
-							<p class="ico-pag ico-twitter">twitter</p>
-							<p class="ico-pag ico-in">in</p>
+							<p class="ico-pag"><span class="icon icon-twitter"> </span>twitter</p>
+							<p class="ico-pag"><span class="icon icon-linkedin"> </span>in</p>
 						</div>
 						<div class="col-sm-12 col-md-6">
 							<?php if( has_post_thumbnail( )): ?>

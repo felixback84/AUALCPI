@@ -9,7 +9,7 @@ get_header();?>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12"><h4>Actualidad AUALCPI</h4></div>
-		<div class="col-sm-8 quitarEspacio" >
+		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 quitarEspacio" >
 			<div id="carousel-example-generic-noticias" class="carousel slide quitarEspacio" data-ride="carousel">
 				<div class="carousel-inner" role="listbox"> 
 					<?php $args = array (
@@ -48,15 +48,15 @@ get_header();?>
 				</div>	    
 			</div>
 		</div>
-		<div class="col-sm-3 col-sm-push-1" style="background: red;">
-			  <ul class="nav nav-tabs" role="tablist">
+		<div id="tabsEventoTwitter" class="hidden-xs hidden-sm col-md-4 col-lg-4" style="">
+			  <ul  class="nav nav-tabs" role="tablist">
 			    <li role="presentation" class="active"><a href="#Eventos" aria-controls="Eventos" role="tab" data-toggle="tab">Eventos</a></li>
 			    <li role="presentation"><a href="#twitter" aria-controls="twitter" role="tab" data-toggle="tab">Twitter</a></li>
 			  </ul>
 			  <div class="tab-content">
 			    <div role="tabpanel" class="tab-pane active" id="Eventos">
 					<div class="contenido-tabs">
-						a
+						<?php echo do_shortcode('[ai1ec view="monthly"]'); ?>
 					</div>
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="twitter">

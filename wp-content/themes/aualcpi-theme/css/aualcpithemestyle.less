@@ -2,13 +2,18 @@
 .row{
 	margin-top: 20px;
 }
+
+.quitarEspacio{
+	padding:0px;
+	margin:0px;
+}
+/*----iconos-------*/
 @font-face {
     font-family: 'IcoMoon-Free';
     src: url('../Fonts/Font/IcoMoon-Free.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
-
 .icon {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'IcoMoon-Free' !important;
@@ -32,12 +37,20 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.quitarEspacio{
-	padding:0px;
-	margin:0px;
+
+.icon-twitter:before {
+    content: "\ea96";
+}
+.icon-linkedin:before {
+    content: "\eac9";
+}
+.icon-mail3:before {
+    content: "\ea84";
 }
 
-/* header*/
+
+
+/*----------------------------header-------------------------*/
 
 #idiomas1{
 	margin: 50px 0 15px;
@@ -178,7 +191,7 @@
 			content: url(../images/iconosModalBecasWhatsApp.png);
 		}
 }*/
-/* Footer*/
+/*-------------------Footer------------------*/
 #footer1{
 	background-color: #000;
 	padding-left: 25px;
@@ -276,7 +289,7 @@
 	background-color: #1f3445;
 	height: 45px;
 }
-
+/*--------------home-------------------*/
 /*
 carousel 
 ----------------*/
@@ -368,22 +381,37 @@ Panel
 		}
 	}
 }
+#tabsEventoTwitter{
+	padding-left:5%;
+	.tab-content{
+		.contenido-tabs{
+			height: 359px; 
+			overflow-y: scroll;
+			padding: 2px;
+			border:1px solid #333;
+			webkit-border-radius: 2px 2px 2px 2px;
+			border-radius: 2px 2px 2px 2px;
+		}
+	}
+}
+@media (min-width: 1200px) { 
+	#tabsEventoTwitter{
+		.tab-content{
+			.contenido-tabs{
+				height: 429px;
+			}
+		}
 
-.tab-content{
-	.contenido-tabs{
-		height: 300px; 
-		overflow-y: scroll;
-		padding: 2px;
-		webkit-border-radius: 2px 2px 2px 2px;
-		border-radius: 2px 2px 2px 2px;
 	}
 }
 
+/*----------------nuestra -sociedad page------------------------*/
 #imagenTop{
 	.carousel-caption{
 		bottom: 25%;
 	}
 }
+
 /*
 google maps
 __________________________*/
@@ -401,9 +429,6 @@ width: 100% !important;
 height: 100% !important;
 }
 
-/*
-nuestra -sociedad page
-__________________________*/
 .bordetabVerticalNegro{
 	border-bottom: 1px solid gray;
 	/*.col-xs-3{
@@ -471,9 +496,7 @@ __________________________*/
 	}
 }
 
-/*
-pagina members
-_____________________________*/
+/*--------------------pagina members-------------------*/
 
 #carousel-members{
 	.item{

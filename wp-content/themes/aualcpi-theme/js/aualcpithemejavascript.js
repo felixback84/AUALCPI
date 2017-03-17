@@ -1,12 +1,16 @@
 jQuery(function ($) {
 // console.log( "ready!" );
-  //--muestra el contenido de los submenus cuando el mouse pasa sobre el 
-	$("nav.menuPrimary ul.nav li").hover(function () { //When trigger is hovered...
-        $(this).children("ul.dropdown-menu").slideDown('fast');
-    }, function () {
-        $(this).children("ul.dropdown-menu").slideUp('slow');
-    });
-    //--al desplazarse verticalmente define si el menu principal debe fijarse o no 
+
+//--muestra el contenido de los submenus cuando el mouse pasa sobre el 
+$("nav.menuPrimary ul.nav li").hover(function () { //When trigger is hovered...
+      $(this).children("ul.dropdown-menu").slideDown('fast');
+  }, function () {
+      $(this).children("ul.dropdown-menu").slideUp('slow');
+  });
+//--anadir icono a menu email
+$('ul#menu-email a:first-child').append(' <span class="icon icon-mail3"> </span>');
+
+//--- al desplazarse verticalmente define si el menu principal debe fijarse o no 
     var $win = $(window);
   	var $pos = 225;
   	$win.scroll(function () {
@@ -20,19 +24,17 @@ jQuery(function ($) {
           $('.menuPrimary').removeClass('navbar-fixed-top');
        }
    });
-  //---  popover funciona
+//---  popover para que funcione
     $('[data-toggle="popover"]').popover();   
 
-//- inactivar carousel
-
-
+//---- inactivar carousel
   if($(document).width() < 783){
       $('#mostrarCars').removeClass('row');
   }else{
       $('#mostrarCars').addClass('row');
   }
 
-
+//--- mostrar 3 post a la vez si el dispositibo es sm o mayor
 $('.carousel[data-type="multi"] .item').each(function(){
   if($(document).width() > 782){
   var next = $(this).next();
@@ -52,6 +54,7 @@ $('.carousel[data-type="multi"] .item').each(function(){
 }
 });
 
+//--- numero de paginacion en slider noticas
 function cambiarNumeracionNoticias(){
   $("#carousel-example-generic-noticias #pagN").text($("#carousel-example-generic-noticias .active").attr("cont"));
 }
@@ -60,6 +63,8 @@ setInterval(function(){
    cambiarNumeracionNoticias()
 },1000);
 
+
+//--- apagar botones en carousel members--
 $('#carousel-dual-members').carousel({
     interval: false
 }); 
@@ -73,5 +78,6 @@ $('#carousel-dual-members a.left').click(function () {
   $('#carousel-dual-members .right').css("display","block");
   $('#carousel-dual-members .left').css("display","none");
 })
+
 
 });
