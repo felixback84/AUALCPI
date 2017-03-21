@@ -13,7 +13,7 @@
 						<?php else: ?>
 							<div class="thumbnail"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_aualcpi.png" alt="imagen de defecto" width="" height="" /></div>
 						<?php endif; ?>
-						<h4><?php the_title(); ?></h4>
+						<h4><a href="<?php echo esc_url(get_permalink()); ?> "><?php the_title(); ?></a></h4>
 						<p><span class="textoGrisClaro">Por: <?php the_author(); ?></span></p>
 						<p><span class="textoGrisClaro"><?php "Categoria: ".$terms_list=wp_get_post_terms($post->ID,'tipo_publicaciones');
 							echo mostrarCategorias($terms_list,'|');

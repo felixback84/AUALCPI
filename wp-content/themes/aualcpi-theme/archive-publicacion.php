@@ -1,11 +1,10 @@
 <?php get_header(); ?>
 
 <div class="row">
-	
 	<div class="col-xs-12 col-sm-8">
 		
 		<div class="row text-center no-margin">
-<h4>Archivos Becas</h4>
+<h4>Archivos Publicaciones</h4>
 		<?php if( have_posts() ): ?>
 			
 			<header class="page-header">

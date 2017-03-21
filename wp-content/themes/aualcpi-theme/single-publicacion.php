@@ -8,34 +8,21 @@
 					<div class="styleSingle">
 						<?php the_title('<h1 class="entry-title">','</h1>' ); ?>
 						<p>
-							<?php if (class_exists('MultiPostThumbnails')) : 
+							<?php if (class_exists('MultiPostThumbnails')) { 
 								MultiPostThumbnails::the_post_thumbnail(get_post_type(), 'secondary-image', get_the_ID(), array(100,100));
-							endif; ?>
-							<?php $terms_list=wp_get_post_terms($post->ID,'areas');
-							if(count($terms_list)!=0) { echo ('Areas de conocimiento: ');
-							echo mostrarCategorias($terms_list,'\\'); }
-							$terms_list= null;
-							?>
-							<?php $terms_list=wp_get_post_terms($post->ID,'universidades_investigacion');
-							if(count($terms_list)!=0) { echo (' || Universidad: ');
-							echo mostrarCategorias($terms_list,'\\'); }
-							$terms_list= null;
-							?>
-							<?php $terms_list=wp_get_post_terms($post->ID,'status_investigacion');
-							if(count($terms_list)!=0) { echo (' || Status: ');
-							echo mostrarCategorias($terms_list,'\\');}
-							$terms_list= null;
-							?>
-							<?php $terms_list=wp_get_post_terms($post->ID,'ciudad_investigaciones');
-							if(count($terms_list)!=0) { echo (' || Pais/Ciudad: ');
-							echo mostrarCategorias($terms_list,' |');}
-							$terms_list= null;
-							?>
-							<?php $terms_list=wp_get_post_terms($post->ID,'tag_investigacion');
-							if(count($terms_list)!=0) { echo (' || Tag: ');
-							echo mostrarCategorias($terms_list,'\\');}
-							$terms_list= null;
-							?>
+							} ?>
+							<?php $terms_list=wp_get_post_terms($post->ID,'categoria_conocimiento');
+							if(count($terms_list)!=0) { echo 'Categoria: ';
+							echo mostrarCategorias($terms_list,'|'); }
+							$terms_list= NULL; ?> 
+							<?php $terms_list=wp_get_post_terms($post->ID,'tipo_publicaciones');
+							if(count($terms_list)!=0) { echo ' || Tipo de publicacion: ';
+							echo mostrarCategorias($terms_list,'|'); }
+							$terms_list= NULL; ?>  
+							<?php $terms_list=wp_get_post_terms($post->ID,'tag_publicaciones');
+							if(count($terms_list)!=0) { echo ' || Tag: ';
+							echo mostrarCategorias($terms_list,'|'); }
+							$terms_list= NULL; ?>
 							<?php if( current_user_can('manage_options') ) {
 							echo '|| ';  edit_post_link(); 
 							} ?>

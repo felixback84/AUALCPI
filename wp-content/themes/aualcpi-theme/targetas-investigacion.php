@@ -12,7 +12,7 @@
 					</div>
 					<div class="panel-body">
 						<div class="contenidoP">
-							<h4><?php "titulos:".the_title(); ?></h4>
+							<h4><a href="<?php echo esc_url(get_permalink()); ?> "><?php "titulos:".the_title(); ?></a></h4>
 							<?php if (class_exists('MultiPostThumbnails')) : 
 							MultiPostThumbnails::the_post_thumbnail(get_post_type(), 'secondary-image', get_the_ID(), array(100,100));
 							endif; ?>

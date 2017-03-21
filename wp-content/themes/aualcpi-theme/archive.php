@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <div class="row">
-	
+	archive
 	<div class="col-xs-12 col-sm-8">
 		
 		<div class="row text-center no-margin">

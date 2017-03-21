@@ -304,7 +304,7 @@ add_action ('widgets_init', 'aualcpiTheme_Becas_widget_setup');
 function aualcpiTheme_Publicaciones_widget_setup () {
 	register_sidebar(
 		array(			
-			'name' => 'Publicacion',
+			'name' => 'Publicaciones',
 			'id' => 'sidebar-4',
 			'class'         => 'custom',
 		    'description'   => 'Sidebar for search',
@@ -563,7 +563,7 @@ function awesome_custom_taxonomies_status() {
 
 add_action( 'init' , 'awesome_custom_taxonomies_status');
 
-function awesome_custom_taxonomies_pais_ciudad_investigacion() {
+function awesome_custom_taxonomies_pais_ciudad_investigaciones() {
 	//add new taxonomy hierarchical
 	$labels = array(
 		'name' => 'Paises / Ciudades',
@@ -584,12 +584,12 @@ function awesome_custom_taxonomies_pais_ciudad_investigacion() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'ciudad_investigacion' )
+		'rewrite' => array( 'slug' => 'ciudad_investigaciones' )
 	);
-	register_taxonomy('ciudad_investigacion', array('investigacion'), $args);
+	register_taxonomy('ciudad_investigaciones', array('investigacion'), $args);
 }
 
-add_action( 'init' , 'awesome_custom_taxonomies_pais_ciudad_investigacion');
+add_action( 'init' , 'awesome_custom_taxonomies_pais_ciudad_investigaciones');
 
 function awesome_custom_taxonomies_investigacion_tag() {
 	//add new taxonomy no hierarchical
@@ -753,3 +753,47 @@ new MultiPostThumbnails(array(
 		}
 	return $imprimir;
 }
+
+/*
+array(2) { 
+[0]=> object(WP_Term)#3706 (10) 
+	{ ["term_id"]=> int(73) ["name"]=> string(7) "Bolivia" ["slug"]=> string(7) "bolivia" ["term_group"]=> int(0) ["term_taxonomy_id"]=> int(73) ["taxonomy"]=> string(12) "ciudad_becas" ["description"]=> string(0) "" ["parent"]=> int(0) ["count"]=> int(1) ["filter"]=> string(3) "raw" } 
+[1]=> object(WP_Term)#3710 (10) 
+	{ ["term_id"]=> int(74) ["name"]=> string(6) "La Paz" ["slug"]=> string(6) "la-paz" ["term_group"]=> int(0) ["term_taxonomy_id"]=> int(74) ["taxonomy"]=> string(12) "ciudad_becas" ["description"]=> string(0) "" ["parent"]=> int(73) ["count"]=> int(1) ["filter"]=> string(3) "raw" } }
+*/
+
+// determine the topmost parent of a term
+function get_term_top_most_parent($term_id, $taxonomy){
+    // start from the current term
+    $parent  = get_term_by( 'id', $term_id, $taxonomy);
+    // climb up the hierarchy until we reach a term with parent = '0'
+    while ($parent->parent != '0'){
+        $term_id = $parent->parent;
+
+        $parent  = get_term_by( 'id', $term_id, $taxonomy);
+    }
+    return $parent;
+}
+
+// so once you have this function you can just loop over the results returned by wp_get_object_terms
+
+function project_get_item_classes($taxonomy, $results = 1) {
+    // get terms for current post
+    $terms = wp_get_object_terms( get_the_ID(), 'work_type' );
+    // set vars
+    $top_parent_terms = array();
+    foreach ( $terms as $term ) {
+        //get top level parent
+        $top_parent = get_term_top_most_parent( $term->term_id, 'work_type' );
+        //check if you have it in your array to only add it once
+        if ( !in_array( $top_parent, $top_parent_terms ) ) {
+            $top_parent_terms[] = $top_parent;
+        }
+    }
+    // build output (the HTML is up to you)
+
+    foreach ( $top_parent_terms as $term ) {
+        echo " " . $term->slug;
+    }
+}
+
