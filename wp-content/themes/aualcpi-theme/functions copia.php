@@ -96,7 +96,8 @@ function investigacion_custom_post(){
 			'editor',
 			'autor',
 			'thumbnail',
-			'comments'
+			'comments',
+			'custom-fields'
 		),
 		
 		'menu_position' => 5,
@@ -147,6 +148,7 @@ function beca_custom_post(){
 			'editor',
 			'autor',
 			'comments',
+			'custom-fields',
 			'thumbnail'
 		),
 		'hierarchical'          => false,
@@ -199,7 +201,8 @@ function publicacion_custom_post(){
 			'editor',
 			'autor',
 			'thumbnail',
-			'comments'
+			'comments',
+			'custom-fields'
 		),
 		'hierarchical'          => false,
 		'public'                => true,
@@ -472,7 +475,7 @@ add_action( 'init' , 'awesome_custom_taxonomies_becas_tag');
 		===================================
 */
 
-function aualcpi_custom_taxonomies_investigaciones() {
+function awesome_custom_taxonomies_areas() {
 	
 	//add new taxonomy hierarchical
 	$labels = array(
@@ -500,6 +503,10 @@ function aualcpi_custom_taxonomies_investigaciones() {
 
 	register_taxonomy('areas', array('investigacion'), $args);
 
+}	
+add_action( 'init' , 'awesome_custom_taxonomies_areas');
+
+function awesome_custom_taxonomies_universidades() {
 	//add new taxonomy hierarchical
 	$labels = array(
 		'name' => 'Universidades',
@@ -523,7 +530,12 @@ function aualcpi_custom_taxonomies_investigaciones() {
 		'rewrite' => array( 'slug' => 'universidades_investigacion' )
 	);
 	register_taxonomy('universidades_investigacion', array('investigacion'), $args);
+}
 
+add_action( 'init' , 'awesome_custom_taxonomies_universidades');
+
+
+function awesome_custom_taxonomies_status() {
 	//add new taxonomy hierarchical
 	$labels = array(
 		'name' => 'Status',
@@ -547,7 +559,11 @@ function aualcpi_custom_taxonomies_investigaciones() {
 		'rewrite' => array( 'slug' => 'status_investigacion' )
 	);
 	register_taxonomy('status_investigacion', array('investigacion'), $args);
+}
 
+add_action( 'init' , 'awesome_custom_taxonomies_status');
+
+function awesome_custom_taxonomies_pais_ciudad_investigaciones() {
 	//add new taxonomy hierarchical
 	$labels = array(
 		'name' => 'Paises / Ciudades',
@@ -571,7 +587,11 @@ function aualcpi_custom_taxonomies_investigaciones() {
 		'rewrite' => array( 'slug' => 'ciudad_investigaciones' )
 	);
 	register_taxonomy('ciudad_investigaciones', array('investigacion'), $args);
+}
 
+add_action( 'init' , 'awesome_custom_taxonomies_pais_ciudad_investigaciones');
+
+function awesome_custom_taxonomies_investigacion_tag() {
 	//add new taxonomy no hierarchical
 	$labels = array(
 		'name' => 'Tags',
@@ -595,9 +615,9 @@ function aualcpi_custom_taxonomies_investigaciones() {
 		'rewrite' => array( 'slug' => 'tag_investigacion' )
 	);
 	register_taxonomy('tag_investigacion', array('investigacion'), $args);
+}
 
-}	
-add_action( 'init' , 'aualcpi_custom_taxonomies_investigaciones');
+add_action( 'init' , 'awesome_custom_taxonomies_investigacion_tag');
 
 /*
 		===================================
@@ -777,98 +797,132 @@ function project_get_item_classes($taxonomy, $results = 1) {
     }
 }
 
-////-------prueba----------
-
-
-// function wpdocs_register_meta_boxes() {
-//     add_meta_box( 'meta-box-id', 'metabox', 'wpdocs_my_display_callback', 'post' );
+// /**
+//  * This function adds a meta box with a callback function of my_metabox_callback()
+//  */
+// function add_wpdocs_meta_box() {
+//     $var1 = 'this';
+//     $var2 = 'that';
+//     add_meta_box(
+//         'metabox_id','Metabox Title',
+//         'wpdocs_metabox_callback',
+//         'page',
+//         'normal',
+//         'low',
+//         array( 'foo' => $var1, 'bar' => $var2 )
+//     );
 // }
-// add_action( 'add_meta_boxes', 'wpdocs_register_meta_boxes' );
+ 
+// /**
+//  * Get post meta in a callback
+//  *
+//  * @param WP_Post $post    The current post.
+//  * @param array   $metabox With metabox id, title, callback, and args elements.
+//  */
+ 
+// function wpdocs_metabox_callback( $post, $metabox ) {
+//     // Output last time the post was modified.
+//     echo 'Last Modified: ' . $post->post_modified;
+ 
+//     // Output 'this'.
+//     echo $metabox['args']['foo'];
+ 
+//     // Output 'that'.
+//     echo $metabox['args']['bar'];
+ 
+//     // Output value of custom field.
+//     echo get_post_meta( $post->ID, 'wpdocs_custom_field', true );
+// }
 
-function add_custom_meta_boxes() {
- 
-    // Define the custom attachment for posts
-    add_meta_box(
-        'wp_custom_attachment',
-        'Custom Attachment',
-        'wp_custom_attachment',
-        'investigacion',
-        'side'
-    );
-    
- 
-} // end add_custom_meta_boxes
-add_action('add_meta_boxes', 'add_custom_meta_boxes');
+// class links_investigacion {
 
-function wp_custom_attachment() {
- 
-    wp_nonce_field('wp_custom_attachment_nonce_action', 'wp_custom_attachment_nonce');
-     
-    $html = '<p class="description">';
-        $html .= 'Upload your PDF here.';
-    $html .= '</p>';
-    $html .= '<input type="file" id="wp_custom_attachment" name="wp_custom_attachment" value="" size="25" />';
-     
-    echo $html;
- 
-} // end wp_custom_attachment
+// 	public function __construct() {
+
+// 		if ( is_admin() ) {
+// 			add_action( 'load-post.php',     array( $this, 'init_metabox' ) );
+// 			add_action( 'load-post-new.php', array( $this, 'init_metabox' ) );
+// 		}
+
+// 	}
+
+// 	public function init_metabox() {
+
+// 		add_action( 'add_meta_boxes', array( $this, 'add_metabox'  )        );
+// 		add_action( 'save_post',      array( $this, 'save_metabox' ), 10, 2 );
+
+// 	}
+
+// 	public function add_metabox() {
+
+// 		add_meta_box(
+// 			'links-investigaciones',
+// 			'Link de las investigaciones',
+// 			array( $this, 'render_metabox' ),
+// 			'investigacion',
+// 			'normal'
+// 		);
+
+// 	}
+
+// 	public function render_metabox( $post ) {
+
+// 		// Add nonce for security and authentication.
+// 		wp_nonce_field( 'car_nonce_action', 'car_nonce' );
+
+// 		// Retrieve an existing value from the database.
+// 		$investigacionLink = get_post_meta( $post->ID, 'investigacionLink', true );
+
+// 		// Set default values.
+// 		if( empty( $investigacionLink ) ) $investigacionLink = '';
+
+// 		// Form fields.
+// 		echo '<table class="form-table">';
+// 		echo '	<tr>';
+// 		echo '		<th><label for="investigacionLink" class="investigacionLink_label">' . 'Name' . '</label></th>';
+// 		echo '		<td>';
+// 		echo '			<input type="text" id="investigacionLink" name="investigacionLink" class="investigacionLink_field" value="' . esc_attr__( $investigacionLink ) . '">';
+// 		echo '			<p class="description">' . 'Seller full name.'. '</p>';
+// 		echo '		</td>';
+// 		echo '	</tr>';
+// 		echo '</table>';
+
+// 	}
+
+// 	public function save_metabox( $post_id, $post ) {
+
+// 		// Add nonce for security and authentication.
+// 		$nonce_name   = $_POST['car_nonce'];
+// 		$nonce_action = 'car_nonce_action';
+
+// 		// Check if a nonce is set.
+// 		if ( ! isset( $nonce_name ) )
+// 			return;
+
+// 		// Check if a nonce is valid.
+// 		if ( ! wp_verify_nonce( $nonce_name, $nonce_action ) )
+// 			return;
+
+// 		// Check if the user has permissions to save data.
+// 		if ( ! current_user_can( 'edit_post', $post_id ) )
+// 			return;
+
+// 		// Check if it's not an autosave.
+// 		if ( wp_is_post_autosave( $post_id ) )
+// 			return;
+
+// 		// Check if it's not a revision.
+// 		if ( wp_is_post_revision( $post_id ) )
+// 			return;
+
+// 		// Sanitize user input.
+// 		$new_investigacionLink = isset( $_POST[ 'investigacionLink' ] ) ? sanitize_text_field( $_POST[ 'investigacionLink' ] ) : '';
+
+// 		// Update the meta field in the database.
+// 		update_post_meta( $post_id, 'investigacionLink', $new_investigacionLink );
+
+// 	}
 
 
-function save_custom_meta_data($id) {
- 
-    /* --- security verification --- */
-    if(!wp_verify_nonce($_POST['wp_custom_attachment_nonce'], 'wp_custom_attachment_nonce_action')) {
-      return $id;
-    } // end if
-       
-    if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-      return $id;
-    } // end if
-       
-    if('investigacion' == $_POST['post_type']) {
-      if(!current_user_can('edit_page', $id)) {
-        return $id;
-      } // end if
-    } else {
-        if(!current_user_can('edit_page', $id)) {
-            return $id;
-        } // end if
-    } // end if
-    /* - end security verification - */
-     
-    // Make sure the file array isn't empty
-    if(!empty($_FILES['wp_custom_attachment']['name'])) {
-         
-        // Setup the array of supported file types. In this case, it's just PDF.
-        $supported_types = array('application/pdf');
-         
-        // Get the file type of the upload
-        $arr_file_type = wp_check_filetype(basename($_FILES['wp_custom_attachment']['name']));
-        $uploaded_type = $arr_file_type['type'];
-         
-        // Check if the type is supported. If not, throw an error.
-        if(in_array($uploaded_type, $supported_types)) {
- 
-            // Use the WordPress API to upload the file
-            $upload = wp_upload_bits($_FILES['wp_custom_attachment']['name'], null, file_get_contents($_FILES['wp_custom_attachment']['tmp_name']));
-     
-            if(isset($upload['error']) && $upload['error'] != 0) {
-                wp_die('There was an error uploading your file. The error is: ' . $upload['error']);
-            } else {
-                add_post_meta($id, 'wp_custom_attachment', $upload);
-                update_post_meta($id, 'wp_custom_attachment', $upload);     
-            } // end if/else
- 			unset( $_FILES['wp_custom_attachment'] );
-        } else {
-            wp_die("The file type that you've uploaded is not a PDF.");
-        } // end if/else
-         
-    } // end if
-     
-} // end save_custom_meta_data
-add_action('save_post', 'save_custom_meta_data');
+// }
 
-function update_edit_form() {
-    echo ' enctype="multipart/form-data"';
-} // end update_edit_form
-add_action('post_edit_form_tag', 'update_edit_form');
+// new links_investigacion;
