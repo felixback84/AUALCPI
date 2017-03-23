@@ -71,6 +71,7 @@ class Ai1ec_Post_Custom_Type extends Ai1ec_Base {
 			'rewrite'             => $rewrite,
 			'map_meta_cap'        => true,
 			'capability_type'     => 'ai1ec_event',
+			'menu_icon'           => 'dashicons-calendar-alt',
 			'has_archive'         => $has_archive,
 			'hierarchical'        => false,
 			'menu_position'       => 5,

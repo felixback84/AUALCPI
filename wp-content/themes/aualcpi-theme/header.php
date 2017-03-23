@@ -63,8 +63,9 @@
 	</div>
 	</div>
 		<div class="row">	
-			<div class= "col-xs-12">
+			
 					<nav class="navbar navbar-default menuPrimary">
+						<div class= "col-xs-12">
 						<div class="container">
 							<div class="container-fluid">
 							    <!-- Brand and toggle get grouped for better mobile display -->
@@ -99,6 +100,6 @@
 							    </div>
 							</div>	
 						</div>
-					</nav>
 			</div>
+					</nav>
 		</div>

@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 <div class="container">
-a
 	<div class="row">
 		<div class="col-xs-12 col-sm-8 col-sm-push-2">
 			<?php if( have_posts() ):

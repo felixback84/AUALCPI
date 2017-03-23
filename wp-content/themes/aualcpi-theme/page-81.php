@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<!-- paquina members-->
+<!-- pagina nuestra asociacion-->
 <div class="hidden-xs">
 	<div id="imagenTop" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">

@@ -722,7 +722,7 @@ new MultiPostThumbnails(array(
 		functions term function
 		===================================
 */
-
+/*---mostrar categorias para targetas-----*/
  function mostrarCategorias($lista,$division){
 	$i=0;
 	$imprimir='';
@@ -734,6 +734,18 @@ new MultiPostThumbnails(array(
 	return $imprimir;
 }
 
+
+/*---mostrar categorias para movilidad-----*/
+ function aualcpi_mostrarCategorias_movilidad($lista,$division){
+	$i=0;
+	$imprimir='';
+		foreach ($lista as $term) {
+				$i++;
+				if($i>1){ $imprimir.= $division.' ';}
+				$imprimir.= '<div class="row"><div class="categoriasDisponiblesMovilidad text-center col-xs-8 col-md-4 col-xs-push-2 col-md-push-4" ><a href="'.get_term_link($term).'" ><h4>'.$term->name.'</h4></p>'.$term->description.'</p></a></div></div>';
+		}
+	return $imprimir;
+}
 /*
 array(2) { 
 [0]=> object(WP_Term)#3706 (10) 

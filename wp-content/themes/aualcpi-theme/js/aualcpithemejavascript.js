@@ -54,6 +54,29 @@ $('.carousel[data-type="multi"] .item').each(function(){
 }
 });
 
+//--- mostrar 3 post a la vez si el dispositibo es sm o mayor
+$('.carousel[data-type="multis"] .item').each(function(){
+  if($(document).width() > 782){
+  var next = $(this).next();
+  if (!next.length) {
+    next = $(this).siblings(':first');
+  }
+  next.children(':first-child').clone().appendTo($(this));
+ 
+  
+  for (var i=0;i<1;i++) {
+    next=next.next();
+    if (!next.length) {
+      next = $(this).siblings(':first');
+    }
+    
+    next.children(':first-child').clone().appendTo($(this)); 
+    next.remove();
+    //next.next().remove();
+  }
+}
+});
+
 //--- numero de paginacion en slider noticas
 function cambiarNumeracionNoticias(){
   $("#carousel-example-generic-noticias #pagN").text($("#carousel-example-generic-noticias .active").attr("cont"));

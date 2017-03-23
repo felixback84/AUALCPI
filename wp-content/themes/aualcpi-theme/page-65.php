@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<!-- paquina eventos-->
+<!-- pagina eventos-->
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12" style="margin:30px 0;">

@@ -2,16 +2,16 @@
 	Footer, los menus se crean en el CMS pero se llaman desde aqui.
 	
 	-->
-		<footer>
-			<div id="footer1" class="col-xs-12">
+	<footer>
+		<div id="footer1">
 			<div class="container">
 				<div id="redes" class="row">
 					<div class="col-xs-12 col-sm-3 col-md-2 ">
-						<a class="thumbnail ">
+						<div class="thumbnail ">
 							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logoBlanco.png" alt="" width="" height="" />
-						</a>
+						</div>
 					</div>
-					<div class="col-xs-6 col-sm-4 col-md-push-8 col-sm-push-6 col-xs-push-4">
+					<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 col-md-push-8 col-sm-push-6 col-xs-push-4">
 						<div class="row">
 							<div class="redes">
 								<a href="#" target="_blank"> 
@@ -67,8 +67,8 @@
 				<?php wp_footer(); ?>
 				</div>
 			</div>
-			</div>
-			<div id="footer2" class="col-xs-12"></div>
-		</footer>
+		</div>
+		<div id="footer2" class="col-xs-12"></div>
+	</footer>
 </body>
 </html>
