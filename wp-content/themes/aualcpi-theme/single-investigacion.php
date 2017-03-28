@@ -81,9 +81,9 @@
 				</div>
 				<div class="row">
 					<?php if( comments_open() ){ 
-						comments_template(); 
+						//comments_template(); 
 					} else {
-						echo '<h5 class="text-center">Sorry, Comments are closed!</h5>';
+						//echo '<h5 class="text-center">Sorry, Comments are closed!</h5>';
 					} ?>
 				</div>
 			<?php endwhile;

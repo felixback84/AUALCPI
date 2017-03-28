@@ -1,7 +1,5 @@
 @BackgroundMenuPrimary: #525256;
-.row{
-	margin-top: 20px;
-}
+
 
 .quitarEspacio{
 	padding:0px;
@@ -116,6 +114,7 @@
 .thumbnail{
 	border:none;
 	background-color: transparent;
+	padding: 0px;
 }
 
 #logoAualcpi{
@@ -206,7 +205,7 @@
 		.redes{
 			display: inline-block;
 			width: 36px;
-			margin:5px;
+			/*margin:5px;*/
 		}
 		.redFacebook{
 			background: url('../images/redes.png') no-repeat;
@@ -434,6 +433,25 @@ width: 100% !important;
 height: 100% !important;
 }
 
+
+/*
+youtube responsive
+__________________________*/
+.youtube {
+position: relative;
+padding-bottom: 75%; // This is the aspect ratio
+height: 0;
+overflow: hidden;
+}
+.youtube iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100% !important;
+height: 100% !important;
+}
+
+/*-----listado items - categoria panel - nuestra asociacion y movilidad */
 .bordetabVerticalNegro{
 	border-bottom: 1px solid gray;
 	/*.col-xs-3{
@@ -443,7 +461,7 @@ height: 100% !important;
 .tabVerticalNegro{
 	.tab-pane{
 		padding:10px 5px 0;
-		&#home-r,&#mision-r,&#vision-r{
+		&#home-r,&#mision-r,&#vision-r,&#programaMovilidad-quien-r,&#categoriasMovilidad-r,&#programaMovilidad-aplicar-r{
 			padding:40px 5px 10px;
 		}
 	} 
@@ -451,9 +469,12 @@ height: 100% !important;
 		background: black;
 		padding:25px 10px;
 	}
-	li, a{
+	li{
 		height: 70px;
-		line-height: 40px;
+	}
+	ul.listaMovilidad li{
+		height: 120px;
+		
 	}
 	li{
 		border: none;
@@ -473,13 +494,28 @@ height: 100% !important;
 	a{
 		color: white;
 	}
+	.tab-pane {
+		.categoriasDisponiblesMovilidad{
+			/*width: 250px;*/
+				padding-bottom: 3px;
+			&:hover{
+				border-bottom: 3px solid gray;
+				padding-bottom: 0;
+			}
+			a{
+			color: black;
+			text-decoration: none;
+			}
+		}
+		
+	}
 	.nav>li>a{
 		font-size: 16px;
 		line-height: 40px;
 		&:hover{
-		background-color: black;
-		color: #00b9f7;
-		border: none;
+			background-color: black;
+			color: #00b9f7;
+			border: none;
 		}
 	}
 }
@@ -595,4 +631,9 @@ height: 100% !important;
 			color:rgb(77, 171, 230);
 		}
 	}
+}
+
+/*--------single eventos----------*/
+.styleSingleEventos,.stylePagCalendario{
+	margin-bottom: 50px;
 }

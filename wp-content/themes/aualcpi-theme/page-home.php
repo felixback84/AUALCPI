@@ -61,7 +61,7 @@ get_header();?>
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="twitter">
 			     	<div class="contenido-tabs">
-						<a class="twitter-timeline" href="https://twitter.com/TwitterDev">Twitter Aualcpi</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+						<a class="twitter-timeline" href="https://twitter.com/aualcpi">Twitter Aualcpi</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 			     	</div>
 			    </div>
 			  </div>

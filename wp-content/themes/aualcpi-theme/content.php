@@ -7,7 +7,7 @@
 <article id="post-<?php the_ID();?>" <?php post_class(); ?>>
 	<header class= "entry-header">
 		<?php the_title( sprintf('<h4 class="entry-title"><a href="%s">', esc_url(get_permalink() )),'</a></h4>'); ?>
-		<small> Publicado el: <?php  the_time('F j, Y'); ?> a las <?php the_time('g:i a') ?>, in <?php the_category(); ?> </small>
+		<small> Publicado el: <?php  the_time('F j, Y'); ?> a las <?php the_time('g:i a') ?></small>
 	</header>
 		<div class="row">
 			<?php if( has_post_thumbnail( )): ?>
