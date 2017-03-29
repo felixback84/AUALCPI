@@ -366,7 +366,7 @@ function aualcpi_custom_taxonomies_investigaciones() {
 		'rewrite' => array( 'slug' => 'areas' )
 	);
 
-	register_taxonomy('areas', array('investigacion'), $args);
+	register_taxonomy('areas', array('investigacion','user'), $args);
 
 	//add new taxonomy hierarchical
 	$labels = array(

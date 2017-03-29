@@ -104,7 +104,7 @@ get_header();?>
 	<div class="row">
 		<div class="col-sm-12">
 			<h4>Becas de movilidad (EMANUEL)</h4>
-			<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi">
+			<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
 			<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox"> 
 					<?php $args = array (
