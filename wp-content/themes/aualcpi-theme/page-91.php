@@ -21,9 +21,14 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12"><</a>
+		<div class="col-xs-12">
+		<ul>
+<?php wp_list_authors('exclude_admin=0&hide_empty=0'); ?>
+</ul>
 			<ul>
 			<?php
+
+
 			$usuarios = get_users('orderby=id');
 			//var_dump($usuarios);
 			foreach ($usuarios as $usuario) {

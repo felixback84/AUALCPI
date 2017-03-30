@@ -8,7 +8,7 @@
 				<div class="thumbnail"><?php 
 				$imagenPortada = get_the_author_meta('user_meta_image',$userId);
 				if(!empty($imagenPortada)){
-					echo '<img src="'.$imagenPortada.'" alt="Imagen portada del perfil del usuario"';
+					echo '<img src="'.$imagenPortada.'" alt="Imagen portada del perfil del usuario">';
 				}else{
 				the_post_thumbnail ('post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']); 
 				}?></div>

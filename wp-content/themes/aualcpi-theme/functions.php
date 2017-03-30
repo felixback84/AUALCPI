@@ -22,7 +22,16 @@ require_once get_template_directory().'/inc/functions-posttype.php';
 */
 require get_template_directory().'/inc/walker.php';
 
-
+/*
+		===================================
+		functions verificar url para pagina usuario
+		===================================
+*/
+function formatoFechaEnEspañol($userId){
+	$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+	$date=date_format(date_create(get_the_author_meta('user_registered',$userId)),'d').' de '. $meses[date_format(date_create(get_the_author_meta('user_registered',$userId)),'n')-1].' de '.date_format(date_create(get_the_author_meta('user_registered',$userId)),'Y');
+	return $date;
+}
 
 
 /*
@@ -30,23 +39,50 @@ require get_template_directory().'/inc/walker.php';
 		functions verificar url para pagina usuario
 		===================================
 */
+function mostrarTermsPorIdUsuario($userId,$taxonomiaSlug){
+	$term=get_term_by('slug',get_the_author_meta( $taxonomiaSlug, $userId ),$taxonomiaSlug);
+	return $term;
+}
+// /*
+// 		===================================
+// 		functions verificar url para pagina usuario
+// 		===================================
+// */
 
-function verificarPathPageUser(){	
-	$IDUSER= NULL;
-	$userId = get_query_var('pageUser'); 
-	//echo 'id user'.var_dump($userId);  
-	if(!empty($userId)){
-			$IDUSER=$userId;
-	}else{
-		if (is_user_logged_in()){
-			$cu = wp_get_current_user();
-			$IDUSER=$cu->ID;
-		}else{
-			wp_redirect( home_url(), 301 ); exit; 
-		}
-	}
-	return $IDUSER;
-}		
+// function verificarPathPageUser(){	
+// 	$IDUSER= NULL;
+// 	$userId = get_query_var('pageUser'); 
+// 	//echo 'id user'.var_dump($userId);  
+// 	if(!empty($userId)){
+// 			$IDUSER=$userId;
+// 	}else{
+// 		if (is_user_logged_in()){
+// 			$cu = wp_get_current_user();
+// 			$IDUSER=$cu->ID;
+// 		}else{
+// 			wp_redirect( home_url(), 301 ); exit; 
+// 		}
+// 	}
+// 	return $IDUSER;
+// }
+
+// /*
+// 		===================================
+// 		functions verificar usuario logeado es el mismo que esta viendo el perfil
+// 		===================================
+// */
+
+// function verificarAuthorAndUser($userAutor){	
+	
+// 	$userId = $userAutor; 
+// 	$cu = wp_get_current_user();
+// 	$cu = $cu->ID;
+
+// 	if($cu == $userId){
+// 			return true;
+// 	}
+// 	return false;
+// }		
 /*
 		===================================
 		functions term function

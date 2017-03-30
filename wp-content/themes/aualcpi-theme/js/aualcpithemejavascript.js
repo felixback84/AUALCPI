@@ -85,5 +85,20 @@ $('#carousel-dual-members a.left').click(function () {
   $('#carousel-dual-members .left').css("display","none");
 })
 
+//--- apagar botones en carousel perfil--
+$('#carousel-dual-perfil').carousel({
+    interval: false
+}); 
+$('#carousel-dual-perfil .left').css("display","none");
+
+$('#carousel-dual-perfil a.right').click(function () {
+  $('#carousel-dual-perfil .left').css("display","block");
+  $('#carousel-dual-perfil .right').css("display","none");
+})
+$('#carousel-dual-perfil a.left').click(function () {
+  $('#carousel-dual-perfil .right').css("display","block");
+  $('#carousel-dual-perfil .left').css("display","none");
+})
+
 
 });

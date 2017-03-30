@@ -174,6 +174,7 @@ function publicacion_custom_post(){
 		'publicly_queryable'    => true,
 		'menu_icon'           	=> 'dashicons-format-aside',
 		'capability_type'       => 'post',
+
 	);
 	register_post_type( 'publicacion', $args );
 }

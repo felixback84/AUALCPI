@@ -71,8 +71,16 @@ function my_show_extra_profile_fields( $user ) {
 			<td><?php if ( !empty( $terms ) ) {
 				foreach ( $terms as $term ) { ?>
 					<input type="radio" name="areas" id="areas-<?php echo esc_attr( $term->slug ); ?>" value="<?php echo esc_attr( $term->slug ); ?>" <?php checked( $term->slug, get_the_author_meta( 'areas', $user->ID )); ?> /> <label for="areas-<?php echo esc_attr( $term->slug ); ?>"><?php echo $term->name; ?></label> <br />
-				<?php }
+
+					<?php $termsChields = get_terms( 'areas' , array( 'orderby' => 'name','parent' => $term->term_id,'hide_empty' => false)); 
+					if ( !empty( $termsChields ) ) {
+					foreach ( $termsChields as $termChield ) {?>
+							<input type="radio" name="areas" id="areas-<?php echo esc_attr( $termChield->slug ); ?>" value="<?php echo esc_attr( $termChield->slug ); ?>" <?php  checked( $termChield->slug, get_the_author_meta( 'areas', $user->ID )); ?> /> <label for="areas-<?php echo esc_attr( $termChield->slug ); ?>"><?php echo $termChield->name; ?></label> <br />
+				<?php 	}
+					}
+				}
 			}
+
 			else {
 				_e( 'No hay disponibles areas de investigaciones' );
 			}?>
@@ -101,11 +109,6 @@ function my_show_extra_profile_fields( $user ) {
 			return;
 
 		$terms = get_terms( 'ciudad_user' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
-		if ( !empty( $terms ) ) {
-				foreach ( $terms as $term ) {
-					var_dump($term);
-				}
-		}
 		?>
         <tr>
 			<th><label for="ciudad_user"><?php _e( 'Seleccione su ciudad' ); ?></label></th>

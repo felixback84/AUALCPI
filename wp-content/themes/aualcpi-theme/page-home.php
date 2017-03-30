@@ -68,38 +68,6 @@ get_header();?>
 		</div>
 	</div>
 </div>
-<!-- <div class="container">
-	<a tabindex="0"
-	   class="btn btn-lg btn-primary" 
-	   role="button" 
-	   data-html="true" 
-	   data-toggle="popover" 
-	   data-trigger="focus" title="Tipos de Becas" data-content="<div class='descripcionPequeña'>
-		<p>-<strong>Beca completa:</strong> Incluye hospedaje, alimentación y transporte durante el periodo de estudios.</p>
-		<p>-<strong>Beca completa:</strong> Incluye únicamente hospedaje / alimentación / transporte durante el periodo de estudio. *</p>
-		<p>*Las condiciones deben ser consultadas con la Oficina de Relaciones Internacionales ORI o a través de <a href='#'>Aualcpi</a>.</p>
-	</div>">Toggle popover</a>
-
-</div>
-<a href="#" data-toggle="modal" data-target="#myModal">modal</a>
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Tipos de Becas</h4>
-      </div>
-      <div class="modal-body">
-         <p>-<strong>Beca completa:</strong> Incluye hospedaje, alimentación y transporte durante el periodo de estudios.</p>
-		<p>-<strong>Beca completa:</strong> Incluye únicamente hospedaje / alimentación / transporte durante el periodo de estudio. *</p>
-		<p>*Las condiciones deben ser consultadas con la Oficina de Relaciones Internacionales ORI o a través de <a href="#">Aualcpi</a>.</p>
-      </div>
-      
-    </div>
-  </div>
-</div> -->
-
-
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
