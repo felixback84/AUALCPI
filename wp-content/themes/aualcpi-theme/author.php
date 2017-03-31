@@ -39,6 +39,8 @@
 										<p><?php $term=mostrarTermsPorIdUsuario($userId,'ciudad_user'); echo $term->name;?>
 										</p>
 										<p><?php $term=mostrarTermsPorIdUsuario($userId,'areas'); echo 'Área de investigacion: '.$term->name;?></p>
+										<p class="ico-pag"><span class="icon icon-twitter"> </span><?php the_author_meta('twitter',$userId); ?></p>
+										<p class="ico-pag"><span class="icon icon-linkedin"> </span><?php the_author_meta('linkedin',$userId); ?></p>
 									</div>
 								</div>
 							</div>
@@ -55,6 +57,7 @@
 							</div>
 							<div class="container">
 								<div class="carousel-caption">
+									<h4>Biografia</h4>
 									<p><?php the_author_meta('description',$userId); ?></p>
 								</div>
 							</div>
@@ -63,31 +66,56 @@
 					<a class="left carousel-control" href="#carousel-dual-perfil" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
 					<a class="right carousel-control" href="#carousel-dual-perfil" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
-
-			   <?php var_dump(get_term_by('name',get_the_author_meta( 'ciudad_user', $userId ),'ciudad_user'));
-										?>
-
-			    <ul>
-					<!-- The Loop -->
-				    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-				    	    <?php get_template_part('content', 'author'); ?>
-				    <?php endwhile;  else: ?>
-				        <p><?php _e('No hay noticias del author.'); ?></p>
-				    <?php endif; ?>
-					<!-- End Loop -->
-					<?php $args = array('post_type' => 'publicacion' ,'author' => $userId );
-					$custom_posts = new WP_Query( $args );
-					if ( $custom_posts->have_posts() ): while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
-				        <?php get_template_part('content', 'author'); ?>
-				    <?php endwhile; else: ?>
-				        <p><?php _e('No hay publicacion del author.'); ?></p>
-				    <?php endif; ?>
-			    </ul>
+			   <?php //var_dump(get_term_by('name',get_the_author_meta( 'ciudad_user', $userId ),'ciudad_user'));?>
 			</div>
-		</div>
-		<div class="col-xs-12 col-sm-4">
-			<?php //get_sidebar('noticias'); ?>
 		</div>
 	</div>
 </div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<h4>Contribuciones recientes a retos regionales</h4>	
+			<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
+			<!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox"> 
+					<?php $args = array('post_type' => 'contribuciones' ,
+						'author' => $userId ,
+						'posts_per_page' => 6, 
+						'orderby' => 'id',
+						'order'   => 'DESC'
+						);
+					$custom_posts = new WP_Query( $args );
+					$cont=0;
+					if ( $custom_posts->have_posts() ): 
+						while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
+							<?php if($cont == 0){ ?>
+								<div class="item active">
+							<?php }else{ ?> 
+									<div class="item">
+							<?php } ?> 
+								<div class="col-xs-12 col-sm-4">
+									<?php get_template_part('targetas-author'); ?>
+								</div>
+							</div> 
+						 <?php $cont++; endwhile;
+					endif;	
+				    wp_reset_postdata(); ?>
+				</div>
+				<!-- Controls -->
+				<div class="carousel-nav">
+					<a class="controlcarousel pull-right " href="#carousel-example-generic-beca" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					  <a class="pull-right controlcarousel" href="#carousel-example-generic-beca" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+					<p class="tituloNavegacionCarousel pull-right" >MAS CONTRIBUCIONES</p>
+				</div>	    
+			</div>
+		</div>
+	</div>
+</div>
+
 <?php get_footer(); ?>

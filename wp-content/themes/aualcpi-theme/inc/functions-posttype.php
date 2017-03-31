@@ -56,11 +56,12 @@ function investigacion_custom_post(){
 			'editor',
 			'autor',
 			'thumbnail',
-			'comments'
+			'comments',
+			'page-attributes'
 		),
 		
 		'menu_position' => 5,
-		'hierarchical'          => false,
+		'hierarchical'          => true,
 		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
@@ -71,7 +72,8 @@ function investigacion_custom_post(){
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'menu_icon'           	=> 'dashicons-media-document',
-		'exclude_from_search' => true
+		'exclude_from_search' => true,
+		// 'map_meta_cap' 			=> true
 		
 	);
 	register_post_type( 'investigacion', $args );
@@ -172,13 +174,61 @@ function publicacion_custom_post(){
 		'has_archive'           => true,		
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
+		'show_admin_column' 	=> true,
 		'menu_icon'           	=> 'dashicons-format-aside',
 		'capability_type'       => 'post',
 
 	);
 	register_post_type( 'publicacion', $args );
 }
+/*
+		===================================
+		contribuciones
+		===================================
+	*/
 
+function contribuciones_custom_post(){
+	$labels = array(
+        "name" => "Contribuciones",
+        "singular_name" => "Contribucion",
+        'add_new' => 'Añadir Contribucion',
+		'all_items' => 'Todos las Contribuciones',
+		'add_new_item' => 'Nueva Contribucion',
+		'edit_item' => 'Editar Contribucion',
+		'new_item' => 'Nueva Contribucion',
+		'view_item' => 'Ver Contribucion',
+		'search_item' => 'Buscar Contribucion',
+		'not_found' => 'No se encuentra la Contribucion',
+		'not_found_in_trash' => 'No se encuentra la Contribucion',
+		'parent_item_colon' => 'Articulo principal'
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => true,
+        "show_in_menu" => true,
+		'menu_position' => 10,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => true,
+        "query_var" => true,
+        "supports" => array( 
+			'title',
+			'editor',
+			'autor',
+			'thumbnail',
+			'comments' ),
+		'menu_icon'  => 'dashicons-nametag',
+    );
+
+    register_post_type( "contribuciones", $args );
+}
+
+add_action( 'init', 'contribuciones_custom_post' );
 add_action( 'init', 'investigacion_custom_post' );
 add_action( 'init', 'beca_custom_post' );
 add_action( 'init', 'publicacion_custom_post' );
@@ -655,3 +705,26 @@ function update_edit_form() {
     echo ' enctype="multipart/form-data"';
 } // end update_edit_form
 add_action('post_edit_form_tag', 'update_edit_form');
+
+/*
+		===================================
+		meta box - contribuciones
+		===================================
+*/
+
+add_action('add_meta_boxes', 'add_meta_box_contribuciones');
+
+function add_meta_box_contribuciones() {
+    add_meta_box('contribucion-parent', 'Contribuciones investigacion', 'contribucion_attributes_meta_box', 'contribuciones', 'side', 'default');
+}
+
+function contribucion_attributes_meta_box($post) {
+		$args =array('post_type' => 'investigacion', 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __('(no parent)'), 'sort_column'=> 'menu_order, post_title', 'echo' => 0);
+        $pages = wp_dropdown_pages($args);
+        if ( ! empty($pages) ) {
+            echo $pages;
+        } // end empty pages check
+}
+
+
+/*------others ------*/
