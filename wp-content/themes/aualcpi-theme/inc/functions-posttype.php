@@ -72,8 +72,6 @@ function investigacion_custom_post(){
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'menu_icon'           	=> 'dashicons-media-document',
-		'exclude_from_search' => true,
-		// 'map_meta_cap' 			=> true
 		
 	);
 	register_post_type( 'investigacion', $args );
@@ -232,14 +230,13 @@ add_action( 'init', 'contribuciones_custom_post' );
 add_action( 'init', 'investigacion_custom_post' );
 add_action( 'init', 'beca_custom_post' );
 add_action( 'init', 'publicacion_custom_post' );
-
 /*
 		===================================
 		taxonomies - Becas
 		===================================
 */
 
-function awesome_custom_taxonomies_categorias() {
+function aualcpi_custom_taxonomies_categorias() {
 	
 	//add new taxonomy hierarchical
 	$labels = array(
@@ -268,7 +265,7 @@ function awesome_custom_taxonomies_categorias() {
 	register_taxonomy('categoria', array('becas'), $args);
 
 }	
-add_action( 'init' , 'awesome_custom_taxonomies_categorias');
+add_action( 'init' , 'aualcpi_custom_taxonomies_categorias');
 
 
 
@@ -391,7 +388,7 @@ add_action( 'init' , 'awesome_custom_taxonomies_becas_tag');
 		===================================
 */
 
-function aualcpi_custom_taxonomies_investigaciones() {
+function aualcpi_custom_taxonomies_investigaciones_areas() {
 	
 	//add new taxonomy hierarchical
 	$labels = array(
@@ -418,7 +415,10 @@ function aualcpi_custom_taxonomies_investigaciones() {
 	);
 
 	register_taxonomy('areas', array('investigacion','user'), $args);
-
+}	
+add_action( 'init' , 'aualcpi_custom_taxonomies_investigaciones_areas');
+flush_rewrite_rules();
+function aualcpi_custom_taxonomies_investigaciones_universidades() {
 	//add new taxonomy hierarchical
 	$labels = array(
 		'name' => 'Universidades',
@@ -442,7 +442,10 @@ function aualcpi_custom_taxonomies_investigaciones() {
 		'rewrite' => array( 'slug' => 'universidades_investigacion' )
 	);
 	register_taxonomy('universidades_investigacion', array('investigacion'), $args);
-
+}	
+add_action( 'init' , 'aualcpi_custom_taxonomies_investigaciones_universidades');
+flush_rewrite_rules();
+function aualcpi_custom_taxonomies_investigaciones_status() {
 	//add new taxonomy hierarchical
 	$labels = array(
 		'name' => 'Status',
@@ -463,10 +466,13 @@ function aualcpi_custom_taxonomies_investigaciones() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'status_investigacion' )
+		'rewrite' => array( 'slug' => 'status_inves' )
 	);
-	register_taxonomy('status_investigacion', array('investigacion'), $args);
-
+	register_taxonomy('status_inves', array('investigacion'), $args);
+}	
+add_action( 'init' , 'aualcpi_custom_taxonomies_investigaciones_status');
+flush_rewrite_rules();
+function aualcpi_custom_taxonomies_investigaciones_ciudad() {
 	//add new taxonomy hierarchical
 	$labels = array(
 		'name' => 'Paises / Ciudades',
@@ -490,7 +496,10 @@ function aualcpi_custom_taxonomies_investigaciones() {
 		'rewrite' => array( 'slug' => 'ciudad_investigaciones' )
 	);
 	register_taxonomy('ciudad_investigaciones', array('investigacion'), $args);
-
+}	
+add_action( 'init' , 'aualcpi_custom_taxonomies_investigaciones_ciudad');
+flush_rewrite_rules();
+function aualcpi_custom_taxonomies_investigaciones_tag() {
 	//add new taxonomy no hierarchical
 	$labels = array(
 		'name' => 'Tags',
@@ -516,8 +525,8 @@ function aualcpi_custom_taxonomies_investigaciones() {
 	register_taxonomy('tag_investigacion', array('investigacion'), $args);
 
 }	
-add_action( 'init' , 'aualcpi_custom_taxonomies_investigaciones');
-
+add_action( 'init' , 'aualcpi_custom_taxonomies_investigaciones_tag');
+flush_rewrite_rules();
 /*
 		===================================
 		taxonomies - publicaciones

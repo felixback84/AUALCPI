@@ -22,7 +22,7 @@
 							echo mostrarCategorias($terms_list,'\\');
 							?></p>
 
-							<p><?php $terms_list=wp_get_post_terms($post->ID,'status_investigacion');
+							<p><?php $terms_list=wp_get_post_terms($post->ID,'status_inves');
 							if(count($terms_list)!=0) { echo ('Status: ');}
 							echo mostrarCategorias($terms_list,'\\');
 							?></p>

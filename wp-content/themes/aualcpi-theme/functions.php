@@ -34,6 +34,12 @@ function formatoFechaEnEspañol($userId){
 }
 
 
+
+// add_action('init', 'reiniciarThemeInvestigacion');
+// function reiniciarThemeInvestigacion(){
+	
+// 	flush_rewrite_rules();
+//}
 /*
 		===================================
 		functions verificar url para pagina usuario
@@ -112,38 +118,4 @@ function mostrarTermsPorIdUsuario($userId,$taxonomiaSlug){
 		}
 	return $imprimir;
 }
-//------------------ pruebas para gerarquisar taxonomia
-// determine the topmost parent of a term
-function get_term_top_most_parent($term_id, $taxonomy){
-    // start from the current term
-    $parent  = get_term_by( 'id', $term_id, $taxonomy);
-    // climb up the hierarchy until we reach a term with parent = '0'
-    while ($parent->parent != '0'){
-        $term_id = $parent->parent;
 
-        $parent  = get_term_by( 'id', $term_id, $taxonomy);
-    }
-    return $parent;
-}
-
-// so once you have this function you can just loop over the results returned by wp_get_object_terms
-
-function project_get_item_classes($taxonomy, $results = 1) {
-    // get terms for current post
-    $terms = wp_get_object_terms( get_the_ID(), 'work_type' );
-    // set vars
-    $top_parent_terms = array();
-    foreach ( $terms as $term ) {
-        //get top level parent
-        $top_parent = get_term_top_most_parent( $term->term_id, 'work_type' );
-        //check if you have it in your array to only add it once
-        if ( !in_array( $top_parent, $top_parent_terms ) ) {
-            $top_parent_terms[] = $top_parent;
-        }
-    }
-    // build output (the HTML is up to you)
-
-    foreach ( $top_parent_terms as $term ) {
-        echo " " . $term->slug;
-    }
-}

@@ -5,7 +5,7 @@
 			<div class="row text-center no-margin">
 			<?php if( have_posts() ): ?>
 				<header class="page-header">
-					<?php 
+					<?php //var_dump(the_posts());
 						the_archive_title('<h1 class="page-title">', '</h1>');
 						the_archive_description('<div class="taxonomy-description">', '</div>');
 					?>
