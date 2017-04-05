@@ -100,5 +100,51 @@ $('#carousel-dual-perfil a.left').click(function () {
   $('#carousel-dual-perfil .left').css("display","none");
 })
 
+//---- filtro de investigacion ----
+$('.btn-cargar-investigacion').on('click',function(){
+    var urlAjax = $(this).data('url');
+    filterCiudades = [];
+    filterAreas = [];
+    filterComentarios = [];
+    $("select[name='filterComentarios[]'] option:selected").each(function ()  {
+        //alert(urlAjax);
+        filterComentarios.push($(this).val());
+        //alert(filterComentarios);
+    });
+    $("select[name='filterCiudades[]'] option:selected").each(function ()  {
+        //alert(urlAjax);
+        filterCiudades.push(parseInt($(this).val()));
+    });
+    $("select[name='filterAreas[]'] option:selected").each(function ()  {
+        //alert(urlAjax);
+        filterAreas.push(parseInt($(this).val()));
+    });
+    //alert(checked);
+    cargarCategorias(urlAjax,filterComentarios,filterCiudades, filterAreas);
+});
+
+function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB){
+    $("#the-posts").children().remove();
+    //mostrar el loader en wordpress
+    //$('.loaderwp').show();
+    $.ajax({
+      type: 'POST',
+      url: urlAjax,
+      data: {
+        'action': 'my_get_posts',
+        'comentarios': comentarios,
+        'catA': taxonomiaA,
+        'catB': taxonomiaB,
+      },
+      success: function(data, textStatus, XMLHttpRequest)      {
+          $("#the-posts").append(data);
+
+      },
+      complete: function(XMLHttpRequest, textStatus)      {
+        //$('.loaderwp').hide();
+      }
+    });
+    die();
+  }
 
 });
