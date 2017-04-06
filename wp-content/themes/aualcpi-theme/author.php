@@ -94,7 +94,7 @@
 									<div class="item">
 							<?php } ?> 
 								<div class="col-xs-12 col-sm-4">
-									<?php get_template_part('targetas-author'); ?>
+									<?php get_template_part('targetas-author-contribuciones'); ?>
 								</div>
 							</div> 
 						 <?php $cont++; endwhile;

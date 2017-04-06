@@ -22,74 +22,100 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-		<ul>
-<?php wp_list_authors('exclude_admin=0&hide_empty=0'); ?>
-</ul>
-			<ul>
 			<?php
-
-
-			$usuarios = get_users('orderby=id');
-			//var_dump($usuarios);
-			foreach ($usuarios as $usuario) {
-			    echo '<li><a href="'.home_url().'/pagina-usuario/?pageUser=' . $usuario->ID . '">' . $usuario->display_name . '</a></li>';
-			}
+			$now = get_terms( 'ciudad_investigaciones', array( 'orderby' => 'name','fields' => 'ids','parent' => 0));
+			$select = llenarSeleccion($now,'filterCiudades[]','Todos los paises');
+			echo $select;
+			$now = get_terms( 'status_inves', array( 'orderby' => 'name','fields' => 'ids'));
+			$select = llenarSeleccion($now,'filterStatus[]');
+			echo $select;
+			$now = get_terms( 'areas',array( 'orderby' => 'name','fields' => 'ids'));
+			$select = llenarSeleccion($now,'filterAreas[]', 'Todos las areas');
+			echo $select;
 			?>
-			</ul>
-			<p class="author-description author-bio">
-			<?php the_author_meta('user_email'); ?>
-		</p>
-		</div>
-		<div class="col-xs-12">
-<?php
-$now = get_terms( 'ciudad_investigaciones', array( 'orderby' => 'name','fields' => 'ids','parent' => 0));
-$select = llenarSeleccion($now,'filterCiudades[]','Todos los paises');
-echo $select;
-
-$now = get_terms( 'areas',array( 'orderby' => 'name','fields' => 'ids'));
-$select = llenarSeleccion($now,'filterAreas[]', 'Todos las areas');
-echo $select;
-?>
-<select name="filterComentarios[]" id="inputFilterComentarios" class="form-control" required="required">
-	<option value="LosComentarios">Seleccionar...</option>
-	<option value="ConComentarios">Con Comentarios</option>
-	<option value="SinComentarios">Sin Comentarios</option>
-</select>
-<button class="btn-cargar-investigacion btn btn-default" data-url="<?php echo admin_url('admin-ajax.php'); ?>">buscar</button>	
+			<select name="filterComentarios[]" id="inputFilterComentarios" class="form-control" required="required">
+				<option value="Contribuciones">Seleccionar...</option>
+				<option value="ConContribuciones">Con Contribuciones</option>
+				<option value="SinContribuciones">Sin Contribuciones</option>
+			</select>
+			<button class="btn-cargar-investigacion btn btn-default" data-url="<?php echo admin_url('admin-ajax.php'); ?>">buscar</button>	
 			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/idiom.png" style="display:none;" class="loaderwp">
-			<div id="the-posts">
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+		<div id="carousel-example-generic-autores" class="carousel slide" data-ride="carousel" data-type="multi" >
+				<div id="the-posts-user" class="carousel-inner" role="listbox"> 
+				<?php 
+				$cont=0;
+				$usuarios = get_users('orderby=id');
+				//var_dump($usuarios);
+				foreach ($usuarios as $usuario) { 
+					//var_dump($usuario); ?>
+					<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?>
+					<div class="col-xs-12 col-sm-4">
+						<?php set_query_var('user',$usuario);
+						get_template_part('targetas-autores'); ?>
+					</div></div>
+				<?php $cont++; } wp_reset_postdata();?>
+				</div>
+				<div class="carousel-nav">
+					<a class="controlcarousel pull-right " href="#carousel-example-generic-autores" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					  <a class="pull-right controlcarousel" href="#carousel-example-generic-autores" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+					<p class="tituloNavegacionCarousel pull-right" >MAS AUTORES</p>
+				</div>
 			</div>
-
-			----
-			<?php $args = array(
-		      'post_type' => 'investigacion',
-		      'post_status' => 'publish',
-		      'order'=> 'ASC',
-		      'orderby' => 'date',
-		      'tax_query' => array(
-		      		'relation' => 'AND',
-					array(
-						'taxonomy' => 'ciudad_investigaciones',
-						'terms'    => 64,
-					),
-					array(
-						'taxonomy' => 'areas',
-						'terms' => 11,
-					),
-				),
-		    ); 
-    $lastBlog = new WP_Query ($args);
-					if($lastBlog->have_posts()):
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div id="carousel-example-generic-inves" class="carousel slide" data-ride="carousel" data-type="multi" >
+			<!-- Wrapper for slides -->
+				<div id="the-posts-inves" class="carousel-inner" role="listbox"> 
+						<?php $args = array(
+					      'post_type' => 'investigacion',
+					      'post_status' => 'publish',
+					      'posts_per_page' => 2, 
+					      'order'=> 'ASC',
+					      'orderby' => 'date',
+					    ); 
+						$lastBlog = new WP_Query ($args);
+						$cont=0;
+						if($lastBlog->have_posts()):
 						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-							<div class="item active quitarEspacio" cont="<?php echo $cont+1; ?>">
-							<div class="item quitarEspacio" cont="<?php echo $cont+1; ?>">
-								<div class="col-xs-12 quitarEspacio">
-									<?php get_template_part('targetas-noticias'); ?>
+						<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?> 
+								<div class="col-xs-12 col-sm-4">
+										<?php get_template_part('targetas-investigacion'); ?>
 								</div>
-							</div> 
-						 <?php $cont++; endwhile;
-					endif;	
-				    wp_reset_postdata(); ?>
+							</div>
+							 <?php $cont++; 
+							 endwhile;
+						endif;	
+					    wp_reset_postdata(); ?>
+				</div>
+				<!-- Controls -->
+				<div class="carousel-nav">
+					<a class="controlcarousel pull-right " href="#carousel-example-generic-inves" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					  <a class="pull-right controlcarousel" href="#carousel-example-generic-inves" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+					<p class="tituloNavegacionCarousel pull-right" >MAS INVESTIGACIONES</p>
+				</div>
+			</div>
 		</div>	
 	</div>
 </div>

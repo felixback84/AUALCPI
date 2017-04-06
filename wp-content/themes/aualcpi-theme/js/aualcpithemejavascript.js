@@ -53,7 +53,6 @@ $('.carousel[data-type="multi"] .item').each(function(){
     if (!next.length) {
       next = $(this).siblings(':first');
     }
-    
     next.children(':first-child').clone().appendTo($(this));
   }
 }
@@ -106,11 +105,13 @@ $('.btn-cargar-investigacion').on('click',function(){
     filterCiudades = [];
     filterAreas = [];
     filterComentarios = [];
+    filterStatus = [];
     $("select[name='filterComentarios[]'] option:selected").each(function ()  {
         //alert(urlAjax);
         filterComentarios.push($(this).val());
         //alert(filterComentarios);
     });
+    
     $("select[name='filterCiudades[]'] option:selected").each(function ()  {
         //alert(urlAjax);
         filterCiudades.push(parseInt($(this).val()));
@@ -119,14 +120,62 @@ $('.btn-cargar-investigacion').on('click',function(){
         //alert(urlAjax);
         filterAreas.push(parseInt($(this).val()));
     });
+    $("select[name='filterStatus[]'] option:selected").each(function ()  {
+        //alert(urlAjax);
+        filterStatus.push($(this).val());
+        //alert(filterComentarios);
+    });
     //alert(checked);
-    cargarCategorias(urlAjax,filterComentarios,filterCiudades, filterAreas);
+    cargarUsuarios(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus);
+    cargarCategorias(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus);
 });
-
-function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB){
-    $("#the-posts").children().remove();
+function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
+    $("#the-posts-user").children().remove();
     //mostrar el loader en wordpress
-    //$('.loaderwp').show();
+    $('.loaderwp').show();
+    $.ajax({
+      type: 'POST',
+      url: urlAjax,
+      data: {
+        'action': 'my_get_user',
+        'comentarios': comentarios,
+        'catA': taxonomiaA,
+        'catB': taxonomiaB,
+        'catC': taxonomiaC,
+      },
+      success: function(data, textStatus, XMLHttpRequest)      {
+          $("#the-posts-user").append(data);
+      },
+      complete: function(XMLHttpRequest, textStatus)      {
+        $('.loaderwp').hide();
+        //--- mostrar 3 post a la vez si el dispositibo es sm o mayor
+        $('#carousel-example-generic-autores[data-type="multi"] .item').each(function(){
+          if($(document).width() > 782){
+          var next = $(this).next();
+          if (!next.length) {
+            next = $(this).siblings(':first');
+          }
+          next.children(':first-child').clone().appendTo($(this));
+          
+          for (var i=0;i<1;i++) {
+            next=next.next();
+            if (!next.length) {
+              next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+          }
+        }
+        });
+        
+      }
+    });
+    
+    die();
+  }
+function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
+    $("#the-posts-inves").children().remove();
+    //mostrar el loader en wordpress
+    $('.loaderwp').show();
     $.ajax({
       type: 'POST',
       url: urlAjax,
@@ -135,15 +184,35 @@ function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB){
         'comentarios': comentarios,
         'catA': taxonomiaA,
         'catB': taxonomiaB,
+        'catC': taxonomiaC,
       },
       success: function(data, textStatus, XMLHttpRequest)      {
-          $("#the-posts").append(data);
-
+          $("#the-posts-inves").append(data);
       },
       complete: function(XMLHttpRequest, textStatus)      {
-        //$('.loaderwp').hide();
+        $('.loaderwp').hide();
+        //--- mostrar 3 post a la vez si el dispositibo es sm o mayor
+        $('#carousel-example-generic-inves[data-type="multi"] .item').each(function(){
+          if($(document).width() > 782){
+          var next = $(this).next();
+          if (!next.length) {
+            next = $(this).siblings(':first');
+          }
+          next.children(':first-child').clone().appendTo($(this));
+          
+          for (var i=0;i<1;i++) {
+            next=next.next();
+            if (!next.length) {
+              next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+          }
+        }
+        });
+        
       }
     });
+    
     die();
   }
 

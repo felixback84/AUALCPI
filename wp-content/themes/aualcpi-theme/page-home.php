@@ -95,7 +95,8 @@ get_header();?>
 									<?php get_template_part('targetas-beca'); ?>
 								</div>
 							</div> 
-						 <?php $cont++; endwhile;
+						 <?php $cont++; 
+						 endwhile;
 					endif;	
 				    wp_reset_postdata(); ?>
 				</div>

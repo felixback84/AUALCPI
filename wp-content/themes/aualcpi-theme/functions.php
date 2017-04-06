@@ -106,7 +106,6 @@ function mostrarTermsPorIdUsuario($userId,$taxonomiaSlug){
 	return $imprimir;
 }
 
-
 /*---mostrar categorias para movilidad-----*/
  function aualcpi_mostrarCategorias_movilidad($lista,$division){
 	$i=0;
@@ -139,6 +138,7 @@ function llenarSeleccion($argsIdsTaxonomias,$nameSelect,$labelGeneral = 'Selecci
 /*---  mostrar los post correspondientes a lo selecionado -----*/
 
 function my_get_posts()  {
+	$cont=0;
 	if(is_array($_POST['comentarios'])){
 		$comentarios = implode(',',$_POST['comentarios']);
 	} else {
@@ -154,22 +154,14 @@ function my_get_posts()  {
 	} else {
 		$catB_id = $_POST['catB'];
 	}
-	// if(is_array($_POST['catC'])){
-	// 	$catC_id = implode(',',$_POST['catC']);
-	// } else {
-	// 	$catC_id = $_POST['catC'];
-	// }
+	if(is_array($_POST['catC'])){
+		$catC_id = implode(',',$_POST['catC']);
+	} else {
+		$catC_id = $_POST['catC'];
+	}
 	//echo "<script>javascript: alert('id".var_dump($catA_id)."')></script>";
 	//var_dump('comentarios'.$comentarios);
-	$argsTax = array(
-		'tax_query' => array(
-      		'relation' => 'AND',
-			array(
-				'taxonomy' => 'ciudad_investigaciones',
-				'terms'    => $catA_id,
-			),
-		),
-	);
+	
     $args = array(
       'post_type' => 'investigacion',
       'post_status' => 'publish',
@@ -196,36 +188,188 @@ function my_get_posts()  {
 	    array_push($args['tax_query'],$argsCatB);
 	}
 
-	// if($catC_id != '0'){
-	//     $argsCatC = array(
-	// 			'taxonomy' => 'areas',
-	// 			'terms'    => $catC_id,
-	// 		);
-	//     array_push($args['tax_query'],$argsCatC);
-	// }
+    if($catC_id != '0'){
+	    $argsCatC = array(
+				'taxonomy' => 'status_inves',
+				'terms'    => $catC_id,
+			);
+	    array_push($args['tax_query'],$argsCatC);
+	}
 	
     //echo "<script>javascript: alert('".var_dump($args)."')></script>";
     //$comentarios = 'LosComentarios';
 	global $post;
     $posts =  query_posts($args);
  	//echo "<script>javascript: alert('".var_dump($posts)."')></script>";
+
+	//var_dump($posts);
+	if(empty($posts)){
+		echo '<p class="text-center">No hay Articulos</p>';
+	}
     foreach ($posts as $post)   {
 		setup_postdata($post);
 		//var_dump($post);
-		var_dump('num comments'.$post->comment_count);
+		//var_dump('post id'.$post->ID);
+		//if($post){}
+		$args = array(
+	      'post_type' => 'contribuciones',
+	      'post_status' => 'publish',
+	      'post_parent' => $post->ID,
+	      'order'=> 'ASC',
+	      'orderby' => 'date',
+	    );
+	    $postContribuciones =  query_posts($args);
+	    ( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
+	    //echo $nContribuciones;
+		if($nContribuciones == '0' && $comentarios == 'SinContribuciones' ){
+			if($cont == 0){
+				echo '<div class="item active">';
+			}else{
+				echo '<div class="item">';
+			}
+		   	echo '<div class="col-xs-12 col-sm-4">';
+			get_template_part( 'targetas-investigacion' ); 
+			echo '</div></div>';
+			$cont++;
+		}
+		if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
+			if($cont == 0){
+				echo '<div class="item active">';
+			}else{
+				echo '<div class="item">';
+			}
+			echo '<div class="col-xs-12 col-sm-4">';
+			get_template_part( 'targetas-investigacion' ); 
+			echo '</div></div>';
+			$cont++;
+		}
+		if($comentarios == 'Contribuciones' ){
+			if($cont == 0){
+				echo '<div class="item active">';
+			}else{
+				echo '<div class="item">';
+			}
+			echo '<div class="col-xs-12 col-sm-4">';
+			get_template_part( 'targetas-investigacion' );
+			echo '</div></div>'; 
+			$cont++;
+		}
 		
-		if($post->comment_count == '0' && $comentarios == 'SinComentarios' ){
-			get_template_part( 'targetas-investigacion' ); 
-		}
-		if($post->comment_count != '0' && $comentarios == 'ConComentarios' ){
-			get_template_part( 'targetas-investigacion' ); 
-		}
-		if($comentarios == 'LosComentarios' ){
-			get_template_part( 'targetas-investigacion' ); 
-		}
+		wp_reset_postdata();
     }
     exit;
   }
  
   add_action('wp_ajax_my_get_posts', 'my_get_posts');
   add_action('wp_ajax_nopriv_my_get_posts', 'my_get_posts');
+
+
+  /*---  mostrar los autores correspondientes a lo selecionado -----*/
+
+function my_get_user()  {
+	$cont=0;
+	if(is_array($_POST['comentarios'])){$comentarios = implode(',',$_POST['comentarios']);
+	} else { $comentarios = $_POST['comentarios']; }
+    if(is_array($_POST['catA'])){ $catA_id = implode(',',$_POST['catA']);
+	} else { $catA_id = $_POST['catA']; }
+	if(is_array($_POST['catB'])){ $catB_id = implode(',',$_POST['catB']); 
+	} else { $catB_id = $_POST['catB']; }
+	if(is_array($_POST['catC'])){ $catC_id = implode(',',$_POST['catC']);
+	} else { $catC_id = $_POST['catC']; }
+	
+    $args = array(
+      'post_type' => 'investigacion',
+      'post_status' => 'publish',
+      'order'=> 'ASC',
+      'orderby' => 'date',
+    );
+    $args['tax_query'] = array(
+  		'relation' => 'AND'
+	);
+    if($catA_id != '0'){
+    	$argsCat = array(
+			'taxonomy' => 'ciudad_investigaciones',
+			'terms'    => $catA_id,
+		);
+    	array_push($args['tax_query'],$argsCat);
+    }
+    if($catB_id != '0'){
+	    $argsCatB = array(
+				'taxonomy' => 'areas',
+				'terms'    => $catB_id,
+			);
+	    array_push($args['tax_query'],$argsCatB);
+	}
+    if($catC_id != '0'){
+	    $argsCatC = array(
+				'taxonomy' => 'status_inves',
+				'terms'    => $catC_id,
+			);
+	    array_push($args['tax_query'],$argsCatC);
+	}
+	global $post;
+    $posts =  query_posts($args);
+
+	//var_dump($posts);
+	if(empty($posts)){
+		echo '<p class="text-center">No hay Articulos</p>';
+	}
+    foreach ($posts as $post)   {
+		setup_postdata($post);
+		//var_dump($post);
+		//var_dump('post id'.$post->ID);
+		//if($post){}
+		$args = array(
+	      'post_type' => 'contribuciones',
+	      'post_status' => 'publish',
+	      'post_parent' => $post->ID,
+	      'order'=> 'ASC',
+	      'orderby' => 'date',
+	    );
+	    $postContribuciones =  query_posts($args);
+	    ( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
+	    //echo $nContribuciones;
+		if($nContribuciones == '0' && $comentarios == 'SinContribuciones' ){
+			if($cont == 0){
+				echo '<div class="item active">';
+			}else{
+				echo '<div class="item">';
+			}
+		   	echo '<div class="col-xs-12 col-sm-4">';
+		   	set_query_var('user',$usuario);
+			get_template_part( 'targetas-autores' ); 
+			echo '</div></div>';
+			$cont++;
+		}
+		if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
+			if($cont == 0){
+				echo '<div class="item active">';
+			}else{
+				echo '<div class="item">';
+			}
+			echo '<div class="col-xs-12 col-sm-4">';
+			set_query_var('user',$usuario);
+			get_template_part( 'targetas-autores' ); 
+			echo '</div></div>';
+			$cont++;
+		}
+		if($comentarios == 'Contribuciones' ){
+			if($cont == 0){
+				echo '<div class="item active">';
+			}else{
+				echo '<div class="item">';
+			}
+			echo '<div class="col-xs-12 col-sm-4">';
+			set_query_var('user',$usuario);
+			get_template_part( 'targetas-autores' );
+			echo '</div></div>'; 
+			$cont++;
+		}
+		
+		wp_reset_postdata();
+    }
+    exit;
+  }
+ 
+  add_action('wp_ajax_my_get_user', 'my_get_user');
+  add_action('wp_ajax_nopriv_my_get_user', 'my_get_user');
