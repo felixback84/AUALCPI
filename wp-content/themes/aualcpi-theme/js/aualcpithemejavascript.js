@@ -129,7 +129,7 @@ $('.btn-cargar-investigacion').on('click',function(){
     cargarUsuarios(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus);
     cargarCategorias(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus);
 });
-function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
+function cargarUsuarios(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
     $("#the-posts-user").children().remove();
     //mostrar el loader en wordpress
     $('.loaderwp').show();
@@ -169,8 +169,6 @@ function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
         
       }
     });
-    
-    die();
   }
 function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
     $("#the-posts-inves").children().remove();
@@ -212,8 +210,6 @@ function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
         
       }
     });
-    
-    die();
   }
 
 });

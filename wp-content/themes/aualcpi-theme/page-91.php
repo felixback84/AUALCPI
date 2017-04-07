@@ -49,10 +49,23 @@
 		<div id="carousel-example-generic-autores" class="carousel slide" data-ride="carousel" data-type="multi" >
 				<div id="the-posts-user" class="carousel-inner" role="listbox"> 
 				<?php 
-				$cont=0;
-				$usuarios = get_users('orderby=id');
-				//var_dump($usuarios);
-				foreach ($usuarios as $usuario) { 
+
+				$args = array(
+			      'post_type' => 'investigacion',
+			      'post_status' => 'publish',
+			      'order'=> 'ASC',
+			      'orderby' => 'date',
+			    );
+
+			    $posts =  query_posts($args);
+				
+				$idsTodosUsuarios= array();
+			    foreach ($posts as $post)   {
+			    	if(!in_array($post->post_author,$idsTodosUsuarios)){ array_push($idsTodosUsuarios,$post->post_author);}
+			    }
+			    $cont=0;
+			    foreach ($idsTodosUsuarios as $key => $id) {
+			    	$usuario = get_user_by('ID',$id);
 					//var_dump($usuario); ?>
 					<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?>
 					<div class="col-xs-12 col-sm-4">
@@ -85,7 +98,6 @@
 						<?php $args = array(
 					      'post_type' => 'investigacion',
 					      'post_status' => 'publish',
-					      'posts_per_page' => 2, 
 					      'order'=> 'ASC',
 					      'orderby' => 'date',
 					    ); 
@@ -95,7 +107,7 @@
 						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
 						<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?> 
 								<div class="col-xs-12 col-sm-4">
-										<?php get_template_part('targetas-investigacion'); ?>
+										<?php get_template_part('targetas-inves-inves'); ?>
 								</div>
 							</div>
 							 <?php $cont++; 

@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 <div class="container">
-		<div class="col-xs-12 col-sm-8 col-sm-push-2" style="margin-top: -5px;">
+	<div class="row espacioBotton">
+		<div class="col-xs-12 col-sm-8 col-sm-push-2" style="">
 			<?php if( have_posts() ):
 			while( have_posts() ): the_post(); ?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -89,5 +90,6 @@
 			<?php endwhile;
 			endif; ?>
 		</div>
+	</div>
 </div>
 <?php get_footer(); ?>

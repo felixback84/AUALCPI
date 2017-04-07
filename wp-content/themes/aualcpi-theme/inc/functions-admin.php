@@ -55,7 +55,7 @@ function my_show_extra_profile_fields( $user ) {
             <th><label for="user_meta_image">Seleccionar imagen:</label></th>
             <td>
                 <img id="user_meta_image_show" src="<?php echo esc_url( get_the_author_meta( 'user_meta_image', $user->ID ) ); ?>" style="width:150px;"><br />
-                <input type='button' id="upload-button" class="button-primary" value="Upload Image" id="uploadimage"/>
+                <input type='button' id="upload-button" class="button-primary" value="Upload Image" />
                 <input  type="text" name="user_meta_image" id="user_meta_image" value="<?php echo esc_url( get_the_author_meta( 'user_meta_image', $user->ID ) ); ?>" class="regular-text" /><br />
                 <span class="description">Selecionar una imagen para la portada.</span>
             </td>

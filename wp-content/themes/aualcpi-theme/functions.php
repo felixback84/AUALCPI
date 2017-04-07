@@ -228,7 +228,7 @@ function my_get_posts()  {
 				echo '<div class="item">';
 			}
 		   	echo '<div class="col-xs-12 col-sm-4">';
-			get_template_part( 'targetas-investigacion' ); 
+			get_template_part( 'targetas-inves-inves' ); 
 			echo '</div></div>';
 			$cont++;
 		}
@@ -239,7 +239,7 @@ function my_get_posts()  {
 				echo '<div class="item">';
 			}
 			echo '<div class="col-xs-12 col-sm-4">';
-			get_template_part( 'targetas-investigacion' ); 
+			get_template_part( 'targetas-inves-inves' ); 
 			echo '</div></div>';
 			$cont++;
 		}
@@ -250,7 +250,7 @@ function my_get_posts()  {
 				echo '<div class="item">';
 			}
 			echo '<div class="col-xs-12 col-sm-4">';
-			get_template_part( 'targetas-investigacion' );
+			get_template_part( 'targetas-inves-inves' );
 			echo '</div></div>'; 
 			$cont++;
 		}
@@ -311,14 +311,14 @@ function my_get_user()  {
     $posts =  query_posts($args);
 
 	//var_dump($posts);
-	if(empty($posts)){
-		echo '<p class="text-center">No hay Articulos</p>';
-	}
+	
+	$idsUsuarios= array();
+	$idsTodosUsuarios= array();
     foreach ($posts as $post)   {
+    	if(!in_array($post->post_author,$idsTodosUsuarios)){ array_push($idsTodosUsuarios,$post->post_author);}
 		setup_postdata($post);
 		//var_dump($post);
 		//var_dump('post id'.$post->ID);
-		//if($post){}
 		$args = array(
 	      'post_type' => 'contribuciones',
 	      'post_status' => 'publish',
@@ -326,50 +326,75 @@ function my_get_user()  {
 	      'order'=> 'ASC',
 	      'orderby' => 'date',
 	    );
+	    
 	    $postContribuciones =  query_posts($args);
 	    ( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
 	    //echo $nContribuciones;
 		if($nContribuciones == '0' && $comentarios == 'SinContribuciones' ){
-			if($cont == 0){
-				echo '<div class="item active">';
-			}else{
-				echo '<div class="item">';
-			}
-		   	echo '<div class="col-xs-12 col-sm-4">';
-		   	set_query_var('user',$usuario);
-			get_template_part( 'targetas-autores' ); 
-			echo '</div></div>';
+			//echo 'idAutho'.$post->post_author;
+			if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
 			$cont++;
 		}
 		if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
-			if($cont == 0){
-				echo '<div class="item active">';
-			}else{
-				echo '<div class="item">';
-			}
-			echo '<div class="col-xs-12 col-sm-4">';
-			set_query_var('user',$usuario);
-			get_template_part( 'targetas-autores' ); 
-			echo '</div></div>';
+			//echo 'idAutho'.$post->post_author;
+			if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
 			$cont++;
 		}
 		if($comentarios == 'Contribuciones' ){
-			if($cont == 0){
-				echo '<div class="item active">';
-			}else{
-				echo '<div class="item">';
-			}
-			echo '<div class="col-xs-12 col-sm-4">';
-			set_query_var('user',$usuario);
-			get_template_part( 'targetas-autores' );
-			echo '</div></div>'; 
+			//echo 'idAutho'.$post->post_author;
+			if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
 			$cont++;
 		}
-		
-		wp_reset_postdata();
     }
+
+  		//  $postContribuciones =  query_posts($args);
+	 //    ( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
+	 //    //echo $nContribuciones;
+		// if($nContribuciones == '0' && $comentarios == 'SinContribuciones' ){
+		// 	//echo 'idAutho'.$post->post_author;
+		// 	if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
+		// 	$cont++;
+		// }
+		// foreach ($postContribuciones as $postContribucion){
+	 //    	if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
+		// 		//echo 'idAutho'.$postContribucion->post_author;
+		// 		if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);}
+		// 		$cont++;
+		// 	}
+		// 	if($comentarios == 'Contribuciones' ){
+		// 		//echo 'idAutho'.$postContribucion->post_author;
+		// 		if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);}
+		// 		$cont++;
+		// 	}
+	 //    }
+    //var_dump($idsUsuarios);
+    if($catA_id == '0' && $catB_id == '0' && $catC_id == '0' && $comentarios == 'Contribuciones'){
+    	foreach ($idsTodosUsuarios as $key => $id) {
+			//echo "AidsU-i".$id;
+			mostrarUsuariosInvestigacion($id,$key);
+		}
+    }else{
+	    foreach ($idsUsuarios as $key => $id) {
+			//echo "BidsU-i".$id;
+			mostrarUsuariosInvestigacion($id,$key);
+		}
+	}
+	wp_reset_postdata();
     exit;
   }
- 
+
+ function mostrarUsuariosInvestigacion($idAuthor,$cont){
+ 	$usuario = get_user_by('ID',$idAuthor);
+ 	//echo $cont;
+ 	if($cont == 0){
+		echo '<div class="item active">';
+	}else{
+		echo '<div class="item">';
+	}
+	echo '<div class="col-xs-12 col-sm-4">';
+	set_query_var('user',$usuario);
+	get_template_part( 'targetas-autores' );
+	echo '</div></div>'; 
+ }
   add_action('wp_ajax_my_get_user', 'my_get_user');
   add_action('wp_ajax_nopriv_my_get_user', 'my_get_user');

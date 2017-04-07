@@ -632,7 +632,7 @@ function add_custom_meta_boxes() {
     // Define the custom attachment for posts
     add_meta_box(
         'wp_custom_attachment',
-        'Archivos de la investigacion',
+        'Custom Attachment',
         'wp_custom_attachment',
         'investigacion',
         'side'
@@ -642,15 +642,19 @@ function add_custom_meta_boxes() {
 } // end add_custom_meta_boxes
 add_action('add_meta_boxes', 'add_custom_meta_boxes');
 
-function wp_custom_attachment() { 
-	$files = esc_attr(get_option('user_meta_files'));?>
-   	<label for="user_meta_files">Seleccionar imagen:</label>
-	<p id="user_meta_files_show"><?php echo esc_url( get_the_author_meta( 'user_meta_files', $user->ID ) ); ?></p><br />
-	<input type='button' id="upload-button-file" class="button-primary" value="Subir Archivos"/>
-	<input  type="text" name="user_meta_files[]" id="user_meta_files" value="<?php echo esc_url( get_the_author_meta( 'user_meta_files', $user->ID ) ); ?>" class="regular-text" style="width: 200px;"/><br />
-	<p class="description">Selecionar una imagen para la portada.</p>
-<?php
-} 
+function wp_custom_attachment() {
+ 
+    wp_nonce_field('wp_custom_attachment_nonce_action', 'wp_custom_attachment_nonce');
+     
+    $html = '<p class="description">';
+    $html .= 'Upload your PDF here.';
+    $html .= '</p>';
+    $html .= '<input type="file" id="wp_custom_attachment" name="wp_custom_attachment" value="" size="25" />';
+     
+    echo $html;
+ 
+} // end wp_custom_attachment
+
 
 function save_custom_meta_data($id) {
  
