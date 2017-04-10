@@ -13,9 +13,9 @@
 					<div class="panel-body">
 						<div class="contenidoP">
 							<h4><a href="<?php echo esc_url(get_permalink()); ?> "><?php "titulos:".the_title(); ?></a></h4>
-							<?php if (class_exists('MultiPostThumbnails')) : 
+							<p><?php if (class_exists('MultiPostThumbnails')) : 
 							MultiPostThumbnails::the_post_thumbnail(get_post_type(), 'secondary-image', get_the_ID(), array(100,100));
-							endif; ?>
+							endif; ?></p>
 
 							<p><?php $terms_list=wp_get_post_terms($post->ID,'universidades_investigacion');
 							if(count($terms_list)!=0) { echo ('Universidad: ');}

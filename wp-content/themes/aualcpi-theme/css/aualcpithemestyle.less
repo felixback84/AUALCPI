@@ -48,7 +48,13 @@ article>.row, .espacioBotton{
     content: "\ea84";
 }
 
-
+.contenerdorGris{
+	background-color: #ecf0f1;
+}
+.sombraInferior{
+	-webkit-box-shadow: 0 3px 4px 2px #D4D4D4;
+	box-shadow: 0 3px 4px 2px #D4D4D4;
+}
 
 /*----------------------------header-------------------------*/
 
@@ -306,6 +312,12 @@ carousel
 #carousel-example-generic-noticias{
 	.carousel-nav{background-color: #525256;height:40px; padding: 7px;margin: 0px; a:focus, a:hover{color:#ddd; }}
 }
+.carousel-control.left, .carousel-control.right{
+	background-image: none;
+}
+.carousel-control{
+	width: 5%;
+}
 /*
 carousel -noticias
 ----------------*/
@@ -430,9 +442,9 @@ overflow: hidden;
 .google-maps iframe {
 position: absolute;
 top: 0;
-left: 0;
-width: 100% !important;
-height: 100% !important;
+left: 10%;
+width: 80% !important;
+height: 80% !important;
 }
 
 
@@ -585,6 +597,7 @@ height: 100% !important;
 	box-shadow: 0 0 7px 7px #d7d7d7;
 	margin: 30px 0;
 	padding:20px;
+	margin-bottom: 35px;
 	.estrellaImagen{
 		background: url('../images/estrellas.png') no-repeat;
 			width: 150px;

@@ -39,7 +39,7 @@
 				<option value="SinContribuciones">Sin Contribuciones</option>
 			</select>
 			<button class="btn-cargar-investigacion btn btn-default" data-url="<?php echo admin_url('admin-ajax.php'); ?>">buscar</button>	
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/idiom.png" style="display:none;" class="loaderwp">
+			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Loading_icon.gif" style="display:none;" class="loaderwp" style="" width="125px" height="100px">
 		</div>
 	</div>
 </div>
@@ -58,13 +58,32 @@
 			    );
 
 			    $posts =  query_posts($args);
+				$idsUsuarios= array();
+
+			    foreach ($posts as $post){
+			    	//if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
+					$args = array(
+				      'post_type' => 'contribuciones',
+				      'post_status' => 'publish',
+				      'post_parent' => $post->ID,
+				      'order'=> 'ASC',
+				      'orderby' => 'date',
+				    );
+				    $postContribuciones =  query_posts($args);
+		 	   ( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
+			 	 	//echo $nContribuciones;
 				
-				$idsTodosUsuarios= array();
-			    foreach ($posts as $post)   {
-			    	if(!in_array($post->post_author,$idsTodosUsuarios)){ array_push($idsTodosUsuarios,$post->post_author);}
+			 		foreach ($postContribuciones as $postContribucion){
+				 	 	if($nContribuciones != '0'){
+							//echo 'idAutho'.$postContribucion->post_author;
+							if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);}
+							$cont++;
+						}
+				    }  
 			    }
+			    //var_dump($idsUsuarios);
 			    $cont=0;
-			    foreach ($idsTodosUsuarios as $key => $id) {
+			    foreach ($idsUsuarios as $id) {
 			    	$usuario = get_user_by('ID',$id);
 					//var_dump($usuario); ?>
 					<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?>

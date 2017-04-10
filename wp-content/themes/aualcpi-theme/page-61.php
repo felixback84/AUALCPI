@@ -18,7 +18,7 @@
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container espacioBotton">
 	<div class="row bordetabVerticalNegro">
 		<div class="tabVerticalNegro">
 	        <div class="col-xs-7">
@@ -64,7 +64,7 @@
 	</div>
 </div>
 <div class="container">
-	<div class="row">
+	<div class="row espacioBotton">
 		<div class="col-sm-12">
 			<h4>Oferta de becas y programas disponibles</h4>
 			<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi">
@@ -95,23 +95,26 @@
 				    wp_reset_postdata(); ?>
 				</div>
 				<!-- Controls -->
-				<div class="carousel-nav">
-					<a class="controlcarousel pull-right " href="#carousel-example-generic-beca" role="button" data-slide="next">
-					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					    <span class="sr-only">Next</span>
-					  </a>
-					  <a class="pull-right controlcarousel" href="#carousel-example-generic-beca" role="button" data-slide="prev">
-					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					    <span class="sr-only">Previous</span>
-					</a>
-					<p class="tituloNavegacionCarousel pull-right" >MAS BECAS</p>
-				</div>	    
+			<a class="right carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+			  <a class="left carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			</a>
 			</div>
 		</div>
 	</div>
 </div>
+
+<div class="carousel-nav">
+	<div class="container row">		
+		<p class="tituloNavegacionCarousel pull-right" >MAS BECAS</p>
+	</div>
+</div>
 <div class="container">
-	<div class="row">
+	<div class="row espacioBotton">
 		<div class="col-sm-12">
 			<h4>Publicaciones</h4>	
 			<div id="carousel-example-generic-a" class="carousel slide" data-ride="carousel"  data-type="multi">
@@ -143,21 +146,23 @@
 //				     $fin+=2; ?>
 				</div>
 				<!-- Controls -->
-				<div class="carousel-nav">
-					<a class="controlcarousel pull-right " href="#carousel-example-generic-a" role="button" data-slide="next">
-					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					    <span class="sr-only">Next</span>
-					  </a>
-					  <a class="pull-right controlcarousel" href="#carousel-example-generic-a" role="button" data-slide="prev">
-					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					    <span class="sr-only">Previous</span>
-					</a>
-					<p class="tituloNavegacionCarousel pull-right" >MAS PUBLICACIONES</p>
-				</div>	    
+				<a class="right carousel-control" href="#carousel-example-generic-a" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+				  <a class="left carousel-control" href="#carousel-example-generic-a" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				</a>   
 			</div>
 		</div>
 	</div>
 </div>
+<div class="carousel-nav">
+	<div class="container row">
+		<p class="tituloNavegacionCarousel pull-right" >MAS PUBLICACIONES</p>
+	</div>
+</div>	
 <div id="myModalBeca1" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

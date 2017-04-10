@@ -47,7 +47,7 @@
 							$terms_list= null;
 							?>
 							<?php if( current_user_can('manage_options') ) {
-							echo '|| ';  edit_post_link(); 
+							//echo '|| ';  edit_post_link(); 
 							} ?>
 						</p>
 						<div class="row">

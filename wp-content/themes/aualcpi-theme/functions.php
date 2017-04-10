@@ -22,6 +22,15 @@ require_once get_template_directory().'/inc/functions-posttype.php';
 */
 require get_template_directory().'/inc/walker.php';
 
+
+/*----contar comentarios----*/
+// $args = array(
+//     'post_id' => 1,   // Use post_id, not post_ID
+//         'count'   => true // Return only the count
+// );
+// $comments_count = get_comments( $args );
+// echo $comments_count;
+
 /*
 		===================================
 		functions verificar url para pagina usuario
@@ -33,6 +42,14 @@ function formatoFechaEnEspañol($userId){
 	return $date;
 }
 
+
+function formatoFechaEnEspañolComentarios($fecha){
+	$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+	$date=date_format(date_create($fecha), 'H:i ');
+	$date.=$meses[date_format(date_create($fecha),'n')-1];
+	$date.=date_format(date_create($fecha), ' d \d\e Y');
+	return $date;
+}
 
 
 // add_action('init', 'reiniciarThemeInvestigacion');
@@ -327,27 +344,7 @@ function my_get_user()  {
 	      'orderby' => 'date',
 	    );
 	    
-	    $postContribuciones =  query_posts($args);
-	    ( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
-	    //echo $nContribuciones;
-		if($nContribuciones == '0' && $comentarios == 'SinContribuciones' ){
-			//echo 'idAutho'.$post->post_author;
-			if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
-			$cont++;
-		}
-		if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
-			//echo 'idAutho'.$post->post_author;
-			if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
-			$cont++;
-		}
-		if($comentarios == 'Contribuciones' ){
-			//echo 'idAutho'.$post->post_author;
-			if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
-			$cont++;
-		}
-    }
-
-  		//  $postContribuciones =  query_posts($args);
+	 //    $postContribuciones =  query_posts($args);
 	 //    ( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
 	 //    //echo $nContribuciones;
 		// if($nContribuciones == '0' && $comentarios == 'SinContribuciones' ){
@@ -355,18 +352,41 @@ function my_get_user()  {
 		// 	if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
 		// 	$cont++;
 		// }
-		// foreach ($postContribuciones as $postContribucion){
-	 //    	if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
-		// 		//echo 'idAutho'.$postContribucion->post_author;
-		// 		if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);}
-		// 		$cont++;
-		// 	}
-		// 	if($comentarios == 'Contribuciones' ){
-		// 		//echo 'idAutho'.$postContribucion->post_author;
-		// 		if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);}
-		// 		$cont++;
-		// 	}
-	 //    }
+		// if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
+		// 	//echo 'idAutho'.$post->post_author;
+		// 	if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
+		// 	$cont++;
+		// }
+		// if($comentarios == 'Contribuciones' ){
+		// 	//echo 'idAutho'.$post->post_author;
+		// 	if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
+		// 	$cont++;
+		// }
+
+  		 $postContribuciones =  query_posts($args);
+	 	   ( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
+	 	 //echo $nContribuciones;
+	 	 foreach ($postContribuciones as $postContribucion){
+	 	 	if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
+				//echo 'idAutho'.$postContribucion->post_author;
+				if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);}
+				$cont++;
+			}
+			if($comentarios == 'Contribuciones' ){
+				//echo 'idAutho'.$postContribucion->post_author;
+				if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);}
+				$cont++;
+			}
+	    }  
+		if($nContribuciones == '0' && $comentarios == 'SinContribuciones' ){
+			//echo 'idAutho'.$post->post_author;
+			if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
+			$cont++;
+		}
+    }
+
+		
+
     //var_dump($idsUsuarios);
     if($catA_id == '0' && $catB_id == '0' && $catC_id == '0' && $comentarios == 'Contribuciones'){
     	foreach ($idsTodosUsuarios as $key => $id) {

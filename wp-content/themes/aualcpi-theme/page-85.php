@@ -19,7 +19,8 @@
 	</div>
 </div>
 
-<div class="container">
+<div class="container espacioBotton">
+	<div class="row espacioBotton">
 	<h4 class="text-center">Descubre todos los beneficios que tenemos para ti</h4>
 	<div id="carousel-members" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
@@ -59,9 +60,10 @@
 		<a class="left carousel-control" href="#carousel-members" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
 		<a class="right carousel-control" href="#carousel-members" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 	</div>
+	</div>
 </div>
 <div class="container">
-	<div class="row">
+	<div class="row espacioBotton">
 		<div id="carousel-dual-members" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="item active">
@@ -98,7 +100,7 @@
 	<div class="row">
 		<div class="col-sm-6 col-sm-push-4"><h4 class="text-center">La mejor manera de integrar tu Universidad en una comunidad global</h4></div>
 	</div>
-	<div class="row">
+	<div class="row espacioBotton">
 		<div class="col-xs-12 col-sm-6">
 			<div class="targetaEstrellas">
 				<div class="row">

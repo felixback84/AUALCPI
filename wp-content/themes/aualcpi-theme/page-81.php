@@ -19,7 +19,7 @@
 	</div>
 </div>
 <div class="container">
-	<div class="row bordetabVerticalNegro">
+	<div class="row bordetabVerticalNegro espacioBotton">
 		<div class="tabVerticalNegro">
 	        <div class="col-xs-9">
 	          <!-- Tab panes -->
@@ -75,7 +75,7 @@
 	</div>
 </div>
 <div class="container">
-	<div class="row">
+	<div class="row espacioBotton">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="thumbnail">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/imageContenidoNosotros.jpg" alt="" width="" height="" />
@@ -85,7 +85,7 @@
 </div>
 
 <div class="container">
-	<div class="row">
+	<div class="row espacioBotton">
 		<div class="col-xs-12">
 			<h4>Los miembros de nuestra Asocición</h4>
 		</div>
@@ -97,7 +97,7 @@
 	</div>
 </div>
 <div class="container">
-	<div class="row">
+	<div class="row espacioBotton">
 		<div class="divAsociados">
 		<div class="col-xs-12">
 			<h4>Nuestras alianzas internacionales</h4>	

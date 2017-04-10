@@ -24,7 +24,7 @@
 							echo mostrarCategorias($terms_list,'|'); }
 							$terms_list= NULL; ?>
 							<?php if( current_user_can('manage_options') ) {
-							echo '|| ';  edit_post_link(); 
+							//echo '|| ';  edit_post_link(); 
 							} ?>
 						</p>
 						<?php if( has_post_thumbnail() ): ?>

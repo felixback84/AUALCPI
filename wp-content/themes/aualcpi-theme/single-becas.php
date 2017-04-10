@@ -34,7 +34,7 @@
 							<?php //$terms_list=wp_get_post_terms($post->ID,'ciudad_becas'); var_dump($terms_list);?>
 							
 							<?php if( current_user_can('manage_options') ) {
-							echo '|| ';  edit_post_link(); 
+							//echo '|| ';  edit_post_link(); 
 							} ?>
 						</p>
 							
