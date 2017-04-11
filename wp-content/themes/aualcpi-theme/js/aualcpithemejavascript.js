@@ -212,4 +212,70 @@ function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
     });
   }
 
+//---- filtro de movilidad ----
+$('.btn-cargar-becas').on('click',function(){
+    var urlAjax = $(this).data('url');
+    filterCiudades = [];
+    filterCategorias = [];
+    
+    $("select[name='filterCiudades[]'] option:selected").each(function ()  {
+        //alert(urlAjax);
+        filterCiudades.push(parseInt($(this).val()));
+    });
+    $("select[name='filterCategorias[]'] option:selected").each(function ()  {
+        //alert(urlAjax);
+        filterCategorias.push(parseInt($(this).val()));
+    });
+    //alert(checked);
+    cargarBecas(urlAjax,filterCiudades, filterCategorias);
+});
+
+function cargarBecas(urlAjax,taxonomiaA,taxonomiaB){
+    $("#the-posts-becas").children().remove();
+    //mostrar el loader en wordpress
+    $('.loaderwp').show();
+    $.ajax({
+      type: 'POST',
+      url: urlAjax,
+      data: {
+        'action': 'my_get_becas',
+        'catA': taxonomiaA,
+        'catB': taxonomiaB,
+      },
+      success: function(data, textStatus, XMLHttpRequest)      {
+          $("#the-posts-becas").append(data);
+      },
+      complete: function(XMLHttpRequest, textStatus)      {
+        $('.loaderwp').hide();
+        //--- mostrar 3 post a la vez si el dispositibo es sm o mayor
+        $('#carousel-example-generic-beca[data-type="multi"] .item').each(function(){
+          if($(document).width() > 782){
+          var next = $(this).next();
+          if (!next.length) {
+            next = $(this).siblings(':first');
+          }
+          next.children(':first-child').clone().appendTo($(this));
+          
+          for (var i=0;i<1;i++) {
+            next=next.next();
+            if (!next.length) {
+              next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+          }
+        }
+        });
+        
+      }
+    });
+  }
+
+/*-----cerrar y abrir div de busqueda------*/
+$('.collapse #btn-abrir').click(function() {
+    $(this).parent().parent().parent().removeClass('in');
+});
+
+$('.collapse #btn-cerrar').click(function() {
+    $(this).parent().parent().parent().removeClass('in');
+});
 });

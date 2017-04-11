@@ -64,12 +64,54 @@
 	</div>
 </div>
 <div class="container">
+	<div class="collapse " id="collapseExample-2" >
+		<div class="well">
+			<div class="row">
+				<button id="btn-cerrar" class="btn pull-right glyphicon glyphicon-remove" type="button" data-toggle="collapse" data-target="#collapseExample-1" aria-expanded="false" aria-controls="collapseExample-1">
+				</button>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<h5>País</h5>
+					<?php
+						$now = get_terms( 'ciudad_becas', array( 'orderby' => 'name','fields' => 'ids','parent' => 0));
+						$select = llenarSeleccion($now,'filterCiudades[]','Todos los paises');
+						echo $select; 
+					?>
+				</div> 
+				<div class="col-sm-4">
+					<h5>Categoría</h5>
+					<?php
+						$now = get_terms( 'categoria', array( 'orderby' => 'name','fields' => 'ids','parent' => 0));
+						$select = llenarSeleccion($now,'filterCategorias[]','Todos los paises');
+						echo $select; 
+					?>
+				</div> 
+				<div class="col-sm-4">
+					<a class="btn-cargar-becas btn btn-default" data-url="<?php echo admin_url('admin-ajax.php'); ?>" style="margin-top: 25px;">Buscar</a>	
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Loading_icon.gif" style="display:none;" class="loaderwp" style="" width="125px" height="100px">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div  class="collapse in" id="collapseExample-1">
+		<div class="well">
+			<div class="row">
+				<button id="btn-abrir" class="btn pull-right glyphicon glyphicon-search" type="button" data-toggle="collapse" data-target="#collapseExample-2" aria-expanded="false" aria-controls="collapseExample-2">
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
 	<div class="row espacioBotton">
 		<div class="col-sm-12">
 			<h4>Oferta de becas y programas disponibles</h4>
 			<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi">
 			<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox"> 
+				<div id="the-posts-becas" class="carousel-inner" role="listbox"> 
 					<?php $args = array (
 						'post_type' => 'becas',
 						'posts_per_page' => 6, 
@@ -158,6 +200,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="carousel-nav">
 	<div class="container row">
 		<p class="tituloNavegacionCarousel pull-right" >MAS PUBLICACIONES</p>

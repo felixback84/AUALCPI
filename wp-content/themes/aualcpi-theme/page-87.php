@@ -7,11 +7,11 @@
 				<div class="thumbnail"><?php the_post_thumbnail ('post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']); ?></div>
 				<div class="container">
 					<div class="carousel-caption">
-						<?php
+						<p><?php
 						$post = get_post(87); 
 						$contenido = $post->post_content;
 						echo $contenido;
-						?>
+						?></p>
 						<a href="#" class="btn btn-default">SUSCRIBIRME</a>
 					</div>
 				</div>
@@ -29,16 +29,34 @@
 	</div>
 </div>
 <div class="container">
-	<div class="row">
-		<div class="targetasRedLisi">
-			<div class="col-xs-12">
-				<h4>Conoce nuestra Red Lisi</h4>
-			</div>
-		</div>
+	<div class="row espacioBotton">
+		<div class="col-xs-12">
+			<h3 class="text-center espacioBotton">Conoce nuestra Red Lisi</h3>
+			<?php $args = array(
+		      'post_type' => 'investigacion',
+		      'post_status' => 'publish',
+		      'order'=> 'ASC',
+			  'posts_per_page' => 6, 
+		      'orderby' => 'date',
+		    ); 
+			$lastBlog = new WP_Query ($args);
+			$cont=0;
+			if($lastBlog->have_posts()):
+			while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+			<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?> 
+					<div class="col-xs-12 col-sm-4">
+							<?php get_template_part('targetas-inves-inves'); ?>
+					</div>
+				</div>
+				 <?php $cont++; 
+				 endwhile;
+			endif;	
+		    wp_reset_postdata(); ?>
+		</div>	
 	</div>
 </div>
 <div class="container">
-	<div class="row">
+	<div class="row espacioBotton">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="thumbnail">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/imageContenidoQueeslisi.jpg" alt="" width="" height="" />
@@ -47,10 +65,10 @@
 	</div>
 </div>
 <div class="container">
-	<div class="row">
+	<div class="row espacioBotton">
 		<div class="divAsociados">
 			<div class="col-xs-12">
-				<h4>Nuestras alianzas internacionales</h4>	
+				<h3 class="text-center">Nuestras alianzas internacionales</h3>	
 				<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
 					<a href="#">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">

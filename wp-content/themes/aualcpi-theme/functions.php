@@ -418,3 +418,77 @@ function my_get_user()  {
  }
   add_action('wp_ajax_my_get_user', 'my_get_user');
   add_action('wp_ajax_nopriv_my_get_user', 'my_get_user');
+
+
+  function my_get_becas()  {
+	$cont=0;
+    if(is_array($_POST['catA'])){
+		$catA_id = implode(',',$_POST['catA']);
+	} else {
+		$catA_id = $_POST['catA'];
+	}
+	if(is_array($_POST['catB'])){
+		$catB_id = implode(',',$_POST['catB']);
+	} else {
+		$catB_id = $_POST['catB'];
+	}
+	//echo "<script>javascript: alert('id".var_dump($catA_id)."')></script>";
+	//var_dump('comentarios'.$comentarios);
+	
+    $args = array(
+      'post_type' => 'becas',
+      'post_status' => 'publish',
+      'order'=> 'ASC',
+      'orderby' => 'date',
+    );
+    $args['tax_query'] = array(
+  		'relation' => 'AND'
+	);
+	
+    if($catA_id != '0'){
+    	$argsCat = array(
+			'taxonomy' => 'ciudad_becas',
+			'terms'    => $catA_id,
+		);
+    	array_push($args['tax_query'],$argsCat);
+    }
+
+    if($catB_id != '0'){
+	    $argsCatB = array(
+				'taxonomy' => 'categoria',
+				'terms'    => $catB_id,
+			);
+	    array_push($args['tax_query'],$argsCatB);
+	}
+
+	global $post;
+    $posts =  query_posts($args);
+	if(empty($posts)){
+		echo '<p class="text-center">No hay Becas</p>';
+	}
+    foreach ($posts as $post)   {
+		setup_postdata($post);
+		$args = array(
+	      'post_type' => 'becas',
+	      'post_status' => 'publish',
+	      'post_parent' => $post->ID,
+	      'order'=> 'ASC',
+	      'orderby' => 'date',
+	    );
+	    
+		if($cont == 0){
+			echo '<div class="item active">';
+		}else{
+			echo '<div class="item">';
+		}
+	   	echo '<div class="col-xs-12 col-sm-4">';
+		get_template_part( 'targetas-beca' ); 
+		echo '</div></div>';
+		$cont++;
+    }
+    wp_reset_postdata();
+    exit;
+  }
+ 
+  add_action('wp_ajax_my_get_becas', 'my_get_becas');
+  add_action('wp_ajax_nopriv_my_get_becas', 'my_get_becas');
