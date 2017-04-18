@@ -1,11 +1,21 @@
 @BackgroundMenuPrimary: #525256;
+@BackgroundBloquesGrises: #edf0f1;
+@AzulClaro: #66bedb;
 .quitarEspacio{
 	padding:0px;
 	margin:0px;
 }
-
+.bloquesGrises{
+	background: @BackgroundBloquesGrises;
+}
+body{
+	color:black;
+}
 article>.row, .espacioBotton{
 	padding-bottom: 20px;
+}
+.espacioTop{
+	padding-top: 20px;
 }
 /*----iconos-------*/
 @font-face {
@@ -297,6 +307,12 @@ article>.row, .espacioBotton{
 	height: 45px;
 }
 /*--------------home-------------------*/
+h1{
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	color: #152844;
+}
 /*
 carousel 
 ----------------*/
@@ -368,19 +384,21 @@ Panel
 				}
 			}
 			p{
-				color: #aaa;
+				/*color: #aaa;*/
 				margin-bottom: 5px;
+				font-size:14px;
 				span{
 					&.textoAzul{
-						color: #337ab7;
+						color: @AzulClaro;
 					}
 					&.textoGrisClaro{
-						color: #999;
+						color: #4A4A4A;
 					}
 				}
 			}
 			h4{
 				font-weight: bold;
+				font-size: 15px;
 			}
 			.post-meta{
 				margin: 0px;
@@ -391,8 +409,16 @@ Panel
 			}
 			a{
 				margin: 0 10px 10px 0;
-
+				color: @AzulClaro;
+				&.iconoModal{
+					background: gray;
+					padding: 0 5px;
+					webkit-border-radius: 8px;
+					border-radius: 8px;
+					color:white;
+				}
 			}
+
 		}
 	}
 }
@@ -401,15 +427,36 @@ Panel
 	.nav-tabs{
 
 	}
+	li[role=presentation]{
+		width: 50%;
+		background-color: #5e8ce6;
+		a{
+			color:white;
+			border:none;
+
+		}
+	}
+	.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+			background-color:black;
+			color:white;
+			border:none;
+		}
+	.nav>li>a:focus, .nav>li>a:hover{
+		 background-color: black;
+		 border:none;
+	}
 	.tab-content{
 		.contenido-tabs{
 			height: 359px; 
 			overflow-y: scroll;
 			padding: 2px;
-			border:1px solid #333;
+			background: #525256;
+			border:1px solid #525256;
 			webkit-border-radius: 2px 2px 2px 2px;
 			border-radius: 2px 2px 2px 2px;
+
 		}
+		
 	}
 }
 @media (min-width: 1200px) { 
@@ -473,6 +520,7 @@ height: 100% !important;
 	}*/
 }
 .tabVerticalNegro{
+	min-height: 350px;
 	.tab-pane{
 		padding:10px 5px 0;
 		&#home-r,&#mision-r,&#vision-r,&#programaMovilidad-quien-r,&#categoriasMovilidad-r,&#programaMovilidad-aplicar-r{
@@ -487,7 +535,7 @@ height: 100% !important;
 		height: 70px;
 	}
 	ul.listaMovilidad li{
-		height: 120px;
+		/*height: 120px;*/
 		
 	}
 	li{
@@ -533,6 +581,16 @@ height: 100% !important;
 		}
 	}
 }
+.ElementoPadre{
+	position:relative;
+}
+.ElementoHijo{
+	position:absolute;
+	top:0;
+	height: 100%;
+	right:0;
+}
+
 .divAsociados{
 	img{
 		margin-left: 20px;
@@ -558,15 +616,15 @@ height: 100% !important;
 		.fichaCentral{
 			position:relative;
 			margin: 10px 0;
-			-webkit-box-shadow: 0 0 7px 7px #B3B3B3;
-			box-shadow: 0 0 7px 7px #B3B3B3;
+			-webkit-box-shadow: 0 0 7px 7px rgba(0,0,0,0.08);
+			box-shadow: 0 0 7px 7px rgba(0,0,0,0.08);
 		}
 		.fichaLateralDerecha, .fichaLateralIzquierda{
-			-webkit-box-shadow: 0 0 7px 7px #d7d7d7;
-			box-shadow: 0 0 7px 7px #d7d7d7;
+			-webkit-box-shadow: 0 0 7px 7px rgba(0,0,0,0.08);
+			box-shadow: 0 0 7px 7px rgba(0,0,0,0.08);
 			position:absolute;
-		   top:0;
-		   bottom:0;
+		   	top:0;
+		   	bottom:0;
 		}
 		.fichaLateralDerecha{
 			right:-26%;
@@ -583,7 +641,6 @@ height: 100% !important;
 		p,>div{
 			color: #444;
 		}
-
 	}
 	.carousel-control{
 		&.left,&.right{
@@ -600,14 +657,15 @@ height: 100% !important;
 	margin-bottom: 35px;
 	.estrellaImagen{
 		background: url('../images/estrellas.png') no-repeat;
-			width: 150px;
-    		height: 36px;
-    		position:absolute;
-    		margin-top: -20px;
+		width: 150px;
+		height: 36px;
+		position:absolute;
+		margin-top: -20px;
 	}
 }
 
 #carousel-dual-members{
+	background: #ECF0F1;
 	.carousel-caption{
 		top:20px;
 		h1{
@@ -622,6 +680,9 @@ height: 100% !important;
 		background-color: #ccc;
 		color: black;
 		opacity:1;
+		span{
+			color:black;
+		}
 	}
 }
 /*-------------------singles--------------*/

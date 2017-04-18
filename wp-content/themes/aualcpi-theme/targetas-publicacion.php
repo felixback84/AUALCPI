@@ -15,8 +15,8 @@
 						<?php endif; ?>
 						<h4><a href="<?php echo esc_url(get_permalink()); ?> "><?php the_title(); ?></a></h4>
 						<p><span class="textoGrisClaro">Por: <?php the_author(); ?></span></p>
-						<p><span class="textoGrisClaro"><?php "Categoria: ".$terms_list=wp_get_post_terms($post->ID,'tipo_publicaciones');
-							echo mostrarCategorias($terms_list,'|');
+						<p><span class="textoGrisClaro"><?php $terms_list=wp_get_post_terms($post->ID,'tipo_publicaciones');
+							echo "Categoria: ".mostrarCategorias($terms_list,'|');
 						?></span></p>
 						<p><?php  echo wp_trim_words(get_the_content(),30,'...'); ?></p>
 						<?php the_meta(); ?>

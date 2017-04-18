@@ -5,13 +5,15 @@
 	<div id="imagenTop" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="item active">
-				<div class="thumbnail"><?php 
-				$imagenPortada = get_the_author_meta('user_meta_image',$userId);
-				if(!empty($imagenPortada)){
-					echo '<img src="'.$imagenPortada.'" alt="Imagen portada del perfil del usuario">';
-				}else{
-				the_post_thumbnail ('post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']); 
-				}?></div>
+				<div class="thumbnail">
+					<?php 
+					$imagenPortada = get_the_author_meta('user_meta_image',$userId);
+					if(!empty($imagenPortada)){
+						echo '<img src="'.$imagenPortada.'" alt="Imagen portada del perfil del usuario">';
+					}else{
+					the_post_thumbnail ('post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']); 
+					}?>
+				</div>
 				<div class="container">
 					<div class="carousel-caption">
 						<?php if ($userId == wp_get_current_user()->ID){ echo '<h3>Mi cuenta</h3>';}else{ echo '<h3>Perfil profesional</h3>';}?>

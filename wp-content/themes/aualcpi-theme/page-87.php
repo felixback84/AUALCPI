@@ -4,7 +4,11 @@
 	<div id="imagenTop" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="item active">
-				<div class="thumbnail"><?php the_post_thumbnail ('post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']); ?></div>
+				<?php if(!empty(get_the_post_thumbnail (87,'post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']))){ ?>
+					<div class="thumbnail"><?php the_post_thumbnail ('post-thumbnail', ['class' => 'img-responsive responsive--full sombraInferior', 'title' => 'Feature image','alt'   => 'imagen de inicio de la publicacion subida']); ?></div>
+				<?php } else { ?>
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/imagenesTop.jpg" alt="imagen de inicio de la publicacion"  class="sombraInferior" width="" height="" />
+				<?php } ?>
 				<div class="container">
 					<div class="carousel-caption">
 						<p><?php
@@ -22,7 +26,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-8 col-md-8 col-sm-push-2">
-			<div class="youtube">
+			<div class="youtube sombraInferior">
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/C85nRB-NnsU" frameborder="0" allowfullscreen></iframe>
 			</div>
 		</div>
@@ -31,7 +35,7 @@
 <div class="container">
 	<div class="row espacioBotton">
 		<div class="col-xs-12">
-			<h3 class="text-center espacioBotton">Conoce nuestra Red Lisi</h3>
+			<h1 class="text-center espacioBotton">Conoce nuestra Red Lisi</h1>
 			<?php $args = array(
 		      'post_type' => 'investigacion',
 		      'post_status' => 'publish',
@@ -68,7 +72,7 @@
 	<div class="row espacioBotton">
 		<div class="divAsociados">
 			<div class="col-xs-12">
-				<h3 class="text-center">Nuestras alianzas internacionales</h3>	
+				<h1 class="text-center">Nuestras alianzas internacionales</h1>	
 				<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
 					<a href="#">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">

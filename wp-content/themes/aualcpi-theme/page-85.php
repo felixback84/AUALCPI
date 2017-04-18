@@ -4,13 +4,17 @@
 	<div id="imagenTop" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="item active">
-				<div class="thumbnail"><?php the_post_thumbnail ('post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']); ?></div>
+				<?php if(!empty(get_the_post_thumbnail (85,'post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']))){ ?>
+					<div class="thumbnail"><?php the_post_thumbnail ('post-thumbnail', ['class' => 'img-responsive responsive--full sombraInferior', 'title' => 'Feature image','alt'   => 'imagen de inicio de la publicacion subida']); ?></div>
+				<?php } else { ?>
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/imagenesTop.jpg" alt="imagen de inicio de la publicacion"  class="sombraInferior" width="" height="" />
+				<?php } ?>
 				<div class="container">
 					<div class="carousel-caption">
 						<?php
-						$post = get_post(85); 
-						$contenido = $post->post_content;
-						echo $contenido;
+							$post = get_post(85); 
+							$contenido = $post->post_content;
+							echo $contenido;
 						?>
 					</div>
 				</div>
@@ -21,45 +25,45 @@
 
 <div class="container espacioBotton">
 	<div class="row espacioBotton">
-	<h4 class="text-center">Descubre todos los beneficios que tenemos para ti</h4>
-	<div id="carousel-members" class="carousel slide" data-ride="carousel">
-		<div class="carousel-inner">
-			<div class="item active">
-				<div class="col-xs-8 col-xs-push-2 fichaCentral" style="">
-					<div class="col-xs-2 fichaLateralIzquierda" style=""></div>
-					<div class="thumbnail">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco1.png" alt="imagen slider member 1" width="" height="" class="hidden-xs hidden-sm"/>
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco2.png" alt="imagen slider member 1" width="" height="" class="visible-sm"/>
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco3.png" alt="imagen slider member 1" width="" height="" class="visible-xs"/>
+		<h1 class="text-center">Descubre todos los beneficios que tenemos para ti</h1>
+		<div id="carousel-members" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+				<div class="item active">
+					<div class="col-xs-8 col-xs-push-2 fichaCentral" style="">
+						<div class="col-xs-2 fichaLateralIzquierda" style=""></div>
+						<div class="thumbnail">
+							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco1.png" alt="imagen slider member 1" width="" height="" class="hidden-xs hidden-sm"/>
+							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco2.png" alt="imagen slider member 1" width="" height="" class="visible-sm"/>
+							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco3.png" alt="imagen slider member 1" width="" height="" class="visible-xs"/>
+						</div>
+						<div class="carousel-caption">
+							<h1>Contenido 1.</h1>
+							<div>Eos expedita odio deleniti cum fugit autem placeat commodi optio neque itaque iste asperiores recusandae veritatis, dignissimos sunt libero distinctio ratione voluptatum vero eaque est repellat, consequatur natus, sapiente quidem.</div>
+							<div>Officia accusamus, neque sit accusantium veritatis. Facilis quaerat laudantium repudiandae, minima nostrum non molestias harum, temporibus earum cum officiis impedit numquam eos facere mollitia fuga pariatur, debitis, est voluptatum amet.</div>
+						</div>
+						<div class="col-xs-2 fichaLateralDerecha" style=""></div>
 					</div>
-					<div class="carousel-caption">
-						<h1>Contenido 1.</h1>
-						<div>Eos expedita odio deleniti cum fugit autem placeat commodi optio neque itaque iste asperiores recusandae veritatis, dignissimos sunt libero distinctio ratione voluptatum vero eaque est repellat, consequatur natus, sapiente quidem.</div>
-						<div>Officia accusamus, neque sit accusantium veritatis. Facilis quaerat laudantium repudiandae, minima nostrum non molestias harum, temporibus earum cum officiis impedit numquam eos facere mollitia fuga pariatur, debitis, est voluptatum amet.</div>
-					</div>
-					<div class="col-xs-2 fichaLateralDerecha" style=""></div>
 				</div>
+				<div class="item">
+					<div class="col-xs-8 col-xs-push-2 fichaCentral" style="">
+						<div class="col-xs-2 fichaLateralIzquierda" style=""></div>
+						<div class="thumbnail">
+							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco1.png" alt="imagen slider member 1" width="" height="" class="hidden-xs hidden-sm"/>
+							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco2.png" alt="imagen slider member 1" width="" height="" class="visible-sm"/>
+							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco3.png" alt="imagen slider member 1" width="" height="" class="visible-xs"/>
+						</div>
+						<div class="carousel-caption">
+							<h1>Contenido 2.</h1>
+							<div>Eos expedita odio deleniti cum fugit autem placeat commodi optio neque itaque iste asperiores recusandae veritatis, dignissimos sunt libero distinctio ratione voluptatum vero eaque est repellat, consequatur natus, sapiente quidem.</div>
+							<div>Officia accusamus, neque sit accusantium veritatis. Facilis quaerat laudantium repudiandae, minima nostrum non molestias harum, temporibus earum cum officiis impedit numquam eos facere mollitia fuga pariatur, debitis, est voluptatum amet.</div>
+						</div>
+						<div class="col-xs-2 fichaLateralDerecha" style=""></div>
+					</div>
+				</div>	
 			</div>
-			<div class="item">
-				<div class="col-xs-8 col-xs-push-2 fichaCentral" style="">
-					<div class="col-xs-2 fichaLateralIzquierda" style=""></div>
-					<div class="thumbnail">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco1.png" alt="imagen slider member 1" width="" height="" class="hidden-xs hidden-sm"/>
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco2.png" alt="imagen slider member 1" width="" height="" class="visible-sm"/>
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco3.png" alt="imagen slider member 1" width="" height="" class="visible-xs"/>
-					</div>
-					<div class="carousel-caption">
-						<h1>Contenido 2.</h1>
-						<div>Eos expedita odio deleniti cum fugit autem placeat commodi optio neque itaque iste asperiores recusandae veritatis, dignissimos sunt libero distinctio ratione voluptatum vero eaque est repellat, consequatur natus, sapiente quidem.</div>
-						<div>Officia accusamus, neque sit accusantium veritatis. Facilis quaerat laudantium repudiandae, minima nostrum non molestias harum, temporibus earum cum officiis impedit numquam eos facere mollitia fuga pariatur, debitis, est voluptatum amet.</div>
-					</div>
-					<div class="col-xs-2 fichaLateralDerecha" style=""></div>
-				</div>
-			</div>	
+			<a class="left carousel-control" href="#carousel-members" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+			<a class="right carousel-control" href="#carousel-members" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 		</div>
-		<a class="left carousel-control" href="#carousel-members" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-		<a class="right carousel-control" href="#carousel-members" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-	</div>
 	</div>
 </div>
 <div class="container">
@@ -98,7 +102,7 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-6 col-sm-push-4"><h4 class="text-center">La mejor manera de integrar tu Universidad en una comunidad global</h4></div>
+		<div class="col-sm-6 col-sm-push-4"><h1 class="text-center">La mejor manera de integrar tu Universidad en una comunidad global</h1></div>
 	</div>
 	<div class="row espacioBotton">
 		<div class="col-xs-12 col-sm-6">
@@ -157,7 +161,7 @@
 	<div class="row">
 		<div class="divAsociados">
 			<div class="col-xs-12">
-				<h4>Nuestras alianzas internacionales</h4>	
+				<h1 class="text-center">Nuestras alianzas internacionales</h1>	
 				<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
 					<a href="#">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">

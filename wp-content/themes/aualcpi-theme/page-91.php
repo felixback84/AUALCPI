@@ -4,7 +4,11 @@
 	<div id="imagenTop" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="item active">
-				<div class="thumbnail"><?php the_post_thumbnail ('post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']); ?></div>
+				<?php if(!empty(get_the_post_thumbnail (91,'post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']))){ ?>
+					<div class="thumbnail"><?php the_post_thumbnail ('post-thumbnail', ['class' => 'img-responsive responsive--full sombraInferior', 'title' => 'Feature image','alt'   => 'imagen de inicio de la publicacion subida']); ?></div>
+				<?php } else { ?>
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/imagenesTop.jpg" alt="imagen de inicio de la publicacion"  class="sombraInferior" width="" height="" />
+				<?php }?>
 				<div class="container">
 					<div class="carousel-caption">
 						<?php
@@ -12,7 +16,7 @@
 						$contenido = $post->post_content;
 						echo $contenido;
 						?>
-						<a href="#" class="btn btn-default">SUSCRIBIRME</a>
+						<a href="#" class="btn btn-default">Quiero ser miembro</a>
 					</div>
 				</div>
 			</div>
@@ -88,6 +92,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
+		<h1>Investigadores regionales</h1>
 		<div id="carousel-example-generic-autores" class="carousel slide" data-ride="carousel" data-type="multi" >
 				<div id="the-posts-user" class="carousel-inner" role="listbox"> 
 				<?php 
@@ -160,7 +165,7 @@
 					      'post_status' => 'publish',
 					      'order'=> 'ASC',
 					      'orderby' => 'date',
-					    ); 
+					    );
 						$lastBlog = new WP_Query ($args);
 						$cont=0;
 						if($lastBlog->have_posts()):

@@ -7,10 +7,10 @@ get_header();?>
 	jQuery(".slider-loader-1").css({ 'display': "none" });
 </script>
 <div class="container">
-	<div class="row">
-		<div class="col-sm-12"><h4>Actualidad AUALCPI</h4></div>
+	<div class="row espacioTop espacioBotton">
+		<div class="col-sm-12"><h1>Actualidad AUALCPI</h1></div>
 		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 quitarEspacio" >
-			<div id="carousel-example-generic-noticias" class="carousel slide quitarEspacio" data-ride="carousel">
+			<div id="carousel-example-generic-noticias" class="carousel slide quitarEspacio sombraInferior" data-ride="carousel">
 				<div class="carousel-inner" role="listbox"> 
 					<?php $args = array (
 						'post_type' => 'post',
@@ -48,12 +48,12 @@ get_header();?>
 				</div>	    
 			</div>
 		</div>
-		<div id="tabsEventoTwitter" class="hidden-xs hidden-sm col-md-4 col-lg-4" style="">
+		<div id="tabsEventoTwitter" class="hidden-xs hidden-sm col-md-4 col-lg-4 " style="">
 			  <ul  class="nav nav-tabs" role="tablist">
 			    <li role="presentation" class="active"><a href="#Eventos" aria-controls="Eventos" role="tab" data-toggle="tab">Eventos</a></li>
 			    <li role="presentation"><a href="#twitter" aria-controls="twitter" role="tab" data-toggle="tab">Twitter</a></li>
 			  </ul>
-			  <div class="tab-content">
+			  <div class="tab-content sombraInferior">
 			    <div role="tabpanel" class="tab-pane active" id="Eventos">
 					<div class="contenido-tabs">
 						<?php echo do_shortcode('[ai1ec view="monthly"]'); ?>
@@ -71,7 +71,7 @@ get_header();?>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
-			<h4>Becas de movilidad (EMANUEL)</h4>
+			<h1>Becas de movilidad (EMANUEL)</h1>
 			<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
 			<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox"> 
@@ -113,15 +113,15 @@ get_header();?>
 		</div>
 	</div>
 </div>
-<div class="carousel-nav">
+<div class="carousel-nav sombraInferior">
 	<div class="container row">
 		<p class="tituloNavegacionCarousel pull-right" >MAS BECAS</p>
 	</div>
 </div>	 
 <div class="container">
-	<div class="row">
+	<div class="row espacioTop">
 		<div class="col-sm-12">
-			<h4>Investigación regional (RED LISI)</h4>	
+			<h1>Investigación regional (RED LISI)</h1>	
 			<div id="carousel-example-generic-investigacion" class="carousel slide" data-ride="carousel"  data-type="multi">
 			<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox"> 
@@ -164,15 +164,15 @@ get_header();?>
 		</div>
 	</div>
 </div>
-<div class="carousel-nav">
+<div class="carousel-nav sombraInferior">
 	<div class="container row">
 		<p class="tituloNavegacionCarousel pull-right" >MAS INVESTIGACIONES</p>
 	</div>
 </div>	
 <div class="container">
-	<div class="row">
+	<div class="row espacioTop">
 		<div class="col-sm-12">
-			<h4>Publicaciones</h4>	
+			<h1>Publicaciones</h1>	
 			<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel"  data-type="multi">
 			<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox"> 
@@ -214,9 +214,11 @@ get_header();?>
 		</div>
 	</div>
 </div>
-<div class="carousel-nav">
-	<div class="container row">
-		<p class="tituloNavegacionCarousel pull-right" >MAS PUBLICACIONES</p>
+<div class="espacioBotton">
+	<div class="carousel-nav sombraInferior">
+		<div class="container row">
+			<p class="tituloNavegacionCarousel pull-right" >MAS PUBLICACIONES</p>
+		</div>
 	</div>
 </div>
 <div id="myModalBeca1" class="modal fade" tabindex="-1" role="dialog">
