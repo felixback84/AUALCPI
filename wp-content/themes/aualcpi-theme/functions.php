@@ -203,6 +203,12 @@ function my_get_posts()  {
 				'terms'    => $catB_id,
 			);
 	    array_push($args['tax_query'],$argsCatB);
+	    //$term=get_term_by('id',$catB_id,'areas');
+		//var_dump($term);
+		//echo $term->name;
+		//echo '<p><script> jQuery("#text-retos").text("Retos regionales en '.$term->name.'"); </script></p>';
+	}else{
+		//echo '<p style="display:none;"><script> jQuery("#text-retos").text("Retos regionales"); </script></p>';
 	}
 
     if($catC_id != '0'){
@@ -212,6 +218,7 @@ function my_get_posts()  {
 			);
 	    array_push($args['tax_query'],$argsCatC);
 	}
+
 	
     //echo "<script>javascript: alert('".var_dump($args)."')></script>";
     //$comentarios = 'LosComentarios';
@@ -316,6 +323,12 @@ function my_get_user()  {
 				'terms'    => $catB_id,
 			);
 	    array_push($args['tax_query'],$argsCatB);
+	    //$term=get_term_by('id',$catB_id,'areas');
+		//var_dump($term);
+		//echo $term->name;
+		//echo '<script> jQuery("#text-investigador").text("Investigadores regionales en '.$term->name.'"); </script>';
+	}else{
+		//echo '<script> jQuery("#text-investigador").text("Investigadores regionales"); </script>';
 	}
     if($catC_id != '0'){
 	    $argsCatC = array(

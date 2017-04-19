@@ -1,10 +1,10 @@
 <?php get_header(); ?>
-<!-- pagina base de datos investigadores-->
+<!-- pagina retos regionales-->
 <div class="hidden-xs">
 	<div id="imagenTop" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="item active">
-				<?php if(!empty(get_the_post_thumbnail (91,'post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']))){ ?>
+				<?php if(!empty(get_the_post_thumbnail (89,'post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']))){ ?>
 					<div class="thumbnail"><?php the_post_thumbnail ('post-thumbnail', ['class' => 'img-responsive responsive--full sombraInferior', 'title' => 'Feature image','alt'   => 'imagen de inicio de la publicacion subida']); ?></div>
 				<?php } else { ?>
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/imagenesTop.jpg" alt="imagen de inicio de la publicacion"  class="sombraInferior" width="" height="" />
@@ -12,7 +12,7 @@
 				<div class="container">
 					<div class="carousel-caption">
 						<?php
-						$post = get_post(91); 
+						$post = get_post(89); 
 						$contenido = $post->post_content;
 						echo $contenido;
 						?>
@@ -92,6 +92,49 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
+			<h1 id="text-retos">Retos regionales</h1>
+			<div id="carousel-example-generic-inves" class="carousel slide" data-ride="carousel" data-type="multi" >
+				<div id="the-posts-inves" class="carousel-inner" role="listbox"> 
+						<?php $args = array(
+					      'post_type' => 'investigacion',
+					      'post_status' => 'publish',
+					      'order'=> 'ASC',
+					      'orderby' => 'date',
+					    );
+						$lastBlog = new WP_Query ($args);
+						$cont=0;
+						if($lastBlog->have_posts()):
+						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+						<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?> 
+								<div class="col-xs-12 col-sm-4">
+										<?php get_template_part('targetas-inves-inves'); ?>
+								</div>
+							</div>
+							 <?php $cont++; 
+							 endwhile;
+						endif;	
+					    wp_reset_postdata(); ?>
+				</div>
+				<a class="right carousel-control" href="#carousel-example-generic-inves" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+				  <a class="left carousel-control" href="#carousel-example-generic-inves" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				</a>
+			</div>
+		</div>	
+	</div>
+</div>
+<div class="carousel-nav sombraInferior">
+	<div class="container row">
+		<p class="tituloNavegacionCarousel pull-right" >MAS INVESTIGACIONES</p>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
 		<h1 id="text-investigador">Investigadores regionales</h1>
 		<div id="carousel-example-generic-autores" class="carousel slide" data-ride="carousel" data-type="multi" >
 				<div id="the-posts-user" class="carousel-inner" role="listbox"> 
@@ -150,53 +193,11 @@
 		</div>
 	</div>
 </div>
-<div class="carousel-nav sombraInferior">
-	<div class="container row">
-		<p class="tituloNavegacionCarousel pull-right" >MAS AUTORES</p>
-	</div>
-</div>
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12">
-			<h1 id="text-retos">Retos regionales</h1>
-			<div id="carousel-example-generic-inves" class="carousel slide" data-ride="carousel" data-type="multi" >
-				<div id="the-posts-inves" class="carousel-inner" role="listbox"> 
-						<?php $args = array(
-					      'post_type' => 'investigacion',
-					      'post_status' => 'publish',
-					      'order'=> 'ASC',
-					      'orderby' => 'date',
-					    );
-						$lastBlog = new WP_Query ($args);
-						$cont=0;
-						if($lastBlog->have_posts()):
-						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-						<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?> 
-								<div class="col-xs-12 col-sm-4">
-										<?php get_template_part('targetas-inves-inves'); ?>
-								</div>
-							</div>
-							 <?php $cont++; 
-							 endwhile;
-						endif;	
-					    wp_reset_postdata(); ?>
-				</div>
-				<a class="right carousel-control" href="#carousel-example-generic-inves" role="button" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				  </a>
-				  <a class="left carousel-control" href="#carousel-example-generic-inves" role="button" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				</a>
-			</div>
-		</div>	
-	</div>
-</div>
+
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">
 	<div class="container row">
-		<p class="tituloNavegacionCarousel pull-right" >MAS INVESTIGACIONES</p>
+		<p class="tituloNavegacionCarousel pull-right" >MAS AUTORES</p>
 	</div>
 	</div>
 </div>

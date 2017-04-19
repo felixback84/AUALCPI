@@ -226,7 +226,7 @@ get_header();?>
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Tipos de Becas</h4>
+        <h1 class="modal-title">Tipos de Becas</h1>
       </div>
       <div class="modal-body">
          <p>-<strong>Beca completa:</strong> Incluye hospedaje, alimentación y transporte durante el periodo de estudios.</p>
@@ -256,7 +256,7 @@ get_header();?>
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">¡Estás muy cerca de dar un gran paso en tu vida personal y profesional!</h4>
+        <h1 class="modal-title">¡Estás muy cerca de dar un gran paso en tu vida personal y profesional!</h1>
       </div>
       <div class="modal-body">
          <p>Descarga el <a href="">Formulario de inscripción</a>  y envíalo al correo aualcpi@udca.edu.co.</p>

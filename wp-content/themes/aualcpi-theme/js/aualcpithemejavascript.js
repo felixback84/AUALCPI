@@ -106,6 +106,7 @@ $('.btn-cargar-investigacion').on('click',function(){
     filterAreas = [];
     filterComentarios = [];
     filterStatus = [];
+    filterAreasName = [];
     $("select[name='filterComentarios[]'] option:selected").each(function ()  {
         //alert(urlAjax);
         filterComentarios.push($(this).val());
@@ -115,10 +116,12 @@ $('.btn-cargar-investigacion').on('click',function(){
     $("select[name='filterCiudades[]'] option:selected").each(function ()  {
         //alert(urlAjax);
         filterCiudades.push(parseInt($(this).val()));
+
     });
     $("select[name='filterAreas[]'] option:selected").each(function ()  {
         //alert(urlAjax);
         filterAreas.push(parseInt($(this).val()));
+        filterAreasName.push($(this).text());
     });
     $("select[name='filterStatus[]'] option:selected").each(function ()  {
         //alert(urlAjax);
@@ -126,10 +129,10 @@ $('.btn-cargar-investigacion').on('click',function(){
         //alert(filterComentarios);
     });
     //alert(checked);
-    cargarUsuarios(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus);
-    cargarCategorias(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus);
+    cargarUsuarios(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus,filterAreasName);
+    cargarCategorias(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus,filterAreasName);
 });
-function cargarUsuarios(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
+function cargarUsuarios(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,AreasName){
     $("#the-posts-user").children().remove();
     //mostrar el loader en wordpress
     $('.loaderwp').show();
@@ -145,6 +148,11 @@ function cargarUsuarios(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
       },
       success: function(data, textStatus, XMLHttpRequest)      {
           $("#the-posts-user").append(data);
+          if(taxonomiaB != '0'){
+            $("#text-investigador").text('Investigadores regionales en '+AreasName);
+          }else{
+             $("#text-investigador").text('Investigadores regionales'); 
+          }
       },
       complete: function(XMLHttpRequest, textStatus)      {
         $('.loaderwp').hide();
@@ -170,7 +178,7 @@ function cargarUsuarios(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
       }
     });
   }
-function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
+function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,AreasName){
     $("#the-posts-inves").children().remove();
     //mostrar el loader en wordpress
     $('.loaderwp').show();
@@ -186,6 +194,11 @@ function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
       },
       success: function(data, textStatus, XMLHttpRequest)      {
           $("#the-posts-inves").append(data);
+          if(taxonomiaB != '0'){
+            $("#text-retos").text('Retos regionales en '+AreasName);
+          }else{
+             $("#text-retos").text('Retos regionales'); 
+          }
       },
       complete: function(XMLHttpRequest, textStatus)      {
         $('.loaderwp').hide();
@@ -207,7 +220,6 @@ function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC){
           }
         }
         });
-        
       }
     });
   }
@@ -269,7 +281,6 @@ function cargarBecas(urlAjax,taxonomiaA,taxonomiaB){
       }
     });
   }
-
 /*-----cerrar y abrir div de busqueda------*/
 $('.collapse #btn-abrir').click(function() {
     $(this).parent().parent().parent().removeClass('in');
