@@ -11,11 +11,11 @@
 				<?php }?>
 				<div class="container">
 					<div class="carousel-caption">
-						<?php
+						<p><?php
 						$post = get_post(61); 
 						$contenido = $post->post_content;
-						$contenido;
-						?>
+						echo $contenido;
+						?></p>
 					</div>
 				</div>
 			</div>
@@ -122,7 +122,7 @@
 							<?php }else{ ?> 
 									<div class="item">
 							<?php } ?> 
-								<div class="col-xs-12 col-sm-4">
+								<div class="col-xs-12 col-sm-6 col-md-4">
 									<?php get_template_part('targetas-beca'); ?>
 								</div>
 							</div> 
@@ -172,7 +172,7 @@
 							<?php }else{ ?> 
 									<div class="item">
 							<?php } ?> 
-										<div class="col-xs-12 col-sm-4">
+										<div class="col-xs-12 col-sm-6 col-md-4">
 											<?php get_template_part('targetas-publicacion'); ?>
 										</div>
 									</div>

@@ -119,7 +119,7 @@ article>.row, .espacioBotton{
 	}
 }
 
-#Search1{
+.Search1{
 	/*padding-right: 35px;*/
 }
 #form-search{
@@ -164,8 +164,13 @@ article>.row, .espacioBotton{
 		.dropdown-menu li{
 			background-color: #fff;
 			color:#21386f;
+			&:active>a,&:hover>a{
+				background-color: #d6d6d6;
+				color:#000;
+			}
 			a{
-				color:#21386f;
+				color:#07376E;
+				font-size: 15px;
 				height: 42px;
 				line-height: 30px;
 				&:active,&:hover{
@@ -174,15 +179,14 @@ article>.row, .espacioBotton{
 				}
 			}
 			&:active,&:hover{
-				background-color: #d6d6d6;
-				/*border-bottom:1px solid #959595;
-				border-top:1px solid #959595;*/
+				background-color: #000;
 			}
 		}
 	}
 
 .dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover{
 		background-color: #d6d6d6; 
+		color:#000;
 	}
 	#menu-email{
 		li{
@@ -194,6 +198,7 @@ article>.row, .espacioBotton{
 		background-color: @BackgroundMenuPrimary;
 		color: white;
 		height: 68px;
+		font-size: 15px;
 		line-height: 35px;
 		&:hover,&active{
 			/*background-color: #fff;*/
@@ -727,7 +732,7 @@ height: 100% !important;
 		left: auto;
 	}
 }
-
+/*----------colapsar filtros----*/
 .collapse{
 	.well{
 		background-color: #4c4c4c;
@@ -737,20 +742,24 @@ height: 100% !important;
 			color:white;
 			background-color: #4c4c4c;
 		}
-	}
-}
-
-#collapseExample-2{
-	.well{
-		h3,h4,h5{
-			margin:5px;
+		h3,h4, h5{
+			padding: 10px 0;
 			color:white;
+		}
+		h4{
+			margin-top: -10px;
+			padding-top: 0;
+			font-size: 20px;
+		}
+		h5{
+			font-size: 14px;
 		}
 		a{
 			color:white;
 			border:none;
 			border-radius:10px;
-			background-color: #6a96e8;
+			/*background-color: #6a96e8;*/
+			background: linear-gradient(180deg, #54A4FF 0%, #4383CC 100%);
 		}
 	}
 }

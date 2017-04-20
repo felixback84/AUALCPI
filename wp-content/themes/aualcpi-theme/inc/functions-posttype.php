@@ -644,11 +644,11 @@ add_action('add_meta_boxes', 'add_custom_meta_boxes');
 
 function wp_custom_attachment() { 
 	$files = esc_attr(get_option('user_meta_files'));?>
-   	<label for="user_meta_files">Seleccionar imagen:</label>
+   	<label for="user_meta_files">Seleccionar archivos:</label>
 	<p id="user_meta_files_show"><?php echo esc_url( get_the_author_meta( 'user_meta_files', $user->ID ) ); ?></p><br />
 	<input type='button' id="upload-button-file" class="button-primary" value="Subir Archivos"/>
 	<input  type="text" name="user_meta_files[]" id="user_meta_files" value="<?php echo esc_url( get_the_author_meta( 'user_meta_files', $user->ID ) ); ?>" class="regular-text" style="width: 200px;"/><br />
-	<p class="description">Selecionar una imagen para la portada.</p>
+	<p class="description">Selecionar una archivos para la investigacion.</p>
 <?php
 } 
 

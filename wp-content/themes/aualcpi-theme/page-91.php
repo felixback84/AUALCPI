@@ -11,11 +11,11 @@
 				<?php }?>
 				<div class="container">
 					<div class="carousel-caption">
-						<?php
+						<p><?php
 						$post = get_post(91); 
 						$contenido = $post->post_content;
 						echo $contenido;
-						?>
+						?></p>
 						<a href="#" class="btn btn-default">Quiero ser miembro</a>
 					</div>
 				</div>
@@ -132,7 +132,7 @@
 			    	$usuario = get_user_by('ID',$id);
 					//var_dump($usuario); ?>
 					<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?>
-					<div class="col-xs-12 col-sm-4">
+					<div class="col-xs-12 col-sm-6 col-md-4">
 						<?php set_query_var('user',$usuario);
 						get_template_part('targetas-autores'); ?>
 					</div></div>
@@ -172,7 +172,7 @@
 						if($lastBlog->have_posts()):
 						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
 						<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?> 
-								<div class="col-xs-12 col-sm-4">
+								<div class="col-xs-12 col-sm-6 col-md-4">
 										<?php get_template_part('targetas-inves-inves'); ?>
 								</div>
 							</div>

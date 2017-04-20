@@ -40,22 +40,38 @@ if($(document).width() < 783){
 }
 
 //--- mostrar 3 post a la vez si el dispositibo es sm o mayor
-$('.carousel[data-type="multi"] .item').each(function(){
-  if($(document).width() > 782){
-  var next = $(this).next();
-  if (!next.length) {
-    next = $(this).siblings(':first');
-  }
-  next.children(':first-child').clone().appendTo($(this));
-  
-  for (var i=0;i<1;i++) {
-    next=next.next();
+$('.carousel[data-type="multi"] .item').each(function(){    
+  if($(document).width() > 991){
+    var next = $(this).next();
     if (!next.length) {
       next = $(this).siblings(':first');
     }
     next.children(':first-child').clone().appendTo($(this));
-  }
+    
+    for (var i=0;i<1;i++) {
+      next=next.next();
+      if (!next.length) {
+        next = $(this).siblings(':first');
+      }
+      next.children(':first-child').clone().appendTo($(this));
+    }
+  
 }
+if(($(document).width() < 992) && ($(document).width() > 767)){
+    var next = $(this).next();
+    if (!next.length) {
+      next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+    
+    for (var i=0;i<1;i++) {
+      next=next.next();
+      if (!next.length) {
+        next = $(this).siblings(':first');
+      }
+      //next.children(':first-child').clone().appendTo($(this));
+    }
+  }
 });
 
 
@@ -116,7 +132,6 @@ $('.btn-cargar-investigacion').on('click',function(){
     $("select[name='filterCiudades[]'] option:selected").each(function ()  {
         //alert(urlAjax);
         filterCiudades.push(parseInt($(this).val()));
-
     });
     $("select[name='filterAreas[]'] option:selected").each(function ()  {
         //alert(urlAjax);

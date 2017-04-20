@@ -91,7 +91,7 @@ get_header();?>
 							<?php }else{ ?> 
 									<div class="item">
 							<?php } ?> 
-								<div class="col-xs-12 col-sm-4">
+								<div class="col-xs-12 col-sm-6 col-md-4">
 									<?php get_template_part('targetas-beca'); ?>
 								</div>
 							</div> 
@@ -141,7 +141,7 @@ get_header();?>
 							<?php }else{ ?> 
 									<div class="item">
 							<?php } ?> 
-										<div class="col-xs-12 col-sm-4">
+										<div class="col-xs-12 col-sm-6 col-md-4">
 											<?php get_template_part('targetas-investigacion'); ?>
 										</div>
 									</div>
@@ -192,7 +192,7 @@ get_header();?>
 							<?php }else{ ?> 
 									<div class="item">
 							<?php } ?> 
-										<div class="col-xs-12 col-sm-4">
+										<div class="col-xs-12 col-sm-6 col-md-4">
 											<?php get_template_part('targetas-publicacion'); ?>
 										</div>
 									</div>

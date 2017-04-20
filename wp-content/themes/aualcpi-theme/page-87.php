@@ -48,7 +48,7 @@
 			if($lastBlog->have_posts()):
 			while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
 			<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?> 
-					<div class="col-xs-12 col-sm-4">
+					<div class="col-xs-12 col-sm-6 col-md-4">
 							<?php get_template_part('targetas-inves-inves'); ?>
 					</div>
 				</div>

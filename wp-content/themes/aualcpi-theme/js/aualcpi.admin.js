@@ -45,6 +45,12 @@ jQuery(document).ready(function ($) {
 		});
 		
 		mediaUploader.on('select', function(){
+			var selection = mediaUploader.state().get('selection');
+			selection.map( function( attachment ) {
+		    attachment = attachment.toJSON();
+		          console.log(attachment);
+		          // Do something with attachment.id and/or attachment.url here
+		    });
 			attachment = mediaUploader.state().get('selection');
 			length = attachment.length;
 			console.log(attachment);
