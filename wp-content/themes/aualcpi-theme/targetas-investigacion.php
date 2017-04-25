@@ -4,6 +4,8 @@
 			<div class="col-xs-8 col-sm-12 col-xs-push-2 col-sm-push-0">
 				<div class="panel panel-default">
 					<div class="panel-header">
+					<?php //$idPost=$post->ID; 
+						//echo $idPost; ?>
 						<?php if( has_post_thumbnail( )): ?>
 							<div class="thumbnail"><?php the_post_thumbnail ('full'); ?></div>
 						<?php else: ?>
@@ -27,8 +29,8 @@
 							echo mostrarCategorias($terms_list,'\\');
 							?></p>
 						</div>
-						<a class="pull-right" href="<?php echo esc_url(get_permalink()); ?> ">Ver más</a> 
-					</div>
+						<a class="pull-right" href="<?php echo esc_url(get_permalink()); ?> ">Ver más</a> 			
+					</div><p class="linea"></p>
 				</div>
 			</div>
 		</div>

@@ -64,7 +64,7 @@ get_header();?>
 						<a class="twitter-timeline" href="https://twitter.com/aualcpi">Twitter Aualcpi</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 			     	</div>
 			    </div>
-			  </div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -108,7 +108,7 @@ get_header();?>
 				<a class="right carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="next">
 				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				    <span class="sr-only">Next</span>
-				  </a>
+				 </a>
 			</div>
 		</div>
 	</div>

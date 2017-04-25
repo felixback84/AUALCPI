@@ -24,5 +24,6 @@
 			<?php //get_sidebar('publicacion'); ?>
 		</div>
 	</div>
-</div>				
+</div>	
+</br>			
 <?php get_footer(); ?>

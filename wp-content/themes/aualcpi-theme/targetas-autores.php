@@ -29,7 +29,7 @@
 						<div class="row"><div class="col-xs-12">
 							<a href="<?php echo home_url(); ?>/author/<?php echo $user->user_login; ?>/" class="pull-right">Leer Más</a>
 						</div></div>
-					</div>
+					</div><p class="linea"></p>
 				</div>
 				
 			</div>

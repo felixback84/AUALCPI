@@ -31,7 +31,7 @@
 							if(count($terms_list)!=0) { 
 						?><a href="#"  class="iconoModal" data-toggle="modal" data-target="#myModalBeca1">?</a><?php } ?></p>
 						<a class="pull-right" href="#" data-toggle="modal" data-target="#myModalBecaAplicar">Aplicar</a> 
-					</div>
+					</div><p class="linea"></p>
 				</div>
 			</div>
 		</div>

@@ -17,7 +17,7 @@
 						<p><?php  echo wp_trim_words(get_the_content(),30,'...'); ?></p>
 						<?php the_meta(); ?>
 						<a class="pull-right" href="<?php echo esc_url(get_permalink()); ?> ">Ver más</a> 
-					</div>
+					</div><p class="linea"></p>
 				</div>
 			</div>
 		</div>

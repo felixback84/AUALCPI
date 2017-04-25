@@ -445,6 +445,7 @@ function aualcpi_custom_taxonomies_investigaciones_universidades() {
 }	
 add_action( 'init' , 'aualcpi_custom_taxonomies_investigaciones_universidades');
 flush_rewrite_rules();
+
 function aualcpi_custom_taxonomies_investigaciones_status() {
 	//add new taxonomy hierarchical
 	$labels = array(

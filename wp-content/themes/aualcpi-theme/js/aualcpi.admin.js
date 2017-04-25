@@ -45,27 +45,27 @@ jQuery(document).ready(function ($) {
 		});
 		
 		mediaUploader.on('select', function(){
-			var selection = mediaUploader.state().get('selection');
-			selection.map( function( attachment ) {
-		    attachment = attachment.toJSON();
-		          console.log(attachment);
-		          // Do something with attachment.id and/or attachment.url here
+			var selections = mediaUploader.state().get('selection').map( 
+				function( attachment ) {
+		    		attachment = attachment.toJSON();
+		          	//console.log(attachment);
+		          	return attachment;
+		          	// Do something with attachment.id and/or attachment.url here
 		    });
-			attachment = mediaUploader.state().get('selection');
-			length = attachment.length;
-			console.log(attachment);
-			console.log(attachment.models);
-			// console.log(JSON.stringify(attachment));
-			// console.log(JSON.stringify(length));
-			//alert(attachment);
-			// for (var i = 0 ; i < length ; i++) {
-			// 	url += attachment[i].url
-			// 	name += attachment[i].title
-			// }
-			// console.log(JSON.stringify(url));
-			// console.log(JSON.stringify(name));
-			// $('#user_meta_files').val(url);
-			// $('#user_meta_file_show').val(name);
+
+		    var i;
+		    var urls =[];
+		    //console.log(selections);
+			$('#investigacion_meta_files_show').empty();
+		    for (var i = 0; i < selections.length ; i++) {
+		    	console.log(selections[i].url);
+		    	filename = '<p>'+selections[i].filename+'</p>';
+		    	$('#investigacion_meta_files_show').append(filename);
+		    	url= selections[i].url;
+		    	urls.push(url);
+		    }
+
+		    $('#investigacion_meta_files').val(urls);
 		});
 
 		mediaUploader.open();

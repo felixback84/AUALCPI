@@ -626,6 +626,10 @@ add_action( 'init' , 'awesome_custom_taxonomies_publicaciones_tag');
 		meta box - investigacion 
 		===================================
 */
+function update_edit_form() {
+    echo ' enctype="multipart/form-data"';
+} // end update_edit_form
+add_action('post_edit_form_tag', 'update_edit_form');
 
 function add_custom_meta_boxes() {
  
@@ -637,79 +641,310 @@ function add_custom_meta_boxes() {
         'investigacion',
         'side'
     );
-    
  
 } // end add_custom_meta_boxes
 add_action('add_meta_boxes', 'add_custom_meta_boxes');
 
 function wp_custom_attachment() { 
-	$files = esc_attr(get_option('user_meta_files'));?>
-   	<label for="user_meta_files">Seleccionar archivos:</label>
-	<p id="user_meta_files_show"><?php echo esc_url( get_the_author_meta( 'user_meta_files', $user->ID ) ); ?></p><br />
+	global $post;
+	$files = get_post_meta( $post->ID, 'investigacion_meta_files', true );?>
+   	<label for="investigacion_meta_files">Seleccionar archivos:</label>
+	<div id="investigacion_meta_files_show">
+	<?php 
+	if(is_array($files)){
+		foreach($files as $file){?>
+			<p><?php  echo $file; ?></p>
+	<?php } }else{ ?>
+		<p><?php  echo $file; ?></p>
+	<?php } ?>
+	</div><br />
 	<input type='button' id="upload-button-file" class="button-primary" value="Subir Archivos"/>
-	<input  type="text" name="user_meta_files[]" id="user_meta_files" value="<?php echo esc_url( get_the_author_meta( 'user_meta_files', $user->ID ) ); ?>" class="regular-text" style="width: 200px;"/><br />
+	<input  type="text" name="investigacion_meta_files[]" id="investigacion_meta_files" value="<?php echo $files; ?>" class="regular-text" style="width: 200px;"/><br />
 	<p class="description">Selecionar una archivos para la investigacion.</p>
 <?php
 } 
 
 function save_custom_meta_data($id) {
- 
-    /* --- security verification --- */
-    if(!wp_verify_nonce($_POST['wp_custom_attachment_nonce'], 'wp_custom_attachment_nonce_action')) {
-      return $id;
-    } // end if
-       
-    if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-      return $id;
-    } // end if
-       
-    if('investigacion' == $_POST['post_type']) {
-      if(!current_user_can('edit_page', $id)) {
-        return $id;
-      } // end if
-    } else {
-        if(!current_user_can('edit_page', $id)) {
-            return $id;
-        } // end if
-    } // end if
-    /* - end security verification - */
-     
-    // Make sure the file array isn't empty
-    if(!empty($_FILES['wp_custom_attachment']['name'])) {
-         
-        // Setup the array of supported file types. In this case, it's just PDF.
-        $supported_types = array('application/pdf');
-         
-        // Get the file type of the upload
-        $arr_file_type = wp_check_filetype(basename($_FILES['wp_custom_attachment']['name']));
-        $uploaded_type = $arr_file_type['type'];
-         
-        // Check if the type is supported. If not, throw an error.
-        if(in_array($uploaded_type, $supported_types)) {
- 
-            // Use the WordPress API to upload the file
-            $upload = wp_upload_bits($_FILES['wp_custom_attachment']['name'], null, file_get_contents($_FILES['wp_custom_attachment']['tmp_name']));
-     
-            if(isset($upload['error']) && $upload['error'] != 0) {
-                wp_die('There was an error uploading your file. The error is: ' . $upload['error']);
-            } else {
-                add_post_meta($id, 'wp_custom_attachment', $upload);
-                update_post_meta($id, 'wp_custom_attachment', $upload);     
-            } // end if/else
- 			unset( $_FILES['wp_custom_attachment'] );
-        } else {
-            wp_die("The file type that you've uploaded is not a PDF.");
-        } // end if/else
-         
-    } // end if
+ 	global $post;
+    if(!isset($_POST["investigacion_meta_files"])):
+	return $post;
+	endif;
+	echo '<script language="javascript">alert("'.$id.'");</script>'; 
+	$values = $_POST["investigacion_meta_files"];
+	// foreach( $values as $value ) {
+ //    	add_post_meta( $post->ID, 'investigacion_meta_files', $value );
+	// }
+	update_post_meta($post->ID, "investigacion_meta_files",$values );
      
 } // end save_custom_meta_data
 add_action('save_post', 'save_custom_meta_data');
 
-function update_edit_form() {
-    echo ' enctype="multipart/form-data"';
-} // end update_edit_form
-add_action('post_edit_form_tag', 'update_edit_form');
+
+/*
+		===================================
+		meta box 2 - investigacion 
+		===================================
+*/
+
+function add_custom_meta_boxes_informacion() {
+ 
+    // Define the custom attachment for posts
+    add_meta_box(
+        'wp_custom_text_investigacion',
+        'Informacion de la investigacion',
+        'wp_custom_text_investigacion',
+        'investigacion',
+        'normal'
+    );
+    
+ 
+} // end add_custom_meta_boxes
+add_action('add_meta_boxes', 'add_custom_meta_boxes_informacion');
+
+function wp_custom_text_investigacion() { 
+	global $post;
+	$custom = get_post_custom($post->ID);
+	$RetroAlimentacion = $custom["RetroAlimentacion"][0];
+	$Refinar = $custom["Refinar"][0];
+	$RetroAlimentacion2 = $custom["RetroAlimentacion2"][0];
+	$IdeasTop = $custom["IdeasTop"][0];
+	$Impacto = $custom["Impacto"][0];
+	$argsTextarea = array(
+	    'textarea_rows' => 5,
+	    'teeny' => true,
+	    'quicktags' => false
+	);
+	?>
+			<label for="RetroAlimentacion"><h3>Informacion - Retro Alimentación</h3></label>
+			<?php
+				$content = $RetroAlimentacion;
+				$editor_id = 'RetroAlimentacion';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+
+			<label for="Refinar"><h3>Informacion - Refinar</h3></label>
+			<?php
+				$content = $Refinar;
+				$editor_id = 'Refinar';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+
+			<label for="RetroAlimentacion2"><h3>Informacion - 2 Retro Alimentacion</h3></label>
+				<?php
+				$content = $RetroAlimentacion2;
+				$editor_id = 'RetroAlimentacion2';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+			<label for="IdeasTop"><h3>Informacion - Ideas Top</h3></label>
+			<?php
+				$content = $IdeasTop;
+				$editor_id = 'IdeasTop';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+
+			<label for="Impacto"><h3>Informacion - Impácto</h3></label>
+			<?php
+				$content = $Impacto;
+				$editor_id = 'Impacto';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+
+<?php 
+}
+ 
+add_action ('save_post', 'save_informacion_investigacion');
+ 
+function save_informacion_investigacion(){
+ 
+	global $post;
+	//var_dump($_POST);
+	// // - still require nonce
+	 
+	// if ( !current_user_can( 'edit_post', $post->ID ))
+	//     return $post->ID;
+	 
+	// - convert back to unix & update post
+	if(!isset($_POST["RetroAlimentacion"])):
+	return $post;
+	endif;
+	update_post_meta($post->ID, "RetroAlimentacion",$_POST["RetroAlimentacion"] );
+	 
+	if(!isset($_POST["Refinar"])):
+	return $post;
+	endif;
+	update_post_meta($post->ID, "Refinar",$_POST["Refinar"]);
+	 
+	if(!isset($_POST["RetroAlimentacion2"])):
+	return $post;
+	endif;
+	update_post_meta($post->ID, "RetroAlimentacion2",$_POST["RetroAlimentacion2"]);
+	 
+	if(!isset($_POST["IdeasTop"])):
+	return $post;
+	endif;
+	update_post_meta($post->ID, "IdeasTop",$_POST["IdeasTop"]);
+	 
+	if(!isset($_POST["Impacto"])):
+	return $post;
+	endif;
+	update_post_meta($post->ID, "Impacto",$_POST["Impacto"]);
+ 
+}
+
+
+/*
+		===================================
+		meta box 3 - investigacion 
+		===================================
+*/
+
+function add_custom_meta_boxes_dates() {
+ 
+    // Define the custom attachment for posts
+    add_meta_box(
+        'wp_custom_date_investigacion',
+        'Fechas de investigacion',
+        'wp_custom_date_investigacion',
+        'investigacion',
+        'normal'
+    );
+    
+ 
+} // end add_custom_meta_boxes
+add_action('add_meta_boxes', 'add_custom_meta_boxes_dates');
+
+function wp_custom_date_investigacion() { 
+	global $post;
+$custom = get_post_custom($post->ID);
+$fechaIdeacion = $custom["investigacionFechaIdeacion"][0];
+$fechaRetroAlimentacion = $custom["investigacionFechaRetroAlimentacion"][0];
+$fechaRefinar = $custom["investigacionFechaRefinar"][0];
+$fechaRetroAlimentacion2 = $custom["investigacionFechaRetroAlimentacion2"][0];
+$fechaIdeasTop = $custom["investigacionFechaIdeasTop"][0];
+$fechaImpacto = $custom["investigacionFechaImpacto"][0];
+// - grab wp time format -
+ 
+$date_format = get_option('date_format'); // Not required in my code
+$time_format = get_option('time_format');
+
+// - populate today if empty, 00:00 for time -
+ 
+if ($fechaIdeacion == null) { $fechaIdeacion = time(); $fechaRetroAlimentacion = $fechaRefinar = $fechaRetroAlimentacion2 = $fechaIdeasTop = $fechaImpacto  = $fechaIdeacion;}
+// - convert to pretty formats -
+ 
+$clean_Ideacion = date("M d, Y", $fechaIdeacion);
+$clean_RetroAlimentacion = date("M d, Y", $fechaRetroAlimentacion);
+$clean_Refinar = date("M d, Y", $fechaRefinar);
+$clean_RetroAlimentacion2 = date("M d, Y", $fechaRetroAlimentacion2);
+$clean_IdeasTop = date("M d, Y", $fechaIdeasTop);
+$clean_Impacto = date("M d, Y", $fechaImpacto);
+?>
+<table>
+	<tr>
+		<td>
+			<input type="hidden" class="patch" value="<?php echo get_template_directory_uri() ?>">
+			<label for="investigacionFechaIdeacion">Fecha - Ideación</label>
+		</td>
+		<td>
+			<input type="text" name="investigacionFechaIdeacion" id="investigacionFechaIdeacion" class="tfdate" value="<?php echo $clean_Ideacion; ?>">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label for="investigacionFechaRetroAlimentacion">Fecha - Retro Alimentación</label>
+		</td>
+		<td>
+			<input type="text" name="investigacionFechaRetroAlimentacion" id="investigacionFechaRetroAlimentacion"  class="tfdate" value="<?php echo $clean_RetroAlimentacion; ?>">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label for="investigacionFechaRefinar">Fecha - Refinar</label>
+		</td>
+		<td>
+			<input type="text" name="investigacionFechaRefinar" id="investigacionFechaRefinar" class="tfdate" value="<?php echo $clean_Refinar; ?>">
+		</td>
+
+	</tr>
+	<tr>
+		<td>	
+			<label for="investigacionFechaRetroAlimentacion2">Fecha - 2 Retro Alimentacion</label>
+		</td>
+		<td>
+			<input type="text" name="investigacionFechaRetroAlimentacion2" id="investigacionFechaRetroAlimentacion2"  class="tfdate" value="<?php echo $clean_RetroAlimentacion2; ?>">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label for="investigacionFechaIdeasTop">Fecha - Ideas Top</label>
+		</td>
+		<td>
+			<input type="text" name="investigacionFechaIdeasTop" id="investigacionFechaIdeasTop" class="tfdate" value="<?php echo $clean_IdeasTop; ?>">
+		</td>
+	</tr>
+	<tr>
+		<td>	
+			<label for="investigacionFechaImpacto">Fecha - Impácto</label>
+		</td>
+		<td>
+			<input type="text" name="investigacionFechaImpacto" id="investigacionFechaImpacto" class="tfdate" value="<?php echo $clean_Impacto; ?>">
+		</td>
+	</tr>
+</table>
+	
+<?php 
+}
+ 
+add_action ('save_post', 'save_tf_events');
+ 
+function save_tf_events(){
+ 
+	global $post;
+	//var_dump($_POST);
+	// // - still require nonce
+	 
+	// if ( !current_user_can( 'edit_post', $post->ID ))
+	//     return $post->ID;
+	 
+	// - convert back to unix & update post
+	 
+	if(!isset($_POST["investigacionFechaIdeacion"])):
+	return $post;
+	endif;
+	$updatestartd = strtotime ( $_POST["investigacionFechaIdeacion"] );
+	update_post_meta($post->ID, "investigacionFechaIdeacion", $updatestartd );
+	 
+	if(!isset($_POST["investigacionFechaRetroAlimentacion"])):
+	return $post;
+	endif;
+	$updateendd = strtotime ( $_POST["investigacionFechaRetroAlimentacion"]);
+	update_post_meta($post->ID, "investigacionFechaRetroAlimentacion", $updateendd );
+
+	if(!isset($_POST["investigacionFechaRefinar"])):
+	return $post;
+	endif;
+	$updateendd = strtotime ( $_POST["investigacionFechaRefinar"]);
+	update_post_meta($post->ID, "investigacionFechaRefinar", $updateendd );
+
+	if(!isset($_POST["investigacionFechaRetroAlimentacion2"])):
+	return $post;
+	endif;
+	$updateendd = strtotime ( $_POST["investigacionFechaRetroAlimentacion2"]);
+	update_post_meta($post->ID, "investigacionFechaRetroAlimentacion2", $updateendd );
+
+	if(!isset($_POST["investigacionFechaIdeasTop"])):
+	return $post;
+	endif;
+	$updateendd = strtotime ( $_POST["investigacionFechaIdeasTop"]);
+	update_post_meta($post->ID, "investigacionFechaIdeasTop", $updateendd );
+
+	if(!isset($_POST["investigacionFechaImpacto"])):
+	return $post;
+	endif;
+	$updateendd = strtotime ( $_POST["investigacionFechaImpacto"]);
+	update_post_meta($post->ID, "investigacionFechaImpacto", $updateendd );
+ 
+}
 
 /*
 		===================================

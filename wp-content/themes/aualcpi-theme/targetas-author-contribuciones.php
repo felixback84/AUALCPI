@@ -20,7 +20,7 @@
 						<p><?php echo get_avatar( $userId, '60' ,'','logo usurio',array(
 											'class' => 'img-circle',
 										)); ?> <?php the_author(); ?></p>
-					</div>
+					</div><p class="linea"></p>
 				</div>
 			</div>
 		</div>

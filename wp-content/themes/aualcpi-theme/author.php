@@ -75,7 +75,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12" >
-			<h4>Contribuciones recientes a retos regionales</h4>	
+			<h1>Contribuciones recientes a retos regionales</h1>	
 			<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
 			<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox"> 
@@ -103,21 +103,23 @@
 				    wp_reset_postdata(); ?>
 				</div>
 				<!-- Controls -->
-				<div class="carousel-nav sombraInferior">
-					<a class="controlcarousel pull-right " href="#carousel-example-generic-beca" role="button" data-slide="next">
-					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					    <span class="sr-only">Next</span>
-					  </a>
-					  <a class="pull-right controlcarousel" href="#carousel-example-generic-beca" role="button" data-slide="prev">
-					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					    <span class="sr-only">Previous</span>
-					</a>
-					<p class="tituloNavegacionCarousel pull-right" >MAS CONTRIBUCIONES</p>
-				</div>	    
+				<a class="left carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>  
 			</div>
 		</div>
 	</div>
 </div>
+<div class="carousel-nav sombraInferior">
+	<div class="container row">
+		<p class="tituloNavegacionCarousel pull-right" >MAS CONTRIBUCIONES</p>
+	</div>
+</div>	
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
@@ -158,19 +160,23 @@
 					
 				</div>
 				<!-- Controls -->
-				<div class="carousel-nav sombraInferior">
-					<a class="controlcarousel pull-right " href="#carousel-example-generic-comments" role="button" data-slide="next">
-					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					    <span class="sr-only">Next</span>
-					  </a>
-					  <a class="pull-right controlcarousel" href="#carousel-example-generic-comments" role="button" data-slide="prev">
-					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					    <span class="sr-only">Previous</span>
-					</a>
-					<p class="tituloNavegacionCarousel pull-right" >MAS CONTRIBUCIONES</p>
-				</div>	    
+				<a class="left carousel-control" href="#carousel-example-generic-comments" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#carousel-example-generic-comments" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>    
 			</div>
 		</div>
+	</div>
+</div>
+<div class="espacioBotton">
+	<div class="carousel-nav sombraInferior">
+	<div class="container row">
+		<p class="tituloNavegacionCarousel pull-right" >MAS COMENTARIOS</p>
+	</div>
 	</div>
 </div>
 <?php get_footer(); ?>

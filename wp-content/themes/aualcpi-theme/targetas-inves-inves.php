@@ -27,7 +27,7 @@
 							endif; ?></p>
 						<a class="pull-right" href="<?php echo esc_url(get_permalink()); ?> ">Ver más</a> 
 						</div>
-					</div>
+					</div><p class="linea"></p>
 				</div>
 			</div>
 		</div>
