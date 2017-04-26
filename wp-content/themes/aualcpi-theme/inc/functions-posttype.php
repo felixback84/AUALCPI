@@ -267,8 +267,6 @@ function aualcpi_custom_taxonomies_categorias() {
 }	
 add_action( 'init' , 'aualcpi_custom_taxonomies_categorias');
 
-
-
 function awesome_custom_taxonomies_tipo_becas() {
 	//add new taxonomy hierarchical
 	$labels = array(
@@ -415,7 +413,7 @@ function aualcpi_custom_taxonomies_investigaciones_areas() {
 	);
 
 	register_taxonomy('areas', array('investigacion','user'), $args);
-}	
+}
 add_action( 'init' , 'aualcpi_custom_taxonomies_investigaciones_areas');
 flush_rewrite_rules();
 function aualcpi_custom_taxonomies_investigaciones_universidades() {
@@ -647,20 +645,26 @@ add_action('add_meta_boxes', 'add_custom_meta_boxes');
 
 function wp_custom_attachment() { 
 	global $post;
-	$files = get_post_meta( $post->ID, 'investigacion_meta_files', true );?>
+	//echo $post->ID;
+	$files = get_post_meta( $post->ID, 'investigacion_meta_files', true );
+	//var_dump($files);
+	$arrayFiles= explode(",",$files[0]);
+	//var_dump($arrayFiles);?>
    	<label for="investigacion_meta_files">Seleccionar archivos:</label>
 	<div id="investigacion_meta_files_show">
 	<?php 
-	if(is_array($files)){
-		foreach($files as $file){?>
-			<p><?php  echo $file; ?></p>
-	<?php } }else{ ?>
-		<p><?php  echo $file; ?></p>
+
+	if(is_array($arrayFiles)){
+		foreach($arrayFiles as $file){?>
+			<p><?php  echo basename($file); ?></p>
+		<?php } 
+		}else{ ?>
+			<p><?php  echo basename($file); ?></p>
 	<?php } ?>
-	</div><br />
+	</div>
 	<input type='button' id="upload-button-file" class="button-primary" value="Subir Archivos"/>
-	<input  type="text" name="investigacion_meta_files[]" id="investigacion_meta_files" value="<?php echo $files; ?>" class="regular-text" style="width: 200px;"/><br />
-	<p class="description">Selecionar una archivos para la investigacion.</p>
+	<input  type="hidden" name="investigacion_meta_files[]" id="investigacion_meta_files" value="<?php echo $files[0]; ?>" class="regular-text" style="width: 200px;"/><br />
+	<p class="description">Selecionar los archivos para la investigacion.</p>
 <?php
 } 
 
@@ -672,7 +676,7 @@ function save_custom_meta_data($id) {
 	echo '<script language="javascript">alert("'.$id.'");</script>'; 
 	$values = $_POST["investigacion_meta_files"];
 	// foreach( $values as $value ) {
- //    	add_post_meta( $post->ID, 'investigacion_meta_files', $value );
+ 	// add_post_meta( $post->ID, 'investigacion_meta_files', $value );
 	// }
 	update_post_meta($post->ID, "investigacion_meta_files",$values );
      
@@ -815,29 +819,29 @@ add_action('add_meta_boxes', 'add_custom_meta_boxes_dates');
 
 function wp_custom_date_investigacion() { 
 	global $post;
-$custom = get_post_custom($post->ID);
-$fechaIdeacion = $custom["investigacionFechaIdeacion"][0];
-$fechaRetroAlimentacion = $custom["investigacionFechaRetroAlimentacion"][0];
-$fechaRefinar = $custom["investigacionFechaRefinar"][0];
-$fechaRetroAlimentacion2 = $custom["investigacionFechaRetroAlimentacion2"][0];
-$fechaIdeasTop = $custom["investigacionFechaIdeasTop"][0];
-$fechaImpacto = $custom["investigacionFechaImpacto"][0];
-// - grab wp time format -
- 
-$date_format = get_option('date_format'); // Not required in my code
-$time_format = get_option('time_format');
+	$custom = get_post_custom($post->ID);
+	$fechaIdeacion = $custom["investigacionFechaIdeacion"][0];
+	$fechaRetroAlimentacion = $custom["investigacionFechaRetroAlimentacion"][0];
+	$fechaRefinar = $custom["investigacionFechaRefinar"][0];
+	$fechaRetroAlimentacion2 = $custom["investigacionFechaRetroAlimentacion2"][0];
+	$fechaIdeasTop = $custom["investigacionFechaIdeasTop"][0];
+	$fechaImpacto = $custom["investigacionFechaImpacto"][0];
+	// - grab wp time format -
+	 
+	$date_format = get_option('date_format'); // Not required in my code
+	$time_format = get_option('time_format');
 
-// - populate today if empty, 00:00 for time -
- 
-if ($fechaIdeacion == null) { $fechaIdeacion = time(); $fechaRetroAlimentacion = $fechaRefinar = $fechaRetroAlimentacion2 = $fechaIdeasTop = $fechaImpacto  = $fechaIdeacion;}
-// - convert to pretty formats -
- 
-$clean_Ideacion = date("M d, Y", $fechaIdeacion);
-$clean_RetroAlimentacion = date("M d, Y", $fechaRetroAlimentacion);
-$clean_Refinar = date("M d, Y", $fechaRefinar);
-$clean_RetroAlimentacion2 = date("M d, Y", $fechaRetroAlimentacion2);
-$clean_IdeasTop = date("M d, Y", $fechaIdeasTop);
-$clean_Impacto = date("M d, Y", $fechaImpacto);
+	// - populate today if empty, 00:00 for time -
+	 
+	if ($fechaIdeacion == null) { $fechaIdeacion = time(); $fechaRetroAlimentacion = $fechaRefinar = $fechaRetroAlimentacion2 = $fechaIdeasTop = $fechaImpacto  = $fechaIdeacion;}
+	// - convert to pretty formats -
+	 
+	$clean_Ideacion = date("M d, Y", $fechaIdeacion);
+	$clean_RetroAlimentacion = date("M d, Y", $fechaRetroAlimentacion);
+	$clean_Refinar = date("M d, Y", $fechaRefinar);
+	$clean_RetroAlimentacion2 = date("M d, Y", $fechaRetroAlimentacion2);
+	$clean_IdeasTop = date("M d, Y", $fechaIdeasTop);
+	$clean_Impacto = date("M d, Y", $fechaImpacto);
 ?>
 <table>
 	<tr>
