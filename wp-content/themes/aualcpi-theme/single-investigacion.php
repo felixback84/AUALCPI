@@ -1,27 +1,28 @@
 <?php get_header(); 
 $idPost;?>
-<div class="container">
-	<div class="row espacioBotton">
-		<div class="col-xs-12" style="">
-			<?php if( have_posts() ):
-				while( have_posts() ): the_post(); ?>
-				<?php //$idPost=$post->ID; 
-				//echo $idPost; ?>
-					<div class="singleInvestigaciones">
-						<div id="carousel-id" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="item active">
-									<?php if( has_post_thumbnail() ): ?>
-										<div class="thumbnail"><?php the_post_thumbnail('full'); ?></div>
-									<?php endif; ?>
-									<div class="container">
-										<div class="carousel-caption">
-											<?php the_title('<h1 class="entry-title">','</h1>' ); ?>
-										</div>
-									</div>
-								</div>
+
+<?php if( have_posts() ):
+	while( have_posts() ): the_post(); ?>
+	<?php //$idPost=$post->ID; 
+	//echo $idPost; ?>
+		<div class="singleInvestigaciones espacioBotton">
+			<div id="imagenTop" class="carousel slide" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="item active">
+						<?php if( has_post_thumbnail() ): ?>
+							<div class="thumbnail"><?php the_post_thumbnail('full'); ?></div>
+						<?php endif; ?>
+						<div class="container">
+							<div class="carousel-caption">
+								<?php the_title('<h1 class="entry-title">','</h1>' ); ?>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12" style="">
 						<p>
 							<?php $terms_list=wp_get_post_terms($post->ID,'areas');
 							if(count($terms_list)!=0) { echo ('Areas de conocimiento: ');
@@ -53,8 +54,16 @@ $idPost;?>
 							} ?>
 						</p>
 					</div>
-				<?php endwhile;
-			endif; ?>
+				</div>
+			</div>
+		</div>
+	<?php endwhile;
+endif; ?>
+
+<div class="container">
+	<div class="row espacioBotton">
+		<div id="cuadroHazteMiembro" class="col-xs-12 col-sm-8 col-sm-push-2">
+			<h4 class="text-center">La Red Lisi es una plataforma de investigación regional <a href="<?php echo home_url('/membresia/');  ?>">Házte miembro</a></h4>
 		</div>
 	</div>
 </div>
@@ -79,47 +88,45 @@ $idPost;?>
 				$fechaFin5 = date("M d, Y", get_post_meta(get_the_ID(), 'investigacionFechaIdeasTop', true));
 				$fechaInicio6 = $fechaFin5; 
 				?>
-			    <li role="presentation"  <?php if(($fechaInicio1 <= $hoy)&&($fechaFin1 > $hoy)){ echo 'class="active"';}?> >
+			    <li role="presentation"  <?php  if(($fechaFin1 > $hoy) || (empty($fechaInicio1))){ echo 'class="active"';}?> >
 			    	<a href="#Ideacion" aria-controls="Ideacion" role="tab" data-toggle="tab">
-			    		<p>Ideación</p>
-			    		<p id="" class="lineasInvestigacion"></p>
-			    		<p><?php echo 'empieza en '.$fechaInicio1; ?></p>
+			    		<p class="text-center">Ideación</p>
+			    		<p id="lineaIdeacion"></p>
+			    		<p><?php if($fechaInicio1 <= $hoy){ echo '<p class="contribuciones1 text-center"></p><p class="text-center">contribuciones</p>'; }else{echo '<p class="text-center">Empieza en</p><p class="text-center">'.$fechaInicio1.'</p>';} ?></p>
 			    	</a></li>
 			    <li role="presentation"  <?php if(($fechaInicio2 <= $hoy)&&($fechaFin2 > $hoy)){ echo 'class="active"';}?> >
 			    	<a href="#RetroAlimentacion" aria-controls="RetroAlimentacion" role="tab" data-toggle="tab">
-			    		<p>Retro Alimentacion</p>
+			    		<p class="text-center">Retro Alimentacion</p>
 			    		<p id="lineaRetroAlimentacion"></p>
-			    		<div class="puntoInvestigacion"></div>
-			    		<p><?php echo 'empieza en '.$fechaInicio2; ?></p>
+			    		<p><?php if($fechaInicio2 <= $hoy){ echo '<p class="contribuciones2 text-center"></p><p class="text-center">contribuciones</p>'; }else{echo '<p class="text-center">Empieza en</p><p class="text-center">'.$fechaInicio2.'</p>';} ?></p>
 			    	</a></li>
 			    <li role="presentation"  <?php if(($fechaInicio3 <= $hoy)&&($fechaFin3 > $hoy)){ echo 'class="active"';}?> >
 			    	<a href="#Refinar" aria-controls="Refinar" role="tab" data-toggle="tab">
-			    		<p>Refinar</p>
-			    		<p id=" "  class="lineasInvestigacion"></p>
-			    		<p><?php echo 'empieza en '.$fechaInicio3; ?></p>
+			    		<p class="text-center">Refinar</p>
+			    		<p id="lineaRefinar"></p>
+			    		<p><?php if($fechaInicio3 <= $hoy){ echo '<p class="contribuciones3 text-center"></p><p class="text-center">contribuciones</p>'; }else{echo '<p class="text-center">Empieza en</p><p class="text-center">'.$fechaInicio3.'</p>';} ?></p>
 			    	</a></li>
 			    <li role="presentation"  <?php if(($fechaInicio4 <= $hoy)&&($fechaFin4 > $hoy)){ echo 'class="active"';}?> >
 			    	<a href="#2daRetroAlimentación" aria-controls="2daRetroAlimentación" role="tab" data-toggle="tab">
-			    		<p>2daRetro Alimentación</p>
-			    		<div id=" "  class="lineasInvestigacion"></div>
-			    		<div class="puntoInvestigacion"></div>
-			    		<p><?php echo 'empieza en '.$fechaInicio4; ?></p>
+			    		<p class="text-center">2da Retroalimentación</p>
+			    		<p id="lineaRetroAlimentacion2" ></p>
+			    		<p><?php if($fechaInicio4 <= $hoy){ echo '<p class="contribuciones4 text-center"></p><p class="text-center">contribuciones</p>'; }else{echo '<p class="text-center">Empieza en</p><p class="text-center">'.$fechaInicio4.'</p>';} ?></p>
 			    	</a></li>
 			    <li role="presentation"  <?php if(($fechaInicio5 <= $hoy)&&($fechaFin5 > $hoy)){ echo 'class="active"';}?> >
 			    	<a href="#IdeasTop" aria-controls="IdeasTop" role="tab" data-toggle="tab">
-			    		<p>Ideas Top</p>
-			    		<p id=" "  class="lineasInvestigacion"></p>
-			    		<p><?php echo 'empieza en '.$fechaInicio5; ?></p>
+			    		<p class="text-center">Ideas Top</p>
+			    		<p id="lineaIdeasTop"></p>
+			    		<p><?php if($fechaInicio5 <= $hoy){ echo '<p class="contribuciones5 text-center"></p><p class="text-center">contribuciones</p>'; }else{echo '<p class="text-center">Empieza en</p><p class="text-center">'.$fechaInicio5.'</p>';} ?></p>
 			    	</a></li>
-			    <li role="presentation"  <?php if(($fechaInicio6 <= $hoy)){ echo 'class="active"';}?> >
+			    <li role="presentation"  <?php if(($fechaInicio6 <= $hoy)&&($fechaInicio1 >= $hoy)){ echo 'class="active"';}?> >
 			    	<a href="#Impacto" aria-controls="Impacto" role="tab" data-toggle="tab">
-			    		<p>Impácto</p>
-			    		<p id=" "  class="lineasInvestigacion"></p>
-			    		<p><?php echo 'empieza en '.$fechaInicio6; ?></p>
+			    		<p class="text-center">Impácto</p>
+			    		<p id="lineaImpacto"></p>
+			    		<p><?php if($fechaInicio6 <= $hoy){ echo '<p class="contribuciones6 text-center"></p><p class="text-center">contribuciones</p>'; }else{echo '<p class="text-center">Empieza en</p><p class="text-center">'.$fechaInicio6.'</p>';} ?></p>
 			    	</a></li>
 			  </ul>
 			  <div class="tab-content">
-			    <div role="tabpanel" class="tab-pane <?php if(($fechaInicio1 <= $hoy)&&($fechaFin1 > $hoy)){ echo ' active';}?> " id="Ideacion">
+			    <div role="tabpanel" class="tab-pane <?php if(($fechaFin1 > $hoy) || (empty($fechaInicio1))){ echo ' active';}?> " id="Ideacion">
 					<div class="contenido-tabs">
 						<!--inicion ideacion-->
 						<div class="col-xs-12">
@@ -130,12 +137,13 @@ $idPost;?>
 											<div class="col-sx-12 col-md-7">
 												<h2>Ideas</h2>
 												<?php the_content(); ?>
+												<?php if($fechaInicio1 <= $hoy){ echo '<p><span class="contribuciones1" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio1.'</p>';} ?>
+												<a href="http://localhost/AUALCPI/AUALCPI/wp-admin/post-new.php?post_type=contribuciones" class="btn btnAporteIdeas">Aportar una idea</a>
 											</div>
 											<div class="col-sx-12 col-md-4 col-md-push-1">
 												<div class="singleInvestigacionPanelIzquierdo">
 													<h4>Información adicional</h4>
 													<?php //var_dump(get_post_meta(get_the_ID(), 'investigacion_meta_files', true));
-														
 														$files = get_post_meta(get_the_ID(), 'investigacion_meta_files', true); 
 														$arrayFiles= explode(",",$files[0]);
 														if(is_array($arrayFiles)){
@@ -160,6 +168,7 @@ $idPost;?>
 						</div>
 						<div class="col-sm-12">
 							<h1>Contribuciones recientes a retos regionales</h1>
+							<?php $contContribuciones=0; ?>
 							<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
 								<div class="carousel-inner" role="listbox"> 
 								<?php $args = array(
@@ -178,8 +187,10 @@ $idPost;?>
 									);
 									$custom_posts = new WP_Query( $args );
 									$cont=0;
+									
 									if ( $custom_posts->have_posts() ){ 
-										while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
+										while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); 
+										$contContribuciones++; ?>
 									<?php if($cont == 0){ ?>
 												<div class="item active">
 											<?php }else{ ?> 
@@ -192,7 +203,8 @@ $idPost;?>
 								<?php $cont++; endwhile;
 								}else{
 									echo '<p class="text-center">no hay contribuciones</p>';
-								};	
+								};
+									
 						    	wp_reset_postdata(); ?>
 						    	</div>
 								<a class="left carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="prev">
@@ -205,6 +217,7 @@ $idPost;?>
 								</a>
 							</div>
 						</div>
+						<?php echo '<input type="hidden" id="contContribuciones1" value="'.$contContribuciones.'" />';?>
 
 					</div>
 			    </div>
@@ -219,6 +232,7 @@ $idPost;?>
 											<div class="col-sx-12 col-md-7">
 												<h2>Retro Alimentación</h2>
 												<?php $contenido = get_post_meta(get_the_ID(), 'RetroAlimentacion', true); echo '<h4>'.$contenido.'</h4>'?>
+												<?php if($fechaInicio2 <= $hoy){ echo '<p><span class="contribuciones2" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio2.'</p>';} ?>
 											</div>
 											<div class="col-sx-12 col-md-4 col-md-push-1">
 												<div class="singleInvestigacionPanelIzquierdo">
@@ -249,6 +263,7 @@ $idPost;?>
 						</div>
 						<div class="col-sm-12">
 							<h1>Contribuciones recientes a retos regionales</h1>
+							<?php $contContribuciones=0; ?>
 							<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
 								<div class="carousel-inner" role="listbox"> 
 								<?php $args = array(
@@ -268,7 +283,8 @@ $idPost;?>
 									$custom_posts = new WP_Query( $args );
 									$cont=0;
 									if ( $custom_posts->have_posts() ){ 
-										while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
+										while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); 
+										$contContribuciones++; ?>
 									<?php if($cont == 0){ ?>
 												<div class="item active">
 											<?php }else{ ?> 
@@ -295,6 +311,7 @@ $idPost;?>
 								</a>
 							</div>
 						</div>
+						<?php echo '<input type="hidden" id="contContribuciones2" value="'.$contContribuciones.'" />';?>
 
 			     	</div>
 			    </div>
@@ -309,6 +326,7 @@ $idPost;?>
 											<div class="col-sx-12 col-md-7">
 												<h2>Refinar</h2>
 												<?php $contenido = get_post_meta(get_the_ID(), 'Refinar', true); echo '<h4>'.$contenido.'</h4>'?>
+												<?php if($fechaInicio3 <= $hoy){ echo '<p><span class="contribuciones3" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio3.'</p>';} ?>
 											</div>
 											<div class="col-sx-12 col-md-4 col-md-push-1">
 												<div class="singleInvestigacionPanelIzquierdo">
@@ -339,6 +357,7 @@ $idPost;?>
 						</div>
 						<div class="col-sm-12">
 							<h1>Contribuciones recientes a retos regionales</h1>
+							<?php $contContribuciones=0; ?>
 							<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
 								<div class="carousel-inner" role="listbox"> 
 								<?php $args = array(
@@ -358,7 +377,8 @@ $idPost;?>
 									$custom_posts = new WP_Query( $args );
 									$cont=0;
 									if ( $custom_posts->have_posts() ){ 
-										while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
+										while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); 
+										$contContribuciones++; ?>
 									<?php if($cont == 0){ ?>
 												<div class="item active">
 											<?php }else{ ?> 
@@ -384,6 +404,7 @@ $idPost;?>
 								</a>
 							</div>
 						</div>
+						<?php echo '<input type="hidden" id="contContribuciones3" value="'.$contContribuciones.'" />';?>
 
 			     	</div>
 			    </div>
@@ -398,6 +419,7 @@ $idPost;?>
 											<div class="col-sx-12 col-md-7">
 												<h2>2 Retro Alimentación</h2>
 												<?php $contenido = get_post_meta(get_the_ID(), 'RetroAlimentacion2', true); echo '<h4>'.$contenido.'</h4>'?>
+												<?php if($fechaInicio4 <= $hoy){ echo '<p><span class="contribuciones4" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio4.'</p>';} ?>
 											</div>
 											<div class="col-sx-12 col-md-4 col-md-push-1">
 												<div class="singleInvestigacionPanelIzquierdo">
@@ -428,6 +450,7 @@ $idPost;?>
 						</div>
 						<div class="col-sm-12">
 							<h1>Contribuciones recientes a retos regionales</h1>
+							<?php $contContribuciones=0; ?>
 							<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
 								<div class="carousel-inner" role="listbox"> 
 								<?php $args = array(
@@ -447,7 +470,8 @@ $idPost;?>
 									$custom_posts = new WP_Query( $args );
 									$cont=0;
 									if ( $custom_posts->have_posts() ){ 
-										while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
+										while ( $custom_posts->have_posts() ) : $custom_posts->the_post();  
+										$contContribuciones++; ?>
 									<?php if($cont == 0){ ?>
 												<div class="item active">
 											<?php }else{ ?> 
@@ -473,6 +497,7 @@ $idPost;?>
 								</a>
 							</div>
 						</div>
+						<?php echo '<input type="hidden" id="contContribuciones4" value="'.$contContribuciones.'" />';?>
 
 			     	</div>
 			    </div>
@@ -487,6 +512,7 @@ $idPost;?>
 											<div class="col-sx-12 col-md-7">
 												<h2>Ideas Top</h2>
 												<?php $contenido = get_post_meta(get_the_ID(), 'IdeasTop', true); echo '<h4>'.$contenido.'</h4>'?>
+												<?php if($fechaInicio5 <= $hoy){ echo '<p><span class="contribuciones5" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio5.'</p>';} ?>
 											</div>
 											<div class="col-sx-12 col-md-4 col-md-push-1">
 												<div class="singleInvestigacionPanelIzquierdo">
@@ -517,6 +543,7 @@ $idPost;?>
 						</div>
 						<div class="col-sm-12">
 							<h1>Contribuciones recientes a retos regionales</h1>
+							<?php $contContribuciones=0; ?>
 							<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
 								<div class="carousel-inner" role="listbox"> 
 								<?php $args = array(
@@ -536,7 +563,8 @@ $idPost;?>
 									$custom_posts = new WP_Query( $args );
 									$cont=0;
 									if ( $custom_posts->have_posts() ){ 
-										while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
+										while ( $custom_posts->have_posts() ) : $custom_posts->the_post();  
+										$contContribuciones++; ?>
 									<?php if($cont == 0){ ?>
 												<div class="item active">
 											<?php }else{ ?> 
@@ -562,10 +590,11 @@ $idPost;?>
 								</a>
 							</div>
 						</div>
+						<?php echo '<input type="hidden" id="contContribuciones5" value="'.$contContribuciones.'" />';?>
 
 			     	</div>
 			    </div>
-			    <div role="tabpanel" class="tab-pane <?php if(($fechaInicio6 <= $hoy)){ echo ' active';}?>" id="Impacto">
+			    <div role="tabpanel" class="tab-pane <?php if(($fechaInicio6 <= $hoy)&&($fechaInicio1 >= $hoy)){ echo ' active';}?>" id="Impacto">
 			     	<div class="contenido-tabs">
 						
 						<div class="col-xs-12">
@@ -576,6 +605,7 @@ $idPost;?>
 											<div class="col-sx-12 col-md-7">
 												<h2>Impácto</h2>
 												<?php $contenido = get_post_meta(get_the_ID(), 'Impacto', true); echo '<h4>'.$contenido.'</h4>'?>
+												<?php if($fechaInicio6 <= $hoy){ echo '<p><span class="contribuciones6" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio6.'</p>';} ?>
 											</div>
 											<div class="col-sx-12 col-md-4 col-md-push-1">
 												<div class="singleInvestigacionPanelIzquierdo">
@@ -606,6 +636,7 @@ $idPost;?>
 						</div>
 						<div class="col-sm-12">
 							<h1>Contribuciones recientes a retos regionales</h1>
+							<?php $contContribuciones=0; ?>
 							<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
 								<div class="carousel-inner" role="listbox"> 
 								<?php $args = array(
@@ -624,7 +655,8 @@ $idPost;?>
 									$custom_posts = new WP_Query( $args );
 									$cont=0;
 									if ( $custom_posts->have_posts() ){ 
-										while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
+										while ( $custom_posts->have_posts() ) : $custom_posts->the_post();  
+										$contContribuciones++; ?>
 									<?php if($cont == 0){ ?>
 												<div class="item active">
 											<?php }else{ ?> 
@@ -650,6 +682,7 @@ $idPost;?>
 								</a>
 							</div>
 						</div>
+						<?php echo '<input type="hidden" id="contContribuciones6" value="'.$contContribuciones.'" />';?>
 
 			     	</div>
 			    </div>

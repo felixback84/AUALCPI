@@ -304,4 +304,20 @@ $('.collapse #btn-abrir').click(function() {
 $('.collapse #btn-cerrar').click(function() {
     $(this).parent().parent().parent().removeClass('in');
 });
+
+cont=$('#contContribuciones1').val();
+$('.contribuciones1').text(cont);
+cont=$('#contContribuciones2').val();
+$('.contribuciones2').text(cont);
+cont=$('#contContribuciones3').val();
+$('.contribuciones3').text(cont);
+cont=$('#contContribuciones4').val();
+$('.contribuciones4').text(cont);
+cont=$('#contContribuciones5').val();
+$('.contribuciones5').text(cont);
+cont=$('#contContribuciones6').val();
+$('.contribuciones6').text(cont);
+
 });
+
+

@@ -71,7 +71,7 @@ get_header();?>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
-			<h1>Becas de movilidad (EMANUEL)</h1>
+			<h1>Becas de movilidad (EMUAL)</h1>
 			<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
 			<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox"> 

@@ -13,7 +13,7 @@
 						<?php else: ?>
 							<div class="thumbnail"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_aualcpi.png" alt="imagen de defecto" width="" height="" /></div>
 						<?php endif; ?>
-						<p>Posted on: <?php the_time('F j, Y'); ?> at <?php the_time('g:i a'); ?></p>
+						<!-- <p>Posted on: <?php the_time('F j, Y'); ?> at <?php the_time('g:i a'); ?></p> -->
 						<h4><a href="<?php echo esc_url(get_permalink()); ?> "><?php the_title(); ?></a></h4>
 						<p><?php  echo wp_trim_words(get_the_content(),30,'...'); ?></p> 
 						<?php $author_obj = get_user_by( 'email',get_the_author_meta( 'user_email')); 
@@ -21,6 +21,9 @@
 						<p><?php echo get_avatar( $userId, '60' ,'','logo usurio',array(
 											'class' => 'img-circle',
 										)); ?> <?php the_author(); ?></p>
+						<p>
+							<span class="pull-right"><?php comments_number( '0', '1', '%' ); ?> <span class="icon icon-comments"></span></span>
+						</p>
 					</div><p class="linea"></p>
 				</div>
 			</div>

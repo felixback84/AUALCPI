@@ -1,8 +1,8 @@
 <?php get_header(); ?>
-<div class="container">
+<!-- <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="row">
+			<div class="row"> -->
 				<?php $userId = get_queried_object_id(); //var_dump($userId);?>
 				<!-- This sets the $curauth variable -->
 			    <?php  $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));  ?>
@@ -68,10 +68,10 @@
 					<a class="right carousel-control" href="#carousel-dual-perfil" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
 			   <?php //var_dump(get_term_by('name',get_the_author_meta( 'ciudad_user', $userId ),'ciudad_user'));?>
-			</div>
+			<!-- </div> 
 		</div>
 	</div>
-</div>
+</div> -->
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12" >
