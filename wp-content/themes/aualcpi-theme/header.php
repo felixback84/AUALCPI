@@ -4,6 +4,13 @@
 	<meta charset="utf-8">
 	<title>Aualcpi</title>
 	<?php wp_head(); ?>
+	 <!-- You can use open graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+  <meta property="og:url"           content="http://www.lamaletadefelix.com" />
+  <meta property="og:type"          content="website2" />
+  <meta property="og:title"         content="Your Website Title2" />
+  <meta property="og:description"   content="description provisional" />
+  <meta property="og:image"         content="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_aualcpi.png" />
 </head>
 <?php
 		if( is_front_page()): 
@@ -18,6 +25,16 @@
 		incluyendo posición en la UI
 		-->
 <body <?php body_class($aualcpiTheme_classes)?> >
+<!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.9";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-8 col-sm-12 col-md-8 col-lg-7">

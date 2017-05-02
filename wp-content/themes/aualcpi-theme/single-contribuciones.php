@@ -33,11 +33,28 @@
 						<?php the_content(); ?>
 					</div>
 				</article>
+
+				<!-- Your like button code -->
+  <div class="fb-like" 
+    data-href="http://www.lamaletadefelix.com" 
+    data-layout="standard" 
+    data-action="like" 
+    data-show-faces="true">
+  </div>
+
+  ---
+  <div class="fb-like" data-href="http://www.lamaletadefelix.com" data-layout="box_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+
+  ----
+  <div class="fb-like" data-href="http://www.google.com" data-width="450" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+
+
 				<div class="row">
 					<div class="col-xs-6 text-left"><?php previous_post_link(); ?></div>
 					<div class="col-xs-6 text-right"><?php next_post_link(); ?></div>
 				</div>
 				<div class="row">
+
 					<?php if( comments_open() ){ 
 						//comments_template(); 
 					} else {

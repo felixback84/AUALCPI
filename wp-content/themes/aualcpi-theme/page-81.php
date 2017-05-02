@@ -26,7 +26,7 @@
 	<div class="row bordetabVerticalNegro espacioBotton tabVerticalNegro ElementoPadre sombraInferior">
       <div class="col-xs-9 tab-content">
         <div class="tab-pane active" id="home-r">
-			<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam vitae voluptatum tempore laudantium error officiis impedit illum rerum corrupti qui iste, maiores, voluptate dignissimos recusandae distinctio eum voluptatibus quae dicta.</div>
+			<div>Lorem 2ipsum dolor sit amet, consectetur adipisicing elit. Ipsam vitae voluptatum tempore laudantium error officiis impedit illum rerum corrupti qui iste, maiores, voluptate dignissimos recusandae distinctio eum voluptatibus quae dicta.</div>
 			<div>Voluptatem numquam voluptatibus recusandae atque nobis sed quidem, possimus quasi suscipit. Ipsa est asperiores ullam, porro sapiente dolor. Rem quidem beatae similique maiores odio nobis corporis? Animi repellat, dicta ab?</div>
 			<div>Qui unde ducimus nihil assumenda earum fugiat facere. Saepe blanditiis dignissimos, placeat nulla ea dolor, nesciunt aspernatur, fuga pariatur minus nihil! Illo iusto ipsa sequi aut ab neque accusamus rem?</div>
 			<div>Suscipit porro molestias, necessitatibus sint ut blanditiis impedit sunt distinctio officia, doloremque eaque hic molestiae dolores deleniti autem voluptatem natus laborum tenetur eum eveniet ipsam, recusandae illo. Impedit, doloribus, ducimus.</div>

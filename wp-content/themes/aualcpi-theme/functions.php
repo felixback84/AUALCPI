@@ -505,3 +505,10 @@ function my_get_user()  {
  
   add_action('wp_ajax_my_get_becas', 'my_get_becas');
   add_action('wp_ajax_nopriv_my_get_becas', 'my_get_becas');
+
+/*
+		===================================
+		facebook add sdk
+		===================================
+*/
+  
