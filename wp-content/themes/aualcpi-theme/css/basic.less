@@ -2,6 +2,9 @@
 	padding:0px;
 	margin:0px;
 }
+.quitarPadding{
+	padding:0px;
+}
 .bloquesGrises{
 	background: @BackgroundBloquesGrises;
 }
@@ -54,14 +57,26 @@ article>.row, .espacioBotton{
 		border-right: 1px solid #bbb;
 		border-bottom: 1px solid #bbb;
 		border-top: 1px solid #bbb;
+		&:first-child{
+			background-color: #4986e7;
+			color:white;
+		}
 	}
 	li, a{
 		color: black;
 		height: 50px;
 		line-height: 30px;
 		&.active,&:hover{
-			background-color: #4986e7;
+			background-color: #3a6ab6;
 			color:white;
+		}
+	}
+	li{
+		&:first-child{
+			background-color: #4986e7;
+			&.active,&:hover{
+				background-color: #3a6ab6;
+			}
 		}
 	}
 	a{
@@ -81,6 +96,9 @@ article>.row, .espacioBotton{
 		&:hover{
 			color:white;
 		}
+	}
+	&.navbar-default .navbar-nav>li:first-child>a{
+		color:white;
 	}
 	.navbar-header{
 		background-color: #bbb;
@@ -106,7 +124,12 @@ article>.row, .espacioBotton{
 #logoAualcpi{
 	margin: 50px 0  28px 0px;
 }
-
+@media (min-width: 992px) { 
+	#logoAualcpi>img{
+		float: left;
+		margin:0 0 20px 20px;
+	}
+}
 .blockquote-reverse{
 	border-right: 0;
 }
@@ -121,7 +144,9 @@ article>.row, .espacioBotton{
 	ul:first-child{
 		border-left:1px solid #666;
 	}
-
+	.navbar-toggle{
+		float:none;
+	}
 	&.navbar-fixed-top{
 		margin-top: 35px;
 	}
@@ -144,7 +169,7 @@ article>.row, .espacioBotton{
 				color:#07376E;
 				font-size: 15px;
 				height: 42px;
-				line-height: 30px;
+				line-height: 37px;
 				&:active,&:hover{
 					background-color: #d6d6d6;
 					color:#000;
@@ -182,7 +207,6 @@ article>.row, .espacioBotton{
 		
 	}
 }
-
 /*#menu-email.navbar-nav>li>a{
 	&::after{
 			content: url(../images/iconosModalBecasWhatsApp.png);

@@ -3,18 +3,15 @@ get_header();?>
 <div class="hidden-xs">
 		<?php echo do_shortcode("[huge_it_slider id='1']"); ?>
 </div>
-<script>
-	jQuery(".slider-loader-1").css({ 'display': "none" });
-</script>
 <div class="container">
 	<div class="row espacioTop espacioBotton">
-		<div class="col-sm-12"><h1>Actualidad AUALCPI</h1></div>
+		<div class="col-sm-12 quitarEspacio"><h1>Actualidad AUALCPI</h1></div>
 		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 quitarEspacio" >
 			<div id="carousel-example-generic-noticias" class="carousel slide quitarEspacio sombraInferior" data-ride="carousel">
 				<div class="carousel-inner" role="listbox"> 
 					<?php $args = array (
 						'post_type' => 'post',
-						'posts_per_page' => 6, 
+						'posts_per_page' => 10, 
 						'orderby' => 'id',
 						'order'   => 'DESC',
 					);
@@ -44,14 +41,14 @@ get_header();?>
 					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 					    <span class="sr-only">Next</span>
 					  </a>
-					<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagN"></span> de 6 </p>
+					<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagN"></span> de 10 </p>
 				</div>	    
 			</div>
 		</div>
 		<div id="tabsEventoTwitter" class="hidden-xs hidden-sm col-md-4 col-lg-4 " style="">
 			  <ul  class="nav nav-tabs" role="tablist">
 			    <li role="presentation" class="active"><a href="#Eventos" aria-controls="Eventos" role="tab" data-toggle="tab">Eventos</a></li>
-			    <li role="presentation"><a href="#twitter" aria-controls="twitter" role="tab" data-toggle="tab">Twitter</a></li>
+			    <li role="presentation"><a href="#twitter" aria-controls="twitter" role="tab" data-toggle="tab"><span class="icon icon-twitter" style="font-size: 15px;"> </span>Twitter</a></li>
 			  </ul>
 			  <div class="tab-content sombraInferior">
 			    <div role="tabpanel" class="tab-pane active" id="Eventos">
@@ -70,14 +67,14 @@ get_header();?>
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-12">
+		<div class="col-sm-12 quitarEspacio">
 			<h1>Becas de movilidad (EMUAL)</h1>
 			<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
 			<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox"> 
 					<?php $args = array (
 						'post_type' => 'becas',
-						'posts_per_page' => 6, 
+						'posts_per_page' => 10, 
 						'orderby' => 'id',
 						'order'   => 'DESC',
 					);
@@ -87,9 +84,9 @@ get_header();?>
 					if($lastBlog->have_posts()):
 						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
 							<?php if($cont == 0){ ?>
-								<div class="item active">
+								<div class="item active" cont="<?php echo $cont+1; ?>">
 							<?php }else{ ?> 
-									<div class="item">
+									<div class="item" cont="<?php echo $cont+1; ?>">
 							<?php } ?> 
 								<div class="col-xs-12 col-sm-6 col-md-4">
 									<?php get_template_part('targetas-beca'); ?>
@@ -114,20 +111,21 @@ get_header();?>
 	</div>
 </div>
 <div class="carousel-nav sombraInferior">
-	<div class="container row">
-		<p class="tituloNavegacionCarousel pull-right" >MAS BECAS</p>
+	<div class="container quitarPadding">
+		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/movilidad/');?>">MAS BECAS</a></p>
+		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de 10</p>
 	</div>
 </div>	 
 <div class="container">
 	<div class="row espacioTop">
-		<div class="col-sm-12">
+		<div class="col-sm-12 quitarEspacio">
 			<h1>Investigación regional (RED LISI)</h1>	
 			<div id="carousel-example-generic-investigacion" class="carousel slide" data-ride="carousel"  data-type="multi">
 			<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox"> 
 					<?php $args = array (
 						'post_type' => 'investigacion',
-						'posts_per_page' => 6, 
+						'posts_per_page' => 10, 
 						'orderby' => 'id',
 						'order'   => 'DESC',
 					);
@@ -137,9 +135,9 @@ get_header();?>
 					if($lastBlog->have_posts()):
 						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
 						<?php if($cont == 0){ ?>
-								<div class="item active">
+								<div class="item active" cont="<?php echo $cont+1; ?>">
 							<?php }else{ ?> 
-									<div class="item">
+									<div class="item" cont="<?php echo $cont+1; ?>">
 							<?php } ?> 
 										<div class="col-xs-12 col-sm-6 col-md-4">
 											<?php get_template_part('targetas-investigacion'); ?>
@@ -165,20 +163,21 @@ get_header();?>
 	</div>
 </div>
 <div class="carousel-nav sombraInferior">
-	<div class="container row">
-		<p class="tituloNavegacionCarousel pull-right" >MAS INVESTIGACIONES</p>
+	<div class="container quitarPadding">
+		<p class="tituloNavegacionCarousel" >MAS INVESTIGACIONES</p>
+		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI"></span>  de 10</p>
 	</div>
 </div>	
 <div class="container">
 	<div class="row espacioTop">
-		<div class="col-sm-12">
+		<div class="col-sm-12 quitarEspacio">
 			<h1>Publicaciones</h1>	
 			<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel"  data-type="multi">
 			<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox"> 
 					<?php $args = array (
 						'post_type' => 'publicacion',
-						'posts_per_page' => 6, 
+						'posts_per_page' => 10, 
 						'orderby' => 'id',
 						'order'   => 'DESC',
 					);
@@ -188,9 +187,9 @@ get_header();?>
 					if($lastBlog->have_posts()):
 						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
 						<?php if($cont == 0){ ?>
-								<div class="item active">
+								<div class="item active" cont="<?php echo $cont+1; ?>">
 							<?php }else{ ?> 
-									<div class="item">
+									<div class="item" cont="<?php echo $cont+1; ?>">
 							<?php } ?> 
 										<div class="col-xs-12 col-sm-6 col-md-4">
 											<?php get_template_part('targetas-publicacion'); ?>
@@ -216,8 +215,9 @@ get_header();?>
 </div>
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">
-		<div class="container row">
-			<p class="tituloNavegacionCarousel pull-right" >MAS PUBLICACIONES</p>
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" >MAS PUBLICACIONES</p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de 10</p>
 		</div>
 	</div>
 </div>
@@ -268,7 +268,6 @@ get_header();?>
          </div>
          </div>
       </div>
-      
     </div>
   </div>
 </div>

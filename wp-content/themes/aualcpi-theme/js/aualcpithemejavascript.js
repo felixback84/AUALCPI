@@ -40,8 +40,11 @@ if($(document).width() < 783){
 }
 
 //--- mostrar 3 post a la vez si el dispositibo es sm o mayor
-$('.carousel[data-type="multi"] .item').each(function(){    
-  if($(document).width() > 991){
+$('.carousel[data-type="multi"] .item').each(function(){ 
+   var tamanioPantalla = $(window).width();
+   //alert (tamanioPantalla);
+  if( tamanioPantalla > 990){
+    //alert (tamanioPantalla);
     var next = $(this).next();
     if (!next.length) {
       next = $(this).siblings(':first');
@@ -55,22 +58,21 @@ $('.carousel[data-type="multi"] .item').each(function(){
       }
       next.children(':first-child').clone().appendTo($(this));
     }
-  
-}
-if(($(document).width() < 992) && ($(document).width() > 767)){
-    var next = $(this).next();
-    if (!next.length) {
-      next = $(this).siblings(':first');
-    }
-    next.children(':first-child').clone().appendTo($(this));
-    
-    for (var i=0;i<1;i++) {
-      next=next.next();
+  }
+  if((tamanioPantalla < 991) & (tamanioPantalla > 789)){
+      //alert (tamanioPantalla);
+      var next = $(this).next();
       if (!next.length) {
         next = $(this).siblings(':first');
       }
-      //next.children(':first-child').clone().appendTo($(this));
-    }
+      next.children(':first-child').clone().appendTo($(this));
+      
+      for (var i=0;i<1;i++) {
+        next=next.next();
+        if (!next.length) {
+          next = $(this).siblings(':first');
+        }
+      }
   }
 });
 
@@ -79,9 +81,21 @@ if(($(document).width() < 992) && ($(document).width() > 767)){
 function cambiarNumeracionNoticias(){
   $("#carousel-example-generic-noticias #pagN").text($("#carousel-example-generic-noticias .active").attr("cont"));
 }
+function cambiarNumeracionPublicaciones(){
+  $("#pagP").text($("#carousel-example-generic-publicacion .active").attr("cont"));
+}
+function cambiarNumeracionInvestigaciones(){
+  $("#pagI").text($("#carousel-example-generic-investigacion .active").attr("cont"));
+}
+function cambiarNumeracionBecas(){
+  $("#pagB").text($("#carousel-example-generic-beca .active").attr("cont"));
+}
 
 setInterval(function(){
-   cambiarNumeracionNoticias()
+   cambiarNumeracionNoticias();
+   cambiarNumeracionPublicaciones();
+   cambiarNumeracionInvestigaciones();
+   cambiarNumeracionBecas();
 },1000);
 
 
@@ -317,6 +331,11 @@ cont=$('#contContribuciones5').val();
 $('.contribuciones5').text(cont);
 cont=$('#contContribuciones6').val();
 $('.contribuciones6').text(cont);
+
+
+/*----- quitar puntos del slider- plugin------*/
+$(".slider-loader-1").css({ 'display': "none" });
+$(".huge-it-wrap .huge-it-dot-wrap").css({ 'display': "none" });
 
 });
 

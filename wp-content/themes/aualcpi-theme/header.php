@@ -37,19 +37,22 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-8 col-sm-12 col-md-8 col-lg-7">
-				<a id="logoAualcpi" class="thumbnail col-md-push-3 col-xs-push-0">
+			<div id="" class="col-xs-4 col-xs-push-5 visible-xs visible-sm">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/idiom.png" alt="" width="" height=""  style=""/>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-7">
+				<a id="logoAualcpi" class="thumbnail">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_aualcpi.png" alt="" width="" height="" />
 				</a>
 			</div>
-			<div class ="col-sm-6 visible-sm" style="margin: 90px 0 15px;">
+			<div class ="col-sm-6 visible-sm" style="">
 				<div class="Search1">
 					<?php get_search_form(); ?>
 				</div>
 			</div>
-			<div class="col-xs-3 col-sm-6 col-md-4 col-lg-5 col-xs-push-1 col-sm-push-0">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-5 col-sm-push-0">
 				<div class="row">
-					<div id="idiomas1" class="col-xs-6 col-sm-1 col-md-1 col-md-push-5 col-lg-push-8">
+					<div id="idiomas1" class="col-xs-6 col-sm-1 col-md-1 col-md-push-5 col-lg-push-8 hidden-xs hidden-sm">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/idiom.png" alt="" width="" height=""  style="margin-right:20px;"/>
 					</div>
 				</div>

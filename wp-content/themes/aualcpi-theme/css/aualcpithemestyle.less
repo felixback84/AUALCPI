@@ -35,7 +35,10 @@ carousel
 .carousel-inner .item{ background: transparent;}
 .tituloNavegacionCarousel{
 	color:#00a4cb;
-	padding: 3px 10px 0 0;
+	padding: 3px 0 0 0;
+}
+.container>p.tituloNavegacionCarousel.pull-right{
+	margin-top: -32px;
 }
 #carousel-example-generic-noticias{
 	.carousel-nav{background-color: #525256;height:40px; padding: 7px;margin: 0px; a:focus, a:hover{color:#ddd; }}
@@ -139,7 +142,7 @@ Panel
 	}
 }
 #tabsEventoTwitter{
-	padding-left:5%;
+	/*padding-left:5%;*/
 	.nav-tabs{
 
 	}
@@ -149,8 +152,22 @@ Panel
 		a{
 			color:white;
 			border:none;
+			font-size: 18px;
 			margin:0;
 			border-radius: 0;
+			span{
+				font-size: 18px !important;
+			}
+		}
+	}
+	div.ai1ec-pagination.ai1ec-btn-group{
+		padding-top: 5px;
+		padding-bottom: 5px;
+		a{
+			font-size: 10px;
+			.ai1ec-calendar-title, .ai1ec-calendar-title-short{
+				font-size: 9px;
+			}
 		}
 	}
 	.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
@@ -164,7 +181,7 @@ Panel
 	}
 	.tab-content{
 		.contenido-tabs{
-			height: 359px; 
+			height: 355px; 
 			overflow-y: scroll;
 			padding: 2px;
 			background: #525256;
