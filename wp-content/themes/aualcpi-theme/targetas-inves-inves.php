@@ -23,7 +23,7 @@
 							?></p>
 							<p>Apoyado por:</p>
 							<p><?php if (class_exists('MultiPostThumbnails')) : 
-							MultiPostThumbnails::the_post_thumbnail(get_post_type(), 'secondary-image', get_the_ID(), array(45,100));
+							MultiPostThumbnails::the_post_thumbnail(get_post_type(), 'secondary-image', get_the_ID(), array(100,100));
 							endif; ?></p>
 						<a class="pull-right" href="<?php echo esc_url(get_permalink()); ?> ">Ver más</a> 
 						</div>

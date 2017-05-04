@@ -22,7 +22,6 @@
 		</div>
 	</div>
 </div>
-
 <div class="container espacioBotton">
 	<div class="row espacioBotton">
 		<h1 class="text-center">Descubre todos los beneficios que tenemos para ti</h1>
@@ -102,16 +101,17 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-6 col-sm-push-4"><h1 class="text-center">La mejor manera de integrar tu Universidad en una comunidad global</h1></div>
+		<div class="col-sm-8 col-sm-push-2">
+			<h1 class="text-center">La mejor manera de integrar tu</h1>
+			<h1 class="text-center">Universidad en una comunidad global</h1>
+		</div>
 	</div>
 	<div class="row espacioBotton">
 		<div class="col-xs-12 col-sm-6">
 			<div class="targetaEstrellas">
 				<div class="row">
-					<div class="col-xs-6 col-sm-3 col-xs-push-2 col-sm-push-4">
-						<span class="estrellaImagen"></span>
-					</div>
 					<div class="col-xs-12">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/estrellas.png" alt="">
 						<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea eius, iure sunt veritatis harum aperiam doloremque ipsa. Provident odio, dolorem, ipsum cumque non facere ea corrupti repellendus? Perspiciatis, dolorum, ipsa?</div>
 						<div>Consequatur autem, delectus beatae. Rerum amet voluptatem et placeat commodi vitae a molestias accusamus dolores accusantium ullam, ad laborum illo eos odio aliquid nam quam veritatis, est atque soluta. Dicta!</div>
 					</div>
@@ -119,10 +119,8 @@
 			</div>
 			<div class="targetaEstrellas">
 				<div class="row">
-					<div class="col-xs-6 col-sm-3 col-xs-push-2 col-sm-push-4">
-						<span class="estrellaImagen"></span>
-					</div>
 					<div class="col-xs-12">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/estrellas.png" alt="">
 						<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad culpa, dicta molestias accusamus qui voluptates esse deserunt veritatis quam sunt rerum fuga officia cupiditate impedit illum ex consequatur, quod enim.</div>
 						<div>Illum eius accusamus temporibus labore eveniet. Necessitatibus voluptatem, sed, commodi quas reprehenderit accusantium inventore distinctio suscipit mollitia, asperiores totam consequatur, eius dolorum possimus nihil ad voluptate doloribus aut! Dolor, enim.</div>
 						<div>Natus deserunt quo, et ut laudantium veniam nostrum praesentium consequuntur earum ipsum numquam minus iste quasi. Soluta, nesciunt quas. Modi maxime ex consectetur ut, eveniet expedita illo quibusdam itaque autem.</div>
@@ -133,20 +131,16 @@
 		<div class="col-xs-12 col-sm-6">
 			<div class="targetaEstrellas">
 				<div class="row">
-					<div class="col-xs-6 col-sm-3 col-xs-push-2 col-sm-push-4">
-						<span class="estrellaImagen"></span>
-					</div>
 					<div class="col-xs-12">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/estrellas.png" alt="">
 						<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea eius, iure sunt veritatis harum aperiam doloremque ipsa. Provident odio, dolorem, ipsum cumque non facere ea corrupti repellendus? Perspiciatis, dolorum, ipsa?</div>
 					</div>
 				</div>
 			</div>
 			<div class="targetaEstrellas">
 				<div class="row">
-					<div class="col-xs-6 col-sm-3 col-xs-push-2 col-sm-push-4">
-						<span class="estrellaImagen"></span>
-					</div>
 					<div class="col-xs-12">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/estrellas.png" alt="">
 						<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad culpa, dicta molestias accusamus qui voluptates esse deserunt veritatis quam sunt rerum fuga officia cupiditate impedit illum ex consequatur, quod enim.</div>
 					</div>
 				</div>
@@ -155,9 +149,7 @@
 		</div>
 	</div>
 </div>
-
-
-<div class="container">
+<div class="container quitarPadding">
 	<div class="row">
 		<div class="divAsociados">
 			<div class="col-xs-12">

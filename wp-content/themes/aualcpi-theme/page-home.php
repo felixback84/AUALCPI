@@ -47,8 +47,14 @@ get_header();?>
 		</div>
 		<div id="tabsEventoTwitter" class="hidden-xs hidden-sm col-md-4 col-lg-4 " style="">
 			  <ul  class="nav nav-tabs" role="tablist">
-			    <li role="presentation" class="active"><a href="#Eventos" aria-controls="Eventos" role="tab" data-toggle="tab">Eventos</a></li>
-			    <li role="presentation"><a href="#twitter" aria-controls="twitter" role="tab" data-toggle="tab"><span class="icon icon-twitter" style="font-size: 15px;"> </span>Twitter</a></li>
+			    <li role="presentation" class="active">
+			    	<a href="#Eventos" aria-controls="Eventos" role="tab" data-toggle="tab">Eventos</a>
+			    	<div class="triangulo"></div>
+			    </li>
+			    <li role="presentation">
+			    	<a href="#twitter" aria-controls="twitter" role="tab" data-toggle="tab"><span class="icon icon-twitter" style="font-size: 15px;"> </span>Twitter</a>
+			    	<div class="triangulo"></div>
+			    </li>
 			  </ul>
 			  <div class="tab-content sombraInferior">
 			    <div role="tabpanel" class="tab-pane active" id="Eventos">
@@ -65,6 +71,7 @@ get_header();?>
 		</div>
 	</div>
 </div>
+<div class="triangulo"></div>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12 quitarEspacio">
@@ -164,7 +171,7 @@ get_header();?>
 </div>
 <div class="carousel-nav sombraInferior">
 	<div class="container quitarPadding">
-		<p class="tituloNavegacionCarousel" >MAS INVESTIGACIONES</p>
+		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/retos-regionales/');?>">MAS INVESTIGACIONES</a></p>
 		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI"></span>  de 10</p>
 	</div>
 </div>	
@@ -216,7 +223,7 @@ get_header();?>
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">
 		<div class="container quitarPadding">
-			<p class="tituloNavegacionCarousel" >MAS PUBLICACIONES</p>
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/descargas/');?>">MAS PUBLICACIONES</a></p>
 			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de 10</p>
 		</div>
 	</div>
@@ -263,8 +270,8 @@ get_header();?>
          <p>Tambien puedes contactárte con la Oficina de Relaciones Internacionales de tu Universidad:</p>
          <div class="row">
          <div class="col-sm-8 col-sm-push-2">
-         	<p><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/iconosModalBecasSkype.png" style="" alt="" width="" height="" style="color:#1eafd2;"/> ORI.UPiloto</p>
-         	<p><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/iconosModalBecasWhatsApp.png" style="" alt="" width="" height="" style="color:#1eafd2;"/> +571 5678903</p>
+         	<p><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/svg/skype.svg" style="" alt="icono de skype" width="50" height="50" style="color:#1eafd2;"/> ORI.UPiloto</p>
+         	<p><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/svg/whatsapp.svg" style="" alt="icono de whatsapp" width="50" height="50" style="color:#1eafd2;"/> +571 5678903</p>
          </div>
          </div>
       </div>

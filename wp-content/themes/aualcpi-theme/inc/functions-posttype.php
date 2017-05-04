@@ -835,13 +835,16 @@ function wp_custom_date_investigacion() {
 	 
 	if ($fechaIdeacion == null) { $fechaIdeacion = time(); $fechaRetroAlimentacion = $fechaRefinar = $fechaRetroAlimentacion2 = $fechaIdeasTop = $fechaImpacto  = $fechaIdeacion;}
 	// - convert to pretty formats -
-	 
 	$clean_Ideacion = date("M d, Y", $fechaIdeacion);
 	$clean_RetroAlimentacion = date("M d, Y", $fechaRetroAlimentacion);
 	$clean_Refinar = date("M d, Y", $fechaRefinar);
 	$clean_RetroAlimentacion2 = date("M d, Y", $fechaRetroAlimentacion2);
 	$clean_IdeasTop = date("M d, Y", $fechaIdeasTop);
 	$clean_Impacto = date("M d, Y", $fechaImpacto);
+	// echo "fei".$fechaIdeacion;
+	// echo "cle".$clean_Ideacion;
+	// echo "cle".strtotime ( $clean_Ideacion);
+
 ?>
 <table>
 	<tr>

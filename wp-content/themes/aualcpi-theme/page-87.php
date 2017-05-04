@@ -16,7 +16,7 @@
 						$contenido = $post->post_content;
 						echo $contenido;
 						?></p>
-						<a href="#" class="btn btn-default">SUSCRIBIRME</a>
+						<a href="<?php echo home_url('/membresia/');?>" class="btn btnSuscribirme">SUSCRIBIRME</a>
 					</div>
 				</div>
 			</div>

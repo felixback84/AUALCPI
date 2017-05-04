@@ -65,21 +65,24 @@
         <li class="active"><a href="#home-r" data-toggle="tab">Home</a></li>
         <li><a href="#mision-r" data-toggle="tab">Misión</a></li>
         <li><a href="#vision-r" data-toggle="tab">Visión</a></li>
-        <li><a href="#organigrama-r" data-toggle="tab"><span class="visible-xs" >organi...</span><span class="hidden-xs">Organigrama</span> </a></li>
+        <li><a href="#organigrama-r" data-toggle="tab"><span class="visible-xs visible-sm" >Organi...</span><span class="hidden-xs hidden-sm">Organigrama</span> </a></li>
       </ul>
 	</div>
 </div>
-<div class="container">
+<div class="container quitarPadding">
 	<div class="row espacioBotton">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div class="thumbnail">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/imageContenidoNosotros.jpg" alt="" width="" height="" />
+			<!-- <div class="thumbnail">
+					<img src="<?php //echo get_stylesheet_directory_uri(); ?>/images/imageContenidoNosotros.jpg" alt="" width="" height="" />
+			</div> -->
+			<div id="contenidoTextAzulNuestra">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quam voluptas repellat fugiat facilis explicabo excepturi mollitia nesciunt voluptatibus ratione at itaque pariatur minus, libero minima, iusto amet commodi cupiditate.</p>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="container">
+<div class="container quitarPadding">
 	<div class="row espacioBotton">
 		<div class="col-xs-12">
 			<h1>Los miembros de nuestra Asocición</h1>
@@ -91,7 +94,7 @@
 		</div>	
 	</div>
 </div>
-<div class="container">
+<div class="container quitarPadding">
 	<div class="row espacioBotton">
 		<div class="divAsociados">
 		<div class="col-xs-12">

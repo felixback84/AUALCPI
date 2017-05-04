@@ -159,6 +159,17 @@ Panel
 				font-size: 18px !important;
 			}
 		}
+		.triangulo {
+		     width: 0; 
+		     height: 0; 
+		     border-top: 15px solid #000;
+		     border-left: 15px solid transparent;
+		     border-right: 15px solid transparent;
+		     z-index: 10;
+		     position: absolute;
+		     left:40%;
+		     display: none;
+		}
 	}
 	div.ai1ec-pagination.ai1ec-btn-group{
 		padding-top: 5px;
@@ -175,6 +186,9 @@ Panel
 			color:white;
 			border:none;
 		}
+	.nav-tabs>li.active>.triangulo{
+		display: block;
+	}
 	.nav>li>a:focus, .nav>li>a:hover{
 		 background-color: black;
 		 border:none;
@@ -207,6 +221,12 @@ Panel
 	.carousel-caption{
 		bottom: 25%;
 	}
+}
+
+#contenidoTextAzulNuestra{
+	font-size:30px;
+	color:#3765AE;
+	padding: 160px 100px;
 }
 /*
 google maps
@@ -254,6 +274,7 @@ height: 100% !important;
 		padding:10px 5px 0;
 		&#home-r,&#mision-r,&#vision-r,&#programaMovilidad-quien-r,&#categoriasMovilidad-r,&#programaMovilidad-aplicar-r{
 			padding:40px 5px 10px;
+			font-size: 20px;
 		}
 	} 
 	ul{
@@ -288,26 +309,67 @@ height: 100% !important;
 	.tab-pane {
 		.categoriasDisponiblesMovilidad{
 			/*width: 250px;*/
-				padding-bottom: 3px;
+			font-size: 20px;
+				margin-top: -15px;
+				border-bottom: 6px solid transparent;
 			&:hover{
-				border-bottom: 3px solid gray;
+				border-bottom: 6px solid #4A4A4A;
 				padding-bottom: 0;
 			}
 			a{
-			color: black;
+			color: #888;
 			text-decoration: none;
 			}
+		}
+		.TitulosCategoriasMovilidad {
+			font-size: 20px;
+			font-weight: bold;
 		}
 		
 	}
 	.nav>li>a{
-		font-size: 16px;
 		line-height: 40px;
+		font-size: 30px;
+		border:none;
 		&:hover{
 			background-color: black;
 			color: #00b9f7;
 			border: none;
 		}
+	}
+}
+#tabVerticalNegroMovilidad.tabVerticalNegro{
+	li{	
+		text-align: right;
+		/*padding: 20px 0;*/
+		p{margin:0;padding: 0 15px; line-height: 25px;}
+		/*p:last-child{
+			margin-top: -15px;
+		}*/
+	}
+	.nav>li{
+		padding-top: 20px;
+		display: flex;
+	    justify-content: center;
+	    align-content: center;
+	    flex-direction: column;
+	}
+	.nav>li>a{
+		/*padding-top: 20px;*/
+		font-size: 20px;
+		display: inline-block;
+		margin: auto 0;
+		padding:0;
+		border:none;
+		&:hover{
+			background-color: black;
+			color: #00b9f7;
+			border: none;
+		}
+	}
+	
+	.tab-pane {
+		padding: 40px 5px 20px 40px;
 	}
 }
 .ElementoPadre{
@@ -382,16 +444,25 @@ height: 100% !important;
 .targetaEstrellas{
 	-webkit-box-shadow: 0 0 7px 7px #d7d7d7;
 	box-shadow: 0 0 7px 7px #d7d7d7;
-	margin: 30px 0;
+	margin:0;
 	padding:20px;
+	margin-top: 40px;
+	/*padding-top: 60px;*/
 	margin-bottom: 35px;
-	.estrellaImagen{
+	font-size: 14px;
+	img{
+		/*margin-top: 20px;*/
+		display: block;
+		margin: 20px auto;
+		/*margin-bottom: 15px;*/
+	}
+	/*.estrellaImagen{
 		background: url('../images/estrellas.png') no-repeat;
 		width: 150px;
 		height: 36px;
 		position:absolute;
 		margin-top: -20px;
-	}
+	}*/
 }
 
 #carousel-dual-members{
@@ -520,7 +591,13 @@ height: 100% !important;
 	}
 }
 /*----------colapsar filtros----*/
-.collapse{
+.collapsing {
+    -webkit-transition: none;
+    transition: none;
+}
+.collapse,.collapsing{
+	-webkit-transition: none;
+    transition: none;
 	.well{
 		background-color: #4c4c4c;
 		border:none;
@@ -547,6 +624,22 @@ height: 100% !important;
 			border-radius:10px;
 			/*background-color: #6a96e8;*/
 			background: linear-gradient(180deg, #54A4FF 0%, #4383CC 100%);
+		}
+	}
+}
+#collapseExample-3.collapse,#collapseExample-3.collapsing{
+		.well{
+			a{
+				margin-top: 25px;
+			}
+		}
+	}
+@media (min-width: 767px) { 
+	#collapseExample-3.collapse,#collapseExample-3.collapsing{
+		.well{
+			a{
+				margin-top: 55px;
+			}
 		}
 	}
 }
