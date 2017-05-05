@@ -1,6 +1,7 @@
 jQuery(function ($) {
 // console.log( "ready!" );
 
+
 //--muestra el contenido de los submenus cuando el mouse pasa sobre el 
 $("nav.menuPrimary ul.nav li").hover(function () { //When trigger is hovered...
       $(this).children("ul.dropdown-menu").slideDown('fast');
@@ -14,16 +15,29 @@ $('ul#menu-email a:first-child').append(' <span class="icon icon-mail3"> </span>
 var $win = $(window);
 var $pos = 225;
 $win.scroll(function () {
-  if( $(document).width() > 782){
-     if ($win.scrollTop() <= $pos)
-       $('.menuPrimary').removeClass('navbar-fixed-top');
-     else {
-       $('.menuPrimary').addClass('navbar-fixed-top');
+  if( $(document).width() > 767){
+     if ($win.scrollTop() <= $pos){
+        $('.menuPrimary').removeClass('navbar-fixed-top');
+        $('.menuPrimary.navbar-fixed-top').removeClass('espacioObsionalNavFixed');
+     }else {
+        $('.menuPrimary').addClass('navbar-fixed-top');
+        if($('#wpadminbar')){
+            $('.menuPrimary.navbar-fixed-top').addClass('espacioObsionalNavFixed');
+        }else{
+            $('.menuPrimary.navbar-fixed-top').removeClass('espacioObsionalNavFixed');
+        }
      }
    }else{
       $('.menuPrimary').removeClass('navbar-fixed-top');
+      $('.menuPrimary.navbar-fixed-top').removeClass('espacioObsionalNavFixed');
    }
 });
+
+if($('#wpadminbar')){
+    $('.menuPrimary.navbar-fixed-top').css('margin-top','35px');
+}else{
+    $('.menuPrimary.navbar-fixed-top').css('margin-top','0');
+}
 //---  popover para que funcione
 $('[data-toggle="popover"]').popover();   
 
@@ -336,6 +350,7 @@ $('.contribuciones6').text(cont);
 /*----- quitar puntos del slider- plugin------*/
 $(".slider-loader-1").css({ 'display': "none" });
 $(".huge-it-wrap .huge-it-dot-wrap").css({ 'display': "none" });
+
 
 });
 

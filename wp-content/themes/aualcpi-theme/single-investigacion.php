@@ -83,9 +83,9 @@ endif; ?>
 				$fechaInicio3 = $fechaFin2; 
 				$fechaFin3 = date("M d, Y", get_post_meta(get_the_ID(), 'investigacionFechaRetroAlimentacion2', true));
 				$fechaInicio4 = $fechaFin3; 
-				$fechaFin4 = date("M d, Y", get_post_meta(get_the_ID(), 'investigacionFechaImpacto', true));
+				$fechaFin4 = date("M d, Y", get_post_meta(get_the_ID(), 'investigacionFechaIdeasTop', true));
 				$fechaInicio5 = $fechaFin4; 
-				$fechaFin5 = date("M d, Y", get_post_meta(get_the_ID(), 'investigacionFechaIdeasTop', true));
+				$fechaFin5 = date("M d, Y", get_post_meta(get_the_ID(), 'investigacionFechaImpacto', true));
 				$fechaInicio6 = $fechaFin5; 
 				?>
 			    <li role="presentation"  <?php  if(($fechaFin1 > $hoy) || (empty($fechaInicio1))){ echo 'class="active"';}?> >
@@ -118,7 +118,7 @@ endif; ?>
 			    		<p id="lineaIdeasTop"></p>
 			    		<p><?php if($fechaInicio5 <= $hoy){ echo '<p class="contribuciones5 text-center"></p><p class="text-center">contribuciones</p>'; }else{echo '<p class="text-center">Empieza en</p><p class="text-center">'.$fechaInicio5.'</p>';} ?></p>
 			    	</a></li>
-			    <li role="presentation"  <?php if(($fechaInicio6 <= $hoy)&&($fechaInicio1 >= $hoy)){ echo 'class="active"';}?> >
+			    <li role="presentation"  <?php if(($fechaInicio6 <= $hoy)&&($fechaInicio1 <= $hoy)){ echo 'class="active"';}?> >
 			    	<a href="#Impacto" aria-controls="Impacto" role="tab" data-toggle="tab">
 			    		<p class="text-center">Impácto</p>
 			    		<p id="lineaImpacto"></p>
@@ -594,7 +594,7 @@ endif; ?>
 
 			     	</div>
 			    </div>
-			    <div role="tabpanel" class="tab-pane <?php if(($fechaInicio6 <= $hoy)&&($fechaInicio1 >= $hoy)){ echo ' active';}?>" id="Impacto">
+			    <div role="tabpanel" class="tab-pane <?php if(($fechaInicio6 <= $hoy)&&($fechaInicio1 <= $hoy)){ echo ' active';}?>" id="Impacto">
 			     	<div class="contenido-tabs">
 						
 						<div class="col-xs-12">
@@ -695,7 +695,7 @@ endif; ?>
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">
 		<div class="container row">
-			<p class="tituloNavegacionCarousel pull-right" >MAS CONTRIBUCIONES</p>
+			<p class="tituloNavegacionCarousel alinear-derecha" >MAS CONTRIBUCIONES</p>
 		</div>
 	</div>
 </div>	 

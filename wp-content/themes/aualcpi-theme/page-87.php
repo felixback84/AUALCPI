@@ -16,7 +16,7 @@
 						$contenido = $post->post_content;
 						echo $contenido;
 						?></p>
-						<a href="<?php echo home_url('/membresia/');?>" class="btn btnSuscribirme">SUSCRIBIRME</a>
+						<a href="<?php echo home_url('');?>" class="btn btnSuscribirme">Quiero ser miembro</a>
 					</div>
 				</div>
 			</div>
@@ -25,21 +25,21 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12 col-sm-8 col-md-8 col-sm-push-2">
-			<div class="youtube sombraInferior">
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/C85nRB-NnsU" frameborder="0" allowfullscreen></iframe>
+		<div class="col-xs-12">
+			<div class="youtube">
+				<iframe width="1280" height="720" src="https://www.youtube.com/embed/C85nRB-NnsU" frameborder="0" allowfullscreen></iframe>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container quitarPadding">
 	<div class="row espacioBotton">
-		<div class="col-xs-12">
-			<h1 class="text-center espacioBotton">Conoce nuestra Red Lisi</h1>
+		<div class="col-xs-12 quitarPadding">
+			<h1 class="text-center espacioBotton" style="margin:40px 80px;">Conoce nuestra Red Lisi</h1>
 			<?php $args = array(
 		      'post_type' => 'investigacion',
 		      'post_status' => 'publish',
-		      'order'=> 'ASC',
+		      'order'=> 'DESC',
 			  'posts_per_page' => 6, 
 		      'orderby' => 'date',
 		    ); 
@@ -47,11 +47,9 @@
 			$cont=0;
 			if($lastBlog->have_posts()):
 			while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-			<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?> 
-					<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="col-xs-12 col-sm-6 col-md-4 quitarPadding">
 							<?php get_template_part('targetas-inves-inves'); ?>
 					</div>
-				</div>
 				 <?php $cont++; 
 				 endwhile;
 			endif;	

@@ -16,7 +16,7 @@
 						$contenido = $post->post_content;
 						echo $contenido;
 						?></p>
-						<a href="#" class="btn btn-default">Quiero ser miembro</a>
+						<a href="<?php echo home_url('');?>" class="btn btnSuscribirme">Quiero ser miembro</a>
 					</div>
 				</div>
 			</div>
