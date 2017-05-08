@@ -21,10 +21,12 @@ $win.scroll(function () {
         $('.menuPrimary.navbar-fixed-top').removeClass('espacioObsionalNavFixed');
      }else {
         $('.menuPrimary').addClass('navbar-fixed-top');
-        if($('#wpadminbar')){
+        if($('#wpadminbar').length > 0){
             $('.menuPrimary.navbar-fixed-top').addClass('espacioObsionalNavFixed');
+            //$('h1').css('color','red');
         }else{
             $('.menuPrimary.navbar-fixed-top').removeClass('espacioObsionalNavFixed');
+            //$('h1').css('color','blue');
         }
      }
    }else{
@@ -33,11 +35,11 @@ $win.scroll(function () {
    }
 });
 
-if($('#wpadminbar')){
-    $('.menuPrimary.navbar-fixed-top').css('margin-top','35px');
-}else{
-    $('.menuPrimary.navbar-fixed-top').css('margin-top','0');
-}
+// if($('#wpadminbar')){
+//     $('.menuPrimary.navbar-fixed-top').addClass('espacioObsionalNavFixed');
+// }else{
+//     $('.menuPrimary.navbar-fixed-top').removeClass('espacioObsionalNavFixed');
+// }
 //---  popover para que funcione
 $('[data-toggle="popover"]').popover();   
 
@@ -94,15 +96,23 @@ $('.carousel[data-type="multi"] .item').each(function(){
 //--- numero de paginacion en slider noticas
 function cambiarNumeracionNoticias(){
   $("#carousel-example-generic-noticias #pagN").text($("#carousel-example-generic-noticias .active").attr("cont"));
+  $("#carousel-example-generic-noticias #pagNC").text($("#carousel-example-generic-noticias .contador").attr("cont"));
 }
 function cambiarNumeracionPublicaciones(){
   $("#pagP").text($("#carousel-example-generic-publicacion .active").attr("cont"));
+  $("#pagPC").text($("#carousel-example-generic-publicacion .contador").attr("cont"));
 }
 function cambiarNumeracionInvestigaciones(){
   $("#pagI").text($("#carousel-example-generic-investigacion .active").attr("cont"));
+  $("#pagIC").text($("#carousel-example-generic-investigacion .contador").attr("cont"));
 }
 function cambiarNumeracionBecas(){
   $("#pagB").text($("#carousel-example-generic-beca .active").attr("cont"));
+  $("#pagBC").text($("#carousel-example-generic-beca .contador").attr("cont"));
+}
+function cambiarNumeracionAutor(){
+  $("#pagA").text($("#carousel-example-generic-autores .active").attr("cont"));
+  $("#pagAC").text($("#carousel-example-generic-autores .contador").attr("cont"));
 }
 
 setInterval(function(){
@@ -110,6 +120,7 @@ setInterval(function(){
    cambiarNumeracionPublicaciones();
    cambiarNumeracionInvestigaciones();
    cambiarNumeracionBecas();
+   cambiarNumeracionAutor();
 },1000);
 
 

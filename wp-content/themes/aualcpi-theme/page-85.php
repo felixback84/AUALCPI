@@ -77,8 +77,9 @@
 					</div>
 					<div class="carousel-caption">
 						<h1>¿Cuáles son lo requisitos para ingresar?</h1>
-						<div>Eos expedita odio deleniti cum fugit autem placeat commodi optio neque itaque iste asperiores recusandae veritatis, dignissimos sunt libero distinctio ratione voluptatum vero eaque est repellat, consequatur natus, sapiente quidem.</div>
-						<div>Officia accusamus, neque sit accusantium veritatis. Facilis quaerat laudantium repudiandae, minima nostrum non molestias harum, temporibus earum cum officiis impedit numquam eos facere mollitia fuga pariatur, debitis, est voluptatum amet.</div>
+						<p>Eos expedita odio deleniti cum fugit autem placeat commodi optio neque itaque iste asperiores recusandae veritatis, dignissimos sunt libero distinctio ratione voluptatum vero eaque est repellat, consequatur natus, sapiente quidem.</p>
+						<p>Officia accusamus, neque sit accusantium veritatis. Facilis quaerat laudantium repudiandae, minima nostrum non molestias harum, temporibus earum cum officiis impedit numquam eos facere mollitia fuga pariatur, debitis, est voluptatum amet.</p>
+						<a href="<?php echo home_url('');?>" class="btn btnSuscribirme">SUSCRIBIRME</a>
 					</div>
 				</div>
 				<div class="item">
@@ -89,8 +90,8 @@
 					</div>
 					<div class="carousel-caption">
 						<h1>Contenidos 2</h1>
-						<div>Eos expedita odio deleniti cum fugit autem placeat commodi optio neque itaque iste asperiores recusandae veritatis, dignissimos sunt libero distinctio ratione voluptatum vero eaque est repellat, consequatur natus, sapiente quidem.</div>
-						<div>Officia accusamus, neque sit accusantium veritatis. Facilis quaerat laudantium repudiandae, minima nostrum non molestias harum, temporibus earum cum officiis impedit numquam eos facere mollitia fuga pariatur, debitis, est voluptatum amet.</div>
+						<p>Eos expedita odio deleniti cum fugit autem placeat commodi optio neque itaque iste asperiores recusandae veritatis, dignissimos sunt libero distinctio ratione voluptatum vero eaque est repellat, consequatur natus, sapiente quidem.</p>
+						<p>Officia accusamus, neque sit accusantium veritatis. Facilis quaerat laudantium repudiandae, minima nostrum non molestias harum, temporibus earum cum officiis impedit numquam eos facere mollitia fuga pariatur, debitis, est voluptatum amet.</p>
 					</div>
 				</div>
 			</div>

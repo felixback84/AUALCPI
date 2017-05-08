@@ -141,7 +141,7 @@
 				<div id="the-posts-becas" class="carousel-inner" role="listbox"> 
 					<?php $args = array (
 						'post_type' => 'becas',
-						'posts_per_page' => 6, 
+						'posts_per_page' => 10, 
 						'orderby' => 'id',
 						'order'   => 'DESC',
 					);
@@ -162,7 +162,7 @@
 						 <?php $cont++; endwhile;
 					endif;	
 				    wp_reset_postdata(); ?>
-				</div>
+				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
 				<!-- Controls -->
 			<a class="right carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="next">
 			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
@@ -180,7 +180,7 @@
 <div class="carousel-nav sombraInferior">
 	<div class="container quitarPadding">		
 		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/becas/');?>">MAS BECAS</a></p>
-		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de 10</p>
+		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de <span id="pagBC"></span></p>
 	</div>
 </div>
 <div class="container quitarPadding">
@@ -192,7 +192,7 @@
 				<div class="carousel-inner" role="listbox"> 
 					<?php $args = array (
 						'post_type' => 'publicacion',
-						'posts_per_page' => 6, 
+						'posts_per_page' => 10, 
 						'orderby' => 'id',
 						'order'   => 'DESC',
 					);
@@ -214,7 +214,7 @@
 						endif;	
 				    wp_reset_postdata(); 
 //				     $fin+=2; ?>
-				</div>
+				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
 				<!-- Controls -->
 				<a class="right carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="next">
 				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
@@ -232,7 +232,7 @@
 	<div class="carousel-nav sombraInferior">
 	<div class="container quitarPadding">
 		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/publicacion/');?>">MAS PUBLICACIONES</a></p>
-		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de 10</p>
+		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de <span id="pagPC"></span></p>
 	</div>
 	</div>
 </div>	

@@ -5,7 +5,7 @@
 			
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<div class="col-xs-12">
+						<div class="col-xs-12" style="padding-top: 30px;">
 <?php $avatar= get_avatar( $user->ID, '150' ,'','logo usurio',array('class' => 'img-circle sombraInferior' ,)); ?> 
 							<?php 
 							//var_dump($user); 

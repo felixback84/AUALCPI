@@ -57,11 +57,14 @@
 		</div>	
 	</div>
 </div>
-<div class="container">
+<div class="container quitarPadding">
 	<div class="row espacioBotton">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="thumbnail">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/imageContenidoQueeslisi.jpg" alt="" width="" height="" />
+				<!-- <img src="<?php //echo get_stylesheet_directory_uri(); ?>/images/imageContenidoQueeslisi.jpg" alt="" width="" height="" /> -->
+				<div id="contenidoTextAzulRedLisi">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quam voluptas repellat fugiat facilis explicabo excepturi mollitia nesciunt voluptatibus ratione at itaque pariatur minus, libero minima, iusto amet commodi cupiditate.</p>
+				</div>
 			</div>
 		</div>
 	</div>

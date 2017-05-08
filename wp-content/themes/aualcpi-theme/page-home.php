@@ -31,7 +31,7 @@ get_header();?>
 						 <?php $cont++; endwhile;
 					endif;	
 				    wp_reset_postdata(); ?>
-				</div>
+				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
 				<div class="carousel-nav">
 					  <a class="left carousel-control" href="#carousel-example-generic-noticias" role="button" data-slide="prev">
 					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -41,7 +41,7 @@ get_header();?>
 					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 					    <span class="sr-only">Next</span>
 					  </a>
-					<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagN"></span> de 10 </p>
+					<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagN"></span> de <span id="pagNC"></span> </p>
 				</div>	    
 			</div>
 		</div>
@@ -103,7 +103,7 @@ get_header();?>
 						 endwhile;
 					endif;	
 				    wp_reset_postdata(); ?>
-				</div>
+				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
 				<!-- Controls -->
 				<a class="left carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="prev">
 				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -120,7 +120,7 @@ get_header();?>
 <div class="carousel-nav sombraInferior">
 	<div class="container quitarPadding">
 		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/movilidad/');?>">MAS BECAS</a></p>
-		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de 10</p>
+		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de <span id="pagBC"></span></p>
 	</div>
 </div>	 
 <div class="container">
@@ -155,7 +155,7 @@ get_header();?>
 					endif;	
 				    wp_reset_postdata(); 
 //				     $fin+=2; ?>
-				</div>
+				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
 				<!-- Controls -->
 				<a class="right carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="next">
 				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
@@ -172,7 +172,7 @@ get_header();?>
 <div class="carousel-nav sombraInferior">
 	<div class="container quitarPadding">
 		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/retos-regionales/');?>">MAS INVESTIGACIONES</a></p>
-		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI"></span>  de 10</p>
+		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI"></span>  de <span id="pagIC"></span></p>
 	</div>
 </div>	
 <div class="container">
@@ -206,7 +206,7 @@ get_header();?>
 						endif;	
 				    wp_reset_postdata(); 
 //				     $fin+=2; ?>
-				</div>
+				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
 				<!-- Controls -->
 					<a class="right carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="next">
 					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
@@ -224,7 +224,7 @@ get_header();?>
 	<div class="carousel-nav sombraInferior">
 		<div class="container quitarPadding">
 			<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/descargas/');?>">MAS PUBLICACIONES</a></p>
-			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de 10</p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de <span id="pagPC"></span></p>
 		</div>
 	</div>
 </div>

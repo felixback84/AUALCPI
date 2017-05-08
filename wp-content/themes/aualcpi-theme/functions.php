@@ -182,7 +182,7 @@ function my_get_posts()  {
     $args = array(
       'post_type' => 'investigacion',
       'post_status' => 'publish',
-      'order'=> 'ASC',
+      'order'=> 'DESC',
       'orderby' => 'date',
     );
     $args['tax_query'] = array(
@@ -239,7 +239,7 @@ function my_get_posts()  {
 	      'post_type' => 'contribuciones',
 	      'post_status' => 'publish',
 	      'post_parent' => $post->ID,
-	      'order'=> 'ASC',
+	      'order'=> 'DESC',
 	      'orderby' => 'date',
 	    );
 	    $postContribuciones =  query_posts($args);
@@ -304,7 +304,7 @@ function my_get_user()  {
     $args = array(
       'post_type' => 'investigacion',
       'post_status' => 'publish',
-      'order'=> 'ASC',
+      'order'=> 'DESC',
       'orderby' => 'date',
     );
     $args['tax_query'] = array(
@@ -353,7 +353,7 @@ function my_get_user()  {
 	      'post_type' => 'contribuciones',
 	      'post_status' => 'publish',
 	      'post_parent' => $post->ID,
-	      'order'=> 'ASC',
+	      'order'=> 'DESC',
 	      'orderby' => 'date',
 	    );
 	    
@@ -451,7 +451,7 @@ function my_get_user()  {
     $args = array(
       'post_type' => 'becas',
       'post_status' => 'publish',
-      'order'=> 'ASC',
+      'order'=> 'DESC',
       'orderby' => 'date',
     );
     $args['tax_query'] = array(
@@ -485,7 +485,7 @@ function my_get_user()  {
 	      'post_type' => 'becas',
 	      'post_status' => 'publish',
 	      'post_parent' => $post->ID,
-	      'order'=> 'ASC',
+	      'order'=> 'DESC',
 	      'orderby' => 'date',
 	    );
 	    

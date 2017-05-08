@@ -16,7 +16,7 @@
 						$contenido = $post->post_content;
 						echo $contenido;
 						?></p>
-						<a href="#" class="btn btn-default">Quiero ser miembro</a>
+						<a href="<?php echo home_url('');?>" class="btn btnSuscribirme">Quiero ser miembro</a>
 					</div>
 				</div>
 			</div>
@@ -79,7 +79,7 @@
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container quitarPadding">
 	<div  class="collapse in sombraInferior" id="collapseExample-1">
 		<div class="well">
 			<div class="row">
@@ -99,7 +99,7 @@
 				$args = array(
 			      'post_type' => 'investigacion',
 			      'post_status' => 'publish',
-			      'order'=> 'ASC',
+			      'order'=> 'DESC',
 			      'orderby' => 'date',
 			    );
 
@@ -112,7 +112,7 @@
 				      'post_type' => 'contribuciones',
 				      'post_status' => 'publish',
 				      'post_parent' => $post->ID,
-				      'order'=> 'ASC',
+				      'order'=> 'DESC',
 				      'orderby' => 'date',
 				    );
 				    $postContribuciones =  query_posts($args);
@@ -131,13 +131,14 @@
 			    foreach ($idsUsuarios as $id) {
 			    	$usuario = get_user_by('ID',$id);
 					//var_dump($usuario); ?>
-					<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?>
+					<?php if($cont == 0){ ?><div class="item active" cont="<?php echo $cont+1; ?>"><?php }else{ ?><div class="item" cont="<?php echo $cont+1; ?>"><?php } ?>
 					<div class="col-xs-12 col-sm-6 col-md-4">
 						<?php set_query_var('user',$usuario);
 						get_template_part('targetas-autores'); ?>
 					</div></div>
 				<?php $cont++; } wp_reset_postdata();?>
-				</div>
+					
+				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
 				<a class="right carousel-control" href="#carousel-example-generic-autores" role="button" data-slide="next">
 				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				    <span class="sr-only">Next</span>
@@ -151,27 +152,28 @@
 	</div>
 </div>
 <div class="carousel-nav sombraInferior">
-	<div class="container row">
-		<p class="tituloNavegacionCarousel pull-right" >MAS AUTORES</p>
+	<div class="container quitarPadding">
+		<p class="tituloNavegacionCarousel alinear-derecha" >Página <span id="pagA"></span> de <span id="pagAC"></span> </p>
 	</div>
 </div>
-<div class="container">
+<div class="container quitarPadding">
 	<div class="row">
 		<div class="col-xs-12">
 			<h1 id="text-retos">Retos regionales</h1>
-			<div id="carousel-example-generic-inves" class="carousel slide" data-ride="carousel" data-type="multi" >
+			<div id="carousel-example-generic-investigacion" class="carousel slide" data-ride="carousel" data-type="multi" >
 				<div id="the-posts-inves" class="carousel-inner" role="listbox"> 
 						<?php $args = array(
 					      'post_type' => 'investigacion',
 					      'post_status' => 'publish',
-					      'order'=> 'ASC',
+					      'order'=> 'DESC',
 					      'orderby' => 'date',
+						  'posts_per_page' => 10, 
 					    );
 						$lastBlog = new WP_Query ($args);
 						$cont=0;
 						if($lastBlog->have_posts()):
 						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-						<?php if($cont == 0){ ?><div class="item active"><?php }else{ ?><div class="item"><?php } ?> 
+						<?php if($cont == 0){ ?><div class="item active"  cont="<?php echo $cont+1; ?>"><?php }else{ ?><div class="item"  cont="<?php echo $cont+1; ?>"><?php } ?> 
 								<div class="col-xs-12 col-sm-6 col-md-4">
 										<?php get_template_part('targetas-inves-inves'); ?>
 								</div>
@@ -180,12 +182,12 @@
 							 endwhile;
 						endif;	
 					    wp_reset_postdata(); ?>
-				</div>
-				<a class="right carousel-control" href="#carousel-example-generic-inves" role="button" data-slide="next">
+				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
+				<a class="right carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="next">
 				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				    <span class="sr-only">Next</span>
 				  </a>
-				  <a class="left carousel-control" href="#carousel-example-generic-inves" role="button" data-slide="prev">
+				  <a class="left carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="prev">
 				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 				    <span class="sr-only">Previous</span>
 				</a>
@@ -195,8 +197,9 @@
 </div>
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">
-	<div class="container row">
-		<p class="tituloNavegacionCarousel pull-right" >MAS INVESTIGACIONES</p>
+	<div class="container quitarPadding">
+		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/investigacion/');?>">MAS INVESTIGACIONES</a></p>
+		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI"></span>  de <span id="pagIC"></span></p>
 	</div>
 	</div>
 </div>

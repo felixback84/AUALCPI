@@ -72,7 +72,7 @@
 		</div>
 	</div>
 </div> -->
-<div class="container">
+<div class="container quitarPadding">
 	<div class="row">
 		<div class="col-sm-12" >
 			<h1>Contribuciones recientes a retos regionales</h1>	
@@ -81,7 +81,7 @@
 				<div class="carousel-inner" role="listbox"> 
 					<?php $args = array('post_type' => 'contribuciones' ,
 						'author' => $userId ,
-						'posts_per_page' => 6, 
+						'posts_per_page' => 10, 
 						'orderby' => 'id',
 						'order'   => 'DESC'
 						);
@@ -90,9 +90,9 @@
 					if ( $custom_posts->have_posts() ): 
 						while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
 							<?php if($cont == 0){ ?>
-								<div class="item active">
+								<div class="item active" cont="<?php echo $cont+1; ?>">
 							<?php }else{ ?> 
-									<div class="item">
+									<div class="item" cont="<?php echo $cont+1; ?>">
 							<?php } ?> 
 								<div class="col-xs-12 col-sm-4">
 									<?php get_template_part('targetas-author-contribuciones'); ?>
@@ -101,7 +101,7 @@
 						 <?php $cont++; endwhile;
 					endif;	
 				    wp_reset_postdata(); ?>
-				</div>
+				</div><div class="contador" cont="<?php echo $cont; ?>"></div>
 				<!-- Controls -->
 				<a class="left carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="prev">
 				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -110,17 +110,18 @@
 				<a class="right carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="next">
 				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				    <span class="sr-only">Next</span>
-				  </a>  
+				</a>  
 			</div>
 		</div>
 	</div>
 </div>
 <div class="carousel-nav sombraInferior">
-	<div class="container row">
-		<p class="tituloNavegacionCarousel pull-right" >MAS CONTRIBUCIONES</p>
+	<div class="container quitarPadding">	
+		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/contribuciones/');?>">MAS CONTRIBUCIONES</a></p>
+		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de <span id="pagBC"></span></p>
 	</div>
 </div>	
-<div class="container">
+<div class="container  quitarPadding">
 	<div class="row">
 		<div class="col-sm-12">
 			<h4>Comentarios Resientes</h4>
@@ -155,7 +156,7 @@
 								</div>
 
 					<?php $cont++; endforeach; ?> 
-					</div>
+					</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
 					<?php }else{ echo ('<p class="text-center">No hay comentarios</p>'); } ?>
 					
 				</div>
@@ -174,9 +175,9 @@
 </div>
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">
-	<div class="container row">
-		<p class="tituloNavegacionCarousel pull-right" >MAS COMENTARIOS</p>
-	</div>
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel alinear-derecha" >MAS COMENTARIOS</p>
+		</div>
 	</div>
 </div>
 <?php get_footer(); ?>
