@@ -9,10 +9,10 @@
 	<?php wp_head(); ?>
 	 <!-- You can use open graph tags to customize link previews.
     Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-  <meta property="og:url"           content="http://www.lamaletadefelix.com" />
-  <meta property="og:type"          content="website2" />
-  <meta property="og:title"         content="Your Website Title2" />
-  <meta property="og:description"   content="description provisional" />
+  <meta property="og:url"           content="<?php echo esc_url(get_permalink()); ?>" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="Aualcpi" />
+  <meta property="og:description"   content="<?php the_title(); ?>" />
   <meta property="og:image"         content="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_aualcpi.png" />
 </head>
 <?php
@@ -44,7 +44,7 @@
 			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/idiom.png" alt="" width="" height=""  style=""/>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-7">
-			<a id="logoAualcpi" class="thumbnail">
+			<a id="logoAualcpi" href="<?php echo home_url('');?>" class="thumbnail">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_aualcpi.png" alt="" width="" height="" />
 			</a>
 		</div>
@@ -86,38 +86,38 @@
 	<div class="container">
 		<div class="row">	
 			<div class= "col-xs-12">
-					<div class="container-fluid">
-					    <!-- Brand and toggle get grouped for better mobile display -->
-					    <div class="navbar-header">
-					      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
-					        <span class="sr-only">Menu Primary</span>
-					        <span class="icon-bar"></span>
-					        <span class="icon-bar"></span>
-					        <span class="icon-bar"></span>
-					      </button>
-					      <!--<a class="navbar-brand" href="#">AUALCPI.ORG</a>-->
-					    </div>
-					    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-					      <?php 
-						      wp_nav_menu(array(
-						      'theme_location' => 'primary',
-						       'container' => false,
-						       'menu_class' => 'nav navbar-nav',
-						       'walker' => new menu_primary()
-						       )							       
-						    ); 
-						  ?>
-						  <?php 
-							wp_nav_menu(array(
-								'theme_location'=> 'email',
-								'container' => false,
-								'menu_class' => 'nav navbar-nav navbar-right',
-						       	'walker' => new menu_primary()
-								)
-							); 
-							?>	
-					    </div>
-					</div>
+				<div class="container-fluid">
+				    <!-- Brand and toggle get grouped for better mobile display -->
+				    <div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+				        <span class="sr-only">Menu Primary</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				      <!--<a class="navbar-brand" href="#">AUALCPI.ORG</a>-->
+				    </div>
+				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+				      <?php 
+					      wp_nav_menu(array(
+					      'theme_location' => 'primary',
+					       'container' => false,
+					       'menu_class' => 'nav navbar-nav',
+					       'walker' => new menu_primary()
+					       )							       
+					    ); 
+					  ?>
+					  <?php 
+						wp_nav_menu(array(
+							'theme_location'=> 'email',
+							'container' => false,
+							'menu_class' => 'nav navbar-nav navbar-right',
+					       	'walker' => new menu_primary()
+							)
+						); 
+						?>	
+				    </div>
+				</div>
 				
 			</div>
 		</div>

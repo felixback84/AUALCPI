@@ -35,18 +35,19 @@
 				</article>
 
 				<!-- Your like button code -->
+				<div class="fb-like" data-href="http://pruebas.aualcpi.net/contribuciones/aporte-social-a-investigacion-1/" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
   <div class="fb-like" 
-    data-href="http://www.lamaletadefelix.com" 
+    data-href="<?php echo esc_url(get_permalink()); ?>" 
     data-layout="standard" 
     data-action="like" 
     data-show-faces="true">
   </div>
+<?php echo esc_url(get_permalink()); ?>
+  <div class="fb-like" data-href="<?php echo esc_url(get_permalink()); ?>" data-layout="box_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 
-  ---
-  <div class="fb-like" data-href="http://www.lamaletadefelix.com" data-layout="box_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+<!--   <div class="fb-like" data-href="http://www.google.com" data-width="450" data-layout="button_count" data-show-faces="false" data-send="false"></div> -->
 
-  ----
-  <div class="fb-like" data-href="http://www.google.com" data-width="450" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+  <div class="fb-like espacioLinkTarjeta" data-href="<?php echo esc_url(get_permalink()); ?>" data-width="450" data-layout="button_count" data-show-faces="false" data-send="false" ></div>
 
 
 				<div class="row">

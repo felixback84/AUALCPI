@@ -18,33 +18,34 @@
 									echo '<img src="'.get_stylesheet_directory_uri().'/images/imagenesTop.jpg" alt="Imagen portada del perfil del usuario">';
 								}?>	
 							</div>
-							<div class="container">
-								<div class="carousel-caption">
-									<?php if ($userId == wp_get_current_user()->ID){ echo '<h3>Mi cuenta</h3>';}else{ echo '<h3>Perfil profesional</h3>';}?>
-									<div class="col-xs-12 col-md-4">
-										<?php echo get_avatar( $userId, '100' ,'','logo usurio',array(
+								<div class="carousel-caption container">
+									<div class="col-xs-12">
+										<?php if ($userId == wp_get_current_user()->ID){ echo '<h1 class="TituloAutor">Mi cuenta </h1>';}else{ echo '<h1 class="TituloAutor">Perfil profesional</h1>';}?>
+									</div>
+									
+									<div class="col-xs-12 col-md-3">
+										<?php echo get_avatar( $userId, '150' ,'','logo usurio',array(
 											'class' => 'img-circle',
 										)); ?>
 									</div>
-									<div class="col-xs-12 col-md-8">
-										<h4><?php the_author_meta('display_name',$userId); ?></h4>
+									<div class="col-xs-12 col-md-9">
+										<h1><?php the_author_meta('display_name',$userId); ?> <a href="<?php echo home_url('wp-admin/profile.php');?>"><span class="icon icon-pencil"></span></a></h1>
 										<?php 
 										$date=formatoFechaEnEspañol($userId);
 										?>
-										<p><?php echo 'Miembro desde el '.$date; ?></p>
-										<p><?php $term=mostrarTermsPorIdUsuario($userId,'universidades_user'); 
+										<h3><?php echo 'Miembro desde el '.$date; ?></h3>
+										<h3><?php $term=mostrarTermsPorIdUsuario($userId,'universidades_user'); 
 
 										echo $term->name;?>
-										</p>
-										<p><?php $term=mostrarTermsPorIdUsuario($userId,'ciudad_user'); echo $term->name;?>
-										</p>
-										<p><?php $term=mostrarTermsPorIdUsuario($userId,'areas'); echo 'Área de investigacion: '.$term->name;?></p>
-										<p class="ico-pag"><span class="icon icon-twitter"> </span>
-										<a href="https://twitter.com/<?php the_author_meta('twitter',$userId); ?>" target="_blank"><?php the_author_meta('twitter',$userId); ?></a></p>
-										<p class="ico-pag"><span class="icon icon-linkedin"> </span><a href="https://www.linkedin.com/in/<?php the_author_meta('linkedin',$userId); ?>" target="_blank"><?php the_author_meta('linkedin',$userId); ?></a></p>
+										</h3>
+										<h3><?php $term=mostrarTermsPorIdUsuario($userId,'ciudad_user'); echo $term->name;?>
+										</h3>
+										<h3><?php $term=mostrarTermsPorIdUsuario($userId,'areas'); echo 'Área de investigacion: '.$term->name;?></h3>
+										<h4 class="ico-pag" style="margin-top: 20px;"><span class="icon icon-twitter"> </span>
+										<a href="https://twitter.com/<?php the_author_meta('twitter',$userId); ?>" target="_blank"><?php the_author_meta('twitter',$userId); ?></a></h4>
+										<h4 class="ico-pag"><span class="icon icon-linkedin"> </span><a href="https://www.linkedin.com/in/<?php the_author_meta('linkedin',$userId); ?>" target="_blank"><?php the_author_meta('linkedin',$userId); ?></a></h4>
 									</div>
 								</div>
-							</div>
 						</div>
 						<div class="item">
 							<div class="thumbnail sliderPerfilAltura">
@@ -56,12 +57,20 @@
 									echo '<img src="'.get_stylesheet_directory_uri().'/images/imagenesTop.jpg" alt="Imagen portada del perfil del usuario">';
 								}?>	
 							</div>
-							<div class="container">
-								<div class="carousel-caption">
-									<h4>Biografia</h4>
-									<p><?php the_author_meta('description',$userId); ?></p>
+								<div class="carousel-caption container">
+								<div class="col-xs-12">
+								<?php if ($userId == wp_get_current_user()->ID){ echo '<h1 class="TituloAutor">Mi cuenta</h1>';}else{ echo '<h1 class="TituloAutor">Perfil profesional</h1>';}?>
+									</div>
+									<div class="col-xs-12 col-md-3">
+										<?php echo get_avatar( $userId, '150' ,'','logo usurio',array(
+											'class' => 'img-circle',
+										)); ?>
+									</div>
+									<div class="col-xs-12 col-md-9">
+										<h1>Biografia</h1>
+										<h3><?php the_author_meta('description',$userId); ?></h3>
+									</div>
 								</div>
-							</div>
 						</div>
 					</div>
 					<a class="left carousel-control" href="#carousel-dual-perfil" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
@@ -176,7 +185,6 @@
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">
 		<div class="container quitarPadding">
-			<p class="tituloNavegacionCarousel alinear-derecha" >MAS COMENTARIOS</p>
 		</div>
 	</div>
 </div>

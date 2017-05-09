@@ -18,12 +18,13 @@
 						<p><?php  echo wp_trim_words(get_the_content(),30,'...'); ?></p> 
 						<?php $author_obj = get_user_by( 'email',get_the_author_meta( 'user_email')); 
 						$userId=$author_obj->ID; ?>
-						<p><?php echo get_avatar( $userId, '60' ,'','logo usurio',array(
+						<p class=""><?php echo get_avatar( $userId, '60' ,'','logo usurio',array(
 											'class' => 'img-circle',
 										)); ?> <?php the_author(); ?></p>
-						<p>
+						<div style="margin-top: 10px;">
+							<div class="fb-like espacioLinkTarjeta" data-href="<?php echo esc_url(get_permalink()); ?>" data-width="450" data-layout="button_count" data-show-faces="false" data-send="false" ></div>
 							<span class="pull-right"><?php comments_number( '0', '1', '%' ); ?> <span class="icon icon-comments"></span></span>
-						</p>
+						</div>
 					</div><p class="linea"></p>
 				</div>
 			</div>
