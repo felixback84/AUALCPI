@@ -23,7 +23,7 @@
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container  quitarPadding">
 	<div class="collapse sombraInferior" id="collapseExample-2" >
 		<div class="well">
 				<div class="row">

@@ -79,7 +79,7 @@
 						<h1>¿Cuáles son lo requisitos para ingresar?</h1>
 						<p>Eos expedita odio deleniti cum fugit autem placeat commodi optio neque itaque iste asperiores recusandae veritatis, dignissimos sunt libero distinctio ratione voluptatum vero eaque est repellat, consequatur natus, sapiente quidem.</p>
 						<p>Officia accusamus, neque sit accusantium veritatis. Facilis quaerat laudantium repudiandae, minima nostrum non molestias harum, temporibus earum cum officiis impedit numquam eos facere mollitia fuga pariatur, debitis, est voluptatum amet.</p>
-						<a href="<?php echo home_url('');?>" class="btn btnSuscribirme">SUSCRIBIRME</a>
+						<a href="<?php echo home_url('/suscribirme/');?>" class="btn btnSuscribirme">SUSCRIBIRME</a>
 					</div>
 				</div>
 				<div class="item">

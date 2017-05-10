@@ -63,7 +63,7 @@ endif; ?>
 <div class="container">
 	<div class="row espacioBotton">
 		<div id="cuadroHazteMiembro" class="col-xs-12 col-sm-8 col-sm-push-2">
-			<h4 class="text-center">La Red Lisi es una plataforma de investigación regional <a href="<?php echo home_url('/membresia/');  ?>">Házte miembro</a></h4>
+			<h5 class="text-center">La Red Lisi es una plataforma de investigación regional <a href="<?php echo home_url('/suscribirme/');  ?>">Házte miembro</a> o <a href="<?php echo home_url('/iniciar-de-sesion/');  ?>">Inicia sesión</a></h5>
 		</div>
 	</div>
 </div>

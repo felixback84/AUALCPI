@@ -219,7 +219,7 @@ function contribuciones_custom_post(){
 			'editor',
 			'autor',
 			'thumbnail',
-			'comments' ),
+			'comments',),
 		'menu_icon'  => 'dashicons-nametag',
     );
 
