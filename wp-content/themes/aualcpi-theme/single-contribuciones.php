@@ -8,6 +8,7 @@
 					<div class="styleSingle">
 						<?php  //var_dump($post);
 						the_title('<h1 class="entry-title">','</h1>' ); ?>
+						<?php the_content(); ?>
 						<?php $author_obj = get_user_by( 'email',get_the_author_meta( 'user_email')); 
 						$userId=$author_obj->ID; ?>  	
 						<div class="col-xs-12">					  	
@@ -28,7 +29,7 @@
 						<?php if( has_post_thumbnail() ): ?>
 							<div class="thumbnail"><?php the_post_thumbnail('full'); ?></div>
 						<?php endif; ?>
-						<?php the_content(); ?>
+						<?php echo get_post_meta(get_the_ID(), 'Descripcion', true); ?>
 					</div>
 				</article>
 				<!-- Your like button code -->

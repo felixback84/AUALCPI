@@ -52,11 +52,14 @@ function formatoFechaEnEspañolComentarios($fecha){
 }
 
 
-// add_action('init', 'reiniciarThemeInvestigacion');
-// function reiniciarThemeInvestigacion(){
+add_action('init', 'reiniciarThemeInvestigacion');
+function reiniciarThemeInvestigacion(){
 	
-// 	flush_rewrite_rules();
-//}
+	flush_rewrite_rules();
+}
+
+
+
 /*
 		===================================
 		functions verificar url para pagina usuario
@@ -72,22 +75,24 @@ function mostrarTermsPorIdUsuario($userId,$taxonomiaSlug){
 // 		===================================
 // */
 
-// function verificarPathPageUser(){	
-// 	$IDUSER= NULL;
-// 	$userId = get_query_var('pageUser'); 
-// 	//echo 'id user'.var_dump($userId);  
-// 	if(!empty($userId)){
-// 			$IDUSER=$userId;
-// 	}else{
-// 		if (is_user_logged_in()){
-// 			$cu = wp_get_current_user();
-// 			$IDUSER=$cu->ID;
-// 		}else{
-// 			wp_redirect( home_url(), 301 ); exit; 
-// 		}
-// 	}
-// 	return $IDUSER;
-// }
+function verificarPathPageUser(){	
+	$IDUSER= NULL;
+	$userId = get_query_var('pageUser'); 
+	//echo 'id user'.var_dump($userId);  
+	if(!empty($userId)){
+			$IDUSER=$userId;
+	}else{
+		if (is_user_logged_in()){
+			$cu = wp_get_current_user();
+			$IDUSER=$cu->ID;
+		}else{
+			wp_redirect( home_url(), 301 ); exit; 
+		}
+	}
+	return $IDUSER;
+}
+
+
 
 // /*
 // 		===================================

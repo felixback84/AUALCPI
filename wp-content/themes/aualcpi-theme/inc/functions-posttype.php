@@ -15,6 +15,19 @@ new MultiPostThumbnails(array(
 'post_type' => 'investigacion'
  ) );
 
+new MultiPostThumbnails(array(
+'label' => 'Imagen destacada 2',
+'id' => 'segunda-image-contribution',
+'post_type' => 'contribuciones'
+ ) );
+
+new MultiPostThumbnails(array(
+'label' => 'Imagen destacada 3',
+'id' => 'tercera-image-contribution',
+'post_type' => 'contribuciones'
+ ) );
+
+
  }
 
 /*
@@ -715,8 +728,9 @@ function wp_custom_text_investigacion() {
 	$Impacto = $custom["Impacto"][0];
 	$argsTextarea = array(
 	    'textarea_rows' => 5,
-	    'teeny' => true,
-	    'quicktags' => false
+	    'quicktags' => false,
+	    'media_buttons' => false,
+    	'tinymce' => true,
 	);
 	?>
 			<label for="RetroAlimentacion"><h3>Informacion - Retro Alimentación</h3></label>
@@ -973,5 +987,59 @@ function contribucion_attributes_meta_box($post) {
         } // end empty pages check
 }
 
+/*
+		===================================
+		meta box 2 - contribuciones 
+		===================================
+*/
 
+function add_custom_meta_boxes_contribucion_descripcion() {
+ 
+    // Define the custom attachment for posts
+    add_meta_box(
+        'wp_custom_text_contribucion',
+        'Descripcion de la contribucion',
+        'wp_custom_text_contribucion',
+        'contribuciones',
+        'normal'
+    );
+    
+ 
+} // end add_custom_meta_boxes
+add_action('add_meta_boxes', 'add_custom_meta_boxes_contribucion_descripcion');
+
+function wp_custom_text_contribucion() { 
+	global $post;
+	$custom = get_post_custom($post->ID);
+	$Descripcion = $custom["Descripcion"][0];
+	$argsTextarea = array(
+	    'textarea_rows' => 10,
+	    'quicktags' => false,
+	    'media_buttons' => false,
+    	'tinymce' => true,
+	);
+
+	?>
+			<label for="Descripcion"><h3>Informacion:</h3></label>
+			<?php
+				$content = $Descripcion;
+				$editor_id = 'Descripcion';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+
+
+<?php 
+}
+ 
+add_action ('save_post', 'save_informacion_contribucion_descripcion');
+ 
+function save_informacion_contribucion_descripcion(){
+	global $post;
+	//var_dump($_POST);
+	// - convert back to unix & update post
+	if(!isset($_POST["Descripcion"])):
+	return $post;
+	endif;
+	update_post_meta($post->ID, "Descripcion",$_POST["Descripcion"] );
+}
 /*------others ------*/
