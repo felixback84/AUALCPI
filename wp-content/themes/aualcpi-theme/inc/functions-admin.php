@@ -268,9 +268,9 @@ function aualcpi_custom_taxonomies_user() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'universidades_user' ),
 		'capabilities' => array(
-			'manage_terms' => 'edit_users', // Using 'edit_users' cap to keep this simple.
-			'edit_terms'   => 'edit_users',
-			'delete_terms' => 'edit_users',
+			'manage_terms' => 'manage_edit_users', // Using 'edit_users' cap to keep this simple.
+			'edit_terms'   => 'manage_edit_users',
+			'delete_terms' => 'manage_edit_users',
 			'assign_terms' => 'read',
 		)
 	);
@@ -298,9 +298,9 @@ function aualcpi_custom_taxonomies_user() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'ciudad_user' ),
 		'capabilities' => array(
-			'manage_terms' => 'edit_users', // Using 'edit_users' cap to keep this simple.
-			'edit_terms'   => 'edit_users',
-			'delete_terms' => 'edit_users',
+			'manage_terms' => 'manage_edit_users', // Using 'edit_users' cap to keep this simple.
+			'edit_terms'   => 'manage_edit_users',
+			'delete_terms' => 'manage_edit_users',
 			'assign_terms' => 'read',
 		)
 	);
@@ -388,4 +388,45 @@ function aualcpiTheme_Publicaciones_widget_setup () {
 }
 	
 add_action ('widgets_init', 'aualcpiTheme_Publicaciones_widget_setup');
+
+
+/*
+		===================================
+		crear roles
+		===================================
+*/
+
+add_role( 'Investigador', 
+'Investigador',
+array(
+'read' => true, // true allows this capability
+'manage_investigacion' =>true,
+'manage_areas' =>true,
+'manage_edit_users' =>true,
+'upload_files' =>true,
+'edit_attachments' =>true,
+'delete_attachments' =>true,
+
+
+)
+);
+
+function add_menu_investigador_caps() {
+    // gets the administrator role
+    $admins = get_role( 'Investigador' );
+
+    $admins->add_cap( 'edit_post_investigaciones' ); 
+    $admins->add_cap( 'edit_post_investigaciones' ); 
+    $admins->add_cap( 'publish_post_investigaciones' ); 
+    $admins->add_cap( 'delete_post_investigaciones' ); 
+    $admins->add_cap( 'edit_published_post_investigaciones' ); 
+    $admins->add_cap( 'delete_published_post_investigaciones' );
+
+    $admins->add_cap( 'edit_post_contribuciones' ); 
+    $admins->add_cap( 'publish_post_contribuciones' ); 
+    $admins->add_cap( 'delete_post_contribuciones' ); 
+    $admins->add_cap( 'edit_published_post_contribuciones' ); 
+    $admins->add_cap( 'delete_published_post_contribuciones' ); 
+}
+add_action( 'admin_init', 'add_menu_investigador_caps');
 

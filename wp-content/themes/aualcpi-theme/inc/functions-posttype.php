@@ -44,17 +44,17 @@ new MultiPostThumbnails(array(
 
 function investigacion_custom_post(){
 	$labels = array(
-		'name' => 'Investigación',
-		'Singlular' => 'Investigación',
-		'add_new' => 'Añadir investigación',
+		'name' => 'Retos',
+		'Singlular' => 'Retos',
+		'add_new' => 'Añadir reto',
 		'all_items' => 'Todos las investigaciones',
-		'add_new_item' => 'Nueva investigación',
-		'edit_item' => 'Editar investigación',
-		'new_item' => 'Nueva investigación',
-		'view_item' => 'Ver investigación',
-		'search_item' => 'Buscar investigación',
-		'not_found' => 'No se encuentra la investigación',
-		'not_found_in_trash' => 'No se encuentra la investigación',
+		'add_new_item' => 'Nueva reto',
+		'edit_item' => 'Editar reto',
+		'new_item' => 'Nueva reto',
+		'view_item' => 'Ver reto',
+		'search_item' => 'Buscar reto',
+		'not_found' => 'No se encuentra la reto',
+		'not_found_in_trash' => 'No se encuentra la reto',
 		'parent_item_colon' => 'Articulo principal'
 		
 	);
@@ -73,7 +73,7 @@ function investigacion_custom_post(){
 			'page-attributes'
 		),
 		
-		'menu_position' => 5,
+		'menu_position' => 9,
 		'hierarchical'          => true,
 		'public'                => true,
 		'show_ui'               => true,
@@ -85,6 +85,8 @@ function investigacion_custom_post(){
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'menu_icon'           	=> 'dashicons-media-document',
+		'capability_type' => array('post_investigacion','post_investigaciones'),
+		'map_meta_cap' => true
 		
 	);
 	register_post_type( 'investigacion', $args );
@@ -126,7 +128,7 @@ function beca_custom_post(){
 		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
-		'menu_position'         => 6,
+		'menu_position'         => 8,
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
@@ -215,25 +217,32 @@ function contribuciones_custom_post(){
     );
 
     $args = array(
-        "labels" => $labels,
-        "public" => true,
-        "show_ui" => true,
-        "has_archive" => true,
-        "show_in_menu" => true,
-		'menu_position' => 10,
-        "exclude_from_search" => false,
-        "capability_type" => "post",
-        "map_meta_cap" => true,
-        "hierarchical" => false,
-        "rewrite" => true,
-        "query_var" => true,
-        "supports" => array( 
+        'labels' => $labels,
+		'query_var' => true,
+		'rewrite' => true,
+		'capability_type' => 'post',
+		'supports' => array(
 			'title',
 			'editor',
 			'autor',
 			'thumbnail',
-			'comments',),
+			'comments',
+		),
+		
+		'menu_position' => 26,
+		'hierarchical'          => true,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,		
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
 		'menu_icon'  => 'dashicons-nametag',
+		'capability_type' => array('post_contribucion','post_contribuciones'),
+		'map_meta_cap' => true
     );
 
     register_post_type( "contribuciones", $args );
@@ -272,7 +281,7 @@ function aualcpi_custom_taxonomies_categorias() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'categoria' )
+		'rewrite' => array( 'slug' => 'categoria' ),
 	);
 
 	register_taxonomy('categoria', array('becas'), $args);
@@ -422,7 +431,13 @@ function aualcpi_custom_taxonomies_investigaciones_areas() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'areas' )
+		'rewrite' => array( 'slug' => 'areas' ),
+		'capabilities' => array(
+	        'manage_terms' => 'manage_areas',
+	        'edit_terms' => 'manage_areas',
+	        'delete_terms' => 'manage_areas',
+	        'assign_terms' => 'read'
+	    ), 
 	);
 
 	register_taxonomy('areas', array('investigacion','user'), $args);
@@ -450,7 +465,13 @@ function aualcpi_custom_taxonomies_investigaciones_universidades() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'universidades_investigacion' )
+		'rewrite' => array( 'slug' => 'universidades_investigacion' ),
+		'capabilities' => array(
+	        'manage_terms' => 'manage_investigacion',
+	        'edit_terms' => 'manage_investigacion',
+	        'delete_terms' => 'manage_investigacion',
+	        'assign_terms' => 'read'
+	    ), 
 	);
 	register_taxonomy('universidades_investigacion', array('investigacion'), $args);
 }	
@@ -477,7 +498,13 @@ function aualcpi_custom_taxonomies_investigaciones_status() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'status_inves' )
+		'rewrite' => array( 'slug' => 'status_inves' ),
+		'capabilities' => array(
+	        'manage_terms' => 'manage_investigacion',
+	        'edit_terms' => 'manage_investigacion',
+	        'delete_terms' => 'manage_investigacion',
+	        'assign_terms' => 'read'
+	    ), 
 	);
 	register_taxonomy('status_inves', array('investigacion'), $args);
 }	
@@ -504,7 +531,13 @@ function aualcpi_custom_taxonomies_investigaciones_ciudad() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'ciudad_investigaciones' )
+		'rewrite' => array( 'slug' => 'ciudad_investigaciones' ),
+		'capabilities' => array(
+	        'manage_terms' => 'manage_investigacion',
+	        'edit_terms' => 'manage_investigacion',
+	        'delete_terms' => 'manage_investigacion',
+	        'assign_terms' => 'read'
+	    ), 
 	);
 	register_taxonomy('ciudad_investigaciones', array('investigacion'), $args);
 }	
@@ -531,7 +564,13 @@ function aualcpi_custom_taxonomies_investigaciones_tag() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'tag_investigacion' )
+		'rewrite' => array( 'slug' => 'tag_investigacion' ),
+		'capabilities' => array(
+	        'manage_terms' => 'manage_investigacion',
+	        'edit_terms' => 'manage_investigacion',
+	        'delete_terms' => 'manage_investigacion',
+	        'assign_terms' => 'read'
+	    ), 
 	);
 	register_taxonomy('tag_investigacion', array('investigacion'), $args);
 
@@ -1043,3 +1082,69 @@ function save_informacion_contribucion_descripcion(){
 	update_post_meta($post->ID, "Descripcion",$_POST["Descripcion"] );
 }
 /*------others ------*/
+
+/*
+		===================================
+		meta box - investigaciones 
+		===================================
+*/
+//		ya esta declarada arriba 
+//		function update_edit_form() {
+//     echo ' enctype="multipart/form-data"';
+// } // end update_edit_form
+// add_action('post_edit_form_tag', 'update_edit_form');
+
+function add_custom_meta_boxes_upload_publicacion() {
+ 
+    // Define the custom attachment for posts
+    add_meta_box(
+        'wp_custom_attachment_upload_publicacion',
+        'Archivos de la publicacion',
+        'wp_custom_attachment_upload_publicacion',
+        'publicacion',
+        'side'
+    );
+ 
+} // end add_custom_meta_boxes_upload_publicacion
+add_action('add_meta_boxes', 'add_custom_meta_boxes_upload_publicacion');
+
+function wp_custom_attachment_upload_publicacion() { 
+	global $post;
+	//echo $post->ID;
+	$files = get_post_meta( $post->ID, 'publicacion_meta_file', true );
+	//var_dump($files);
+	$arrayFiles= explode(",",$files[0]);
+	//var_dump($arrayFiles);?>
+   	<label for="publicacion_meta_file">Seleccionar archivos:</label>
+	<div id="publicacion_meta_file_show">
+	<?php 
+
+	if(is_array($arrayFiles)){
+		foreach($arrayFiles as $file){?>
+			<p><?php  echo basename($file); ?></p>
+		<?php } 
+		}else{ ?>
+			<p><?php  echo basename($file); ?></p>
+	<?php } ?>
+	</div>
+	<input type='button' id="upload-button-file-publicacion" class="button-primary" value="Subir Archivos"/>
+	<input  type="hidden" name="publicacion_meta_file[]" id="publicacion_meta_file" value="<?php echo $files[0]; ?>" class="regular-text" style="width: 200px;"/><br />
+	<p class="description">Selecionar el archivo para publicacion.</p>
+<?php
+} 
+
+function save_custom_meta_data_upload_publicidad($id) {
+ 	global $post;
+    if(!isset($_POST["publicacion_meta_file"])):
+	return $post;
+	endif;
+	echo '<script language="javascript">alert("'.$id.'");</script>'; 
+	$values = $_POST["publicacion_meta_file"];
+	// foreach( $values as $value ) {
+ 	// add_post_meta( $post->ID, 'publicacion_meta_file', $value );
+	// }
+	update_post_meta($post->ID, "publicacion_meta_file",$values );
+     
+} // end save_custom_meta_data_upload_publicidad
+add_action('save_post', 'save_custom_meta_data_upload_publicidad');
+

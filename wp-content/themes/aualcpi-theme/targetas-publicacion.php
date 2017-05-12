@@ -19,8 +19,8 @@
 							echo "Categoria: ".mostrarCategorias($terms_list,'|');
 						?></span></p>
 						<p><?php  echo wp_trim_words(get_the_content(),30,'...'); ?></p>
-						<?php the_meta(); ?>
-						<a class="pull-right" href="<?php echo esc_url(get_permalink()); ?> ">Descargar</a> 
+						<?php $linkPublicacion = get_post_meta(get_the_ID(),'publicacion_meta_file',true)[0];  //var_dump($linkPublicacion); ?>
+						<a class="pull-right" href="<?php echo $linkPublicacion; ?> " target="_blank" >Descargar</a> 
 					</div><p class="linea"></p>
 				</div>
 			</div>
