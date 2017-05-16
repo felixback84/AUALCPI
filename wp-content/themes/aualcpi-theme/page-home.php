@@ -1,5 +1,4 @@
-<?php 
-get_header();?>
+<?php get_header();?>
 <div class="hidden-xs">
 		<?php echo do_shortcode("[huge_it_slider id='1']"); ?>
 </div>
@@ -11,7 +10,7 @@ get_header();?>
 				<div class="carousel-inner" role="listbox"> 
 					<?php $args = array (
 						'post_type' => 'post',
-						'posts_per_page' => 10, 
+						'posts_per_page' => 5, 
 						'orderby' => 'id',
 						'order'   => 'DESC',
 					);
@@ -41,7 +40,9 @@ get_header();?>
 					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 					    <span class="sr-only">Next</span>
 					  </a>
-					<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagN"></span> de <span id="pagNC"></span> </p>
+					
+					<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/noticias/')?>">Más noticias</a></p>
+					<p class="tituloNavegacionCarousel pull-right"  style="margin-top: -35px;">Página <span id="pagN"></span> de <span id="pagNC"></span> </p>
 				</div>	    
 			</div>
 		</div>
@@ -81,7 +82,7 @@ get_header();?>
 				<div class="carousel-inner" role="listbox"> 
 					<?php $args = array (
 						'post_type' => 'becas',
-						'posts_per_page' => 10, 
+						'posts_per_page' => 5, 
 						'orderby' => 'id',
 						'order'   => 'DESC',
 					);
@@ -119,7 +120,7 @@ get_header();?>
 </div>
 <div class="carousel-nav sombraInferior">
 	<div class="container quitarPadding">
-		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/movilidad/');?>">MAS BECAS</a></p>
+		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/movilidad/');?>">Más becas</a></p>
 		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de <span id="pagBC"></span></p>
 	</div>
 </div>	 
@@ -132,7 +133,7 @@ get_header();?>
 				<div class="carousel-inner" role="listbox"> 
 					<?php $args = array (
 						'post_type' => 'investigacion',
-						'posts_per_page' => 10, 
+						'posts_per_page' => 5, 
 						'orderby' => 'id',
 						'order'   => 'DESC',
 					);
@@ -171,7 +172,7 @@ get_header();?>
 </div>
 <div class="carousel-nav sombraInferior">
 	<div class="container quitarPadding">
-		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/retos-regionales/');?>">MAS INVESTIGACIONES</a></p>
+		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/retos-regionales/');?>">Más investigaciones</a></p>
 		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI"></span>  de <span id="pagIC"></span></p>
 	</div>
 </div>	
@@ -184,7 +185,7 @@ get_header();?>
 				<div class="carousel-inner" role="listbox"> 
 					<?php $args = array (
 						'post_type' => 'publicacion',
-						'posts_per_page' => 10, 
+						'posts_per_page' => 5, 
 						'orderby' => 'id',
 						'order'   => 'DESC',
 					);
@@ -223,7 +224,7 @@ get_header();?>
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">
 		<div class="container quitarPadding">
-			<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/descargas/');?>">MAS PUBLICACIONES</a></p>
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/descargas/');?>">Más publicaciones</a></p>
 			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de <span id="pagPC"></span></p>
 		</div>
 	</div>

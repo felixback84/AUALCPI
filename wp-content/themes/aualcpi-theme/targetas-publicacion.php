@@ -9,7 +9,7 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<?php if( has_post_thumbnail( )): ?>
-							<div class="thumbnail"><?php the_post_thumbnail ('full'); ?></div>
+							<div class="thumbnail"><?php the_post_thumbnail ('medium'); ?></div>
 						<?php else: ?>
 							<div class="thumbnail"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_aualcpi.png" alt="imagen de defecto" width="" height="" /></div>
 						<?php endif; ?>

@@ -35,9 +35,25 @@ class Hugeit_Slider_Slider implements Hugeit_Slider_Slider_Interface {
 	private $height = 375;
 
 	/**
+	 * Slider itemscount
+	 *
+	 * @var int
+	 */
+	private $itemscount = 5;
+
+	/**
+	 * Slider view.
+	 *
+	 * @values ['none', 'carousel1']
+	 *
+	 * @var string
+	 */
+	private $view = 'none';
+
+	/**
 	 * Slider effect.
 	 *
-	 * @values ['none', 'cube_h', 'cube_v', 'fade', 'slice_h', 'slice_v', 'slide_h', 'slide_v', 'scale_out', 'scale_in', 'block_scale', 'kaleidoscope', 'fan', 'blind_h', 'blind_v', 'random']
+	 * @values ['none', 'cube_h', 'cube_v', 'fade', 'slice_h', 'slice_v', 'slide_h', 'slide_v', 'scale_out', 'scale_in', 'block_scale', 'kaleidoscope', 'fan', 'blind_h', 'blind_v', 'random', 'carousel1']
 	 *
 	 * @var string
 	 */
@@ -245,6 +261,57 @@ class Hugeit_Slider_Slider implements Hugeit_Slider_Slider_Interface {
 		}
 
 		throw new Exception('Invalid value for "height" field.');
+	}
+	
+	/**
+	 * @return int
+	 */
+	public function get_itemscount() {
+		return $this->itemscount;
+	}
+
+	/**
+	 * @param int $itemscount
+	 *
+	 * @return Hugeit_Slider_Slider
+	 * @throws Exception
+	 */
+	public function set_itemscount( $itemscount ) {
+		if ( is_numeric( $itemscount ) ) {
+			$itemscount = absint( $itemscount );
+
+			if ( $itemscount > 0 && $itemscount < 10 ) {
+				$this->itemscount = $itemscount;
+
+				return $this;
+			}
+		}
+
+		throw new Exception('Invalid value for "itemscount" field.');
+	}
+
+	/**
+	 * @return string
+	 */
+	public function get_view() {
+		return $this->view;
+	}
+
+	/**
+	 * @param string view
+	 *
+	 * @return Hugeit_Slider_Slider
+	 * @throws Exception
+	 */
+	public function set_view( $view ) {
+
+		if ( ! in_array($view, array( 'none', 'carousel1') ) ) {
+			throw new Exception( 'Invalid value for "view" field.' );
+		}
+
+		$this->view = $view;
+
+		return $this;
 	}
 
 	/**
@@ -533,6 +600,8 @@ class Hugeit_Slider_Slider implements Hugeit_Slider_Slider_Interface {
 			'name' => $this->name,
 			'width' => $this->width,
 			'height' => $this->height,
+			'itemscount' => $this->itemscount,
+			'view' => $this->view,
 			'effect' => $this->effect,
 			'pause_time' => $this->pause_time,
 			'change_speed' => $this->change_speed,

@@ -19,7 +19,7 @@
 						<?php } ?>
 						<p><?php $terms_list=wp_get_post_terms($post->ID,'ciudad_becas');
 							if(count($terms_list)!=0) { echo ('Ciudad/Pais: ');}
-							echo mostrarCategorias($terms_list,'\\');
+							echo mostrarCategorias($terms_list,'/');
 						?></p>
 						<p><?php $terms_list=wp_get_post_terms($post->ID,'cantidad_becas');
 							if(count($terms_list)!=0) { echo ('Becas disponibles: ');}

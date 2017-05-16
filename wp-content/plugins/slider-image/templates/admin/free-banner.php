@@ -15,7 +15,7 @@
 		<a target="_blank"  href="https://wordpress.org/support/plugin/slider-image/reviews/"><?php _e('Rate Us', 'hugeit-slider'); ?></a>
 		<a target="_blank"  href="https://huge-it.com/wordpress-slider-demo-1-mixed-slider/"><?php _e('Full Demo', 'hugeit-slider'); ?></a>
 		<a target="_blank"  href="https://huge-it.com/wordpress-slider-faq/"><?php _e('FAQ', 'hugeit-slider'); ?></a>
-		<a target="_blank"  href="https://huge-it.com/contact-us/"><?php _e('Contact Us', 'hugeit-slider'); ?></a>
+		<a target="_blank"  href="https://wordpress.org/support/plugin/slider-image"><?php _e('Contact Us', 'hugeit-slider'); ?></a>
 	</div>
 	<div  class="description_text"><p><?php _e('This is the Lite version of the plugin. Click "GET THE FULL VERSION" for more advanced options and customization possibilities. We appreciate your attention and cooperation', 'hugeit-slider'); ?>.</p></div>
 	<div style="clear: both;"></div>

@@ -63,7 +63,7 @@
                                         <img src="<?php echo HUGEIT_SLIDER_ADMIN_IMAGES_URL . '/pro-logo.png'; ?>" alt="pro logo" class="hugeit_slider_pro_logo" />
                                     </button>
 								</a>
-                                <button type="button"  id="hugeit_slider_add_video_slide_button" class="butbutton button-primary button-large">
+                                <button style="<?php if($slider->get_view() === 'carousel1'){ echo 'display: none;';}?>" type="button"  id="hugeit_slider_add_video_slide_button" class="butbutton button-primary button-large">
                                     <a href="#TB_inline?width=800&height=600&inlineId=hugeit-slider-add-video-popup" class="thickbox"><?php _e('Add Video Slide', 'hugeit-slider'); ?>
                                         <img src="<?php echo HUGEIT_SLIDER_ADMIN_IMAGES_URL . '/pro-logo.png'; ?>" alt="pro logo" class="hugeit_slider_pro_logo" />
                                     </a>
@@ -101,16 +101,25 @@
 						<div id="slider-options" class="postbox">
 							<h3 class="handle"><span><?php _e('Current Slider Options', 'hugeit-slider'); ?></span></h3>
 							<ul id="slider-unique-options-list">
-
-								<li>
+								<li style="<?php if($slider->get_view() == 'carousel1'){ echo 'display: none;';}?>">
 									<label for="width"><?php _e('Width', 'hugeit-slider'); ?></label>
 									<input type="text" name="width" id="width" value="<?php echo $slider->get_width(); ?>" class="text_area" />
 								</li>
-								<li>
+								<li style="<?php if($slider->get_view() == 'carousel1'){ echo 'display: none;';}?>">
 									<label for="height"><?php _e('Height', 'hugeit-slider'); ?></label>
 									<input type="text" name="height" id="height" value="<?php echo $slider->get_height(); ?>" class="text_area" />
 								</li>
-
+								<li style="<?php if($slider->get_view() !== 'carousel1'){ echo 'display: none;';}?>">
+									<label for="height"><?php _e('Items count', 'hugeit-slider'); ?></label>
+									<input type="number" step="2" min="3" max="7" name="itemscount" id="itemscount" value="<?php echo $slider->get_itemscount(); ?>" class="text_area" />
+								</li>
+								<li>
+									<label for="view"><?php _e('Views', 'hugeit-slider'); ?></label>
+									<select name="view" id="view">
+										<option <?php if ($slider->get_view() == 'none') $slider->get_width() ?>  value="none"><?php _e('None', 'hugeit-slider'); ?></option>
+										<option <?php if ($slider->get_view() == 'carousel1') echo 'selected'; ?>  value="carousel1"><?php _e('Carousel 1', 'hugeit-slider'); ?></option>
+									</select>
+								</li>
 								<li>
 									<label for="effect"><?php _e('Effects', 'hugeit-slider'); ?></label>
 									<select name="effect" id="effect">
@@ -168,7 +177,7 @@
 									<label for="pause_on_hover"><?php _e('Pause on Hover', 'hugeit-slider'); ?></label>
 									<input type="checkbox" name="pause_on_hover"  value="1" id="pause_on_hover" <?php if($slider->get_pause_on_hover()  == '1') echo 'checked="checked"'; ?> />
 								</li>
-								<li>
+								<li style="<?php if($slider->get_view() === 'carousel1'){ echo 'display: none;';}?>" >
 									<label for="video_autoplay">Video Autoplay</label>
 									<input type="checkbox" name="video_autoplay"  value="1" id="video_autoplay" disabled="disabled" />
                                     <a class="probuttonlink" href="https://huge-it.com/slider/" target="_blank">( <span style="color: red;font-size: 14px;"> PRO </span> )</a>

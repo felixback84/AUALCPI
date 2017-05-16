@@ -1,4 +1,24 @@
 jQuery(document).ready(function() {
+	jQuery('#slider-unique-options-list select[name*="view"]').on('change', function(){
+		if(jQuery(this).val() === 'carousel1'){
+			jQuery('#slider-unique-options-list li').eq(0).css('display', 'none');
+			jQuery('#slider-unique-options-list li').eq(1).css('display', 'none');
+			jQuery('#slider-unique-options-list li').eq(2).css('display', 'block');
+			jQuery('#slider-unique-options-list li').eq(4).css('display', 'none');
+			jQuery('button#hugeit_slider_add_video_slide_button').css('display', 'none');
+			jQuery('#video_autoplay').parent('li').css('display', 'none');
+		} else {
+			jQuery('#slider-unique-options-list li').eq(0).css('display', 'block');
+			jQuery('#slider-unique-options-list li').eq(1).css('display', 'block');
+			jQuery('#slider-unique-options-list li').eq(2).css('display', 'none');
+			jQuery('#slider-unique-options-list li').eq(4).css('display', 'block');
+			jQuery('button#hugeit_slider_add_video_slide_button').css('display', 'block');
+			jQuery('#video_autoplay').parent('li').css('display', 'block');
+		}
+	});
+	
+	jQuery(".carousel_view_div").css('display', 'none');
+
 	jQuery('#arrows-type input[name="params[navigation_type]"]').on('change', function() {
 		jQuery(this).closest('ul').find('li.active').removeClass('active');
 		jQuery(this).closest('li').addClass('active');
@@ -128,6 +148,8 @@ jQuery(document).ready(function() {
 			name: jQuery('#adminForm').find('#sliders-list li.active input#name').val(),
 			width: jQuery('#slider-options').find('#width').val(),
 			height: jQuery('#slider-options').find('#height').val(),
+			itemscount: jQuery('#slider-options').find('#itemscount').val(),
+			view: jQuery('#slider-options').find('#view').val(),
 			effect: jQuery('#slider-options').find('#effect').val(),
 			pause_time: jQuery('#slider-options').find('#pause_time').val(),
 			change_speed: jQuery('#slider-options').find('#change_speed').val(),
@@ -140,8 +162,8 @@ jQuery(document).ready(function() {
 
 		jQuery.each(jQuery('#slides-list > li'), function(i, li) {
 			var $li = jQuery(li),
-				order = $li.data('order'),
-				type = $li.data('type');
+				order = li.dataset.order,
+				type = li.dataset.type;
 
 			switch (type) {
 				case 'image' :
@@ -152,7 +174,6 @@ jQuery(document).ready(function() {
 						url: $li.find('input.url').val(),
 						in_new_tab: $li.find('input.in-new-tab').prop('checked') ? 1 : 0,
 						attachment_id: $li.find('input.attachment-id').val(),
-						order: $li.data('order'),
 					};
 
 					break;

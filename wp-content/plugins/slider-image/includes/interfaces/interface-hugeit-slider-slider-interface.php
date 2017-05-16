@@ -58,6 +58,19 @@ interface Hugeit_Slider_Slider_Interface {
 	public function set_height( $height );
 
 	/**
+	 * @return int
+	 */
+	public function get_itemscount();
+
+	/**
+	 * @param int $itemscount
+	 *
+	 * @return Hugeit_Slider_Slider
+	 * @throws Exception
+	 */
+	public function set_itemscount( $itemscount );
+	
+	/**
 	 * @return string
 	 */
 	public function get_effect();

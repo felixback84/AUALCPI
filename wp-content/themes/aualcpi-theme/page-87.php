@@ -25,7 +25,7 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-xs-12 col-sm-8 col-sm-push-2">
 			<div class="youtube">
 				<iframe width="1280" height="720" src="https://www.youtube.com/embed/C85nRB-NnsU" frameborder="0" allowfullscreen></iframe>
 			</div>

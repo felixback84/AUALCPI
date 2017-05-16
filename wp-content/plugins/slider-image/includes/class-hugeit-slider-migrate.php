@@ -21,11 +21,21 @@ class Hugeit_Slider_Migrate {
 			'sl_width' => array(
 				'name' => 'width',
 			),
+			'itemscount' => array(
+				'name' => 'itemscount',
+			),
 			'pause_on_hover' => array(
 				'name' => 'pause_on_hover',
 				'replace' => array(
 					'on' => 1,
 					'off' => 0,
+				),
+			),
+			'slider_list_views_s' => array(
+				'name' => 'view',
+				'replace' => array(
+					'none' => 'none',
+					'carousel1' => 'carousel1'
 				),
 			),
 			'slider_list_effects_s' => array(
@@ -46,7 +56,7 @@ class Hugeit_Slider_Migrate {
 					'fan' => 'fan',
 					'blindH' => 'blind_h',
 					'blindV' => 'blind_v',
-					'random' => 'random',
+					'random' => 'random'
 				),
 			),
 			'description' => array(

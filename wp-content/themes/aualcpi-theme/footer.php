@@ -60,10 +60,8 @@
 				</div>
 				<div id="menuFooter" class="row">
 				<?php wp_nav_menu(array('theme_location'=>'secondary',
-										'container' => false,
-									    'menu_class' => 'nav navbar-nav navFooter')); ?>
-			
-		 		<!-- .container -->
+							'container' => false,
+							'menu_class' => 'nav navbar-nav navFooter')); ?>
 				<?php wp_footer(); ?>
 				</div>
 			</div>

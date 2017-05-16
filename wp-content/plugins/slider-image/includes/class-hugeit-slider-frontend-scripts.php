@@ -70,6 +70,8 @@ class Hugeit_Slider_Frontend_Scripts {
 			wp_localize_script('hugeit_slider_frontend_main', 'singleSlider_' . $slider->get_id(), array(
 				'width' => $slider->get_width(),
 				'height' => $slider->get_height(),
+				'itemscount' => $slider->get_itemscount(),
+				'view' => $slider->get_view(),
 				'pause_on_hover' => $slider->get_pause_on_hover(),
 				'navigate_by' => $slider->get_navigate_by(),
 				'pause_time' => $slider->get_pause_time(),

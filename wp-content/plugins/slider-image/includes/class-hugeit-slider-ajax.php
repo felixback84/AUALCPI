@@ -108,7 +108,7 @@ class Hugeit_Slider_Ajax {
 		}
 
 		$slider = $_POST['slider'];
-		$slides = $_POST['slides'];
+		$slides = !empty($_POST['slides']) ? $_POST['slides'] : array();
 
 		do_action('hugeit_slider_save_slider', $slider_id, $slider, $slides);
 

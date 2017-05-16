@@ -1,16 +1,18 @@
-=== Slider ===
+=== Responsive Slider - Image Slider ===
 Contributors: Huge-IT
 Donate link: https://huge-it.com/slider/
-Tags: slider, wordpress slider, image slider, Photo Slider, slider plugin, responsive slider, easy slider, post slider, video slider, youtube slider, gallery slider, images slider
+Tags: slider, wordpress slider, image slider, Photo Slider, slider plugin,
 Requires at least: 3.0.1
-Tested up to: 4.7.3
-Stable tag: 4.0.1
+Tested up to: 4.7.4
+Stable tag: 4.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Slider Huge-IT is an awesome WordPress Slider Plugin with many nice features. Just need to install and build slider in a few minutes.
 
 == Description ==
+
+https://www.youtube.com/watch?v=oIcsrVHNDWo
 
 Slider - Image Slider
 
@@ -21,10 +23,8 @@ Slider - Image Slider
 * [Slider FAQ](https://huge-it.com/wordpress-slider-faq/)
 * [Slider User Manual](https://huge-it.com/wordpress-slider-user-manual/)
 * [Slider Support](https://huge-it.com/contact-us/)
-* [Slider Forum](https://huge-it.com/forums/forum/wordpress/wordpress-slider/)
+* [Slider Forum](https://wordpress.org/support/plugin/slider-image)
 * [Slider GitHub Project](https://github.com/Huge-IT/slider-image)
-
-https://www.youtube.com/watch?v=oIcsrVHNDWo
 
 The slider is the best solution for those who wants to demonstrate images and videos in a superb way; you can reach this result due to the Huge-IT Slider.
 
@@ -414,6 +414,14 @@ After installation of pro version, in General Options all your changes will be s
 If you think, that you found a bug in our [WordPress Slider](https://huge-it.com/slider/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 4.0.2 =
+* 1) We have added a new Carousel view To slider.
+* 2) We have added advanced arrow options and effects for next and previous buttons.
+* 3) We have added image arrows opion for thumbnails, allowing to have arrows on thumbnails.
+* 4) We have fixed the bug where with 2 shortcodes the image of thumbnails would appear blank.
+* 5) Fixed some UX/UI issues.
+* 6) Made the plugin more responsive.
 
 = 4.0.1 =
 **IMPORTANT! The major update of version 4.0.0. included some changes in order to optimize and meet the WordPress php standards fully. There were some reports in forum about blank page and fatal error. The issue was connected with older versions of php and database. The new version includes the following changes and fixes:**

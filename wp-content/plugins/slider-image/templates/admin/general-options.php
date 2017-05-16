@@ -592,7 +592,7 @@ if ( function_exists( 'current_user_can' ) ) {
 
                                 <ul id="arrows-type">
                                     <?php
-                                    $image_names = array( 1  => 'arrows1', 2  => 'arrows2', 3  => 'arrows3', 4  => 'arrows4', 5  => 'arrows5', 6  => 'arrows6', 7  => 'arrows7', 8  => 'arrows8', 9  => 'arrows9', 10 => 'arrows10', 11 => 'arrows11', 12 => 'arrows12', 13 => 'arrows13', 14 => 'arrows14', 15 => 'arrows15', 16 => 'arrows16', );
+                                    $image_names = array( 1  => 'arrows1', 2  => 'arrows2', 3  => 'arrows3', 4  => 'arrows4', 5  => 'arrows5', 6  => 'arrows6', 7  => 'arrows7', 8  => 'arrows8', 9  => 'arrows9', 10 => 'arrows10', 11 => 'arrows11', 12 => 'arrows12', 13 => 'arrows13', 14 => 'arrows14', 15 => 'arrows15', 16 => 'arrows16', 17 => 'arrows17', 18 => 'arrows18', 19 => 'arrows19', 20 => 'arrows20', 21 => 'arrows21', );
                                     foreach ($image_names as $index => $name) : ?>
                                     <li <?php if(Hugeit_Slider_Options::get_navigation_type() == $index) echo 'class="active"'; ?>>
                                         <div class="image-block">

@@ -4,7 +4,7 @@
 Plugin Name: Huge IT Slider
 Plugin URI: http://huge-it.com/slider
 Description: Huge IT slider is a convenient tool for organizing the images represented on your website into sliders. Each product on the slider is assigned with a relevant slider, which makes it easier for the customers to search and identify the needed images within the slider.
-Version: 4.0.1
+Version: 4.0.2
 Author: Huge-IT
 Author URI: https://huge-it.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -21,7 +21,7 @@ final class Hugeit_Slider {
 	 *
 	 * @var string
 	 */
-	private $version = '4.0.1';
+	private $version = '4.0.2';
 
 	/**
 	 * Hugeit_Slider slider's table name.
@@ -78,6 +78,7 @@ final class Hugeit_Slider {
 		register_activation_hook( __FILE__, array( 'Hugeit_Slider_Install', 'init' ) );
 
 		add_action( 'init', array( $this, 'init' ), 1, 0 );
+		add_action( 'init', array( 'Hugeit_Slider_Install', 'init' ) );
 		add_action( 'before_hugeit_slider_init', array( $this, 'before_init' ), 1, 0 );
 		add_action( 'widgets_init', array($this, 'register_widgets'));
 	}

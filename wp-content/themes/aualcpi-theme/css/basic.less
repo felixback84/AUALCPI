@@ -12,10 +12,10 @@ body{
 	color:black;
 }
 article>.row, .espacioBotton{
-	padding-bottom: 20px;
+	padding-bottom: 32px;
 }
 .espacioTop{
-	padding-top: 20px;
+	padding-top: 32px;
 }
 
 .contenerdorGris{
@@ -240,8 +240,8 @@ article>.row, .espacioBotton{
 	#menu-email{
 		li{
 			border:none;
-			border-left: 1px solid #666;	
-			border-right: 1px solid #666;	
+			/*border-left: 1px solid #666;	*/
+			/*border-right: 1px solid #666;	*/
 		}
 	}
 	.navbar-nav>li>a{
@@ -257,6 +257,12 @@ article>.row, .espacioBotton{
 			color: black;
 		}
 		
+	}
+}
+@media (min-width: 992px) { 
+	.menuPrimary .navbar-nav > li > a{
+		padding-left: 12px;
+		padding-right: 12px;
 	}
 }
 /*#menu-email.navbar-nav>li>a{
@@ -332,6 +338,7 @@ article>.row, .espacioBotton{
 }
 .navFooter {
 	padding:10px 0 25px;
+	margin: 7.5px 0px;
 	li, ul{
 		list-style:none;
 	}

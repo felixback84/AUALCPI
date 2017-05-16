@@ -12,8 +12,9 @@ class Hugeit_Slider_Install {
 	 * @var bool
 	 */
 	public static function init() {
+		global $wpdb;
+
 		if (Hugeit_Slider()->get_version() !== get_option('hugeit_slider_version')) {
-			global $wpdb;
 
 			$hugeit_slider_slider_exists = $wpdb->get_row("SELECT * FROM information_schema.tables WHERE table_schema = '" . DB_NAME . "' AND table_name = '" . $wpdb->prefix . "hugeit_slider_slider' LIMIT 1;", ARRAY_A);
 			$hugeit_slider_slide_exists = $wpdb->get_row("SELECT * FROM information_schema.tables WHERE table_schema = '" . DB_NAME . "' AND table_name = '" . $wpdb->prefix . "hugeit_slider_slide' LIMIT 1;", ARRAY_A);
@@ -26,6 +27,30 @@ class Hugeit_Slider_Install {
 
 			update_option('hugeit_slider_version', Hugeit_Slider()->get_version());
 		}
+
+		if(!self::isset_table_column($wpdb->prefix . "hugeit_slider_slider","itemscount")){
+			$wpdb->query("ALTER TABLE `" . $wpdb->prefix . "hugeit_slider_slider` ADD `itemscount` INT(2) NOT NULL DEFAULT 5 , ADD `view` enum('none','carousel1') NOT NULL DEFAULT 'none' AFTER `itemscount`");
+		}
+	}
+	
+	/**
+	 * Check if column exists in specific table
+	 *
+	 * @param string $table_name
+	 * @param string $column_name
+	 * @return bool
+	 */
+
+	private static function isset_table_column($table_name, $column_name) {
+		global $wpdb;
+		$columns = $wpdb->get_results("SHOW COLUMNS FROM  " . $table_name, ARRAY_A);
+		foreach ($columns as $column) {
+			if ($column['Field'] == $column_name) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 	
 	private static function install() {
@@ -86,7 +111,8 @@ class Hugeit_Slider_Install {
 				pause_on_hover int(1) UNSIGNED NOT NULL DEFAULT '1',
 				video_autoplay int(1) UNSIGNED DEFAULT '0',
 				random int(1) UNSIGNED DEFAULT '0',
-				
+				itemscount int(2) UNSIGNED NOT NULL DEFAULT '5',
+				view enum('none','carousel1') NOT NULL DEFAULT 'none',
 				PRIMARY KEY (id)
 			) {$collate}"
 		);
@@ -336,6 +362,7 @@ class Hugeit_Slider_Install {
 			->set_name(__('My First Slider', 'hugeit-slider'))
 			->set_width(600)
 			->set_height(375)
+			->set_itemscount(5)
 			->set_effect('random')
 			->set_pause_time(4000)
 			->set_change_speed(1000)
