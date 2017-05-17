@@ -49,11 +49,14 @@
 					<div class="col-xs-6 text-right"><?php next_post_link(); ?></div>
 				</div>
 				<div class="row">
+				<div class="col-xs-12">
+					
 					<?php if( comments_open() ){ 
-						comments_template(); 
+						//comments_template(); 
 					} else {
-						echo '<h5 class="text-center">Sorry, Comments are closed!</h5>';
+						//echo '<h5 class="text-center">Sorry, Comments are closed!</h5>';
 					} ?>
+				</div>
 				</div>
 			<?php endwhile;
 			endif; ?>

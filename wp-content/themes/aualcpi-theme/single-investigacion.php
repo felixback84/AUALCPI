@@ -166,7 +166,7 @@ endif; ?>
 									</div>
 								</article>
 						</div>
-						<div class="col-sm-12">
+						<div class="col-sm-12 quitarPadding">
 							<h1>Contribuciones recientes a retos regionales</h1>
 							<?php $contContribuciones=0; ?>
 							<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
@@ -261,7 +261,7 @@ endif; ?>
 									</div>
 								</article>
 						</div>
-						<div class="col-sm-12">
+						<div class="col-sm-12 quitarPadding">
 							<h1>Contribuciones recientes a retos regionales</h1>
 							<?php $contContribuciones=0; ?>
 							<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
@@ -355,7 +355,7 @@ endif; ?>
 									</div>
 								</article>
 						</div>
-						<div class="col-sm-12">
+						<div class="col-sm-12 quitarPadding">
 							<h1>Contribuciones recientes a retos regionales</h1>
 							<?php $contContribuciones=0; ?>
 							<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
@@ -448,7 +448,7 @@ endif; ?>
 									</div>
 								</article>
 						</div>
-						<div class="col-sm-12">
+						<div class="col-sm-12 quitarPadding">
 							<h1>Contribuciones recientes a retos regionales</h1>
 							<?php $contContribuciones=0; ?>
 							<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
@@ -541,7 +541,7 @@ endif; ?>
 									</div>
 								</article>
 						</div>
-						<div class="col-sm-12">
+						<div class="col-sm-12 quitarPadding">
 							<h1>Contribuciones recientes a retos regionales</h1>
 							<?php $contContribuciones=0; ?>
 							<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
@@ -634,7 +634,7 @@ endif; ?>
 									</div>
 								</article>
 						</div>
-						<div class="col-sm-12">
+						<div class="col-sm-12  quitarPadding">
 							<h1>Contribuciones recientes a retos regionales</h1>
 							<?php $contContribuciones=0; ?>
 							<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
@@ -694,8 +694,8 @@ endif; ?>
 </div>
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">
-		<div class="container row">
-			<p class="tituloNavegacionCarousel alinear-derecha" >MAS CONTRIBUCIONES</p>
+		<div class="container">
+			<p class="tituloNavegacionCarousel alinear-derecha" >Más contribuciones</p>
 		</div>
 	</div>
 </div>	 

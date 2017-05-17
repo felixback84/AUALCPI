@@ -5,7 +5,7 @@
 	</header> -->
 	<div class="bloqueTargeta">
 		<div class="row">
-			<div class="col-xs-8 col-sm-12 col-xs-push-2 col-sm-push-0">
+			<div class="col-xs-10 col-sm-12 col-xs-push-1 col-sm-push-0">
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<?php if( has_post_thumbnail( )): ?>

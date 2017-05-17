@@ -151,36 +151,32 @@
 	</div>
 </div>
 <div class="container quitarPadding">
-	<div class="row">
-		<div class="divAsociados">
-			<div class="col-xs-12">
-				<h1 class="text-center">Nuestras alianzas internacionales</h1>	
-				<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-					<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-						</a>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-					<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-						</a>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-					<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-						</a>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-					<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-						</a>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-					<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-					</a>
-				</div>
+	<div class="divAsociados">
+		<h1 class="text-center">Nuestras alianzas internacionales</h1>	
+		<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+				</a>
 			</div>
+			<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+			</a>
 		</div>
 	</div>
 </div>

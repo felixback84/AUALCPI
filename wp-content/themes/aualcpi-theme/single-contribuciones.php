@@ -37,7 +37,7 @@ while( have_posts() ): the_post(); ?>
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3" >
+		<div class="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3 quitarPadding" >
 			<article>
 				<div id="carousel-id" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
@@ -89,12 +89,13 @@ while( have_posts() ): the_post(); ?>
 					<div class="col-xs-6 text-right"><?php next_post_link(); ?></div>
 				</div>
 				<div class="row">
-
+					<div class="col-xs-12">						
 					<?php if( comments_open() ){ 
 						comments_template(); 
 					} else {
 						echo '<h5 class="text-center">Sorry, Comments are closed!</h5>';
 					} ?>
+					</div>
 				</div>
 			
 			</article>

@@ -24,6 +24,18 @@
 </div>
 <div class="container espacioBotton">
 	<div id="tabVerticalNegroMovilidad" class="row bordetabVerticalNegro sombraInferior tabVerticalNegro ElementoPadre">
+		<ul class="col-xs-5 nav nav-tabs tabs-right listaMovilidad ElementoHijo ">
+			<li class="active">
+			<a href="#programaMovilidad-quien-r" data-toggle="tab">
+				<p class="visible-xs visible-sm" >¿Puedo aplicar movilidad EMUAL?</p>
+				<p class="hidden-xs hidden-sm">¿Quíenes pueden aplicar al</p><p class="hidden-xs hidden-sm"> programa de movilidad  EMUAL?</p>
+			</a></li>
+			<li><a href="#categoriasMovilidad-r" data-toggle="tab"><p>Categorías disponibles</p></a></li>
+			<li><a href="#programaMovilidad-aplicar-r" data-toggle="tab">
+			<p class="visible-xs visible-sm" >¿Como aplicar movilidad EMAUL?</p>
+			<p class="hidden-xs hidden-sm">¿Cuál es el proceso para aplicar al</p><p class="hidden-xs hidden-sm"> programa de movilidad EMUAL?</p>
+			</a></li>
+		</ul>
 		<div class="col-xs-7 tab-content ">
 			<div class="tab-pane active" id="programaMovilidad-quien-r">
 				<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam vitae voluptatum tempore laudantium error officiis impedit illum rerum corrupti qui iste, maiores, voluptate dignissimos recusandae distinctio eum voluptatibus quae dicta.</div>
@@ -76,18 +88,6 @@
 				<div>Deserunt suscipit nemo saepe, earum quae adipisci officia sit deleniti cumque delectus at molestiae dolorem esse, fugit doloribus error facere. Neque quibusdam nesciunt, reprehenderit mollitia et porro. Accusantium, atque, delectus?</div>
 			</div>
 		</div>
-		<ul class="col-xs-5 nav nav-tabs tabs-right listaMovilidad ElementoHijo ">
-			<li class="active">
-			<a href="#programaMovilidad-quien-r" data-toggle="tab">
-				<p class="visible-xs visible-sm" >¿Puedo aplicar movilidad EMUAL?</p>
-				<p class="hidden-xs hidden-sm">¿Quíenes pueden aplicar al</p><p class="hidden-xs hidden-sm"> programa de movilidad  EMUAL?</p>
-			</a></li>
-			<li><a href="#categoriasMovilidad-r" data-toggle="tab"><p>Categorías disponibles</p></a></li>
-			<li><a href="#programaMovilidad-aplicar-r" data-toggle="tab">
-			<p class="visible-xs visible-sm" >¿Como aplicar movilidad EMAUL?</p>
-			<p class="hidden-xs hidden-sm">¿Cuál es el proceso para aplicar al</p><p class="hidden-xs hidden-sm"> programa de movilidad EMUAL?</p>
-			</a></li>
-		</ul>
 	</div>
 </div>
 <div class="container quitarPadding">
@@ -133,8 +133,8 @@
 	</div>
 </div>
 <div class="container quitarPadding">
-	<div class="row espacioBotton">
-		<div class="col-sm-12">
+	<div class="espacioBotton">
+		<div class="col-sm-12  quitarPadding">
 			<h1>Oferta de becas y programas disponibles</h1>
 			<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi">
 			<!-- Wrapper for slides -->
@@ -184,47 +184,45 @@
 	</div>
 </div>
 <div class="container quitarPadding">
-	<div class="row">
-		<div class="col-sm-12">
-			<h1>Publicaciones</h1>	
-			<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel"  data-type="multi">
-			<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox"> 
-					<?php $args = array (
-						'post_type' => 'publicacion',
-						'posts_per_page' => 10, 
-						'orderby' => 'id',
-						'order'   => 'DESC',
-					);
-					$lastBlog = new WP_Query ($args);
-					$cont=0;
-					$numeroElementos=3;
-					if($lastBlog->have_posts()):
-						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-						<?php if($cont == 0){ ?>
-								<div class="item active" cont="<?php echo $cont+1; ?>">
-							<?php }else{ ?> 
-									<div class="item" cont="<?php echo $cont+1; ?>">
-							<?php } ?> 
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<?php get_template_part('targetas-publicacion'); ?>
-										</div>
+	<div class="col-sm-12 quitarPadding">
+		<h1>Publicaciones</h1>	
+		<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel"  data-type="multi">
+		<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox"> 
+				<?php $args = array (
+					'post_type' => 'publicacion',
+					'posts_per_page' => 10, 
+					'orderby' => 'id',
+					'order'   => 'DESC',
+				);
+				$lastBlog = new WP_Query ($args);
+				$cont=0;
+				$numeroElementos=3;
+				if($lastBlog->have_posts()):
+					while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+					<?php if($cont == 0){ ?>
+							<div class="item active" cont="<?php echo $cont+1; ?>">
+						<?php }else{ ?> 
+								<div class="item" cont="<?php echo $cont+1; ?>">
+						<?php } ?> 
+									<div class="col-xs-12 col-sm-6 col-md-4">
+										<?php get_template_part('targetas-publicacion'); ?>
 									</div>
-						 	<?php $cont++; endwhile;
-						endif;	
-				    wp_reset_postdata(); 
+								</div>
+					 	<?php $cont++; endwhile;
+					endif;	
+			    wp_reset_postdata(); 
 //				     $fin+=2; ?>
-				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
-				<!-- Controls -->
-				<a class="right carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				  </a>
-				  <a class="left carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				</a>   
-			</div>
+			</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
+			<!-- Controls -->
+			<a class="right carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+			  <a class="left carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			</a>   
 		</div>
 	</div>
 </div>

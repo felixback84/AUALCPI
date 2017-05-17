@@ -427,6 +427,42 @@ function add_menu_investigador_caps() {
     $admins->add_cap( 'delete_post_contribuciones' ); 
     $admins->add_cap( 'edit_published_post_contribuciones' ); 
     $admins->add_cap( 'delete_published_post_contribuciones' ); 
+
+
 }
 add_action( 'admin_init', 'add_menu_investigador_caps');
+
+
+function add_menu_Administrator_caps() {
+    // gets the administrator role
+    $admins = get_role( 'administrator' );
+
+    $admins->add_cap( 'edit_post_investigaciones' ); 
+    $admins->add_cap( 'edit_others_post_investigaciones' ); 
+    $admins->add_cap( 'edit_private_post_investigaciones' ); 
+    $admins->add_cap( 'read_private_post_investigaciones' ); 
+    $admins->add_cap( 'publish_post_investigaciones' ); 
+    $admins->add_cap( 'delete_post_investigaciones' ); 
+    $admins->add_cap( 'delete_others_post_investigaciones' ); 
+    $admins->add_cap( 'delete_private_post_investigaciones' ); 
+    $admins->add_cap( 'edit_published_post_investigaciones' ); 
+    $admins->add_cap( 'delete_published_post_investigaciones' );
+
+    $admins->add_cap( 'edit_post_contribuciones' ); 
+    $admins->add_cap( 'edit_others_post_contribuciones' ); 
+    $admins->add_cap( 'edit_private_post_contribuciones' ); 
+    $admins->add_cap( 'read_private_post_contribuciones' ); 
+    $admins->add_cap( 'publish_post_contribuciones' ); 
+    $admins->add_cap( 'delete_post_contribuciones' ); 
+    $admins->add_cap( 'delete_others_post_contribuciones' ); 
+    $admins->add_cap( 'delete_private_post_contribuciones' ); 
+    $admins->add_cap( 'edit_published_post_contribuciones' ); 
+    $admins->add_cap( 'delete_published_post_contribuciones' ); 
+
+    
+    $admins->add_cap( 'manage_edit_users' ); 
+    $admins->add_cap( 'manage_areas' ); 
+    $admins->add_cap( 'manage_investigacion' );
+}
+add_action( 'admin_init', 'add_menu_Administrator_caps');
 

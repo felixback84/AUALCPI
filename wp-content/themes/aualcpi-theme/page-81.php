@@ -23,8 +23,14 @@
 	</div>
 </div>
 <div class="container espacioBotton">
-	<div class="row bordetabVerticalNegro espacioBotton tabVerticalNegro ElementoPadre sombraInferior">
-      <div class="col-xs-9 tab-content">
+	<div id="cajaNegraAsociacion" class="row bordetabVerticalNegro espacioBotton tabVerticalNegro ElementoPadre sombraInferior">
+      <ul class="nav nav-tabs tabs-right ElementoHijo col-xs-3">
+        <li class="active"><a href="#home-r" data-toggle="tab">Home</a></li>
+        <li><a href="#mision-r" data-toggle="tab">Misión</a></li>
+        <li><a href="#vision-r" data-toggle="tab">Visión</a></li>
+        <li><a href="#organigrama-r" data-toggle="tab">Organigrama</a></li>
+      </ul>
+      <div class="tab-content col-xs-9">
         <div class="tab-pane active" id="home-r">
 			<div>Lorem 2ipsum dolor sit amet, consectetur adipisicing elit. Ipsam vitae voluptatum tempore laudantium error officiis impedit illum rerum corrupti qui iste, maiores, voluptate dignissimos recusandae distinctio eum voluptatibus quae dicta.</div>
 			<div>Voluptatem numquam voluptatibus recusandae atque nobis sed quidem, possimus quasi suscipit. Ipsa est asperiores ullam, porro sapiente dolor. Rem quidem beatae similique maiores odio nobis corporis? Animi repellat, dicta ab?</div>
@@ -47,30 +53,55 @@
         	<div>Quae, tempore possimus. Modi eius assumenda iure ad corrupti impedit blanditiis, consequatur tenetur deleniti quam fugiat, corporis nisi inventore. Reiciendis magni ex, tempore nam delectus incidunt earum omnis. Adipisci, labore!</div>
         </div>
         <div class="tab-pane" id="organigrama-r">
-        	<div class="col-xs-12 col-sm-6">
-        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+	        <div class="hidden-xs">
+	        	<div class="col-xs-12 col-sm-6">
+	        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+	        	</div>
+	        	<div class="col-xs-12 col-sm-6">
+	        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+	        	</div>
+	        	<div class="col-xs-12 col-sm-6">
+	        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+	        	</div>
+	        	<div class="col-xs-12 col-sm-6">
+	        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+	        	</div>
         	</div>
-        	<div class="col-xs-12 col-sm-6">
-        		<?php get_template_part('targetas-miembrosQuienes'); ?>
-        	</div>
-        	<div class="col-xs-12 col-sm-6">
-        		<?php get_template_part('targetas-miembrosQuienes'); ?>
-        	</div>
-        	<div class="col-xs-12 col-sm-6">
-        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+        	<div class="visible-xs">
+        		<div id="carousel-id" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<div class="item active">
+									<div class="col-xs-12 col-sm-6">
+						        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+						        	</div>
+						</div>
+						<div class="item">
+									<div class="col-xs-12 col-sm-6">
+						        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+						        	</div>
+						</div>
+						<div class="item">
+									<div class="col-xs-12 col-sm-6">
+						        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+						        	</div>
+						</div>
+						<div class="item">
+									<div class="col-xs-12 col-sm-6">
+						        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+						        	</div>
+						</div>
+					</div>
+					<a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+					<a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+				</div>
         	</div>
         </div>
       </div>
-      <ul class="col-xs-3 nav nav-tabs tabs-right ElementoHijo">
-        <li class="active"><a href="#home-r" data-toggle="tab">Home</a></li>
-        <li><a href="#mision-r" data-toggle="tab">Misión</a></li>
-        <li><a href="#vision-r" data-toggle="tab">Visión</a></li>
-        <li><a href="#organigrama-r" data-toggle="tab"><span class="visible-xs visible-sm" >Organi...</span><span class="hidden-xs hidden-sm">Organigrama</span> </a></li>
-      </ul>
 	</div>
 </div>
+
 <div class="container quitarPadding">
-	<div class="row espacioBotton">
+	<div class="espacioBotton">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="thumbnail">
 				<!-- <img src="<?php //echo get_stylesheet_directory_uri(); ?>/images/imageContenidoNosotros.jpg" alt="" width="" height="" /> -->
@@ -81,9 +112,8 @@
 		</div>
 	</div>
 </div>
-
 <div class="container quitarPadding">
-	<div class="row espacioBotton">
+	<div class="espacioBotton">
 		<div class="col-xs-12">
 			<h1>Los miembros de nuestra Asocición</h1>
 		</div>
@@ -95,36 +125,32 @@
 	</div>
 </div>
 <div class="container quitarPadding">
-	<div class="row espacioBotton">
-		<div class="divAsociados">
-		<div class="col-xs-12">
-			<h1 class="text-center">Nuestras alianzas internacionales</h1>	
-			<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-				<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-					</a>
-				</div>
-				<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-				<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-					</a>
-				</div>
-				<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-				<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-					</a>
-				</div>
-				<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-				<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-					</a>
-				</div>
-				<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-				<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-					</a>
-				</div>
+	<div class="divAsociados">
+		<h1 class="text-center">Nuestras alianzas internacionales</h1>	
+		<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+				</a>
 			</div>
+			<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+			</a>
 		</div>
 	</div>
 </div>

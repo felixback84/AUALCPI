@@ -230,7 +230,7 @@ function contribuciones_custom_post(){
 		),
 		
 		'menu_position' => 26,
-		'hierarchical'          => true,
+		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
@@ -443,7 +443,7 @@ function aualcpi_custom_taxonomies_investigaciones_areas() {
 	register_taxonomy('areas', array('investigacion','user'), $args);
 }
 add_action( 'init' , 'aualcpi_custom_taxonomies_investigaciones_areas');
-flush_rewrite_rules();
+//flush_rewrite_rules();
 function aualcpi_custom_taxonomies_investigaciones_universidades() {
 	//add new taxonomy hierarchical
 	$labels = array(

@@ -69,6 +69,15 @@ carousel
 .carousel-control{
 	width: 5%;
 }
+@media (max-width: 768px) { 
+	.carousel-control{
+		width: 8%;
+	}
+	.carousel-control.left, .carousel-control.right{
+		font-size: 25px;
+	}
+}
+
 /*
 carousel -noticias
 ----------------*/
@@ -423,7 +432,17 @@ height: 100% !important;
 		margin-top: -7px;
 	}
 }
-
+@media (max-width: 768px) { 
+	#cajaNegraAsociacion, #tabVerticalNegroMovilidad{
+		.ElementoHijo{position: relative;}
+		.tabs-right{border:none;}
+		.col-xs-3,.col-xs-9,.col-xs-7,.col-xs-5{width: 100%;}
+		.nav-tabs>li{
+			float:left;
+		}
+		.col-xs-9{padding: 0;}
+	}
+}
 /*--------------------pagina members-------------------*/
 
 #carousel-members{

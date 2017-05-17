@@ -33,7 +33,7 @@
 	</div>
 </div>
 <div class="container quitarPadding">
-	<div class="row espacioBotton">
+	<div class="espacioBotton">
 		<div class="col-xs-12 quitarPadding">
 			<h1 class="text-center espacioBotton" style="margin:40px 80px;">Conoce nuestra Red Lisi</h1>
 			<?php $args = array(
@@ -58,7 +58,7 @@
 	</div>
 </div>
 <div class="container quitarPadding">
-	<div class="row espacioBotton">
+	<div class="espacioBotton">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="thumbnail">
 				<!-- <img src="<?php //echo get_stylesheet_directory_uri(); ?>/images/imageContenidoQueeslisi.jpg" alt="" width="" height="" /> -->
@@ -69,37 +69,33 @@
 		</div>
 	</div>
 </div>
-<div class="container">
-	<div class="row espacioBotton">
-		<div class="divAsociados">
-			<div class="col-xs-12">
-				<h1 class="text-center">Nuestras alianzas internacionales</h1>	
-				<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-					<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-					</a>
-				</div>
-				<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-					<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-					</a>
-				</div>
-				<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-					<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-					</a>
-				</div>
-				<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-					<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-					</a>
-				</div>
-				<div class="col-xs-6 col-sm-3 col-lg-2 col-lg-push-1">
-					<a href="#">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
-					</a>
-				</div>
+<div class="container quitarPadding">
+	<div class="divAsociados">
+		<h1 class="text-center">Nuestras alianzas internacionales</h1>	
+		<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+				</a>
 			</div>
+			<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3 col-lg-2 col-xs-push-0 col-lg-push-1">
+			<a href="#">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo-asocia.png" alt="logo asociado">
+			</a>
 		</div>
 	</div>
 </div>
