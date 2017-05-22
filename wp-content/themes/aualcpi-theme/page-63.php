@@ -22,7 +22,7 @@
 		</div>
 	</div>
 </div>
-<div class="container  quitarPadding">
+<div class="container quitarPadding">
 	<div class="collapse sombraInferior" id="collapseExample-2" >
 		<div class="well">
 				<div class="row">
@@ -46,8 +46,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<a class="btn-cargar-publicacion btn btn-default" data-url="<?php echo admin_url('admin-ajax.php'); ?>">Buscar</a>	
-					
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Loading_icon.gif" style="display:none;" class="loaderwp" style="" width="125px" height="100px">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Loading_icon.gif" style="display:none;" class="loaderwp" style="" width="25px" height="25px">
 					</div>
 				</div>
 		</div>
@@ -64,8 +63,7 @@
 	</div>
 </div>
 <div class="container quitarPadding">
-	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-xs-12  quitarEspacio">
 			<h1 id="text-retos">Publicaciones</h1>
 			<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel" data-type="multi" >
 				<div id="the-posts-inves" class="carousel-inner" role="listbox"> 
@@ -100,7 +98,6 @@
 				</a>
 			</div>
 		</div>	
-	</div>
 </div>
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">

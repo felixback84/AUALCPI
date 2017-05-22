@@ -38,8 +38,7 @@
 		</ul>
 		<div class="col-xs-7 tab-content ">
 			<div class="tab-pane active" id="programaMovilidad-quien-r">
-				<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam vitae voluptatum tempore laudantium error officiis impedit illum rerum corrupti qui iste, maiores, voluptate dignissimos recusandae distinctio eum voluptatibus quae dicta.</div>
-				<div>Voluptatem numquam voluptatibus recusandae atque nobis sed quidem, possimus quasi suscipit. Ipsa est asperiores ullam, porro sapiente dolor. Rem quidem beatae similique maiores odio nobis corporis? Animi repellat, dicta ab?</div>
+				<?php echo get_post_meta($post->ID,'Quienes')[0]; ?>
 			</div>
 			<div class="tab-pane" id="categoriasMovilidad-r">
 				<?php $terms = get_terms(array(
@@ -84,8 +83,7 @@
 				?>
 			</div>
 			<div class="tab-pane" id="programaMovilidad-aplicar-r">
-				<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, assumenda odio tempora corporis animi ipsa neque. Commodi provident nulla, nobis sint! Voluptas nulla ratione, necessitatibus doloremque facilis ut nemo error!</div>
-				<div>Deserunt suscipit nemo saepe, earum quae adipisci officia sit deleniti cumque delectus at molestiae dolorem esse, fugit doloribus error facere. Neque quibusdam nesciunt, reprehenderit mollitia et porro. Accusantium, atque, delectus?</div>
+			<?php echo get_post_meta($post->ID,'Proceso')[0]; ?>
 			</div>
 		</div>
 	</div>
@@ -116,7 +114,7 @@
 				</div> 
 				<div class="col-sm-4">
 					<a class="btn-cargar-becas btn btn-default" data-url="<?php echo admin_url('admin-ajax.php'); ?>">Buscar</a>	
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Loading_icon.gif" style="display:none;" class="loaderwp" style="" width="125px" height="100px">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Loading_icon.gif" style="display:none;" class="loaderwp" style="" width="25px" height="25px">
 				</div>
 			</div>
 		</div>

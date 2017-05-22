@@ -1,5 +1,8 @@
 jQuery(document).ready(function ($) {
 //alert( "ready!" );
+	
+	// $('#menu-posts-ai1ec_event .menu-icon-ai1ec_event .dashicons-format-standard:before').css({"content":"\f109","color":"red !important"});
+	//$('.dashicons-format-standard:before').css({'content':'\f117','color':'red !important'});
 
 	var mediaUploader;
 	$('#upload-button').on('click',function(e){

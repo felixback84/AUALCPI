@@ -73,7 +73,7 @@
 					<div class="col-sm-12">
 						<a class="btn-cargar-investigacion btn btn-default" data-url="<?php echo admin_url('admin-ajax.php'); ?>">Buscar</a>	
 					
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Loading_icon.gif" style="display:none;" class="loaderwp" style="" width="125px" height="100px">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Loading_icon.gif" style="display:none;" class="loaderwp" style="" width="25px" height="25px">
 					</div>
 				</div>
 		</div>
@@ -90,9 +90,8 @@
 	</div>
 </div>
 <div class="container quitarPadding">
-	<div class="row">
-		<div class="col-xs-12">
 			<h1 id="text-retos">Retos regionales</h1>
+		<div class="col-xs-12  quitarEspacio">
 			<div id="carousel-example-generic-investigacion" class="carousel slide" data-ride="carousel" data-type="multi" >
 				<div id="the-posts-inves" class="carousel-inner" role="listbox"> 
 						<?php $args = array(
@@ -126,7 +125,6 @@
 				</a>
 			</div>
 		</div>	
-	</div>
 </div>
 <div class="carousel-nav sombraInferior">
 	<div class="container quitarPadding">	
@@ -135,9 +133,8 @@
 	</div>
 </div>
 <div class="container quitarPadding">
-	<div class="row">
-		<div class="col-xs-12">
 		<h1 id="text-investigador">Investigadores regionales</h1>
+		<div class="col-xs-12  quitarEspacio">
 		<div id="carousel-example-generic-autores" class="carousel slide" data-ride="carousel" data-type="multi" >
 				<div id="the-posts-user" class="carousel-inner" role="listbox"> 
 				<?php 
@@ -194,7 +191,6 @@
 				</a>
 			</div>
 		</div>
-	</div>
 </div>
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">

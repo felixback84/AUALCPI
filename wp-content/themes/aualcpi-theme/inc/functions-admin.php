@@ -6,6 +6,18 @@
 		
 		
 	*/
+function replace_admin_menu_icons_css() {
+    ?>
+    <style>
+        /* CSS code goes here */
+        .dashicons-media-document:before{
+        	content: "\f508";
+        }
+    </style>
+    <?php
+}
+
+add_action( 'admin_head', 'replace_admin_menu_icons_css' );
 
 function aualcpiTheme_setup () {
 	

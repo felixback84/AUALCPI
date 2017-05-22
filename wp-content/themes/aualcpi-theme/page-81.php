@@ -32,25 +32,13 @@
       </ul>
       <div class="tab-content col-xs-9">
         <div class="tab-pane active" id="home-r">
-			<div>Lorem 2ipsum dolor sit amet, consectetur adipisicing elit. Ipsam vitae voluptatum tempore laudantium error officiis impedit illum rerum corrupti qui iste, maiores, voluptate dignissimos recusandae distinctio eum voluptatibus quae dicta.</div>
-			<div>Voluptatem numquam voluptatibus recusandae atque nobis sed quidem, possimus quasi suscipit. Ipsa est asperiores ullam, porro sapiente dolor. Rem quidem beatae similique maiores odio nobis corporis? Animi repellat, dicta ab?</div>
-			<div>Qui unde ducimus nihil assumenda earum fugiat facere. Saepe blanditiis dignissimos, placeat nulla ea dolor, nesciunt aspernatur, fuga pariatur minus nihil! Illo iusto ipsa sequi aut ab neque accusamus rem?</div>
-			<div>Suscipit porro molestias, necessitatibus sint ut blanditiis impedit sunt distinctio officia, doloremque eaque hic molestiae dolores deleniti autem voluptatem natus laborum tenetur eum eveniet ipsam, recusandae illo. Impedit, doloribus, ducimus.</div>
-			<div>Non quasi, commodi at voluptatem dolorem ut optio eveniet assumenda minus animi maiores alias iusto consequatur soluta, ex vero autem. Praesentium porro mollitia laboriosam, vel repellendus voluptatum dolore facilis impedit.</div>
+			<?php echo get_post_meta($post->ID,'Home')[0]; ?>
         </div>
         <div class="tab-pane" id="mision-r">
-        	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aliquam, quod maiores soluta harum placeat. Reiciendis dolores nulla maiores labore vel tempore, consectetur beatae iure saepe aliquam odit, itaque magnam!</div>
-        	<div>At voluptatum tempore natus cupiditate eligendi illum vero reprehenderit enim, pariatur omnis, dolores nemo amet illo laborum praesentium, perferendis. Provident obcaecati, eum doloremque ipsam, amet laborum cum aliquid laboriosam unde.</div>
-        	<div>Asperiores vitae nobis, impedit in mollitia, ratione, quidem commodi beatae, corporis quia laboriosam. Corporis itaque harum distinctio pariatur, voluptatum necessitatibus ex consequatur praesentium nostrum, inventore possimus ut minus ipsum quas?</div>
-        	<div>Recusandae non sint nisi! Perferendis beatae ad cumque hic aut dolores praesentium culpa neque vero, voluptates eveniet, ipsa earum consequuntur dolore, sapiente labore reprehenderit dignissimos accusamus corporis ab ea eum.</div>
-        	<div>Autem, cum, aliquid a sint architecto velit, nesciunt ut quasi eligendi perspiciatis similique in vitae molestiae. Sapiente eius fugiat quam fuga vel rem, vitae. Possimus neque voluptatibus assumenda, nemo molestias.</div>
+        	<?php echo get_post_meta($post->ID,'Mision')[0]; ?>
         </div>
         <div class="tab-pane" id="vision-r">
-        	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, assumenda odio tempora corporis animi ipsa neque. Commodi provident nulla, nobis sint! Voluptas nulla ratione, necessitatibus doloremque facilis ut nemo error!</div>
-        	<div>Deserunt suscipit nemo saepe, earum quae adipisci officia sit deleniti cumque delectus at molestiae dolorem esse, fugit doloribus error facere. Neque quibusdam nesciunt, reprehenderit mollitia et porro. Accusantium, atque, delectus?</div>
-        	<div>Odit dolore aliquid pariatur inventore autem officiis. Enim libero ipsa ab voluptas quasi voluptatibus quia culpa, pariatur, mollitia repellat incidunt voluptatem rerum praesentium ullam quo quidem modi nemo recusandae adipisci.</div>
-        	<div>Harum corporis nisi numquam eligendi delectus voluptates deleniti earum pariatur, nemo temporibus sint cum eius odit suscipit rerum doloribus iste tenetur aut quibusdam, rem! Pariatur velit nihil fugit, dolorem iusto.</div>
-        	<div>Quae, tempore possimus. Modi eius assumenda iure ad corrupti impedit blanditiis, consequatur tenetur deleniti quam fugiat, corporis nisi inventore. Reiciendis magni ex, tempore nam delectus incidunt earum omnis. Adipisci, labore!</div>
+        	<?php echo get_post_meta($post->ID,'Vision')[0]; ?>
         </div>
         <div class="tab-pane" id="organigrama-r">
 	        <div class="hidden-xs">

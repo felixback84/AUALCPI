@@ -1148,3 +1148,137 @@ function save_custom_meta_data_upload_publicidad($id) {
 } // end save_custom_meta_data_upload_publicidad
 add_action('save_post', 'save_custom_meta_data_upload_publicidad');
 
+/*
+		===================================
+		meta box - Pages
+		===================================
+*/
+
+/*----- colocar meta boxes ------*/
+add_action('admin_init','my_meta_init');
+function my_meta_init(){
+	$post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+	// checks for post/page ID
+	if ($post_id == '61')
+	{
+	add_meta_box('my_meta_movilidad', 'Contenido de las pestañas negras', 'my_meta_movilidad', 'page', 'normal', 'high');
+	}
+	if ($post_id == '81')
+	{
+	add_meta_box('my_meta_nuestra_asociacion', 'Contenido de las pestañas negras', 'my_meta_nuestra_asociacion', 'page', 'normal', 'high');
+	}
+}
+
+/*----- page movilidad ------*/
+function my_meta_movilidad(){
+ 	global $post;
+	$custom = get_post_custom($post->ID);
+	//var_dump($custom);
+	$Quienes = $custom["Quienes"][0];
+	$Proceso = $custom["Proceso"][0];
+
+	$argsTextarea = array(
+	    'textarea_rows' => 10,
+	    'quicktags' => false,
+	    'media_buttons' => false,
+    	'tinymce' => true,
+	);
+ ?>
+<label for="Quienes"><h3>Quienes pueden aplicar a las becas</h3></label>
+			<?php
+				$content = $Quienes;
+				$editor_id = 'Quienes';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+<label for="Proceso"><h3>Proceso para aplicar a las becas</h3></label>
+			<?php
+				$content = $Proceso;
+				$editor_id = 'Proceso';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+ <?php 
+}
+add_action('save_post','my_meta_movilidad_save');
+
+function my_meta_movilidad_save(){
+	global $post;
+	if(isset($_POST["Quienes"])):
+		update_post_meta($post->ID, "Quienes",$_POST["Quienes"] );
+	endif;
+	if(isset($_POST["Proceso"])):
+		update_post_meta($post->ID, "Proceso",$_POST["Proceso"]);
+	endif;
+}
+
+/*----- page movilidad ------*/
+function my_meta_nuestra_asociacion(){
+ 	global $post;
+	$custom = get_post_custom($post->ID);
+	$Home = $custom["Home"][0];
+	$Mision = $custom["Mision"][0];
+	$Vision = $custom["Vision"][0];
+	$UsuarioA = $custom["UsuarioA"][0];
+	var_dump($UsuarioA);
+	$argsTextarea = array(
+	    'textarea_rows' => 10,
+	    'quicktags' => false,
+	    'media_buttons' => false,
+    	'tinymce' => true,
+	);
+
+	$users = get_users( 'orderby=nicename&role=admin_aualcpi' );
+// // Array of WP_User objects.
+// foreach ( $users as $user ) {
+// 	echo '<span>' . esc_html( $user->user_email ) . '</span>';
+// }
+?>
+<label for="Home"><h3>Informacion en pestaña Home</h3></label>
+			<?php
+				$content = $Home;
+				$editor_id = 'Home';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+<label for="Mision"><h3>Informacion en pestaña Misión</h3></label>
+			<?php
+				$content = $Mision;
+				$editor_id = 'Mision';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+<label for="Vision"><h3>Informacion en pestaña Visión</h3></label>
+			<?php
+				$content = $Vision;
+				$editor_id = 'Vision';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+<label for="UsuarioA">Organigrama persona 1</label>
+<select name="UsuarioA" id="input" class="form-control" required="required">';
+<option value="0">Selecionar persona</option>';
+	<?php foreach ($users as $user) { ?>
+		<option value="<?php echo $user->ID; ?>"  <?php if( $user->ID == $UsuarioA){ echo "selected";} ?>  ><?php echo $user->user_nicename; ?></option>
+	<?php } ?>
+</select>
+<?php
+	
+?>
+<label for="">Organigrama persona 2</label>
+<label for="">Organigrama persona 3</label>
+<label for="">Organigrama persona 4</label>
+<?php 
+}
+add_action('save_post','my_meta_nuestra_asociacion_save');
+
+function my_meta_nuestra_asociacion_save(){
+	global $post;
+	if(isset($_POST["Home"])):
+		update_post_meta($post->ID, "Home",$_POST["Home"] );
+	endif;
+	if(isset($_POST["Mision"])):
+		update_post_meta($post->ID, "Mision",$_POST["Mision"]);
+	endif;
+	if(isset($_POST["Vision"])):
+		update_post_meta($post->ID, "Vision",$_POST["Vision"]);
+	endif;
+	if(isset($_POST["UsuarioA"])):
+		update_post_meta($post->ID, "UsuarioA",$_POST["UsuarioA"]);
+	endif;
+}
