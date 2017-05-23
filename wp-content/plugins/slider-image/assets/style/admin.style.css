@@ -1,3 +1,42 @@
+#view-image_frame, #view-style-block {
+    position: relative;
+    float: right;
+    width: 35px;
+    height: 28px;
+    padding: 0  0 0 20px;
+    background: url(../images/admin/view.style.png) left center no-repeat;
+}
+
+#view-image_frame ul, #view-style-block ul {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    left: 35px;
+    top: 0;
+}
+
+#view-image_frame:hover ul, #view-style-block:hover ul {
+    display: block;
+}
+
+#view-image_frame ul li, #view-style-block ul li {
+    display: none;
+    position: absolute;
+    top: 36px;
+    right: 16px;
+    width: 125px;
+    border: 1px solid #888;
+    background: white;
+}
+
+#view-image_frame ul li.active, #view-style-block ul li.active {
+    display: block;
+}
+
+#view-image_frame ul li img, #view-style-block ul li img {
+    width: 100%;
+}
+
 /*#########SLIDERS LIST PAGE###########*/
 .image_preview_on_hover {
     position: relative;

@@ -1218,7 +1218,14 @@ function my_meta_nuestra_asociacion(){
 	$Mision = $custom["Mision"][0];
 	$Vision = $custom["Vision"][0];
 	$UsuarioA = $custom["UsuarioA"][0];
-	var_dump($UsuarioA);
+	$UsuarioB = $custom["UsuarioB"][0];
+	$UsuarioC = $custom["UsuarioC"][0];
+	$UsuarioD = $custom["UsuarioD"][0];
+	$UsuarioALabel = $custom["UsuarioALabel"][0];
+	$UsuarioBLabel = $custom["UsuarioBLabel"][0];
+	$UsuarioCLabel = $custom["UsuarioCLabel"][0];
+	$UsuarioDLabel = $custom["UsuarioDLabel"][0];
+	//var_dump($UsuarioA);
 	$argsTextarea = array(
 	    'textarea_rows' => 10,
 	    'quicktags' => false,
@@ -1250,19 +1257,55 @@ function my_meta_nuestra_asociacion(){
 				$editor_id = 'Vision';
 				wp_editor( $content, $editor_id ,$argsTextarea);
 			?>
-<label for="UsuarioA">Organigrama persona 1</label>
-<select name="UsuarioA" id="input" class="form-control" required="required">';
-<option value="0">Selecionar persona</option>';
-	<?php foreach ($users as $user) { ?>
-		<option value="<?php echo $user->ID; ?>"  <?php if( $user->ID == $UsuarioA){ echo "selected";} ?>  ><?php echo $user->user_nicename; ?></option>
-	<?php } ?>
-</select>
-<?php
-	
-?>
-<label for="">Organigrama persona 2</label>
-<label for="">Organigrama persona 3</label>
-<label for="">Organigrama persona 4</label>
+<div class="inside">
+	<h3>Organigrama: Usuario 1</h3>	
+	<p><label for="UsuarioALabel">Titulo tarjeta:</label>
+	<input type="text" name="UsuarioALabel" value="<?php echo $UsuarioALabel; ?>"></p>
+	<p><label for="UsuarioA">Seleccionar:</label>
+	<select name="UsuarioA" id="input" class="form-control" required="required">';
+	<option value="0">Selecionar persona</option>';
+		<?php foreach ($users as $user) { ?>
+			<option value="<?php echo $user->ID; ?>"  <?php if( $user->ID == $UsuarioA){ echo "selected";} ?>  ><?php echo $user->user_nicename; ?></option>
+		<?php } ?>
+	</select></p>
+</div>
+<div class="inside">
+	<h3>Organigrama: Usuario 2</h3>	
+	<p><label for="UsuarioBLabel">Titulo tarjeta:</label>
+	<input type="text" name="UsuarioBLabel" value="<?php echo $UsuarioBLabel; ?>"></p>
+	<p><label for="UsuarioB">Seleccionar:</label>
+	<select name="UsuarioB" id="input" class="form-control" required="required">';
+	<option value="0">Selecionar persona</option>';
+		<?php foreach ($users as $user) { ?>
+			<option value="<?php echo $user->ID; ?>"  <?php if( $user->ID == $UsuarioB){ echo "selected";} ?>  ><?php echo $user->user_nicename; ?></option>
+		<?php } ?>
+	</select>
+	</p>
+</div>
+<div class="inside">
+	<h3>Organigrama: Usuario 3</h3>	
+	<p><label for="UsuarioCLabel">Titulo tarjeta:</label>
+	<input type="text" name="UsuarioCLabel" value="<?php echo $UsuarioCLabel; ?>"></p>
+	<p><label for="UsuarioC">Seleccionar:</label>
+	<select name="UsuarioC" id="input" class="form-control" required="required">';
+	<option value="0">Selecionar persona</option>';
+		<?php foreach ($users as $user) { ?>
+			<option value="<?php echo $user->ID; ?>"  <?php if( $user->ID == $UsuarioC){ echo "selected";} ?>  ><?php echo $user->user_nicename; ?></option>
+		<?php } ?>
+	</select>
+</div>
+<div class="inside">
+	<h3>Organigrama: Usuario 4</h3>	
+	<p><label for="UsuarioDLabel">Titulo tarjeta:</label>
+	<input type="text" name="UsuarioDLabel" value="<?php echo $UsuarioDLabel; ?>"></p>
+	<p><label for="UsuarioD">Seleccionar:</label>
+	<select name="UsuarioD" id="input" class="form-control" required="required">';
+	<option value="0">Selecionar persona</option>';
+		<?php foreach ($users as $user) { ?>
+			<option value="<?php echo $user->ID; ?>"  <?php if( $user->ID == $UsuarioD){ echo "selected";} ?>  ><?php echo $user->user_nicename; ?></option>
+		<?php } ?>
+	</select>
+</div>
 <?php 
 }
 add_action('save_post','my_meta_nuestra_asociacion_save');
@@ -1280,5 +1323,26 @@ function my_meta_nuestra_asociacion_save(){
 	endif;
 	if(isset($_POST["UsuarioA"])):
 		update_post_meta($post->ID, "UsuarioA",$_POST["UsuarioA"]);
+	endif;
+	if(isset($_POST["UsuarioB"])):
+		update_post_meta($post->ID, "UsuarioB",$_POST["UsuarioB"]);
+	endif;
+	if(isset($_POST["UsuarioC"])):
+		update_post_meta($post->ID, "UsuarioC",$_POST["UsuarioC"]);
+	endif;
+	if(isset($_POST["UsuarioD"])):
+		update_post_meta($post->ID, "UsuarioD",$_POST["UsuarioD"]);
+	endif;
+	if(isset($_POST["UsuarioALabel"])):
+		update_post_meta($post->ID, "UsuarioALabel",$_POST["UsuarioALabel"]);
+	endif;
+	if(isset($_POST["UsuarioBLabel"])):
+		update_post_meta($post->ID, "UsuarioBLabel",$_POST["UsuarioBLabel"]);
+	endif;
+	if(isset($_POST["UsuarioCLabel"])):
+		update_post_meta($post->ID, "UsuarioCLabel",$_POST["UsuarioCLabel"]);
+	endif;
+	if(isset($_POST["UsuarioDLabel"])):
+		update_post_meta($post->ID, "UsuarioDLabel",$_POST["UsuarioDLabel"]);
 	endif;
 }

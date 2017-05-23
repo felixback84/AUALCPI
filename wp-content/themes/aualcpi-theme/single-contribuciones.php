@@ -70,7 +70,7 @@ while( have_posts() ): the_post(); ?>
 					<?php echo get_post_meta(get_the_ID(), 'Descripcion', true); ?>
 				</div>
 				
-  <div class="fb-like" data-href="<?php echo esc_url(get_permalink()); ?>" data-layout="box_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+  <!-- <div class="fb-like" data-href="<?php echo esc_url(get_permalink()); ?>" data-layout="box_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div> -->
 				<!-- Your like button code -->
 				<!-- <div class="fb-like" data-href="http://pruebas.aualcpi.net/contribuciones/aporte-social-a-investigacion-1/" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
   <div class="fb-like" 

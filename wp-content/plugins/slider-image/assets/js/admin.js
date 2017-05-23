@@ -1,4 +1,12 @@
 jQuery(document).ready(function() {
+	jQuery('#view-image_frame ul li[data-id="' + jQuery('#arrows_style option[selected="selected"]').val() + '"]').addClass('active');
+
+	jQuery('#arrows_style').change(function() {
+		var $strt = jQuery(this).val();
+		jQuery('#view-image_frame ul li').removeClass('active');
+		jQuery('#view-image_frame ul li[data-id="' + $strt + '"]').addClass('active');
+	});
+	
 	jQuery('#slider-unique-options-list select[name*="view"]').on('change', function(){
 		if(jQuery(this).val() === 'carousel1'){
 			jQuery('#slider-unique-options-list li').eq(0).css('display', 'none');
@@ -14,6 +22,18 @@ jQuery(document).ready(function() {
 			jQuery('#slider-unique-options-list li').eq(4).css('display', 'block');
 			jQuery('button#hugeit_slider_add_video_slide_button').css('display', 'block');
 			jQuery('#video_autoplay').parent('li').css('display', 'block');
+		}
+	});
+
+	jQuery('#slider-unique-options-list input[name*="lightbox"]').on('change', function(){
+		if(jQuery('#slider-unique-options-list select[name*="slide_effect"]').parent('li').css('display') === 'none'){
+			jQuery('#slider-unique-options-list select[name*="slide_effect"]').parent('li').css('display', 'block');
+			jQuery('#slider-unique-options-list select[name*="open_close_effect"]').parent('li').css('display', 'block');
+			jQuery('#slider-unique-options-list select[name*="arrows_style"]').parent('li').css('display', 'block');
+		} else {
+			jQuery('#slider-unique-options-list select[name*="slide_effect"]').parent('li').css('display', 'none');
+			jQuery('#slider-unique-options-list select[name*="open_close_effect"]').parent('li').css('display', 'none');
+			jQuery('#slider-unique-options-list select[name*="arrows_style"]').parent('li').css('display', 'none');
 		}
 	});
 	
@@ -158,6 +178,10 @@ jQuery(document).ready(function() {
 			navigate_by: jQuery('#slider-options').find('#navigate_by').val(),
 			pause_on_hover: jQuery('#slider-options').find('#pause_on_hover').prop('checked') ? 1 : 0,
 			random: jQuery('#slider-options').find('#random').prop('checked') ? 1 : 0,
+			lightbox: jQuery('#slider-options').find('#lightbox').prop('checked') ? 1 : 0,
+			slide_effect: jQuery('#slider-options').find('#slide_effect').val(),
+			open_close_effect: jQuery('#slider-options').find('#open_close_effect').val(),
+			arrows_style: jQuery('#slider-options').find('#arrows_style').val()
 		};
 
 		jQuery.each(jQuery('#slides-list > li'), function(i, li) {

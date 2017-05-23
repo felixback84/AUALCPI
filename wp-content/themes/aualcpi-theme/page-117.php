@@ -13,19 +13,25 @@
 					<div class="carousel-caption">
 						<?php
 							$post = get_post(117); 
+							global $post;
 							$contenido = $post->post_content;
 							echo $contenido;
 						?>
 					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="container espacioBotton">
-	<div class="row espacioBotton">
+	<div class="row">
 		<h1 class="text-center">E-mail</h1>
-		
+		<div class="col-sx-12 Fpadding">
+			<div class="contactForm">
+				<?php echo do_shortcode('[contact-form-7 id="353" title="Contact form 1"]'); ?>
+			</div>
+		</div>
 	</div>
 </div>
 <?php get_footer(); ?>

@@ -31,6 +31,10 @@ class Hugeit_Slider_Install {
 		if(!self::isset_table_column($wpdb->prefix . "hugeit_slider_slider","itemscount")){
 			$wpdb->query("ALTER TABLE `" . $wpdb->prefix . "hugeit_slider_slider` ADD `itemscount` INT(2) NOT NULL DEFAULT 5 , ADD `view` enum('none','carousel1') NOT NULL DEFAULT 'none' AFTER `itemscount`");
 		}
+		
+		if(!self::isset_table_column($wpdb->prefix . "hugeit_slider_slider","lightbox")){
+			$wpdb->query("ALTER TABLE `" . $wpdb->prefix . "hugeit_slider_slider` ADD `lightbox` int(1) UNSIGNED DEFAULT 0, ADD `slide_effect` enum('effect_1','effect_2','effect_3','effect_4','effect_5','effect_6','effect_7','effect_8','effect_9','effect_10') NOT NULL DEFAULT 'effect_1', ADD `open_close_effect` enum('none','unfold','unfold_r','blowup','blowup_r','roadrunner','roadrunner_r','runner','runner_r','rotate','rotate_r') NOT NULL DEFAULT 'none', ADD `arrows_style` enum('arrows_1','arrows_2','arrows_3','arrows_4','arrows_5','arrows_6') NOT NULL DEFAULT 'arrows_1' AFTER `random`");
+		}
 	}
 	
 	/**
@@ -111,6 +115,10 @@ class Hugeit_Slider_Install {
 				pause_on_hover int(1) UNSIGNED NOT NULL DEFAULT '1',
 				video_autoplay int(1) UNSIGNED DEFAULT '0',
 				random int(1) UNSIGNED DEFAULT '0',
+				lightbox int(1) UNSIGNED DEFAULT '0',
+				slide_effect enum('effect_1','effect_2','effect_3','effect_4','effect_5','effect_6','effect_7','effect_8','effect_9','effect_10') NOT NULL DEFAULT 'effect_1',
+				open_close_effect enum('none','unfold','unfold_r','blowup','blowup_r','roadrunner','roadrunner_r','runner','runner_r','rotate','rotate_r') NOT NULL DEFAULT 'none',
+				arrows_style enum('arrows_1','arrows_2','arrows_3','arrows_4','arrows_5','arrows_6') NOT NULL DEFAULT 'arrows_1',
 				itemscount int(2) UNSIGNED NOT NULL DEFAULT '5',
 				view enum('none','carousel1') NOT NULL DEFAULT 'none',
 				PRIMARY KEY (id)
@@ -370,7 +378,11 @@ class Hugeit_Slider_Install {
 			->set_show_loading_icon(true)
 			->set_navigate_by('dot')
 			->set_pause_on_hover(true)
-			->set_random(false);
+			->set_random(false)
+			->set_lightbox(false)
+			->set_slide_effect('effect_1')
+			->set_open_close_effect('none')
+			->set_arrows_style('arrows_1');
 
 		$slider->add_slide($slide1);
 		$slider->add_slide($slide2);

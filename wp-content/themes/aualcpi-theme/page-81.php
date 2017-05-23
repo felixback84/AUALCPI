@@ -28,54 +28,134 @@
         <li class="active"><a href="#home-r" data-toggle="tab">Home</a></li>
         <li><a href="#mision-r" data-toggle="tab">Misión</a></li>
         <li><a href="#vision-r" data-toggle="tab">Visión</a></li>
-        <li><a href="#organigrama-r" data-toggle="tab">Organigrama</a></li>
+        <li><a href="#organigrama-r" data-toggle="tab"><span class="hidden-sm">Organigrama</span><span class="visible-sm">Organigra..</span></a></li>
       </ul>
       <div class="tab-content col-xs-9">
         <div class="tab-pane active" id="home-r">
-			<?php echo get_post_meta($post->ID,'Home')[0]; ?>
+			<p><?php echo get_post_meta($post->ID,'Home')[0]; ?></p>
         </div>
         <div class="tab-pane" id="mision-r">
-        	<?php echo get_post_meta($post->ID,'Mision')[0]; ?>
+        	<p><?php echo get_post_meta($post->ID,'Mision')[0]; ?></p>
         </div>
         <div class="tab-pane" id="vision-r">
-        	<?php echo get_post_meta($post->ID,'Vision')[0]; ?>
+        	<p><?php echo get_post_meta($post->ID,'Vision')[0]; ?></p>
         </div>
         <div class="tab-pane" id="organigrama-r">
 	        <div class="hidden-xs">
 	        	<div class="col-xs-12 col-sm-6">
-	        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+		        	<?php  $usuarioId = false;
+		        	$cargo = '';
+		        	//echo 'es'.$usuarioId; 
+		        	$usuarioId=get_post_meta($post->ID,'UsuarioA')[0];
+		        	$cargo=get_post_meta($post->ID,'UsuarioALabel')[0];
+		        	//echo 'pm'.$usuarioId; ?>
+		        	<?php if(!empty($usuarioId) && $usuarioId != false ){ ?>
+		        		<?php set_query_var( 'usuarioId', $usuarioId ) ?>	
+		        		<?php set_query_var( 'cargo', $cargo ) ?>	
+		        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+		        	<?php } ?>
 	        	</div>
 	        	<div class="col-xs-12 col-sm-6">
-	        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+		        	<?php  $usuarioId = false;
+		        	$cargo = '';
+		        	//echo 'es'.$usuarioId; 
+		        	$usuarioId=get_post_meta($post->ID,'UsuarioB')[0];
+		        	$cargo=get_post_meta($post->ID,'UsuarioBLabel')[0];
+		        	//echo 'pm'.$usuarioId; ?>
+		        	<?php if(!empty($usuarioId) && $usuarioId != false ){ ?>
+		        		<?php set_query_var( 'usuarioId', $usuarioId ) ?>	
+		        		<?php set_query_var( 'cargo', $cargo ) ?>	
+		        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+		        	<?php } ?>
 	        	</div>
 	        	<div class="col-xs-12 col-sm-6">
-	        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+		        	<?php  $usuarioId = false;
+		        	$cargo = '';
+		        	//echo 'es'.$usuarioId; 
+		        	$usuarioId=get_post_meta($post->ID,'UsuarioC')[0];
+		        	$cargo=get_post_meta($post->ID,'UsuarioCLabel')[0];
+		        	//echo 'pm'.$usuarioId; ?>
+		        	<?php if(!empty($usuarioId) && $usuarioId != false ){ ?>
+		        		<?php set_query_var( 'usuarioId', $usuarioId ) ?>	
+		        		<?php set_query_var( 'cargo', $cargo ) ?>	
+		        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+		        	<?php } ?>
 	        	</div>
 	        	<div class="col-xs-12 col-sm-6">
-	        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+		        	<?php  $usuarioId = false;
+		        	$cargo = '';
+		        	//echo 'es'.$usuarioId; 
+		        	$usuarioId=get_post_meta($post->ID,'UsuarioD')[0];
+		        	$cargo=get_post_meta($post->ID,'UsuarioDLabel')[0];
+		        	//echo 'pm'.$usuarioId; ?>
+		        	<?php if(!empty($usuarioId) && $usuarioId != false ){ ?>
+		        		<?php set_query_var( 'usuarioId', $usuarioId ) ?>	
+		        		<?php set_query_var( 'cargo', $cargo ) ?>	
+		        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+		        	<?php } ?>
 	        	</div>
         	</div>
         	<div class="visible-xs">
         		<div id="carousel-id" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
 						<div class="item active">
-									<div class="col-xs-12 col-sm-6">
+									<div class="col-xs-12 col-sm-6 quitarEspacio">
+							        	<?php  $usuarioId = false;
+							        	$cargo = '';
+							        	//echo 'es'.$usuarioId; 
+							        	$usuarioId=get_post_meta($post->ID,'UsuarioA')[0];
+							        	$cargo=get_post_meta($post->ID,'UsuarioALabel')[0];
+							        	//echo 'pm'.$usuarioId; ?>
+							        	<?php if(!empty($usuarioId) && $usuarioId != false ){ ?>
+						        		<?php set_query_var( 'usuarioId', $usuarioId ) ?>	
+						        		<?php set_query_var( 'cargo', $cargo ) ?>
 						        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+						        		<?php } ?>
 						        	</div>
 						</div>
 						<div class="item">
-									<div class="col-xs-12 col-sm-6">
+									<div class="col-xs-12 col-sm-6 quitarEspacio">
+						        	<?php  $usuarioId = false;
+						        	$cargo = '';
+						        	//echo 'es'.$usuarioId; 
+						        	$usuarioId=get_post_meta($post->ID,'UsuarioB')[0];
+						        	$cargo=get_post_meta($post->ID,'UsuarioBLabel')[0];
+						        	//echo 'pm'.$usuarioId; ?>
+						        	<?php if(!empty($usuarioId) && $usuarioId != false ){ ?>
+						        		<?php set_query_var( 'usuarioId', $usuarioId ) ?>	
+						        		<?php set_query_var( 'cargo', $cargo ) ?>
 						        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+						        		<?php } ?>
 						        	</div>
 						</div>
 						<div class="item">
-									<div class="col-xs-12 col-sm-6">
+									<div class="col-xs-12 col-sm-6 quitarEspacio">
+							        	<?php  $usuarioId = false;
+							        	$cargo = '';
+							        	//echo 'es'.$usuarioId; 
+							        	$usuarioId=get_post_meta($post->ID,'UsuarioC')[0];
+							        	$cargo=get_post_meta($post->ID,'UsuarioCLabel')[0];
+							        	//echo 'pm'.$usuarioId; ?>
+							        	<?php if(!empty($usuarioId) && $usuarioId != false ){ ?>
+							        		<?php set_query_var( 'usuarioId', $usuarioId ) ?>	
+							        		<?php set_query_var( 'cargo', $cargo ) ?>
 						        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+						        		<?php } ?>
 						        	</div>
 						</div>
 						<div class="item">
-									<div class="col-xs-12 col-sm-6">
+									<div class="col-xs-12 col-sm-6 quitarEspacio">
+							        	<?php  $usuarioId = false;
+							        	$cargo = '';
+							        	//echo 'es'.$usuarioId; 
+							        	$usuarioId=get_post_meta($post->ID,'UsuarioD')[0];
+							        	$cargo=get_post_meta($post->ID,'UsuarioDLabel')[0];
+							        	//echo 'pm'.$usuarioId; ?>
+							        	<?php if(!empty($usuarioId) && $usuarioId != false ){ ?>
+							        		<?php set_query_var( 'usuarioId', $usuarioId ) ?>	
+							        		<?php set_query_var( 'cargo', $cargo ) ?>
 						        		<?php get_template_part('targetas-miembrosQuienes'); ?>
+						        		<?php } ?>
 						        	</div>
 						</div>
 					</div>

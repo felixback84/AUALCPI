@@ -120,6 +120,40 @@ class Hugeit_Slider_Slider implements Hugeit_Slider_Slider_Interface {
 	private $random = 0;
 
 	/**
+	 * Enable lightbox. 1 for enable, otherwise 0.
+	 *
+	 * @var int
+	 */
+	private $lightbox = 1;
+
+	/**
+	 * Slider slide effect.
+	 *
+	 * @values ['effect_1','effect_2','effect_3','effect_4','effect_5','effect_6','effect_7','effect_8','effect_9','effect_10']
+	 *
+	 * @var string
+	 */
+	private $slide_effect = 'effect_1';
+
+	/**
+	 * Slider open close effect.
+	 *
+	 * @values ['none','unfold','unfold_r','blowup','blowup_r','roadrunner','roadrunner_r','runner','runner_r','rotate','rotate_r']
+	 *
+	 * @var string
+	 */
+	private $open_close_effect = 'none';
+
+	/**
+	 * Slider arrows style.
+	 *
+	 * @values ['arrows_1','arrows_2','arrows_3','arrows_4','arrows_5','arrows_6']
+	 *
+	 * @var string
+	 */
+	private $arrows_style = 'arrows_1';
+	
+	/**
 	 * This as an array of this slider slides.
 	 *
 	 * @var array
@@ -520,6 +554,101 @@ class Hugeit_Slider_Slider implements Hugeit_Slider_Slider_Interface {
 	}
 
 	/**
+	 * @return int
+	 */
+	public function get_lightbox() {
+		return $this->lightbox;
+	}
+
+	/**
+	 * @param int $lightbox
+	 *
+	 * @return Hugeit_Slider_Slider
+	 * @throws Exception
+	 */
+	public function set_lightbox( $lightbox ) {
+		if ( $lightbox == 1 || $lightbox == 0  ) {
+			$this->lightbox = (int)$lightbox;
+
+			return $this;
+		}
+
+		throw new Exception( 'Invalid value for "lightbox" field.' );
+	}
+
+	/**
+	 * @return string
+	 */
+	public function get_slide_effect() {
+		return $this->slide_effect;
+	}
+
+	/**
+	 * @param string $slide_effect
+	 *
+	 * @return Hugeit_Slider_Slider
+	 * @throws Exception
+	 */
+	public function set_slide_effect( $slide_effect ) {
+
+		if ( ! in_array( $slide_effect, array( 'effect_1','effect_2','effect_3','effect_4','effect_5','effect_6','effect_7','effect_8','effect_9','effect_10' ) ) ) {
+			throw new Exception( 'Invalid value for "slide_effect" value.' );
+		}
+
+		$this->slide_effect = $slide_effect;
+
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function get_open_close_effect() {
+		return $this->open_close_effect;
+	}
+
+	/**
+	 * @param string $open_close_effect
+	 *
+	 * @return Hugeit_Slider_Slider
+	 * @throws Exception
+	 */
+	public function set_open_close_effect( $open_close_effect ) {
+
+		if ( ! in_array( $open_close_effect, array( 'none','unfold','unfold_r','blowup','blowup_r','roadrunner','roadrunner_r','runner','runner_r','rotate','rotate_r' ) ) ) {
+			throw new Exception( 'Invalid value for "open_close_effect" value.' );
+		}
+
+		$this->open_close_effect = $open_close_effect;
+
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function get_arrows_style() {
+		return $this->arrows_style;
+	}
+
+	/**
+	 * @param string $arrows_style
+	 *
+	 * @return Hugeit_Slider_Slider
+	 * @throws Exception
+	 */
+	public function set_arrows_style( $arrows_style ) {
+
+		if ( ! in_array( $arrows_style, array( 'arrows_1','arrows_2','arrows_3','arrows_4','arrows_5','arrows_6' ) ) ) {
+			throw new Exception( 'Invalid value for "arrows_style" value.' );
+		}
+
+		$this->arrows_style = $arrows_style;
+
+		return $this;
+	}
+
+	/**
 	 * @return array
 	 */
 	public function get_slides() {
@@ -610,7 +739,11 @@ class Hugeit_Slider_Slider implements Hugeit_Slider_Slider_Interface {
 			'navigate_by' => $this->navigate_by,
 			'pause_on_hover' => $this->pause_on_hover,
 			'video_autoplay' => $this->video_autoplay,
-			'random' => $this->random
+			'random' => $this->random,
+			'lightbox' => $this->lightbox,
+			'slide_effect' => $this->slide_effect,
+			'open_close_effect' => $this->open_close_effect,
+			'arrows_style' => $this->arrows_style
 		);
 
 		if (NULL !== $desired_id) {

@@ -131,40 +131,44 @@ endif; ?>
 						<!--inicion ideacion-->
 						<div class="col-xs-12">
 							<?php $idPost=$post->ID; ?>
-								<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-									<div class="singleInvestigaciones">										
-										<div class="row">
-											<div class="col-sx-12 col-md-7">
-												<h2>Ideas</h2>
-												<?php the_content(); ?>
-												<?php if($fechaInicio1 <= $hoy){ echo '<p><span class="contribuciones1" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio1.'</p>';} ?>
-												<a href="http://localhost/AUALCPI/AUALCPI/wp-admin/post-new.php?post_type=contribuciones" class="btn btnAporteIdeas">Aportar una idea</a>
+							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+								<div class="singleInvestigaciones">										
+									<div class="row">
+										<div class="col-sx-12 col-md-7">
+											<h2>Ideas</h2>
+											<?php the_content(); ?>
+											<?php if($fechaInicio1 <= $hoy){ echo '<p><span class="contribuciones1" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio1.'</p>';} ?>
+											<?php  if(($fechaFin1 > $hoy) || (empty($fechaInicio1))){
+											if(is_user_logged_in()){ ?>
+												<a href="<?php echo admin_url('/post-new.php?post_type=contribuciones');?>" class="btn btnAporteIdeas">Aportar una idea</a>
+											<?php }  }
+											?>
+										</div>
+										<div class="col-sx-12 col-md-4 col-md-push-1">
+											<div class="singleInvestigacionPanelIzquierdo">
+												<h4>Información adicional</h4>
+												<?php //var_dump(get_post_meta(get_the_ID(), 'investigacion_meta_files', true));
+													$files = get_post_meta(get_the_ID(), 'investigacion_meta_files', true); 
+													$arrayFiles= explode(",",$files[0]);
+													if(is_array($arrayFiles)){
+														foreach($arrayFiles as $file){?>
+															<p>
+																<?php  echo '- <a href="'.$file.'" target="_blank">'.basename($file).'</a>'; ?>
+															</p>
+														<?php } }else{ ?>
+															<p><?php  echo '- <a href="'.$files.'" target="_blank">'.basename($files).'</a>'; ?></p>
+													<?php } ?>
 											</div>
-											<div class="col-sx-12 col-md-4 col-md-push-1">
-												<div class="singleInvestigacionPanelIzquierdo">
-													<h4>Información adicional</h4>
-													<?php //var_dump(get_post_meta(get_the_ID(), 'investigacion_meta_files', true));
-														$files = get_post_meta(get_the_ID(), 'investigacion_meta_files', true); 
-														$arrayFiles= explode(",",$files[0]);
-														if(is_array($arrayFiles)){
-															foreach($arrayFiles as $file){?>
-																<p>
-																	<?php  echo '- <a href="'.$file.'" target="_blank">'.basename($file).'</a>'; ?>
-																</p>
-															<?php } }else{ ?>
-																<p><?php  echo '- <a href="'.$files.'" target="_blank">'.basename($files).'</a>'; ?></p>
-														<?php } ?>
-												</div>
-												<div class="singleInvestigacionPanelIzquierdo">
-													<h5>Apoyado por:</h5>
-													<?php if (class_exists('MultiPostThumbnails')) : 
-													MultiPostThumbnails::the_post_thumbnail(get_post_type(), 'secondary-image', get_the_ID(), array(100,100));
-													endif; ?>
-												</div>
+											<div class="singleInvestigacionPanelIzquierdo">
+												<h5>Apoyado por:</h5>
+												<?php if (class_exists('MultiPostThumbnails')) : 
+												MultiPostThumbnails::the_post_thumbnail(get_post_type(), 'secondary-image', get_the_ID(), array(100,100));
+												endif; ?>
 											</div>
 										</div>
 									</div>
-								</article>
+								</div>
+							</article>
 						</div>
 						<div class="col-sm-12 quitarPadding">
 							<h1>Contribuciones recientes a retos regionales</h1>
@@ -233,6 +237,11 @@ endif; ?>
 												<h2>Retro Alimentación</h2>
 												<?php $contenido = get_post_meta(get_the_ID(), 'RetroAlimentacion', true); echo '<h4>'.$contenido.'</h4>'?>
 												<?php if($fechaInicio2 <= $hoy){ echo '<p><span class="contribuciones2" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio2.'</p>';} ?>
+												<?php if(($fechaInicio2 <= $hoy)&&($fechaFin2 > $hoy)){
+												if(is_user_logged_in()){ ?>
+													<a href="<?php echo admin_url('/post-new.php?post_type=contribuciones');?>" class="btn btnAporteIdeas">Aportar una idea</a>
+												<?php }  }
+												?>
 											</div>
 											<div class="col-sx-12 col-md-4 col-md-push-1">
 												<div class="singleInvestigacionPanelIzquierdo">
@@ -327,6 +336,11 @@ endif; ?>
 												<h2>Refinar</h2>
 												<?php $contenido = get_post_meta(get_the_ID(), 'Refinar', true); echo '<h4>'.$contenido.'</h4>'?>
 												<?php if($fechaInicio3 <= $hoy){ echo '<p><span class="contribuciones3" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio3.'</p>';} ?>
+												<?php if(($fechaInicio3 <= $hoy)&&($fechaFin3 > $hoy)){ 
+												if(is_user_logged_in()){ ?>
+													<a href="<?php echo admin_url('/post-new.php?post_type=contribuciones');?>" class="btn btnAporteIdeas">Aportar una idea</a>
+												<?php }  }
+												?>
 											</div>
 											<div class="col-sx-12 col-md-4 col-md-push-1">
 												<div class="singleInvestigacionPanelIzquierdo">
@@ -420,6 +434,11 @@ endif; ?>
 												<h2>2 Retro Alimentación</h2>
 												<?php $contenido = get_post_meta(get_the_ID(), 'RetroAlimentacion2', true); echo '<h4>'.$contenido.'</h4>'?>
 												<?php if($fechaInicio4 <= $hoy){ echo '<p><span class="contribuciones4" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio4.'</p>';} ?>
+												<?php  if(($fechaInicio4 <= $hoy)&&($fechaFin4 > $hoy)){ 
+												if(is_user_logged_in()){ ?>
+													<a href="<?php echo admin_url('/post-new.php?post_type=contribuciones');?>" class="btn btnAporteIdeas">Aportar una idea</a>
+												<?php }  }
+												?>
 											</div>
 											<div class="col-sx-12 col-md-4 col-md-push-1">
 												<div class="singleInvestigacionPanelIzquierdo">
@@ -513,6 +532,11 @@ endif; ?>
 												<h2>Ideas Top</h2>
 												<?php $contenido = get_post_meta(get_the_ID(), 'IdeasTop', true); echo '<h4>'.$contenido.'</h4>'?>
 												<?php if($fechaInicio5 <= $hoy){ echo '<p><span class="contribuciones5" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio5.'</p>';} ?>
+												<?php if(($fechaInicio5 <= $hoy)&&($fechaFin5 > $hoy)){ 
+												if(is_user_logged_in()){ ?>
+													<a href="<?php echo admin_url('/post-new.php?post_type=contribuciones');?>" class="btn btnAporteIdeas">Aportar una idea</a>
+												<?php }  }
+												?>
 											</div>
 											<div class="col-sx-12 col-md-4 col-md-push-1">
 												<div class="singleInvestigacionPanelIzquierdo">
@@ -606,6 +630,11 @@ endif; ?>
 												<h2>Impácto</h2>
 												<?php $contenido = get_post_meta(get_the_ID(), 'Impacto', true); echo '<h4>'.$contenido.'</h4>'?>
 												<?php if($fechaInicio6 <= $hoy){ echo '<p><span class="contribuciones6" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio6.'</p>';} ?>
+												<?php if(($fechaInicio6 <= $hoy)&&($fechaInicio1 <= $hoy)){ 
+												if(is_user_logged_in()){ ?>
+													<a href="<?php echo admin_url('/post-new.php?post_type=contribuciones');?>" class="btn btnAporteIdeas">Aportar una idea</a>
+												<?php }  }
+												?>
 											</div>
 											<div class="col-sx-12 col-md-4 col-md-push-1">
 												<div class="singleInvestigacionPanelIzquierdo">

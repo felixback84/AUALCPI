@@ -12,6 +12,7 @@ class Hugeit_Slider_Frontend_Scripts {
 	public function enqueue_scripts() {
 		wp_enqueue_script('hugeit_slider_frontend_froogaloop', HUGEIT_SLIDER_SCRIPTS_URL . '/froogaloop2.min.js', array('jquery'), false, true);
 		wp_enqueue_script('hugeit_slider_frontend_main', HUGEIT_SLIDER_SCRIPTS_URL . '/main.js', array('jquery'), false, true);
+		wp_enqueue_script('hugeit_slider_frontend_lightbox', HUGEIT_SLIDER_SCRIPTS_URL . '/slightbox.js', array('jquery'), false, true);
 	}
 
 	public function localize_script() {
@@ -76,7 +77,10 @@ class Hugeit_Slider_Frontend_Scripts {
 				'navigate_by' => $slider->get_navigate_by(),
 				'pause_time' => $slider->get_pause_time(),
 				'change_speed' => $slider->get_change_speed(),
-				'effect' => $slider->get_effect()
+				'effect' => $slider->get_effect(),
+				'slide_effect' => $slider->get_slide_effect(),
+				'open_close_effect' => $slider->get_open_close_effect(),
+				'arrows_style' => $slider->get_arrows_style()
 			));
 		}
 	}

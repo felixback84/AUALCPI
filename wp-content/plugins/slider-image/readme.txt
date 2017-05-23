@@ -3,8 +3,8 @@ Contributors: Huge-IT
 Donate link: https://huge-it.com/slider/
 Tags: slider, wordpress slider, image slider, Photo Slider, slider plugin,
 Requires at least: 3.0.1
-Tested up to: 4.7.4
-Stable tag: 4.0.2
+Tested up to: 4.7.5
+Stable tag: 4.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -414,6 +414,9 @@ After installation of pro version, in General Options all your changes will be s
 If you think, that you found a bug in our [WordPress Slider](https://huge-it.com/slider/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 4.0.3 =
+* We have added functional lightbox to slider , allowing users to enable lightbox for sliders.
 
 = 4.0.2 =
 * 1) We have added a new Carousel view To slider.

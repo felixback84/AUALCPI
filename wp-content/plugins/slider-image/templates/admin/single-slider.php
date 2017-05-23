@@ -187,7 +187,60 @@
 									<label for="random"><?php _e('Random', 'hugeit-slider'); ?></label>
 									<input type="checkbox" name="random"  value="1" id="random" <?php if($slider->get_random()  == '1') echo 'checked="checked"'; ?> />
 								</li>
-
+								<li>
+									<label for="lightbox"><?php _e('Lightbox', 'hugeit-slider'); ?></label>
+									<input type="checkbox" name="lightbox"  value="1" id="lightbox" <?php if($slider->get_lightbox()  == '1') echo 'checked="checked"'; ?> />
+								</li>
+								<li style="<?php if($slider->get_lightbox() == 'off'){ echo 'display: none;';}?>">
+									<label for="slide_effect"><?php _e('Slide Effect', 'hugeit-slider'); ?></label>
+									<select id="slide_effect" name="slide_effect">
+										<option <?php if($slider->get_slide_effect() == 'effect_1') echo 'selected'; ?> value="effect_1"><?php _e('Effect 1', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_slide_effect() == 'effect_2') echo 'selected'; ?> value="effect_2"><?php _e('Effect 2', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_slide_effect() == 'effect_3') echo 'selected'; ?> value="effect_3"><?php _e('Effect 3', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_slide_effect() == 'effect_4') echo 'selected'; ?> value="effect_4"><?php _e('Effect 4', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_slide_effect() == 'effect_5') echo 'selected'; ?> value="effect_5"><?php _e('Effect 5', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_slide_effect() == 'effect_6') echo 'selected'; ?> value="effect_6"><?php _e('Effect 6', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_slide_effect() == 'effect_7') echo 'selected'; ?> value="effect_7"><?php _e('Effect 7', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_slide_effect() == 'effect_8') echo 'selected'; ?> value="effect_8"><?php _e('Effect 8', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_slide_effect() == 'effect_9') echo 'selected'; ?> value="effect_9"><?php _e('Effect 9', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_slide_effect() == 'effect_10') echo 'selected'; ?> value="effect_10"><?php _e('Effect 10', 'hugeit-slider'); ?></option>
+									</select>
+								</li>
+								<li style="<?php if($slider->get_lightbox() == 'off'){ echo 'display: none;';}?>">
+									<label for="open_close_effect"><?php _e('Open/Close Effect', 'hugeit-slider'); ?></label>
+									<select id="open_close_effect" name="open_close_effect">
+										<option <?php if($slider->get_open_close_effect() == 'none') echo 'selected'; ?> value="none"><?php _e('None', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_open_close_effect() == 'unfold') echo 'selected'; ?> value="unfold"><?php _e('Unfold', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_open_close_effect() == 'unfold_r') echo 'selected'; ?> value="unfold_r"><?php _e('Unfold R', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_open_close_effect() == 'blowup') echo 'selected'; ?> value="blowup"><?php _e('BlowUp', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_open_close_effect() == 'blowup_r') echo 'selected'; ?> value="blowup_r"><?php _e('BlowUp R', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_open_close_effect() == 'roadrunner') echo 'selected'; ?> value="roadrunner"><?php _e('RoadRunner', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_open_close_effect() == 'roadrunner_r') echo 'selected'; ?> value="roadrunner_r"><?php _e('RoadRunner R', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_open_close_effect() == 'runner') echo 'selected'; ?> value="runner"><?php _e('Runner', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_open_close_effect() == 'runner_r') echo 'selected'; ?> value="runner_r"><?php _e('Runner R', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_open_close_effect() == 'rotate') echo 'selected'; ?> value="rotate"><?php _e('Rotate', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_open_close_effect() == 'rotate_r') echo 'selected'; ?> value="rotate_r"><?php _e('Rotate R', 'hugeit-slider'); ?></option>
+									</select>
+								</li>
+								<li style="<?php if($slider->get_lightbox() == 'off'){ echo 'display: none;';}?>">
+									<label for="arrows_style"><?php _e('Arrows Style', 'hugeit-slider'); ?></label>
+									<select id="arrows_style" name="arrows_style" style="width: 100px;">
+										<option <?php if($slider->get_arrows_style() == 'arrows_1') echo 'selected'; ?> value="arrows_1"><?php _e('Arrows 1', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_arrows_style() == 'arrows_2') echo 'selected'; ?> value="arrows_2"><?php _e('Arrows 2', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_arrows_style() == 'arrows_3') echo 'selected'; ?> value="arrows_3"><?php _e('Arrows 3', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_arrows_style() == 'arrows_4') echo 'selected'; ?> value="arrows_4"><?php _e('Arrows 4', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_arrows_style() == 'arrows_5') echo 'selected'; ?> value="arrows_5"><?php _e('Arrows 5', 'hugeit-slider'); ?></option>
+										<option <?php if($slider->get_arrows_style() == 'arrows_6') echo 'selected'; ?> value="arrows_6"><?php _e('Arrows 6', 'hugeit-slider'); ?></option>
+									</select>
+									<div id="view-image_frame">
+										<ul><li data-id="arrows_1" <?php if($slider->get_arrows_style() == 'arrows_1') echo 'class="active"'; ?>><img src="<?php echo HUGEIT_SLIDER_ADMIN_IMAGES_URL .  '/arrows/slightbox_arrows1.png' ?>"></li></ul>
+										<ul><li data-id="arrows_2" <?php if($slider->get_arrows_style() == 'arrows_2') echo 'class="active"'; ?>><img src="<?php echo HUGEIT_SLIDER_ADMIN_IMAGES_URL .  '/arrows/slightbox_arrows2.png' ?>"></li></ul>
+										<ul><li data-id="arrows_3" <?php if($slider->get_arrows_style() == 'arrows_3') echo 'class="active"'; ?>><img src="<?php echo HUGEIT_SLIDER_ADMIN_IMAGES_URL .  '/arrows/slightbox_arrows3.png' ?>"></li></ul>
+										<ul><li data-id="arrows_4" <?php if($slider->get_arrows_style() == 'arrows_4') echo 'class="active"'; ?>><img src="<?php echo HUGEIT_SLIDER_ADMIN_IMAGES_URL .  '/arrows/slightbox_arrows4.png' ?>"></li></ul>
+										<ul><li data-id="arrows_5" <?php if($slider->get_arrows_style() == 'arrows_5') echo 'class="active"'; ?>><img src="<?php echo HUGEIT_SLIDER_ADMIN_IMAGES_URL .  '/arrows/slightbox_arrows5.png' ?>"></li></ul>
+										<ul><li data-id="arrows_6" <?php if($slider->get_arrows_style() == 'arrows_6') echo 'class="active"'; ?>><img src="<?php echo HUGEIT_SLIDER_ADMIN_IMAGES_URL .  '/arrows/slightbox_arrows6.png' ?>"></li></ul>
+									</div>
+								</li>
 							</ul>
 							<div id="major-publishing-actions">
 								<div id="publishing-action">

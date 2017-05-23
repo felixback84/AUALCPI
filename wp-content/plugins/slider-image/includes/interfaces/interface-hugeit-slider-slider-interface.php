@@ -180,6 +180,58 @@ interface Hugeit_Slider_Slider_Interface {
 	public function set_random( $random );
 
 	/**
+	 * @return int
+	 */
+	public function get_lightbox();
+
+	/**
+	 * @param int $lightbox
+	 *
+	 * @return Hugeit_Slider_Slider
+	 * @throws Exception
+	 */
+	public function set_lightbox( $lightbox );
+
+	/**
+	 * @return string
+	 */
+	public function get_slide_effect();
+
+	/**
+	 * @param string $slide_effect
+	 *
+	 * @return Hugeit_Slider_Slider
+	 * @throws Exception
+	 */
+	public function set_slide_effect( $slide_effect );
+
+	/**
+	 * @return string
+	 */
+	public function get_open_close_effect();
+
+	/**
+	 * @param string $open_close_effect
+	 *
+	 * @return Hugeit_Slider_Slider
+	 * @throws Exception
+	 */
+	public function set_open_close_effect( $open_close_effect );
+
+	/**
+	 * @return string
+	 */
+	public function get_arrows_style();
+
+	/**
+	 * @param string $arrows_style
+	 *
+	 * @return Hugeit_Slider_Slider
+	 * @throws Exception
+	 */
+	public function set_arrows_style( $arrows_style );
+	
+	/**
 	 * Saves slider and it's slides.
 	 *
 	 * @return bool|int Inserted row id on success, false on failure.
