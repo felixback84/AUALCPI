@@ -72,7 +72,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<a class="btn-cargar-investigacion btn btn-default" data-url="<?php echo admin_url('admin-ajax.php'); ?>">Buscar</a>	
-					
+						<a href="<?php home_url('/retos-regionales/'); ?>" class="btn-cargar-becas btn btn-default">Limpiar filtros</a>
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Loading_icon.gif" style="display:none;" class="loaderwp" style="" width="25px" height="25px">
 					</div>
 				</div>

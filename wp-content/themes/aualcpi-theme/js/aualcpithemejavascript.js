@@ -212,21 +212,39 @@ function cargarUsuarios(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,Are
         $('.loaderwp').hide();
         //--- mostrar 3 post a la vez si el dispositibo es sm o mayor
         $('#carousel-example-generic-autores[data-type="multi"] .item').each(function(){
-          if($(document).width() > 782){
-          var next = $(this).next();
-          if (!next.length) {
-            next = $(this).siblings(':first');
-          }
-          next.children(':first-child').clone().appendTo($(this));
-          
-          for (var i=0;i<1;i++) {
-            next=next.next();
-            if (!next.length) {
-              next = $(this).siblings(':first');
+         var tamanioPantalla = $(window).width();
+             //alert (tamanioPantalla);
+            if( tamanioPantalla > 990){
+              //alert (tamanioPantalla);
+              var next = $(this).next();
+              if (!next.length) {
+                next = $(this).siblings(':first');
+              }
+              next.children(':first-child').clone().appendTo($(this));
+              
+              for (var i=0;i<1;i++) {
+                next=next.next();
+                if (!next.length) {
+                  next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+              }
             }
-            next.children(':first-child').clone().appendTo($(this));
-          }
-        }
+            if((tamanioPantalla < 991) & (tamanioPantalla > 789)){
+                //alert (tamanioPantalla);
+                var next = $(this).next();
+                if (!next.length) {
+                  next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+                
+                for (var i=0;i<1;i++) {
+                  next=next.next();
+                  if (!next.length) {
+                    next = $(this).siblings(':first');
+                  }
+                }
+            }
         });
         
       }
@@ -257,22 +275,40 @@ function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,A
       complete: function(XMLHttpRequest, textStatus)      {
         $('.loaderwp').hide();
         //--- mostrar 3 post a la vez si el dispositibo es sm o mayor
-        $('#carousel-example-generic-inves[data-type="multi"] .item').each(function(){
-          if($(document).width() > 782){
-          var next = $(this).next();
-          if (!next.length) {
-            next = $(this).siblings(':first');
-          }
-          next.children(':first-child').clone().appendTo($(this));
-          
-          for (var i=0;i<1;i++) {
-            next=next.next();
-            if (!next.length) {
-              next = $(this).siblings(':first');
+        $('#carousel-example-generic-investigacion[data-type="multi"] .item').each(function(){
+          var tamanioPantalla = $(window).width();
+             //alert (tamanioPantalla);
+            if( tamanioPantalla > 990){
+              //alert (tamanioPantalla);
+              var next = $(this).next();
+              if (!next.length) {
+                next = $(this).siblings(':first');
+              }
+              next.children(':first-child').clone().appendTo($(this));
+              
+              for (var i=0;i<1;i++) {
+                next=next.next();
+                if (!next.length) {
+                  next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+              }
             }
-            next.children(':first-child').clone().appendTo($(this));
-          }
-        }
+            if((tamanioPantalla < 991) & (tamanioPantalla > 789)){
+                //alert (tamanioPantalla);
+                var next = $(this).next();
+                if (!next.length) {
+                  next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+                
+                for (var i=0;i<1;i++) {
+                  next=next.next();
+                  if (!next.length) {
+                    next = $(this).siblings(':first');
+                  }
+                }
+            }
         });
       }
     });
@@ -315,21 +351,114 @@ function cargarBecas(urlAjax,taxonomiaA,taxonomiaB){
         $('.loaderwp').hide();
         //--- mostrar 3 post a la vez si el dispositibo es sm o mayor
         $('#carousel-example-generic-beca[data-type="multi"] .item').each(function(){
-          if($(document).width() > 782){
-          var next = $(this).next();
-          if (!next.length) {
-            next = $(this).siblings(':first');
-          }
-          next.children(':first-child').clone().appendTo($(this));
-          
-          for (var i=0;i<1;i++) {
-            next=next.next();
-            if (!next.length) {
-              next = $(this).siblings(':first');
+          var tamanioPantalla = $(window).width();
+             //alert (tamanioPantalla);
+            if( tamanioPantalla > 990){
+              //alert (tamanioPantalla);
+              var next = $(this).next();
+              if (!next.length) {
+                next = $(this).siblings(':first');
+              }
+              next.children(':first-child').clone().appendTo($(this));
+              
+              for (var i=0;i<1;i++) {
+                next=next.next();
+                if (!next.length) {
+                  next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+              }
             }
-            next.children(':first-child').clone().appendTo($(this));
-          }
-        }
+            if((tamanioPantalla < 991) & (tamanioPantalla > 789)){
+                //alert (tamanioPantalla);
+                var next = $(this).next();
+                if (!next.length) {
+                  next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+                
+                for (var i=0;i<1;i++) {
+                  next=next.next();
+                  if (!next.length) {
+                    next = $(this).siblings(':first');
+                  }
+                }
+            }
+        });
+        
+      }
+    });
+  }
+//---- filtro de descargas - publicaciones ----
+$('.btn-cargar-publicacion').on('click',function(){
+    var urlAjax = $(this).data('url');
+    filterCategorias = [];
+    filterTipos = [];
+    
+    $("select[name='filterCategorias[]'] option:selected").each(function ()  {
+        //alert(urlAjax);
+        filterCategorias.push(parseInt($(this).val()));
+    });
+    $("select[name='filterTipos[]'] option:selected").each(function ()  {
+        //alert(urlAjax);
+        filterTipos.push(parseInt($(this).val()));
+    });
+    //alert(checked);
+    cargarPublicacion(urlAjax,filterCategorias, filterTipos);
+});
+
+function cargarPublicacion(urlAjax,taxonomiaA,taxonomiaB){
+    $("#the-posts-publicacion").children().remove();
+    //mostrar el loader en wordpress
+    $('.loaderwp').show();
+    $.ajax({
+      type: 'POST',
+      url: urlAjax,
+      data: {
+        'action': 'my_get_publicacion',
+        'catA': taxonomiaA,
+        'catB': taxonomiaB,
+      },
+      success: function(data, textStatus, XMLHttpRequest)      {
+          $("#the-posts-publicacion").append(data);
+      },
+      complete: function(XMLHttpRequest, textStatus)      {
+        $('.loaderwp').hide();
+        //--- mostrar 3 post a la vez si el dispositibo es sm o mayor
+        $('#carousel-example-generic-publicacion[data-type="multi"] .item').each(function(){
+           var tamanioPantalla = $(window).width();
+             //alert (tamanioPantalla);
+            if( tamanioPantalla > 990){
+              //alert (tamanioPantalla);
+              var next = $(this).next();
+              if (!next.length) {
+                next = $(this).siblings(':first');
+              }
+              next.children(':first-child').clone().appendTo($(this));
+              
+              for (var i=0;i<1;i++) {
+                next=next.next();
+                if (!next.length) {
+                  next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+              }
+            }
+            if((tamanioPantalla < 991) & (tamanioPantalla > 789)){
+                //alert (tamanioPantalla);
+                var next = $(this).next();
+                if (!next.length) {
+                  next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+                
+                for (var i=0;i<1;i++) {
+                  next=next.next();
+                  if (!next.length) {
+                    next = $(this).siblings(':first');
+                  }
+                }
+            }
         });
         
       }

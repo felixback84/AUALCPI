@@ -16,7 +16,7 @@
 						$contenido = $post->post_content;
 						echo $contenido;
 						?></p>
-						<a href="<?php echo home_url('');?>" class="btn btnSuscribirme">Quiero ser miembro</a>
+						<a href="<?php echo home_url('/suscribirme/');?>" class="btn btnSuscribirme">Quiero ser miembro</a>
 					</div>
 				</div>
 			</div>
@@ -72,7 +72,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<a class="btn-cargar-investigacion btn btn-default" data-url="<?php echo admin_url('admin-ajax.php'); ?>">Buscar</a>	
-					
+						<a href="<?php home_url('/bases-de-datos-investigadoras/'); ?>" class="btn-cargar-becas btn btn-default">Limpiar filtros</a>
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Loading_icon.gif" style="display:none;" class="loaderwp" style="" width="25px" height="25px">
 					</div>
 				</div>

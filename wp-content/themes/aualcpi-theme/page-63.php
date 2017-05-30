@@ -33,19 +33,28 @@
 					<div class="col-xs-12">
 						<h4>Busqueda de documentos, publicaciones y</h4>
 						<h4>formatos de aplicacion</h4>
-						<h5>Categorias</h5>
 					</div>
 					<div class="col-sm-4">
+						<h5>Categoria:</h5>
 						<?php
 							$now = get_terms( 'categoria_conocimiento', array( 'orderby' => 'name','fields' => 'ids','parent' => 0));
-							$select = llenarSeleccion($now,'filterCiudades[]','Todos los paises');
+							$select = llenarSeleccion($now,'filterCategorias[]','Todos las areas de conocimiento');
+							echo $select; 
+						?>
+					</div> 
+					<div class="col-sm-4">
+						<h5>Tipo:</h5>
+						<?php
+							$now = get_terms( 'tipo_publicaciones', array( 'orderby' => 'name','fields' => 'ids','parent' => 0));
+							$select = llenarSeleccion($now,'filterTipos[]','Todos los tipos');
 							echo $select; 
 						?>
 					</div> 
 				</div><br/>
 				<div class="row">
 					<div class="col-sm-12">
-						<a class="btn-cargar-publicacion btn btn-default" data-url="<?php echo admin_url('admin-ajax.php'); ?>">Buscar</a>	
+						<a class="btn-cargar-publicacion btn btn-default" data-url="<?php echo admin_url('admin-ajax.php'); ?>">Buscar</a>
+					<a href="<?php home_url('/descargas/'); ?>" class="btn btn-default">Limpiar filtros</a>		
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Loading_icon.gif" style="display:none;" class="loaderwp" style="" width="25px" height="25px">
 					</div>
 				</div>
@@ -66,7 +75,7 @@
 		<div class="col-xs-12  quitarEspacio">
 			<h1 id="text-retos">Publicaciones</h1>
 			<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel" data-type="multi" >
-				<div id="the-posts-inves" class="carousel-inner" role="listbox"> 
+				<div id="the-posts-publicacion" class="carousel-inner" role="listbox"> 
 						<?php $args = array(
 					      'post_type' => 'publicacion',
 					      'post_status' => 'publish',
@@ -107,4 +116,51 @@
 	</div>
 	</div>
 </div>
+<div class="container quitarPadding">
+		<div class="col-xs-12  quitarEspacio">
+			<h1 id="text-retos">Los más visto</h1>
+			<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel" data-type="multi" >
+				<div id="the-posts-publicacion" class="carousel-inner" role="listbox"> 
+						<?php $args = array(
+					      'post_type' => 'publicacion',
+					      'post_status' => 'publish',
+					      'meta_key' => 'view_post',
+					      'order'=> 'DESC',
+					      'orderby' => 'view_post',
+						  'posts_per_page' => 10, 
+					    );
+						$lastBlog = new WP_Query ($args);
+						$cont=0;
+						if($lastBlog->have_posts()):
+						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+						<?php if($cont == 0){ ?><div class="item active"  cont="<?php echo $cont+1; ?>"><?php }else{ ?><div class="item"  cont="<?php echo $cont+1; ?>"><?php } ?> 
+								<div class="col-xs-12 col-sm-6 col-md-4">
+										<?php get_template_part('targetas-publicacion'); ?>
+								</div>
+							</div>
+							 <?php $cont++; 
+							 endwhile;
+						endif;	
+					    wp_reset_postdata(); ?>
+				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
+				<a class="right carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+				  <a class="left carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				</a>
+			</div>
+		</div>	
+</div>
+<div class="espacioBotton">
+	<div class="carousel-nav sombraInferior">
+	<div class="container quitarPadding">
+		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/publicacion/');?>">MAS PUBLICACIONES</a></p>
+		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de <span id="pagPC"></span></p>
+	</div>
+	</div>
+</div>
+
 <?php get_footer(); ?>

@@ -252,33 +252,33 @@ function my_get_posts()  {
 	    //echo $nContribuciones;
 		if($nContribuciones == '0' && $comentarios == 'SinContribuciones' ){
 			if($cont == 0){
-				echo '<div class="item active">';
+				echo '<div class="item active" cont="'.($cont+1).'">';
 			}else{
-				echo '<div class="item">';
+				echo '<div class="item" cont="'.($cont+1).'">';
 			}
-		   	echo '<div class="col-xs-12 col-sm-4">';
+		   	echo '<div class="col-xs-12 col-sm-6 col-md-4">';
 			get_template_part( 'targetas-inves-inves' ); 
 			echo '</div></div>';
 			$cont++;
 		}
 		if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
 			if($cont == 0){
-				echo '<div class="item active">';
+				echo '<div class="item active" cont="'.($cont+1).'">';
 			}else{
-				echo '<div class="item">';
+				echo '<div class="item" cont="'.($cont+1).'">';
 			}
-			echo '<div class="col-xs-12 col-sm-4">';
+			echo '<div class="col-xs-12 col-sm-6 col-md-4">';
 			get_template_part( 'targetas-inves-inves' ); 
 			echo '</div></div>';
 			$cont++;
 		}
 		if($comentarios == 'Contribuciones' ){
 			if($cont == 0){
-				echo '<div class="item active">';
+				echo '<div class="item active" cont="'.($cont+1).'">';
 			}else{
-				echo '<div class="item">';
+				echo '<div class="item" cont="'.($cont+1).'">';
 			}
-			echo '<div class="col-xs-12 col-sm-4">';
+			echo '<div class="col-xs-12 col-sm-6 col-md-4">';
 			get_template_part( 'targetas-inves-inves' );
 			echo '</div></div>'; 
 			$cont++;
@@ -425,11 +425,11 @@ function my_get_user()  {
  	$usuario = get_user_by('ID',$idAuthor);
  	//echo $cont;
  	if($cont == 0){
-		echo '<div class="item active">';
+		echo '<div class="item active" cont="'.($cont+1).'">';
 	}else{
-		echo '<div class="item">';
+		echo '<div class="item" cont="'.($cont+1).'">';
 	}
-	echo '<div class="col-xs-12 col-sm-4">';
+	echo '<div class="col-xs-12 col-sm-6 col-md-4">';
 	set_query_var('user',$usuario);
 	get_template_part( 'targetas-autores' );
 	echo '</div></div>'; 
@@ -437,7 +437,7 @@ function my_get_user()  {
   add_action('wp_ajax_my_get_user', 'my_get_user');
   add_action('wp_ajax_nopriv_my_get_user', 'my_get_user');
 
-
+/*---  function filtro becas -----*/
   function my_get_becas()  {
 	$cont=0;
     if(is_array($_POST['catA'])){
@@ -495,11 +495,11 @@ function my_get_user()  {
 	    );
 	    
 		if($cont == 0){
-			echo '<div class="item active">';
+			echo '<div class="item active" cont="'.($cont+1).'">';
 		}else{
-			echo '<div class="item">';
+			echo '<div class="item" cont="'.($cont+1).'">';
 		}
-	   	echo '<div class="col-xs-12 col-sm-4">';
+	   	echo '<div class="col-xs-12 col-sm-6 col-md-4">';
 		get_template_part( 'targetas-beca' ); 
 		echo '</div></div>';
 		$cont++;
@@ -510,6 +510,81 @@ function my_get_user()  {
  
   add_action('wp_ajax_my_get_becas', 'my_get_becas');
   add_action('wp_ajax_nopriv_my_get_becas', 'my_get_becas');
+
+/*---  function filtro publicaciones -  -----*/
+  function my_get_publicacion() {
+	$cont=0;
+    if(is_array($_POST['catA'])){
+		$catA_id = implode(',',$_POST['catA']);
+	} else {
+		$catA_id = $_POST['catA'];
+	}
+	if(is_array($_POST['catB'])){
+		$catB_id = implode(',',$_POST['catB']);
+	} else {
+		$catB_id = $_POST['catB'];
+	}
+	//echo "<script>javascript: alert('id".var_dump($catA_id)."')></script>";
+	//var_dump('comentarios'.$comentarios);
+	
+    $args = array(
+      'post_type' => 'publicacion',
+      'post_status' => 'publish',
+      'order'=> 'DESC',
+      'orderby' => 'date',
+    );
+    $args['tax_query'] = array(
+  		'relation' => 'AND'
+	);
+	
+    if($catA_id != '0'){
+    	$argsCat = array(
+			'taxonomy' => 'categoria_conocimiento',
+			'terms'    => $catA_id,
+		);
+    	array_push($args['tax_query'],$argsCat);
+    }
+
+    if($catB_id != '0'){
+	    $argsCatB = array(
+				'taxonomy' => 'tipo_publicaciones',
+				'terms'    => $catB_id,
+			);
+	    array_push($args['tax_query'],$argsCatB);
+	}
+
+	global $post;
+    $posts =  query_posts($args);
+	if(empty($posts)){
+		echo '<p class="text-center">No hay publicaciones</p>';
+	}
+    foreach ($posts as $post)   {
+		setup_postdata($post);
+		$args = array(
+	      'post_type' => 'publicacion',
+	      'post_status' => 'publish',
+	      'post_parent' => $post->ID,
+	      'order'=> 'DESC',
+	      'orderby' => 'date',
+	    );
+	    
+		if($cont == 0){
+			echo '<div class="item active" cont="'.($cont+1).'">';
+		}else{
+			echo '<div class="item" cont="'.($cont+1).'">';
+		}
+	   	echo '<div class="col-xs-12 col-sm-6 col-md-4">';
+		get_template_part( 'targetas-publicacion' ); 
+		echo '</div></div>';
+		$cont++;
+    }
+    //echo "<script language='javascript'> jQuery('#carousel-example-generic-investigacion .contador').attr('cont',$cont) </script>";
+    wp_reset_postdata();
+    exit;
+  }
+ 
+  add_action('wp_ajax_my_get_publicacion', 'my_get_publicacion');
+  add_action('wp_ajax_nopriv_my_get_publicacion', 'my_get_publicacion');
 
 /*
 		===================================

@@ -1346,3 +1346,23 @@ function my_meta_nuestra_asociacion_save(){
 		update_post_meta($post->ID, "UsuarioDLabel",$_POST["UsuarioDLabel"]);
 	endif;
 }
+
+/*------ post mas popular --*/
+
+function sitePlus(){
+    global $post;
+
+    if(is_single()){
+        $count_key = 'view_post';
+        $count = get_post_meta($post->ID, $count_key, true);
+        if(empty($count)){
+          delete_post_meta($post->ID, $count_key);
+          add_post_meta($post->ID, $count_key,  1);
+        }else{
+           $count++;
+           update_post_meta($post->ID, $count_key, $count);
+        }   
+    }
+}
+
+add_action('wp_footer','sitePlus');
