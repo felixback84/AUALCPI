@@ -40,6 +40,15 @@ $win.scroll(function () {
 // }else{
 //     $('.menuPrimary.navbar-fixed-top').removeClass('espacioObsionalNavFixed');
 // }
+//----cambiar boton inicion de seccion
+if($('#wpadminbar').width()>0){
+  $('#menu-item-113 a').text('Cerrar sesión');
+  //$('#menu-item-113 a').text($('#urlLogin').val());
+  $('#menu-item-113 a').attr("href",$('#urlHome').val());
+}else{
+  $('#menu-item-113 a').text('Iniciar sesión');  
+  $('#menu-item-113 a').attr("href",$('#urlLogin').val());
+}
 //---  popover para que funcione
 $('[data-toggle="popover"]').popover();   
 

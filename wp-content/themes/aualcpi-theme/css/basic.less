@@ -60,6 +60,44 @@ article>.row, .espacioBotton{
 		box-shadow: none;
 	}
 }
+#loginUser{
+	.input{
+		display: block;
+		width: 100%;
+		border: 1px solid #444;
+		height: 45px;
+		border-radius: 5px;
+		font-size: 18px;
+		padding: 5px;
+	}
+	input#rememberme{
+		display: initial;
+	}
+	input#wp-submit{
+		width: 100%;
+		border-radius: 5px;
+		display: inline-block;
+		padding: 6px 12px;
+		margin-bottom: 0;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 1.42857143;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: middle;
+		-ms-touch-action: manipulation;
+		touch-action: manipulation;
+		cursor: pointer;
+		border: 1px solid transparent;
+		border-radius: 4px
+		color: #000;
+		background-color: #fff;
+		border-color: #2e6da4;
+		border: 2px solid #00B9F7;
+		font-size: 20px;
+		padding: 15px;
+	}
+}
 
 .alinear-derecha{
 	float: right!important;
@@ -297,6 +335,20 @@ article>.row, .espacioBotton{
 }*/
 
 /*-------------------Footer------------------*/
+.alinearDerecha{
+
+}
+.FooterAdmin{
+	margin-top: -200px;
+	.avatarFooter{
+		border-left: 1px solid #333;
+	}
+}
+@media (max-width: 1200px) { 
+	.FooterAdmin{
+		margin-top: 0px;
+	}
+}
 #footer1{
 	background-color: #000;
 	padding-left: 25px;
@@ -308,6 +360,9 @@ article>.row, .espacioBotton{
 	#redes{
 		height: 140px;
 		padding-top: 20px;
+		a:hover{
+			text-decoration:none;
+		}
 		.redes{
 			display: inline-block;
 			width: 36px;

@@ -119,7 +119,7 @@
 <div class="container quitarPadding">
 		<div class="col-xs-12  quitarEspacio">
 			<h1 id="text-retos">Los más visto</h1>
-			<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel" data-type="multi" >
+			<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
 				<div id="the-posts-publicacion" class="carousel-inner" role="listbox"> 
 						<?php $args = array(
 					      'post_type' => 'publicacion',
@@ -143,11 +143,11 @@
 						endif;	
 					    wp_reset_postdata(); ?>
 				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
-				<a class="right carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="next">
+				<a class="right carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="next">
 				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				    <span class="sr-only">Next</span>
 				  </a>
-				  <a class="left carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="prev">
+				  <a class="left carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="prev">
 				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 				    <span class="sr-only">Previous</span>
 				</a>
@@ -158,7 +158,7 @@
 	<div class="carousel-nav sombraInferior">
 	<div class="container quitarPadding">
 		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/publicacion/');?>">MAS PUBLICACIONES</a></p>
-		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de <span id="pagPC"></span></p>
+		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de <span id="pagBC"></span></p>
 	</div>
 	</div>
 </div>

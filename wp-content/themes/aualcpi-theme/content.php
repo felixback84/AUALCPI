@@ -24,8 +24,8 @@
 			<?php endif; ?>
 		</div>
 		<div class="row">
-			<?php if(comments_open()){ comments_template();
-				}else{ echo '<h5 class"text-center">No hay comentarios</h5>'; } ?>
+			<?php //if(comments_open()){ comments_template();
+				//}else{ echo '<h5 class"text-center">No hay comentarios</h5>'; } ?>
 		</div>
 </article>
 </div>	

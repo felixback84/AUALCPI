@@ -25,7 +25,29 @@
 <div class="container espacioBotton">
 	<div class="row espacioBotton">
 		<h1 class="text-center">Iniciar sesión</h1>
-		
+	<div id="loginUser" class="col-xs-12 col-sm-8 col-xs-push-0 col-sm-push-2">		
+		<?php if (is_user_logged_in()) {               
+		    echo '<div class="logout"> <p>Hola usuario!<div class="logout_user">Tu ya estas logeado.</div></p><br /><p><a id="wp-submit" class="logout" href="', wp_logout_url(home_url()), '" title="Logout">Cerrar sesión</a></p></div>';
+		} else { 
+			$redirect = admin_url('/profile.php'); 
+		    $args = array(
+		        'echo'           => true,
+		        'redirect'       => $redirect,
+		        'label_log_in'   => __( 'Log in' ),
+		        'form_id'        => 'seminar-login',
+		        'label_username' => __( 'Username' ),
+		        'label_password' => __( 'Password' ),
+		        'label_remember' => __( 'Remember Me' ),
+		        'id_username'    => 'user_login',
+		        'id_password'    => 'user_pass',
+		        'id_submit'      => 'wp-submit',
+		        'remember'       => true,
+		        'value_username' => NULL,
+		        'value_remember' => true
+		    );
+		    wp_login_form($args); 
+		?><a href="<?php echo home_url('/wp-login.php?action=lostpassword'); ?>">¿Has perdido tu contraseña?</a><?php } ?>
+		</div>
 	</div>
 </div>
 <?php get_footer(); ?>

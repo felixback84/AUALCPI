@@ -40,6 +40,8 @@
 
 <div class="container">
 	<div class="row">
+		<input id="urlHome" type="hidden" value="<?php echo wp_logout_url(home_url()); ?>" />
+		<input id="urlLogin" type="hidden" value="<?php echo home_url('/iniciar-de-sesion/'); ?>" />
 		<div id="" class="col-xs-4 col-xs-push-5 visible-xs visible-sm">
 			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/idiom.png" alt="" width="" height=""  style=""/>
 		</div>
