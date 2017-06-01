@@ -339,7 +339,14 @@ article>.row, .espacioBotton{
 
 }
 .FooterAdmin{
+	border-top: 1px solid #333;
+	padding: 10px;
+	padding-top:20px;
 	margin-top: -200px;
+	div{
+		margin-bottom: 20px;
+
+	}
 	.avatarFooter{
 		border-left: 1px solid #333;
 	}
@@ -347,6 +354,9 @@ article>.row, .espacioBotton{
 @media (max-width: 1200px) { 
 	.FooterAdmin{
 		margin-top: 0px;
+		&.pull-right{
+			float: none !important;
+		}
 	}
 }
 #footer1{

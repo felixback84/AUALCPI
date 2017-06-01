@@ -43,8 +43,8 @@
 		<input id="urlHome" type="hidden" value="<?php echo wp_logout_url(home_url()); ?>" />
 		<input id="urlLogin" type="hidden" value="<?php echo home_url('/iniciar-de-sesion/'); ?>" />
 		<div id="" class="col-xs-4 col-xs-push-5 visible-xs visible-sm">
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/svg/Brasil.svg" style="" alt="icono de brasil" width="60" height="60" /> 
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/svg/Spain.svg" style="" alt="icono de españa" width="60" height="60" /> 
+			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/svg/Brasil.svg" style="" alt="icono de brasil" width="80" height="80" /> 
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/svg/Spain.svg" style="" alt="icono de españa" width="80" height="80" /> 
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-7">
 			<a id="logoAualcpi" href="<?php echo home_url('');?>" class="thumbnail">
