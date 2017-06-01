@@ -73,9 +73,9 @@ abstract class Ai1ec_Api_Abstract extends Ai1ec_App {
 		delete_option( self::WP_OPTION_KEY );
 
 		// Clear transient API data
-		delete_site_transient( 'ai1ec_api_feeds_subscriptions' );
-		delete_site_transient( 'ai1ec_api_subscriptions' );
-		delete_site_transient( 'ai1ec_api_features' );
+		delete_transient( 'ai1ec_api_feeds_subscriptions' );
+		delete_transient( 'ai1ec_api_subscriptions' );
+		delete_transient( 'ai1ec_api_features' );
 	}
 
 	/**
@@ -372,7 +372,7 @@ abstract class Ai1ec_Api_Abstract extends Ai1ec_App {
 	 * @return array List of subscriptions and limits
 	 */
 	protected function get_subscriptions( $force_refresh = false ) {
-		$subscriptions = get_site_transient( 'ai1ec_api_subscriptions' );
+		$subscriptions = get_transient( 'ai1ec_api_subscriptions' );
 
 		if ( false === $subscriptions || $force_refresh || ( defined( 'AI1EC_DEBUG' ) && AI1EC_DEBUG )  ) {
 			$response = $this->request_api( 'GET', AI1EC_API_URL . 'calendars/' . $this->_get_ticket_calendar() . '/subscriptions',
@@ -385,9 +385,9 @@ abstract class Ai1ec_Api_Abstract extends Ai1ec_App {
 				$subscriptions = array();
 			}
 
-			// Save for 15 minutes
-			$minutes = 15;
-			set_site_transient( 'ai1ec_api_subscriptions', $subscriptions, $minutes * 60 );
+			// Save for 5 minutes
+			$minutes = 5;
+			set_transient( 'ai1ec_api_subscriptions', $subscriptions, $minutes * 60 );
 		}
 
 		return $subscriptions;
@@ -408,19 +408,48 @@ abstract class Ai1ec_Api_Abstract extends Ai1ec_App {
 	public function subscription_has_reached_limit( $feature ) {
 		$has_reached_limit = true;
 
+		$provided = $this->subscription_get_quantity_limit( $feature );
+		$used     = $this->subscription_get_used_quantity( $feature );
+
+		if ( $provided - $used > 0 ) {
+			$has_reached_limit = false;
+		}
+
+		return $has_reached_limit;
+	}
+
+	/**
+	 * Get feature quantity limit
+	 */
+	public function subscription_get_quantity_limit( $feature ) {
+		$provided = 0;
+
 		$subscriptions = $this->get_subscriptions();
 
 		if ( array_key_exists( $feature, $subscriptions ) ) {
 			$quantity = (array) $subscriptions[$feature];
-			$provided = $quantity['provided'];
-			$used     = $quantity['used'];
 
-			if ( $provided - $used > 0 ) {
-				$has_reached_limit = false;
-			}
+			$provided = $quantity['provided'];
 		}
 
-		return $has_reached_limit;
+		return $provided;
+	}
+
+	/**
+	 * Get feature used quantity
+	 */
+	public function subscription_get_used_quantity( $feature ) {
+		$used = 0;
+
+		$subscriptions = $this->get_subscriptions();
+
+		if ( array_key_exists( $feature, $subscriptions ) ) {
+			$quantity = (array) $subscriptions[$feature];
+
+			$used = $quantity['used'];
+		}
+
+		return $used;
 	}
 
 	/**

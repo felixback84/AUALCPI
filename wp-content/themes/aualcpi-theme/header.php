@@ -43,7 +43,8 @@
 		<input id="urlHome" type="hidden" value="<?php echo wp_logout_url(home_url()); ?>" />
 		<input id="urlLogin" type="hidden" value="<?php echo home_url('/iniciar-de-sesion/'); ?>" />
 		<div id="" class="col-xs-4 col-xs-push-5 visible-xs visible-sm">
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/idiom.png" alt="" width="" height=""  style=""/>
+			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/svg/Brasil.svg" style="" alt="icono de brasil" width="60" height="60" /> 
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/svg/Spain.svg" style="" alt="icono de españa" width="60" height="60" /> 
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-7">
 			<a id="logoAualcpi" href="<?php echo home_url('');?>" class="thumbnail">
@@ -57,8 +58,9 @@
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-5 col-sm-push-0">
 			<div class="row">
-				<div id="idiomas1" class="col-xs-6 col-sm-1 col-md-1 col-md-push-5 col-lg-push-8 hidden-xs hidden-sm">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/idiom.png" alt="" width="" height=""  style="margin-right:20px;"/>
+				<div id="idiomas1" class="col-xs-6 col-sm-12 col-md-12 col-md-push-5 col-lg-push-8 hidden-xs hidden-sm">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/svg/Brasil.svg" style="" alt="icono de brasil" width="45" height="45" /> 
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/svg/Spain.svg" style="" alt="icono de españa" width="45" height="45" /> 
 				</div>
 			</div>
 			<nav class="navbar navbar-default menuAdicional col-lg-7 col-lg-push-5">

@@ -112,32 +112,30 @@ if ( isset($_POST['signup-submit']) ) {
                         'user_email' => $mail,
                         'first_name' => $firstname,
                         'last_name' => $lastname,
-                        'role' => 'contributor',
+                        'role' => 'contribuidor',
                 );
                 $user_id = wp_insert_user( $userdata );
                 //echo "<script type=\"text/javascript\">alert(\"id $user_id\");</script>";
                 $success_msg = '<div id="AlertaCorrecta" class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><p class="text-center"> El registro se realizo correctamente.</p></div>';
                 // to send confirmation mail to the new user
-                // $user_data = get_userdata( $user_id );
-                // $to = $user_data->user_email;
-                // $subject = "Username and password to login in My Web";
-                // $message = 'Hi ' .$user_data->user_login. ',' . "\r\n" .
-                //         'you have signed up succesfully in My Web. You can log in using your username ('.$user_data->user_login.') and password (' .$pass. '), here: http://example.net/' . "\r\n\r\n" .
-                //         'If you have forgotten your username or password, you can recover them here: http://example.net/wp-login.php?action=lostpassword';
-                // $headers[] = 'From: My Web -- a funny and simple web ';
-                // wp_mail( $to, $subject, $message, $headers );
-                // // to send a notification to web admin that a new user has sign up
-                // $to = 'info@example.net';
-                // $subject = "New user has sign up in example.net";
-                // $message = 'A new user has sign up in example.net: ' . "\r\n\r\n" .
-                //         '+ '.$user_data->user_login. "\r\n\r\n" .
-                // $headers[] = 'From: My web -- a funny and simple web ';
-                // $headers[] = 'Cc: info@example.com';
-                // wp_mail( $to, $subject, $message, $headers );
-               //  if(is_numeric($user_id)){
-               //  	wp_redirect( $action_slug );
-             		// exit;   
-               //  }
+                $user_data = get_userdata( $user_id );
+                $to = $mail;
+                $subject = 'Nombre de usuario y contraseña para ingresar a Aualcpi';
+                $message = 'Hola ' .$username. ',<br/> Ya tienes acceso la pagina Aualcpi con el nombre de usuario ('.$username.') y la contraseña (' .$pass. '), <br/>' ;
+                $headers[] = 'Correo registro Aualcpi';
+                wp_mail( $to, $subject, $message, $headers );
+                // to send a notification to web admin that a new user has sign up
+               //  $to = 'info@lamaletadefelix.com';
+               //  $subject = "New user has sign up in example.net";
+               //  $message = 'A new user has sign up in example.net: ' . "\r\n\r\n" .
+               //          '+ '.$user_data->user_login. "\r\n\r\n" .
+               //  $headers[] = 'From: My web -- a funny and simple web ';
+               //  $headers[] = 'Cc: info@lamaletadefelix.com';
+               //  wp_mail( $to, $subject, $message, $headers );
+                if(is_numeric($user_id)){
+                wp_redirect( $action_slug );
+             		  exit;   
+                }
         } // end testing errors
 } else {
 // if no errors, nothing

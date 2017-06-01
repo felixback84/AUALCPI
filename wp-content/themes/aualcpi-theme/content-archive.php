@@ -1,7 +1,5 @@
 <article id="post-<?php the_ID(); ?>" class="BloqueArchive"  <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php the_title( sprintf('<h1 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h1>' ); ?>
-		<p>Posted on: <?php the_time('F j, Y'); ?> at <?php the_time('g:i a'); ?></p>
 	</header>
 	<div class="row">
 		<?php if( has_post_thumbnail() ): ?>
@@ -9,10 +7,14 @@
 				<div class="thumbnail"><?php the_post_thumbnail('medium'); ?></div>
 			</div>
 			<div class="contenidoArchive col-xs-12 col-sm-8">
+				<?php the_title( sprintf('<h1 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h1>' ); ?>
+				<p>Posted on: <?php the_time('F j, Y'); ?> at <?php the_time('g:i a'); ?></p>
 				<?php the_excerpt(); ?>
 			</div>
 		<?php else: ?>
 			<div class="contenidoArchive col-xs-12">
+				<?php the_title( sprintf('<h1 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h1>' ); ?>
+				<p>Posted on: <?php the_time('F j, Y'); ?> at <?php the_time('g:i a'); ?></p>
 				<?php the_excerpt(); ?>
 			</div>
 		<?php endif; ?>

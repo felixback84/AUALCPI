@@ -1,60 +1,43 @@
 === All-in-One Event Calendar ===
-Contributors: uchu, calvinyeh, raquelleira, renatotbueno, elirenato, hubrik, vtowel, yani.iliev, nicolapeluchetti, jbutkus, lpawlik, bangelov
-Tags: calendar, events, ics, ics feed, wordpress ical importer, google
-calendar, ical, iCalendar, all-in-one, events sync, events widget,
-calendar widget
-Requires WordPress at least: 3.5
-Tested up to: 4.7.3
-Stable tag: 2.5.17
+Contributors: uchu, calvinyeh, raquelleira, renatotbueno, domanb, elirenato, hubrik, vtowel, yani.iliev, nicolapeluchetti, jbutkus, lpawlik, bangelov
+Tags: calendar, event, ical, feed, ics, icalendar, sync, aggregator, google, venue, calendar widget, events widget
+Requires at least: 3.5
+Tested up to: 4.7.5
+Stable tag: 2.5.19
 License: GNU General Public License, version 3 (GPL-3.0)
 
-A calendar system with many views, upcoming events widget, color-coded
-categories, recurrence, and import/export of .ics feeds.
+An events calendar system with multiple views, upcoming events widget, color-coded categories, recurrence, and import/export of .ics feeds.
 
 == Description ==
 
-><strong>Note on support:</strong> Please read our sticky post before creating a new thread. The forum is a place where our users can provide insightful help to other plugin users.
->
->Please check-out our [Hub and Pro hosted plans](http://time.ly/products) for many extra features and prioritized support.o
+The [All-in-One Event Calendar](https://time.ly/) from [Timely](https://time.ly/) is a beautiful way to list your events in WordPress and easily share them with the rest of the world.
 
-The [All-in-One Event Calendar](http://time.ly/) from
-[Timely](http://time.ly/) is a beautiful way to list your events in
-WordPress and easily share them with the rest of the world. Our
-calendar system combines clean visual design with a powerful set of
-features to create the most advanced calendar system available for
-WordPress.
+Our events calendar is easy to manage. Combines clean visual design with a powerful set of features to create the most advanced website calendar system available for WordPress.
 
 = Get Add-ons =
 
-Download add-ons at [Time.ly](http://time.ly) to get more features,
-like [Extended Views](https://time.ly/downloads/extended-views/),
-[Frontend Submission
-form](https://time.ly/downloads/front-end-event-form/),
-[Super Widget](https://time.ly/downloads/superwidget/),
-[Venues](https://time.ly/downloads/venues/), [Twitter
-integration](https://time.ly/downloads/twitter/) and
-[more](https://time.ly/wordpress-calendar-plugin/addons/).
+Download add-ons at [Time.ly](https://time.ly) to get more features, like:
+
+* [Extended Views](https://time.ly/downloads/extended-views/)
+* [Frontend Submission form](https://time.ly/downloads/front-end-event-form/)
+* [Super Widget](https://time.ly/downloads/superwidget/)
+* [Venues](https://time.ly/downloads/venues/)
+* [Twitter integration](https://time.ly/downloads/twitter/)
+* and [more](https://time.ly/wordpress-calendar-plugin/addons/)...
 
 = Import and Export Events =
 
-Timely offers full ics/ical support. You can import events from other
-calendars and offer users the ability to subscribe to your calendar.
+Timely events calendar offers full ics/ical support. You can import events from other Website calendars and offer users the ability to subscribe to your events calendar.
 
-Importing and exporting iCalendar (.ics) feeds is one of the strongest
-features of the All-in-One Event Calendar system. Enter an event on
-one site and you can have it appear automatically in another website's
-calendar. You can even send events from a specific category or tag (or
-combination of categories and tags).
+Importing and exporting iCalendar (.ics) feeds is one of the strongest features of the All-in-One Event Calendar system. Enter an event on one site and you can have it appear automatically in another website's calendar. You can even send events from a specific category or tag (or combination of categories and tags).
 
 = Even More Features =
 
-This plugin has many features we hope will prove useful to users,
-including:
+Our events calendar has many features we hope will prove useful to users, including:
 
 * **Recurring** events including complex patterns.
 * **Filtering** by event category or tag.
-* Easy **sharing** with Google Calendar, Apple iCal, MS Outlook and
-any other system that accepts iCalendar (.ics) feeds.
+* Easy **sharing** with Google Calendar, Apple iCal, MS Outlook and any other system that accepts iCalendar (.ics) feeds.
 * Embedded **Google Maps**.
 * **Color-coded** events based on category.
 * Featured **event images** and **category images**.
@@ -72,14 +55,11 @@ any other system that accepts iCalendar (.ics) feeds.
 * Plugin can also be easily imported.
 * Each event is SEO-optimized.
 * Each event links to the original calendar.
-* Your calendar can be embedded into a WordPress page without needing
-to create template files or modify the theme.
+* Your calendar can be embedded into a WordPress page without needing to create template files or modify the theme.
 
 = Languages =
 
-Timely is supported by a committed group of translators offering
-[languages files](http://translate.time.ly/) in numerous languages
-including:
+Timely is supported by a committed group of translators offering [languages files](https://translate.time.ly/) in numerous languages including:
 
 * German
 * French
@@ -97,24 +77,22 @@ including:
 * Hungarian
 * Latvian
 
-You can help translate by going to
-[translate.time.ly](http://translate.time.ly).
+You can help translate by going to [https://translate.time.ly](https://translate.time.ly).
 
 = Become the Hub of your community =
 
-If your goal is to run a community event calendar, Timely's All-in-one
-Event Calendar has everything you'll need.
+If your goal is to run a community events calendar, Timely's All-in-one Event Calendar has everything you'll need.
 
 https://vimeo.com/135004810
 
 = Helpful Links =
 
-* [**Access our User Guide**](http://time.ly/document/user-guide/).
+* [**Access our User Guide**](https://time.ly/document/user-guide/).
 * [**Raise feature ideas**](https://ideas.time.ly/).
 
 == Frequently Asked Questions ==
 
-[**Learn more with our detailed documentation »**](http://time.ly/support/)
+[**Learn more with our detailed documentation »**](https://time.ly/support/)
 
 = Shortcodes =
 
@@ -127,6 +105,7 @@ https://vimeo.com/135004810
 * Filter by event category name: **[ai1ec cat_name="Holidays"]**
 * Filter by event category names (separate names by comma):
 **[ai1ec cat_name="Lunar Cycles,zodia-date-ranges"]**
+
 * Filter by event category id: **[ai1ec cat_id="1"]**
 * Filter by event category ids (separate IDs by comma):
 **[ai1ec cat_id="1, 2"]**
@@ -134,6 +113,7 @@ https://vimeo.com/135004810
 * Filter by event tag name: **[ai1ec tag_name="tips-and-tricks"]**
 * Filter by event tag names (separate names by comma):
 **[ai1ec tag_name="creative writing,performing arts"]**
+
 * Filter by event tag id: **[ai1ec tag_id="1"]**
 * Filter by event tag ids (separate IDs by comma):
 **[ai1ec tag_id="1, 2"]**
@@ -145,9 +125,24 @@ https://vimeo.com/135004810
 * Hide filter toolbar: **[ai1ec display_filters="false"]**
 * Limit number of events per page: **[ai1ec events_limit="5"]**
 * Select a different start date: 
-**[ai1ec exact_date="5-10-2015"]**
+**[ai1ec exact_date="5-10-2017"]**
 
 == Changelog ==
+
+= Version 2.5.19 =
+* Fixed: Changed code to remove some PHP 7 warnings.
+* Fixed: XSS Security vulnerability. Thanks to @stacyvlasits for pointing it out.
+* Fixed: Right arrow for moving to the next month was missing in the Month view.
+* Fixed: No modal window was showing up when clicking on link in the Tooltip/Popup in Featured Events.
+
+= Version 2.5.18 =
+* Fixed: Returned the missing label for the previous month button.
+* Fixed: Improved the handling of missing or poorly formatted timezones when importing events.
+* Fixed: Plugin wasn't enabling certain features in the WP Multisite Environment.
+* Fixed: An undefined index error would occur in the month view.
+* Fixed: Some users were getting a blank page when trying to view the details of the new version.
+* Fixed: Importing to Google Calendar wasn't working correctly.
+* Fixed: Running wp-cron.php using PHP-Cli was throwing an error that $_SERVER wasn't set.
 
 = Version 2.5.17 =
 * Fixed: Open Graph meta tags now matches correct dates and URLs for recurrent events.
@@ -262,7 +257,7 @@ https://vimeo.com/135004810
 * Fixed: Image does not appear in the month view pop-up window.
 * Fixed: Ticketing Beta - Every ticket type dropdown defaults to 1 instead of the actual minimum.
 * Fixed: Ticketing Beta - Ticket Types got misaligned when one ticket is closed.
-* If you want to see the release notes for Add-ons, then please visit [this page](http://time.ly/document/release-notes).
+* If you want to see the release notes for Add-ons, then please visit [this page](https://time.ly/document/release-notes).
 
 = Version 2.3.11 =
 * New: Now the calendar is set up automatically when you install the plug-in for the first time
@@ -738,7 +733,7 @@ events;
 calendar views;
 * Fixed issue where Postbox elements open/close functionality was
 broken;
-* Adjusted http://time.ly information panel in Settings page;
+* Adjusted https://time.ly information panel in Settings page;
 
 = Version 2.0.6 =
 * Initial public release of 2.0 on http://WordPress.org repository;
