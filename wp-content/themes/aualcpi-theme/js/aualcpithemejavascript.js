@@ -84,7 +84,7 @@ $('.carousel[data-type="multi"] .item').each(function(){
       next.children(':first-child').clone().appendTo($(this));
     }
   }
-  if((tamanioPantalla < 991) & (tamanioPantalla > 768)){
+  if((tamanioPantalla < 991) & (tamanioPantalla > 767)){
       //alert (tamanioPantalla);
       var next = $(this).next();
       if (!next.length) {
@@ -239,7 +239,7 @@ function cargarUsuarios(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,Are
                 next.children(':first-child').clone().appendTo($(this));
               }
             }
-            if((tamanioPantalla < 991) & (tamanioPantalla > 768)){
+            if((tamanioPantalla < 991) & (tamanioPantalla > 767)){
                 //alert (tamanioPantalla);
                 var next = $(this).next();
                 if (!next.length) {
@@ -303,7 +303,7 @@ function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,A
                 next.children(':first-child').clone().appendTo($(this));
               }
             }
-            if((tamanioPantalla < 991) & (tamanioPantalla > 768)){
+            if((tamanioPantalla < 991) & (tamanioPantalla > 767)){
                 //alert (tamanioPantalla);
                 var next = $(this).next();
                 if (!next.length) {
@@ -378,7 +378,7 @@ function cargarBecas(urlAjax,taxonomiaA,taxonomiaB){
                 next.children(':first-child').clone().appendTo($(this));
               }
             }
-            if((tamanioPantalla < 991) & (tamanioPantalla > 768)){
+            if((tamanioPantalla < 991) & (tamanioPantalla > 767)){
                 //alert (tamanioPantalla);
                 var next = $(this).next();
                 if (!next.length) {
@@ -453,7 +453,7 @@ function cargarPublicacion(urlAjax,taxonomiaA,taxonomiaB){
                 next.children(':first-child').clone().appendTo($(this));
               }
             }
-            if((tamanioPantalla < 991) & (tamanioPantalla > 768)){
+            if((tamanioPantalla < 991) & (tamanioPantalla > 767)){
                 //alert (tamanioPantalla);
                 var next = $(this).next();
                 if (!next.length) {
