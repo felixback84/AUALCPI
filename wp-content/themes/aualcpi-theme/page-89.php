@@ -24,7 +24,7 @@
 	</div>
 </div>
 <div class="container quitarPadding">
-	<div class="collapse sombraInferior" id="collapseExample-2" >
+	<div class="collapse sombraInferior espacioTop espacioBotton" id="collapseExample-2" >
 		<div class="well">
 				<div class="row">
 					<button id="btn-cerrar" class="btn pull-right glyphicon glyphicon-remove" type="button" data-toggle="collapse" data-target="#collapseExample-1" aria-expanded="false" aria-controls="collapseExample-1">
@@ -80,10 +80,11 @@
 	</div>
 </div>
 <div class="container quitarPadding">
-	<div  class="collapse in sombraInferior" id="collapseExample-1">
+	<div  class="collapse in sombraInferior  espacioTop espacioBotton" id="collapseExample-1">
 		<div class="well">
 			<div class="row">
-				<button id="btn-abrir" class="btn pull-right glyphicon glyphicon-search" type="button" data-toggle="collapse" data-target="#collapseExample-2" aria-expanded="false" aria-controls="collapseExample-2">
+				<button id="btn-abrir" class="btn" type="button" data-toggle="collapse" data-target="#collapseExample-2" aria-expanded="false" aria-controls="collapseExample-2">				
+				 ¿Qué estás buscando hoy? <span class="pull-right glyphicon glyphicon-search" > </span>
 				</button>
 			</div>
 		</div>
@@ -132,7 +133,7 @@
 		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI"></span>  de <span id="pagIC"></span></p>
 	</div>
 </div>
-<div class="container quitarPadding">
+<div class="container quitarPadding espacioTop">
 		<h1 id="text-investigador">Investigadores regionales</h1>
 		<div class="col-xs-12  quitarEspacio">
 		<div id="carousel-example-generic-autores" class="carousel slide" data-ride="carousel" data-type="multi" >
@@ -144,7 +145,6 @@
 			      'order'=> 'DESC',
 			      'orderby' => 'date',
 			    );
-
 			    $posts =  query_posts($args);
 				$idsUsuarios= array();
 

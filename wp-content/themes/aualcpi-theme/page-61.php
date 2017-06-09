@@ -22,7 +22,7 @@
 		</div>
 	</div>
 </div>
-<div class="container espacioBotton">
+<div class="container espacioBotton  espacioTop">
 	<div id="tabVerticalNegroMovilidad" class="row bordetabVerticalNegro sombraInferior tabVerticalNegro ElementoPadre">
 		<ul class="col-xs-5 nav nav-tabs tabs-right listaMovilidad ElementoHijo ">
 			<li class="active">
@@ -88,8 +88,8 @@
 		</div>
 	</div>
 </div>
-<div class="container quitarPadding">
-	<div class="collapse sombraInferior" id="collapseExample-3" >
+<div class="container quitarPadding ">
+	<div class="collapse sombraInferior espacioBotton" id="collapseExample-3" >
 		<div class="well">
 			<div class="row">
 				<button id="btn-cerrar" class="btn pull-right glyphicon glyphicon-remove" type="button" data-toggle="collapse" data-target="#collapseExample-1" aria-expanded="false" aria-controls="collapseExample-1">
@@ -122,10 +122,11 @@
 	</div>
 </div>
 <div class="container quitarPadding">
-	<div  class="collapse in sombraInferior" id="collapseExample-1">
+	<div  class="collapse in sombraInferior espacioBotton" id="collapseExample-1">
 		<div class="well">
 			<div class="row">
-				<button id="btn-abrir" class="btn pull-right glyphicon glyphicon-search" type="button" data-toggle="collapse" data-target="#collapseExample-3" aria-expanded="false" aria-controls="collapseExample-3">
+				<button id="btn-abrir" class="btn" type="button" data-toggle="collapse" data-target="#collapseExample-3" aria-expanded="false" aria-controls="collapseExample-3">
+				 ¿Qué estás buscando hoy? <span class="pull-right glyphicon glyphicon-search" > </span>
 				</button>
 			</div>
 		</div>
@@ -182,9 +183,9 @@
 		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de <span id="pagBC"></span></p>
 	</div>
 </div>
-<div class="container quitarPadding">
+<div class="container quitarPadding espacioTop">
 	<div class="col-sm-12 quitarPadding">
-		<h1>Publicaciones</h1>	
+		<h1>Descargas</h1>	
 		<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel"  data-type="multi">
 		<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox"> 
@@ -228,7 +229,7 @@
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">
 	<div class="container quitarPadding">
-		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/publicacion/');?>">MAS PUBLICACIONES</a></p>
+		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/publicacion/');?>">MAS DESCARGAS</a></p>
 		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de <span id="pagPC"></span></p>
 	</div>
 	</div>

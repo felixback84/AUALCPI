@@ -150,17 +150,17 @@ function beca_custom_post(){
 
 function publicacion_custom_post(){
 	$labels = array(
-		'name' => 'Publicaciones',
-		'Singlular' => 'Publicación',
-		'add_new' => 'Añadir publicacion',
-		'all_items' => 'Todos las publicaciones',
-		'add_new_item' => 'Nueva publicacion',
-		'edit_item' => 'Editar publicacion',
-		'new_item' => 'Nueva publicacion',
-		'view_item' => 'Ver publicacion',
-		'search_item' => 'Buscar publicacion',
-		'not_found' => 'No se encuentra la publicacion',
-		'not_found_in_trash' => 'No se encuentra la publicacion',
+		'name' => 'Descargas',
+		'Singlular' => 'Descarga',
+		'add_new' => 'Añadir descarga',
+		'all_items' => 'Todos las descargas',
+		'add_new_item' => 'Nueva descarga',
+		'edit_item' => 'Editar descarga',
+		'new_item' => 'Nueva descarga',
+		'view_item' => 'Ver descarga',
+		'search_item' => 'Buscar descarga',
+		'not_found' => 'No se encuentra la descarga',
+		'not_found_in_trash' => 'No se encuentra la descarga',
 		'parent_item_colon' => 'Articulo principal'
 		
 	);

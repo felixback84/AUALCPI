@@ -179,7 +179,7 @@
 <div class="container">
 	<div class="row espacioTop">
 		<div class="col-sm-12 quitarEspacio">
-			<h1>Publicaciones</h1>	
+			<h1>Descargas</h1>	
 			<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel"  data-type="multi">
 			<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox"> 
@@ -224,7 +224,7 @@
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">
 		<div class="container quitarPadding">
-			<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/descargas/');?>">Más publicaciones</a></p>
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/descargas/');?>">Más descargas</a></p>
 			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de <span id="pagPC"></span></p>
 		</div>
 	</div>

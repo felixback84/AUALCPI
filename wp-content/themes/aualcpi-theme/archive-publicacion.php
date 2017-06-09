@@ -3,7 +3,6 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="row text-center no-margin">
-				<h4>Archivos Publicaciones</h4>
 				<?php if( have_posts() ): ?>
 					<header class="page-header">
 						<?php 

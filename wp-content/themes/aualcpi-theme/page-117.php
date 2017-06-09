@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<!-- paquina membresia-->
+<!-- paquina email-->
 <div class="hidden-xs">
 	<div id="imagenTop" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
@@ -24,7 +24,7 @@
 		</div>
 	</div>
 </div>
-<div class="container espacioBotton">
+<div class="container espacioBotton espacioTop">
 	<div class="row">
 		<h1 class="text-center">E-mail</h1>
 		<div class="col-sx-12 Fpadding">

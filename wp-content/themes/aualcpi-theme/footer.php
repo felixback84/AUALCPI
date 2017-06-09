@@ -70,25 +70,14 @@
 				<div class="FooterAdmin col-xs-12 col-sm-8 col-md-6 col-lg-4 pull-right" style="color: white;">
 		        	<div class="col-xs-6 col-sm-6 datosFooter ">
 						<?php  $usuarioId = false; $user1 = false;?>
-			        	<?php  	$usuarioId=get_post_meta(81,'UsuarioB')[0];
-			        			$cargo1=get_post_meta(81,'UsuarioBLabel')[0];
+			        	<?php  	$usuarioId=get_post_meta(81,'UsuarioA')[0];
+			        			$cargo1=get_post_meta(81,'UsuarioALabel')[0];
 			        			//echo 'pm'.$usuarioId; ?>
 		        		<?php if(!empty($usuarioId) && $usuarioId != false ){ ?>
 			        		<?php  $user1 = get_user_by('ID',$usuarioId); ?>
 							<h4 class="dobleLinea2"><?php echo $cargo1; ?></h4>
 							<p><?php echo $user1->display_name; ?></p>
 							<p class="correo"><?php echo $user1->user_email; ?></p>
-			        	<?php } ?>
-						<?php  $usuarioId = false; ?>
-			        	<?php  	
-			        	$usuarioId=get_post_meta(81,'UsuarioC')[0];
-			        	$cargo2=get_post_meta(81,'UsuarioCLabel')[0];
-			        	//echo 'pm'.$usuarioId; ?>
-			        	<?php if(!empty($usuarioId) && $usuarioId != false ){ ?>
-			        		<?php  $user = get_user_by('ID',$usuarioId); //var_dump($usuario); ?>
-							<h4 class="dobleLinea2"><?php echo $cargo2; ?></h4>
-							<p><?php echo $user->display_name; ?></p>
-							<p class="correo"><?php echo $user->user_email; ?></p>
 			        	<?php } ?>
 		        	</div>
 					<div class="col-xs-6 col-sm-6 avatarFooter">

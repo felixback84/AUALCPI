@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <!-- pagina nuestra asociacion-->
 <div class="hidden-xs">
-	<div id="imagenTop" class="carousel slide" data-ride="carousel">
+	<div id="imagenTop" class="carousel slide espacioBotton" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="item active">
 				<?php if(!empty(get_the_post_thumbnail (81,'post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']))){ ?>
@@ -30,7 +30,7 @@
         <li><a href="#vision-r" data-toggle="tab">Visión</a></li>
         <li><a href="#organigrama-r" data-toggle="tab"><span class="hidden-sm">Organigrama</span><span class="visible-sm">Organigra..</span></a></li>
       </ul>
-      <div class="tab-content col-xs-9">
+      <div class="tab-content col-xs-9 quitarPadding">
         <div class="tab-pane active" id="home-r">
 			<p><?php echo get_post_meta($post->ID,'Home')[0]; ?></p>
         </div>
@@ -41,7 +41,7 @@
         	<p><?php echo get_post_meta($post->ID,'Vision')[0]; ?></p>
         </div>
         <div class="tab-pane" id="organigrama-r">
-	        <div class="hidden-xs">
+	        <div class="hidden-xs hidden-sm">
 	        	<div class="col-xs-12 col-sm-6">
 		        	<?php  $usuarioId = false;
 		        	$cargo = '';
@@ -95,11 +95,11 @@
 		        	<?php } ?>
 	        	</div>
         	</div>
-        	<div class="visible-xs">
+        	<div class="visible-xs visible-sm">
         		<div id="carousel-id" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
 						<div class="item active">
-									<div class="col-xs-12 col-sm-6 quitarEspacio">
+									<div class="col-xs-12 col-sm-12 col-md-6 quitarEspacio">
 							        	<?php  $usuarioId = false;
 							        	$cargo = '';
 							        	//echo 'es'.$usuarioId; 
@@ -114,7 +114,7 @@
 						        	</div>
 						</div>
 						<div class="item">
-									<div class="col-xs-12 col-sm-6 quitarEspacio">
+									<div class="col-xs-12 col-sm-12 col-md-6 quitarEspacio">
 						        	<?php  $usuarioId = false;
 						        	$cargo = '';
 						        	//echo 'es'.$usuarioId; 
@@ -129,7 +129,7 @@
 						        	</div>
 						</div>
 						<div class="item">
-									<div class="col-xs-12 col-sm-6 quitarEspacio">
+									<div class="col-xs-12 col-sm-12 col-md-6 quitarEspacio">
 							        	<?php  $usuarioId = false;
 							        	$cargo = '';
 							        	//echo 'es'.$usuarioId; 
@@ -144,7 +144,7 @@
 						        	</div>
 						</div>
 						<div class="item">
-									<div class="col-xs-12 col-sm-6 quitarEspacio">
+									<div class="col-xs-12 col-sm-12 col-md-6 quitarEspacio">
 							        	<?php  $usuarioId = false;
 							        	$cargo = '';
 							        	//echo 'es'.$usuarioId; 
@@ -168,17 +168,15 @@
 	</div>
 </div>
 
-<div class="container quitarPadding">
-	<div class="espacioBotton">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div class="container quitarPadding espacioBotton">
+		<div id="contenidoBlanco" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 quitarPadding">
 			<div class="thumbnail">
 				<!-- <img src="<?php //echo get_stylesheet_directory_uri(); ?>/images/imageContenidoNosotros.jpg" alt="" width="" height="" /> -->
 				<div id="contenidoTextAzulNuestra">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quam voluptas repellat fugiat facilis explicabo excepturi mollitia nesciunt voluptatibus ratione at itaque pariatur minus, libero minima, iusto amet commodi cupiditate.</p>
+					<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quam voluptas repellat fugiat facilis explicabo excepturi mollitia nesciunt voluptatibus ratione at itaque pariatur minus, libero minima, iusto amet commodi cupiditate.</h1>
 				</div>
 			</div>
 		</div>
-	</div>
 </div>
 <div class="container quitarPadding">
 	<div class="espacioBotton">

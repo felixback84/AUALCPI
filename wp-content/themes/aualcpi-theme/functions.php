@@ -556,7 +556,7 @@ function my_get_user()  {
 	global $post;
     $posts =  query_posts($args);
 	if(empty($posts)){
-		echo '<p class="text-center">No hay publicaciones</p>';
+		echo '<p class="text-center">No hay descargas</p>';
 	}
     foreach ($posts as $post)   {
 		setup_postdata($post);

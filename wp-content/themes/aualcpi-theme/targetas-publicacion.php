@@ -6,7 +6,7 @@
 	<div class="bloqueTargeta">
 		<div class="row">
 			<div class="col-xs-10 col-sm-12 col-xs-push-1 col-sm-push-0">
-				<div class="panel panel-default">
+				<div class="panel panel-default" style="border:none;box-shadow:none;">
 					<div class="panel-body">
 						<?php if( has_post_thumbnail( )): ?>
 							<div class="thumbnail"><?php the_post_thumbnail ('medium'); ?></div>
@@ -21,7 +21,7 @@
 						<p><?php  echo wp_trim_words(get_the_content(),30,'...'); ?></p>
 						<?php $linkPublicacion = get_post_meta(get_the_ID(),'publicacion_meta_file',true)[0];  //var_dump($linkPublicacion); ?>
 						<a class="pull-right" href="<?php echo $linkPublicacion; ?> " target="_blank" >Descargar</a> 
-					</div><p class="linea"></p>
+					</div>
 				</div>
 			</div>
 		</div>

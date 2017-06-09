@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <!-- paquina membresia-->
 <div class="hidden-xs">
-	<div id="imagenTop" class="carousel slide" data-ride="carousel">
+	<div id="imagenTop" class="carousel slide espacioBotton" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="item active">
 				<?php if(!empty(get_the_post_thumbnail (85,'post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']))){ ?>
@@ -22,7 +22,7 @@
 		</div>
 	</div>
 </div>
-<div class="container espacioBotton">
+<div class="container">
 	<div class="row espacioBotton">
 		<h1 class="text-center">Descubre todos los beneficios que tenemos para ti</h1>
 		<div id="carousel-members" class="carousel slide" data-ride="carousel">

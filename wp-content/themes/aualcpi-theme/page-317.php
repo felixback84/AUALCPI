@@ -22,8 +22,8 @@
 		</div>
 	</div>
 </div>
-<div class="container espacioBotton">
-	<div class="row espacioBotton">
+<div class="container espacioBotton espacioTop">
+	<div class="row">
 		<h1 class="text-center">Quieres ser miembro</h1>
 		
 <?php // la URL que contendrá la acción es la propia página que contiene el formulario

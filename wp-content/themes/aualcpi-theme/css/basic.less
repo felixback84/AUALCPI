@@ -15,10 +15,10 @@ body{
 	color:black;
 }
 article>.row, .espacioBotton{
-	padding-bottom: 32px;
+	margin-bottom: 32px;
 }
 .espacioTop{
-	padding-top: 32px;
+	margin-top: 32px;
 }
 
 .contenerdorGris{
@@ -109,6 +109,8 @@ article>.row, .espacioBotton{
 	border: 2px solid #00B9F7;
 	font-size: 20px;
 	padding: 15px;
+	width: 250px;
+	margin: 0 auto;
 	&:hover{
 		background-color: #DDD;
 	}
@@ -155,7 +157,23 @@ article>.row, .espacioBotton{
 		width: 150px;
 		height: 40px;
 }
-
+#idiomas2{
+	text-align: center;
+}
+@media (min-width: 992px) {
+	#idiomas1{
+		width: 100%;
+		padding-right: 10%;
+		img{
+			float: right;
+		}
+	}
+}
+@media (min-width: 1200px) {
+	#idiomas1{
+		padding-right: 7%;
+	}
+}
 .menuAdicional {
 	/*margin: 0 25px 25px 0;*/
 	padding:0;
@@ -177,6 +195,7 @@ article>.row, .espacioBotton{
 		color: black;
 		height: 50px;
 		line-height: 30px;
+		text-align: center;
 		&.active,&:hover{
 			background-color: #3a6ab6;
 			color:white;
@@ -215,10 +234,32 @@ article>.row, .espacioBotton{
 		background-color: #bbb;
 	}
 }
-
-.Search1{
-	/*padding-right: 35px;*/
+@media (min-width: 992px) {
+	.Search1{
+			margin-bottom: 20px; 
+			padding-right: 8%; 
+	}
 }
+@media (min-width: 1200px) {
+	.Search1{
+			padding-right: 5%; 
+	}
+}
+
+@media (min-width: 992px) {
+	.divMenuAdicional{
+			padding-right: 8%;  
+			nav{
+				float:right;
+			}
+	}
+}
+@media (min-width: 1200px) {
+	.divMenuAdicional{
+			padding-right: 5%; 
+	}
+}
+
 #form-search{
 		/*width: 270px;*/
 		input, button{
@@ -233,12 +274,14 @@ article>.row, .espacioBotton{
 }
 
 #logoAualcpi{
-	margin: 50px 0  28px 0px;
+	margin: 25px 0  25px 0px;
 }
 @media (min-width: 992px) { 
-	#logoAualcpi>img{
-		float: left;
-		margin:0 0 20px 20px;
+	#logoAualcpi{
+		&>img{
+			float: left;
+			margin:0 0 20px 20px;
+		}
 	}
 }
 .blockquote-reverse{
@@ -328,6 +371,11 @@ article>.row, .espacioBotton{
 		padding-right: 12px;
 	}
 }
+@media (max-width: 767px) { 
+	.menuPrimary a.dropdown-toggle, .menuPrimary .navbar-nav>li>a{
+		line-height: 45px;
+	}
+}
 /*#menu-email.navbar-nav>li>a{
 	&::after{
 			content: url(../images/iconosModalBecasWhatsApp.png);
@@ -339,24 +387,33 @@ article>.row, .espacioBotton{
 
 }
 .FooterAdmin{
-	border-top: 1px solid #333;
-	padding: 10px;
-	padding-top:20px;
+	/*border-top: 1px dashed #333;*/
+	min-height: 225px;
+	margin:5px;
+	/*padding: 10px;*/
+	/*padding-top:20px;*/
 	margin-top: -200px;
 	div{
 		margin-bottom: 20px;
 
 	}
 	.avatarFooter{
-		border-left: 1px solid #333;
+		padding-top: 5px;
+		/*border-left: 1px solid #333;*/
 	}
 }
 @media (max-width: 1200px) { 
 	.FooterAdmin{
 		margin-top: 0px;
+		margin-left:10px;
 		&.pull-right{
 			float: none !important;
 		}
+	}
+}
+@media (min-width: 1200px) { 
+	.FooterAdmin{
+		border-left: 1px dashed #333;
 	}
 }
 #footer1{
@@ -373,6 +430,10 @@ article>.row, .espacioBotton{
 		padding-top: 20px;
 		a:hover{
 			text-decoration:none;
+		}
+
+		.thumbnail img{
+			margin-left: 35px;
 		}
 		.redes{
 			display: inline-block;
@@ -429,6 +490,27 @@ article>.row, .espacioBotton{
 		margin-left: 25px;
 	}
 }
+@media (min-width: 767px) { 
+	#redes{
+		#iconosRedes{
+			margin-left: 25px;
+		}
+	}
+}
+@media (min-width: 992px) {
+	#redes{
+		#iconosRedes{
+			margin-left: 40px;
+		}
+	}
+}
+@media (min-width: 1200px) {
+	#redes{
+		#iconosRedes{
+			margin-left: 80px;
+		}
+	}
+}
 .navFooter {
 	padding:10px 0 25px;
 	margin: 7.5px 0px;
@@ -439,7 +521,7 @@ article>.row, .espacioBotton{
 		background:transparent;
 	}
 	&>li>a{
-		border-bottom: 1px solid #333;
+		/*border-bottom: 1px solid #333;*/
 	}	
 	li{ 
 		max-width: 150px;
@@ -450,7 +532,7 @@ article>.row, .espacioBotton{
 			white-space:normal;
 			width: 150px;
 			margin:10px 0;
-			border-bottom: 1px solid #333;
+			/*border-bottom: 1px solid #333;*/
 		}
 	}
 	a{

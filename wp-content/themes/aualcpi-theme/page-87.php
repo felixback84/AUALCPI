@@ -23,7 +23,7 @@
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container espacioTop espacioBotton">
 	<div class="row">
 		<div class="col-xs-12 col-sm-8 col-sm-push-2">
 			<div class="youtube">
@@ -32,10 +32,9 @@
 		</div>
 	</div>
 </div>
-<div class="container quitarPadding">
-	<div class="espacioBotton">
+<div id="ultimasInvestigaciones" class="container quitarPadding espacioBotton">
 		<div class="col-xs-12 quitarPadding">
-			<h1 class="text-center espacioBotton" style="margin:40px 80px;">Conoce nuestra Red Lisi</h1>
+			<h1 class="text-center">Conoce nuestra Red Lisi</h1>
 			<?php $args = array(
 		      'post_type' => 'investigacion',
 		      'post_status' => 'publish',
@@ -55,10 +54,8 @@
 			endif;	
 		    wp_reset_postdata(); ?>
 		</div>	
-	</div>
 </div>
-<div class="container quitarPadding">
-	<div class="espacioBotton">
+<div id="contenidoBlanco" class="container quitarPadding espacioBotton">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="thumbnail">
 				<!-- <img src="<?php //echo get_stylesheet_directory_uri(); ?>/images/imageContenidoQueeslisi.jpg" alt="" width="" height="" /> -->
@@ -67,7 +64,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </div>
 <div class="container quitarPadding">
 	<div class="divAsociados">

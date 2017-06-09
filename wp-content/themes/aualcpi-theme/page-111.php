@@ -1,6 +1,6 @@
 <?php get_header(); ?>
-<!-- paquina membresia-->
-<div class="hidden-xs">
+<!-- paquina inicio sesion-->
+<!-- <div class="hidden-xs">
 	<div id="imagenTop" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="item active">
@@ -21,9 +21,9 @@
 			</div>
 		</div>
 	</div>
-</div>
-<div class="container espacioBotton">
-	<div class="row espacioBotton">
+</div> -->
+<div class="container espacioBotton espacioTop">
+	<div class="row">
 		<h1 class="text-center">Iniciar sesión</h1>
 	<div id="loginUser" class="col-xs-12 col-sm-8 col-xs-push-0 col-sm-push-2">		
 		<?php if (is_user_logged_in()) {               
