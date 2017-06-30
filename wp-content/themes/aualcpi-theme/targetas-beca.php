@@ -1,5 +1,5 @@
 <article id="post-<?php the_ID();?>" <?php post_class(); ?>>
-	<div class="bloqueTargeta">
+	<div class="bloqueTargeta bloqueTargetaFormato">
 		<div class="row">
 			<div class="col-xs-10 col-sm-12 col-xs-push-1 col-sm-push-0">
 				<div class="panel panel-default">

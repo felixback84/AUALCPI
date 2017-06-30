@@ -75,13 +75,16 @@ $('.carousel[data-type="multi"] .item').each(function(){
       next = $(this).siblings(':first');
     }
     next.children(':first-child').clone().appendTo($(this));
+    //next.children(':first-child').remove();
+    next=next.next();
+    next.children(':first-child').clone().appendTo($(this));
     
     for (var i=0;i<1;i++) {
       next=next.next();
       if (!next.length) {
         next = $(this).siblings(':first');
       }
-      next.children(':first-child').clone().appendTo($(this));
+      //next.children(':first-child').clone().appendTo($(this));
     }
   }
   if((tamanioPantalla < 991) & (tamanioPantalla > 767)){
@@ -118,6 +121,10 @@ function cambiarNumeracionInvestigaciones(){
 function cambiarNumeracionBecas(){
   $("#pagB").text($("#carousel-example-generic-beca .active").attr("cont"));
   $("#pagBC").text($("#carousel-example-generic-beca .contador").attr("cont"));
+  $("#pagB-2").text($("#carousel-example-generic-beca-2 .active").attr("cont"));
+  $("#pagBC-2").text($("#carousel-example-generic-beca-2 .contador").attr("cont"));
+  $("#pagB-3").text($("#carousel-example-generic-beca-3 .active").attr("cont"));
+  $("#pagBC-3").text($("#carousel-example-generic-beca-3 .contador").attr("cont"));
 }
 function cambiarNumeracionAutor(){
   $("#pagA").text($("#carousel-example-generic-autores .active").attr("cont"));

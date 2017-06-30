@@ -73,90 +73,210 @@
 	</div>
 </div>
 <div class="triangulo"></div>
-<div class="container">
-	<div class="row">
-		<div class="col-sm-12 quitarEspacio">
-			<h1>Becas de movilidad (EMUAL)</h1>
-			<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi" >
-			<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox"> 
-					<?php $args = array (
-						'post_type' => 'becas',
-						'posts_per_page' => 5, 
-						'orderby' => 'id',
-						'order'   => 'DESC',
-					);
-					$lastBlog = new WP_Query ($args);
-					$cont=0;
-					$numeroElementos=3;
-					if($lastBlog->have_posts()):
-						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-							<?php if($cont == 0){ ?>
-								<div class="item active" cont="<?php echo $cont+1; ?>">
-							<?php }else{ ?> 
-									<div class="item" cont="<?php echo $cont+1; ?>">
-							<?php } ?> 
-								<div class="col-xs-12 col-sm-6 col-md-4">
-									<?php get_template_part('targetas-beca'); ?>
-								</div>
-							</div> 
-						 <?php $cont++; 
-						 endwhile;
-					endif;	
-				    wp_reset_postdata(); ?>
-				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
-				<!-- Controls -->
-				<a class="left carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				</a>
-				<a class="right carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				 </a>
+
+<div class="hidden-xs hidden-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1>Becas de movilidad (EMUAL)</h1>
+				<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="mulsti" >
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+						<?php $args = array (
+								'post_type' => 'becas',
+								'posts_per_page' => 15, 
+								'orderby' => 'id',
+								'order'   => 'DESC',
+							);
+							$lastBlog = new WP_Query ($args);
+							$cont=0;
+							$numeroElementos=3;
+							if($lastBlog->have_posts()):
+								while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+									<?php if($cont== 0){ ?>
+										<div class="item active" cont="1">
+									<?php } ?> 
+									<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+										</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+									<?php } ?> 
+											<div class="col-xs-12 col-sm-6 col-md-4">
+												<?php get_template_part('targetas-beca'); ?>
+											</div>	
+									<?php if($cont%$numeroElementos == 0){ ?> 
+										
+									<?php } ?> 								
+								 	<?php $cont++; endwhile;
+								endif;	
+							wp_reset_postdata(); 
+							//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
+					<!-- Controls -->
+					<a class="left carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					 </a>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<div class="carousel-nav sombraInferior">
-	<div class="container quitarPadding">
-		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/movilidad/');?>">Más becas</a></p>
-		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de <span id="pagBC"></span></p>
+	<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/movilidad/');?>">Más becas</a></p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de <span id="pagBC"></span></p>
+		</div>
 	</div>
-</div>	 
+</div>
+<div class="visible-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1>Becas de movilidad (EMUAL)</h1>
+				<div id="carousel-example-generic-beca-2" class="carousel slide" data-ride="carousel" data-type="mulsti" >
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+						<?php $args = array (
+								'post_type' => 'becas',
+								'posts_per_page' => 15, 
+								'orderby' => 'id',
+								'order'   => 'DESC',
+							);
+							$lastBlog = new WP_Query ($args);
+							$cont=0;
+							$numeroElementos=2;
+							if($lastBlog->have_posts()):
+								while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+									<?php if($cont== 0){ ?>
+										<div class="item active" cont="1">
+									<?php } ?> 
+									<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+										</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+									<?php } ?> 
+											<div class="col-xs-12 col-sm-6 col-md-4">
+												<?php get_template_part('targetas-beca'); ?>
+											</div>	
+									<?php if($cont%$numeroElementos == 0){ ?> 
+										
+									<?php } ?> 								
+								 	<?php $cont++; endwhile;
+								endif;	
+							wp_reset_postdata(); 
+							//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
+					<!-- Controls -->
+					<a class="left carousel-control" href="#carousel-example-generic-beca-2" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#carousel-example-generic-beca-2" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					 </a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/movilidad/');?>">Más becas</a></p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB-2"></span>  de <span id="pagBC-2"></span></p>
+		</div>
+	</div>
+</div>
+<div class="visible-xs">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1>Becas de movilidad (EMUAL)</h1>
+				<div id="carousel-example-generic-beca-3" class="carousel slide" data-ride="carousel" data-type="mulsti" >
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+						<?php $args = array (
+								'post_type' => 'becas',
+								'posts_per_page' => 15, 
+								'orderby' => 'id',
+								'order'   => 'DESC',
+							);
+							$lastBlog = new WP_Query ($args);
+							$cont=0;
+							$numeroElementos=1;
+							if($lastBlog->have_posts()):
+								while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+									<?php if($cont== 0){ ?>
+										<div class="item active" cont="1">
+									<?php } ?> 
+									<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+										</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+									<?php } ?> 
+											<div class="col-xs-12 col-sm-6 col-md-4">
+												<?php get_template_part('targetas-beca'); ?>
+											</div>	
+									<?php if($cont%$numeroElementos == 0){ ?> 
+										
+									<?php } ?> 								
+								 	<?php $cont++; endwhile;
+								endif;	
+							wp_reset_postdata(); 
+							//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
+					<!-- Controls -->
+					<a class="left carousel-control" href="#carousel-example-generic-beca-3" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#carousel-example-generic-beca-3" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					 </a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/movilidad/');?>">Más becas</a></p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB-3"></span>  de <span id="pagBC-3"></span></p>
+		</div>
+	</div>
+</div>
 <div class="container">
 	<div class="row espacioTop">
 		<div class="col-sm-12 quitarEspacio">
 			<h1>Investigación regional (RED LISI)</h1>	
-			<div id="carousel-example-generic-investigacion" class="carousel slide" data-ride="carousel"  data-type="multi">
+			<div id="carousel-example-generic-investigacion" class="carousel slide" data-ride="carousel"  data-type="mulsti">
 			<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox"> 
-					<?php $args = array (
-						'post_type' => 'investigacion',
-						'posts_per_page' => 5, 
-						'orderby' => 'id',
-						'order'   => 'DESC',
-					);
-					$lastBlog = new WP_Query ($args);
-					$cont=0;
-					$numeroElementos=3;
-					if($lastBlog->have_posts()):
-						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-						<?php if($cont == 0){ ?>
-								<div class="item active" cont="<?php echo $cont+1; ?>">
-							<?php }else{ ?> 
-									<div class="item" cont="<?php echo $cont+1; ?>">
-							<?php } ?> 
+				<?php $args = array (
+							'post_type' => 'investigacion',
+							'posts_per_page' => 15, 
+							'orderby' => 'id',
+							'order'   => 'DESC',
+						);
+						$lastBlog = new WP_Query ($args);
+						$cont=0;
+						$numeroElementos=3;
+						if($lastBlog->have_posts()):
+							while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+								<?php if($cont== 0){ ?>
+									<div class="item active" cont="1">
+								<?php } ?> 
+								<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+									</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+								<?php } ?> 
 										<div class="col-xs-12 col-sm-6 col-md-4">
 											<?php get_template_part('targetas-investigacion'); ?>
-										</div>
-									</div>
-					    	
-						 <?php $cont++; endwhile;
-					endif;	
-				    wp_reset_postdata(); 
-//				     $fin+=2; ?>
-				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
+										</div>	
+								<?php if($cont%$numeroElementos == 0){ ?> 
+									
+								<?php } ?> 								
+							 	<?php $cont++; endwhile;
+							endif;	
+						wp_reset_postdata(); 
+						//$fin+=2; ?></div>
+				</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
 				<!-- Controls -->
 				<a class="right carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="next">
 				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
