@@ -1,5 +1,5 @@
 <article id="post-<?php the_ID();?>" <?php post_class(); ?>>
-	<div class="bloqueTargeta">
+	<div class="bloqueTargeta  bloqueTargetaFormato">
 		<div class="row">
 			<div class="col-xs-10 col-sm-12 col-xs-push-1 col-sm-push-0">
 				<div class="panel panel-default">
@@ -12,7 +12,7 @@
 					</div>
 					<div class="panel-body">
 						<div class="contenidoP">
-							<h4><a href="<?php echo esc_url(get_permalink()); ?> "><?php the_title(); ?></a></h4>
+							<h4><a href="<?php echo esc_url(get_permalink()); ?> "><?php echo wp_trim_words(get_the_title(),9,'...'); ?></a></h4>
 							<p><?php $terms_list=wp_get_post_terms($post->ID,'universidades_investigacion');
 							if(count($terms_list)!=0) { echo ('Universidad: ');}
 							echo mostrarCategorias($terms_list,'\\');

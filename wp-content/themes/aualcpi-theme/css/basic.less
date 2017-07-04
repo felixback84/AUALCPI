@@ -5,6 +5,20 @@
 .quitarPadding{
 	padding:0px;
 }
+@media (min-width: 768px) {
+	.quitarEspacioMenu{
+		padding-left:0px;
+		padding-right:0px;
+		.container-fluid{
+			/*padding-right: 0px;*/
+			padding-left: 0px;
+			.navbar-collapse{
+				padding-right: 0px;
+				padding-left: 0px;
+			}
+		}
+	}
+}
 .Fpadding{
 	padding:5px;
 }
@@ -163,7 +177,7 @@ article>.row, .espacioBotton{
 @media (min-width: 992px) {
 	#idiomas1{
 		width: 100%;
-		padding-right: 10%;
+		padding-right: 2%;
 		img{
 			float: right;
 		}
@@ -171,7 +185,7 @@ article>.row, .espacioBotton{
 }
 @media (min-width: 1200px) {
 	#idiomas1{
-		padding-right: 7%;
+		padding-right: 2%;
 	}
 }
 .menuAdicional {
@@ -215,6 +229,7 @@ article>.row, .espacioBotton{
 	&.navbar-default .navbar-nav>.active>a{
 		background-color: #3765ae;
 		color:white;
+
 	}
 
 	&.navbar-default .navbar-nav>li .active:hover{
@@ -223,8 +238,15 @@ article>.row, .espacioBotton{
 	}
 	&.navbar-default .navbar-nav>li>a{
 		color:black;
+		line-height: 20px;
 		&:hover{
 			color:white;
+		}
+	}
+
+	@media (max-width: 768px) {
+		&.navbar-default .navbar-nav>li>a{
+			line-height: 25px;
 		}
 	}
 	&.navbar-default .navbar-nav>li:first-child>a{
@@ -236,27 +258,38 @@ article>.row, .espacioBotton{
 }
 @media (min-width: 992px) {
 	.Search1{
-			margin-bottom: 20px; 
-			padding-right: 8%; 
+		margin-bottom: 20px; 
+		/*margin-right: 1px;*/
+		/*padding-right: 8%; */
 	}
 }
-@media (min-width: 1200px) {
+/*@media (min-width: 1200px) {
 	.Search1{
-			padding-right: 5%; 
+		margin-right: -7px;
+		padding-right: 5%; 
 	}
-}
+}*/
 
 @media (min-width: 992px) {
+	nav.navbar.navbar-default.menuAdicional{float:right;}
+
 	.divMenuAdicional{
-			padding-right: 8%;  
+		/*background: red;*/
+			padding-right: 0;  
 			nav{
 				float:right;
+				/*background: blue;*/
+				/*margin-right: -2%;*/
 			}
 	}
 }
 @media (min-width: 1200px) {
 	.divMenuAdicional{
-			padding-right: 5%; 
+			padding-right: 0; 
+			nav{
+				float:right;
+				/*margin-right: -2%;*/
+			}
 	}
 }
 
@@ -280,7 +313,7 @@ article>.row, .espacioBotton{
 	#logoAualcpi{
 		&>img{
 			float: left;
-			margin:0 0 20px 20px;
+			margin:30px 0 20px -19px;
 		}
 	}
 }
@@ -386,12 +419,15 @@ article>.row, .espacioBotton{
 .alinearDerecha{
 
 }
-.FooterAdmin{
+.avatarFooter{
+		padding-top: 5px;
+	}
+/*.FooterAdmin{*/
 	/*border-top: 1px dashed #333;*/
-	min-height: 225px;
-	margin:5px;
 	/*padding: 10px;*/
 	/*padding-top:20px;*/
+	/*min-height: 225px;
+	margin:5px;
 	margin-top: -200px;
 	div{
 		margin-bottom: 20px;
@@ -399,7 +435,6 @@ article>.row, .espacioBotton{
 	}
 	.avatarFooter{
 		padding-top: 5px;
-		/*border-left: 1px solid #333;*/
 	}
 }
 @media (max-width: 1200px) { 
@@ -416,9 +451,10 @@ article>.row, .espacioBotton{
 		border-left: 1px dashed #333;
 	}
 }
+*/
 #footer1{
 	background-color: #000;
-	padding-left: 25px;
+	/*padding-left: 25px;*/
 	margin-top: 20px;
 	.row p{
 		margin: 10px;
@@ -432,15 +468,21 @@ article>.row, .espacioBotton{
 			text-decoration:none;
 		}
 
-		.thumbnail img{
-			margin-left: 35px;
+		.thumbnail>img{
+			margin-left: 0;
+			margin-right: 0;
 		}
+
+
 		.redes{
 			display: inline-block;
 			width: 36px;
 			height: 36px;
 			margin-top: 10px;
 			/*margin:5px;*/
+		}
+		.datosFooter{
+			margin-left: -15px;
 		}
 		.redFacebook{
 			background: url('../images/redes.png') no-repeat;
@@ -482,15 +524,27 @@ article>.row, .espacioBotton{
 			width: 36px;
     		height: 36px;
 		}
+		@media (max-width: 767px) { 
+			.thumbnail>img{
+				margin-left: 25px;
+			}
+		}
 
 	}
-
+	@media (max-width: 767px) { 
+			.datosFooter{
+				margin-left: 25px;
+			}
+		}
 	#menuFooter{
 		min-height: 190px;
 		margin-left: 25px;
 	}
 }
-@media (min-width: 767px) { 
+#iconosRedes{
+	text-align: right;
+}
+/*@media (min-width: 767px) { 
 	#redes{
 		#iconosRedes{
 			margin-left: 25px;
@@ -510,7 +564,7 @@ article>.row, .espacioBotton{
 			margin-left: 80px;
 		}
 	}
-}
+}*/
 .navFooter {
 	padding:10px 0 25px;
 	margin: 7.5px 0px;
@@ -544,4 +598,8 @@ article>.row, .espacioBotton{
 #footer2{
 	background-color: #1f3445;
 	height: 45px;
+	text-align: center;
+	color: white;
+	padding: 10px;
+	font-size: 14px;
 }

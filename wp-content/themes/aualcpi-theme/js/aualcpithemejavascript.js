@@ -113,10 +113,18 @@ function cambiarNumeracionNoticias(){
 function cambiarNumeracionPublicaciones(){
   $("#pagP").text($("#carousel-example-generic-publicacion .active").attr("cont"));
   $("#pagPC").text($("#carousel-example-generic-publicacion .contador").attr("cont"));
+  $("#pagP-2").text($("#carousel-example-generic-publicacion-2 .active").attr("cont"));
+  $("#pagPC-2").text($("#carousel-example-generic-publicacion-2 .contador").attr("cont"));
+  $("#pagP-3").text($("#carousel-example-generic-publicacion-3 .active").attr("cont"));
+  $("#pagPC-3").text($("#carousel-example-generic-publicacion-3 .contador").attr("cont"));
 }
 function cambiarNumeracionInvestigaciones(){
   $("#pagI").text($("#carousel-example-generic-investigacion .active").attr("cont"));
   $("#pagIC").text($("#carousel-example-generic-investigacion .contador").attr("cont"));
+  $("#pagI-2").text($("#carousel-example-generic-investigacion-2 .active").attr("cont"));
+  $("#pagIC-2").text($("#carousel-example-generic-investigacion-2 .contador").attr("cont"));
+  $("#pagI-3").text($("#carousel-example-generic-investigacion-3 .active").attr("cont"));
+  $("#pagIC-3").text($("#carousel-example-generic-investigacion-3 .contador").attr("cont"));
 }
 function cambiarNumeracionBecas(){
   $("#pagB").text($("#carousel-example-generic-beca .active").attr("cont"));

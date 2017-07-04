@@ -3,7 +3,7 @@
 		<?php the_title( sprintf('<h4 class="entry-title"><a href="%s">', esc_url(get_permalink() )),'</a></h4>'); ?>
 		<small> Publicado el: <?php  the_time('F j, Y'); ?> a las <?php the_time('g:i a') ?>, in <?php the_category(); ?> </small>
 	</header> -->
-	<div class="bloqueTargeta">
+	<div class="bloqueTargeta bloqueTargetaFormatoPublicacion">
 		<div class="row">
 			<div class="col-xs-10 col-sm-12 col-xs-push-1 col-sm-push-0">
 				<div class="panel panel-default" style="border:none;box-shadow:none;">
@@ -13,7 +13,7 @@
 						<?php else: ?>
 							<div class="thumbnail"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_aualcpi.png" alt="imagen de defecto" width="" height="" /></div>
 						<?php endif; ?>
-						<h4><a href="<?php echo esc_url(get_permalink()); ?> "><?php the_title(); ?></a></h4>
+						<h4><a href="<?php echo esc_url(get_permalink()); ?> "><?php echo wp_trim_words(get_the_title(),8,'...'); ?></a></h4>
 						<p><span class="textoGrisClaro">Por: <?php the_author(); ?></span></p>
 						<p><span class="textoGrisClaro"><?php $terms_list=wp_get_post_terms($post->ID,'tipo_publicaciones');
 							echo "Categoria: ".mostrarCategorias($terms_list,'|');

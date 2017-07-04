@@ -3,7 +3,7 @@
 		<?php echo do_shortcode("[huge_it_slider id='1']"); ?>
 </div>
 <div class="container">
-	<div class="row espacioTop espacioBotton">
+	<div class="row">
 		<div class="col-sm-12 quitarEspacio"><h1>Actualidad AUALCPI</h1></div>
 		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 quitarEspacio" >
 			<div id="carousel-example-generic-noticias" class="carousel slide quitarEspacio sombraInferior" data-ride="carousel">
@@ -73,12 +73,14 @@
 	</div>
 </div>
 <div class="triangulo"></div>
-
+<!-- inicio becas-->
+<?php $tituloBecas= "Becas de movilidad recientes"; ?>
+<?php $linkBecas= home_url('/becas/'); ?>
 <div class="hidden-xs hidden-sm">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 quitarEspacio">
-				<h1>Becas de movilidad (EMUAL)</h1>
+				<h1><?php echo $tituloBecas; ?></h1>
 				<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="mulsti" >
 				<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox"> 
@@ -125,7 +127,7 @@
 	</div>
 	<div class="carousel-nav sombraInferior">
 		<div class="container quitarPadding">
-			<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/movilidad/');?>">Más becas</a></p>
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkBecas;?>">Más becas</a></p>
 			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de <span id="pagBC"></span></p>
 		</div>
 	</div>
@@ -134,7 +136,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 quitarEspacio">
-				<h1>Becas de movilidad (EMUAL)</h1>
+				<h1><?php echo $tituloBecas; ?></h1>
 				<div id="carousel-example-generic-beca-2" class="carousel slide" data-ride="carousel" data-type="mulsti" >
 				<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox"> 
@@ -181,7 +183,7 @@
 	</div>
 	<div class="carousel-nav sombraInferior">
 		<div class="container quitarPadding">
-			<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/movilidad/');?>">Más becas</a></p>
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkBecas;?>">Más becas</a></p>
 			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB-2"></span>  de <span id="pagBC-2"></span></p>
 		</div>
 	</div>
@@ -190,7 +192,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 quitarEspacio">
-				<h1>Becas de movilidad (EMUAL)</h1>
+				<h1><?php echo $tituloBecas; ?></h1>
 				<div id="carousel-example-generic-beca-3" class="carousel slide" data-ride="carousel" data-type="mulsti" >
 				<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox"> 
@@ -237,20 +239,212 @@
 	</div>
 	<div class="carousel-nav sombraInferior">
 		<div class="container quitarPadding">
-			<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/movilidad/');?>">Más becas</a></p>
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkBecas;?>">Más becas</a></p>
 			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB-3"></span>  de <span id="pagBC-3"></span></p>
 		</div>
 	</div>
 </div>
+<!-- fin becas-->
+<!-- inicio invesgacion-->
+<?php $tituloInvestigacion = 'Retos regionales recientes'; ?>
+<?php $linkInvestigacion = home_url('/investigacion/'); ?>
+<div class="hidden-xs hidden-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1><?php echo $tituloInvestigacion; ?></h1>	
+				<div id="carousel-example-generic-investigacion" class="carousel slide" data-ride="carousel"  data-type="mulsti">
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+					<?php $args = array (
+								'post_type' => 'investigacion',
+								'posts_per_page' => 15, 
+								'orderby' => 'id',
+								'order'   => 'DESC',
+							);$lastBlog = new WP_Query ($args);
+								$cont=0;
+								$numeroElementos=3;
+								if($lastBlog->have_posts()):
+									while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+										<?php if($cont== 0){ ?>
+											<div class="item active" cont="1">
+										<?php } ?> 
+										<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+											</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+										<?php } ?> 
+												<div class="col-xs-12 col-sm-6 col-md-4">
+													<?php get_template_part('targetas-investigacion'); ?>
+												</div>	
+										<?php if($cont%$numeroElementos == 0){ ?> 
+											
+										<?php } ?> 								
+									 	<?php $cont++; endwhile;
+									endif;	
+								wp_reset_postdata(); 
+								//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
+					<!-- Controls -->
+					<a class="right carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					  <a class="left carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkInvestigacion;?>">Más retos</a></p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI"></span>  de <span id="pagIC"></span></p>
+		</div>
+	</div>
+</div>
+<div class="visible-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1><?php echo $tituloInvestigacion; ?></h1>	
+				<div id="carousel-example-generic-investigacion-2" class="carousel slide" data-ride="carousel"  data-type="mulsti">
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+					<?php $args = array (
+								'post_type' => 'investigacion',
+								'posts_per_page' => 15, 
+								'orderby' => 'id',
+								'order'   => 'DESC',
+							);$lastBlog = new WP_Query ($args);
+								$cont=0;
+								$numeroElementos=2;
+								if($lastBlog->have_posts()):
+									while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+										<?php if($cont== 0){ ?>
+											<div class="item active" cont="1">
+										<?php } ?> 
+										<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+											</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+										<?php } ?> 
+												<div class="col-xs-12 col-sm-6 col-md-4">
+													<?php get_template_part('targetas-investigacion'); ?>
+												</div>	
+										<?php if($cont%$numeroElementos == 0){ ?> 
+											
+										<?php } ?> 								
+									 	<?php $cont++; endwhile;
+									endif;	
+								wp_reset_postdata(); 
+								//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
+					<!-- Controls -->
+					<a class="right carousel-control" href="#carousel-example-generic-investigacion-2" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					  <a class="left carousel-control" href="#carousel-example-generic-investigacion-2" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkInvestigacion;?>">Más retos</a></p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI-2"></span>  de <span id="pagIC-2"></span></p>
+		</div>
+	</div>
+</div>
+<div class="visible-xs">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1><?php echo $tituloInvestigacion; ?></h1>	
+				<div id="carousel-example-generic-investigacion-3" class="carousel slide" data-ride="carousel"  data-type="mulsti">
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+					<?php $args = array (
+								'post_type' => 'investigacion',
+								'posts_per_page' => 15, 
+								'orderby' => 'id',
+								'order'   => 'DESC',
+							);$lastBlog = new WP_Query ($args);
+								$cont=0;
+								$numeroElementos=1;
+								if($lastBlog->have_posts()):
+									while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+										<?php if($cont== 0){ ?>
+											<div class="item active" cont="1">
+										<?php } ?> 
+										<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+											</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+										<?php } ?> 
+												<div class="col-xs-12 col-sm-6 col-md-4">
+													<?php get_template_part('targetas-investigacion'); ?>
+												</div>	
+										<?php if($cont%$numeroElementos == 0){ ?> 
+											
+										<?php } ?> 								
+									 	<?php $cont++; endwhile;
+									endif;	
+								wp_reset_postdata(); 
+								//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
+					<!-- Controls -->
+					<a class="right carousel-control" href="#carousel-example-generic-investigacion-3" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					  <a class="left carousel-control" href="#carousel-example-generic-investigacion-3" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkInvestigacion;?>">Más retos</a></p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI-3"></span>  de <span id="pagIC-3"></span></p>
+		</div>
+	</div>
+</div>
+<!-- fin invesgacion-->
+<!-- inicio esctadisticas-->
+<?php $tituloEstadisticas = 'Estadisticas recientes'; ?>
+<?php $linkEstadisticas = home_url('/#/'); ?>
 <div class="container">
-	<div class="row espacioTop">
-		<div class="col-sm-12 quitarEspacio">
-			<h1>Investigación regional (RED LISI)</h1>	
-			<div id="carousel-example-generic-investigacion" class="carousel slide" data-ride="carousel"  data-type="mulsti">
-			<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox"> 
-				<?php $args = array (
-							'post_type' => 'investigacion',
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1><?php echo $tituloEstadisticas; ?></h1>
+				<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/Estadisticas.jpg"></div>
+			</div>
+		</div>
+	</div>
+<div class="carousel-nav sombraInferior">
+	<div class="container quitarPadding">
+		<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkEstadisticas;?>">Más estadisticas</a></p>
+		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagE">1</span>  de <span id="pagIE">1</span></p>
+	</div>
+</div>
+<!-- fin esctadisticas-->
+<!-- inicio descarga-->
+<?php  $tituloDescargas='Descargas recientes'; ?>
+<?php  $linkDescargas= home_url('/publicacion/'); ?>
+<div class="hidden-xs hidden-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1><?php echo $tituloDescargas; ?></h1>	
+				<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel"  data-type="mulsti">
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+						<?php $args = array (
+							'post_type' => 'publicacion',
 							'posts_per_page' => 15, 
 							'orderby' => 'id',
 							'order'   => 'DESC',
@@ -267,7 +461,7 @@
 									</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
 								<?php } ?> 
 										<div class="col-xs-12 col-sm-6 col-md-4">
-											<?php get_template_part('targetas-investigacion'); ?>
+											<?php get_template_part('targetas-publicacion'); ?>
 										</div>	
 								<?php if($cont%$numeroElementos == 0){ ?> 
 									
@@ -276,79 +470,214 @@
 							endif;	
 						wp_reset_postdata(); 
 						//$fin+=2; ?></div>
-				</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
-				<!-- Controls -->
-				<a class="right carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				  </a>
-				  <a class="left carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				</a>
+					</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
+					<!-- Controls -->
+						<a class="right carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="next">
+						    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						    <span class="sr-only">Next</span>
+						  </a>
+						  <a class="left carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="prev">
+						    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						    <span class="sr-only">Previous</span>
+						</a>
+				</div>
 			</div>
 		</div>
 	</div>
+		<div class="carousel-nav sombraInferior">
+			<div class="container quitarPadding">
+				<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkDescargas;?>">Más descargas</a></p>
+				<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de <span id="pagPC"></span></p>
+			</div>
+		</div>
 </div>
-<div class="carousel-nav sombraInferior">
-	<div class="container quitarPadding">
-		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/retos-regionales/');?>">Más investigaciones</a></p>
-		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI"></span>  de <span id="pagIC"></span></p>
-	</div>
-</div>	
-<div class="container">
-	<div class="row espacioTop">
-		<div class="col-sm-12 quitarEspacio">
-			<h1>Descargas</h1>	
-			<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel"  data-type="multi">
-			<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox"> 
-					<?php $args = array (
-						'post_type' => 'publicacion',
-						'posts_per_page' => 5, 
-						'orderby' => 'id',
-						'order'   => 'DESC',
-					);
-					$lastBlog = new WP_Query ($args);
-					$cont=0;
-					$numeroElementos=3;
-					if($lastBlog->have_posts()):
-						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-						<?php if($cont == 0){ ?>
-								<div class="item active" cont="<?php echo $cont+1; ?>">
-							<?php }else{ ?> 
-									<div class="item" cont="<?php echo $cont+1; ?>">
-							<?php } ?> 
+<div class="visible-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1><?php echo $tituloDescargas; ?></h1>	
+				<div id="carousel-example-generic-publicacion-2" class="carousel slide" data-ride="carousel"  data-type="mulsti">
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+						<?php $args = array (
+							'post_type' => 'publicacion',
+							'posts_per_page' => 15, 
+							'orderby' => 'id',
+							'order'   => 'DESC',
+						);
+						$lastBlog = new WP_Query ($args);
+						$cont=0;
+						$numeroElementos=2;
+						if($lastBlog->have_posts()):
+							while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+								<?php if($cont== 0){ ?>
+									<div class="item active" cont="1">
+								<?php } ?> 
+								<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+									</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+								<?php } ?> 
 										<div class="col-xs-12 col-sm-6 col-md-4">
 											<?php get_template_part('targetas-publicacion'); ?>
-										</div>
-									</div>
-						 	<?php $cont++; endwhile;
-						endif;	
-				    wp_reset_postdata(); 
-//				     $fin+=2; ?>
-				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
-				<!-- Controls -->
-					<a class="right carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="next">
-					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					    <span class="sr-only">Next</span>
-					  </a>
-					  <a class="left carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="prev">
-					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					    <span class="sr-only">Previous</span>
-					</a>
+										</div>	
+								<?php if($cont%$numeroElementos == 0){ ?> 
+									
+								<?php } ?> 								
+							 	<?php $cont++; endwhile;
+							endif;	
+						wp_reset_postdata(); 
+						//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
+					<!-- Controls -->
+						<a class="right carousel-control" href="#carousel-example-generic-publicacion-2" role="button" data-slide="next">
+						    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						    <span class="sr-only">Next</span>
+						  </a>
+						  <a class="left carousel-control" href="#carousel-example-generic-publicacion-2" role="button" data-slide="prev">
+						    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						    <span class="sr-only">Previous</span>
+						</a>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="carousel-nav sombraInferior">
+			<div class="container quitarPadding">
+				<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkDescargas;?>">Más descargas</a></p>
+				<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP-2"></span>  de <span id="pagPC-2"></span></p>
+			</div>
+		</div>
+</div>
+<div class="visible-xs">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1><?php echo $tituloDescargas; ?></h1>	
+				<div id="carousel-example-generic-publicacion-3" class="carousel slide" data-ride="carousel"  data-type="mulsti">
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+						<?php $args = array (
+							'post_type' => 'publicacion',
+							'posts_per_page' => 15, 
+							'orderby' => 'id',
+							'order'   => 'DESC',
+						);
+						$lastBlog = new WP_Query ($args);
+						$cont=0;
+						$numeroElementos=1;
+						if($lastBlog->have_posts()):
+							while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+								<?php if($cont== 0){ ?>
+									<div class="item active" cont="1">
+								<?php } ?> 
+								<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+									</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+								<?php } ?> 
+										<div class="col-xs-12 col-sm-6 col-md-4">
+											<?php get_template_part('targetas-publicacion'); ?>
+										</div>	
+								<?php if($cont%$numeroElementos == 0){ ?> 
+									
+								<?php } ?> 								
+							 	<?php $cont++; endwhile;
+							endif;	
+						wp_reset_postdata(); 
+						//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
+					<!-- Controls -->
+						<a class="right carousel-control" href="#carousel-example-generic-publicacion-3" role="button" data-slide="next">
+						    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						    <span class="sr-only">Next</span>
+						  </a>
+						  <a class="left carousel-control" href="#carousel-example-generic-publicacion-3" role="button" data-slide="prev">
+						    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						    <span class="sr-only">Previous</span>
+						</a>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="carousel-nav sombraInferior">
+			<div class="container quitarPadding">
+				<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkDescargas;?>">Más descargas</a></p>
+				<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP-3"></span>  de <span id="pagPC-3"></span></p>
+			</div>
+		</div>
+</div>
+<!-- fin descarga-->
+<!-- inicio aliados-->
+<?php  $tituloAliados='Nuestras alianzas internacionales'; ?>
+<div class="hidden-xs hidden-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 quitarEspacio">
+				<h1><?php echo $tituloAliados; ?></h1>
+				<div id="carousel-aliados" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner" style="text-align: center;">
+						<div class="item active">
+							<div class="col-xs-3"><a href="http://geaci.com"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/GeaciLogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="http://www.iesalc.unesco.org.ve/"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/IESALCLogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="https://www.facebook.com/opcion.brasil/"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/OPCAOLogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="http://www.iesalc.unesco.org.ve/index.php?option=com_content&view=article&id=3177:el-observatorio-regional-de-responsabilidad-social-para-america-latina-y-el-caribe-continua-apoyando-los-proyectos-educacionales-en-america-latina&catid=100&Itemid=449&lang=es"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/ORSALCLogo.jpg"></div>
+							</a></div>
+						</div>
+						<div class="item">
+							<div class="col-xs-3"><a href="http://iesalc.unesco.org.ve/index.php?option=com_content&view=article&id=3515:convocatoria-premio-gabriel-betancourt-mejia&catid=11&Itemid=466&lang=en"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/PremioGBMLogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="http://www.udca.edu.co/"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="http://virtualeduca.org/"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/VirtualeducaLogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+							</a></div>
+						</div>
+						<div class="item">	
+							<div class="col-xs-3"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+							</a></div>
+						</div>
+						<div class="item">	
+							<div class="col-xs-3"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+							</a></div>
+						</div>
+					</div>
+					<a class="left carousel-control" href="#carousel-aliados" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+					<a class="right carousel-control" href="#carousel-aliados" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="espacioBotton">
-	<div class="carousel-nav sombraInferior">
-		<div class="container quitarPadding">
-			<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/descargas/');?>">Más descargas</a></p>
-			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de <span id="pagPC"></span></p>
-		</div>
-	</div>
-</div>
+<!-- fin aliados-->
 <div id="myModalBeca1" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
