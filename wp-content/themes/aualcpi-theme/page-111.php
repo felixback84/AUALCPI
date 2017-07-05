@@ -29,7 +29,7 @@
 		<?php if (is_user_logged_in()) {               
 		    echo '<div class="logout"> <p>Hola usuario!<div class="logout_user">Tu ya estas logeado.</div></p><br /><p><a id="wp-submit" class="logout" href="', wp_logout_url(home_url()), '" title="Logout">Cerrar sesión</a></p></div>';
 		} else { 
-			$redirect = admin_url('/profile.php'); 
+			$redirect = home_url('/pagina-usuario/'); 
 		    $args = array(
 		        'echo'           => true,
 		        'redirect'       => $redirect,

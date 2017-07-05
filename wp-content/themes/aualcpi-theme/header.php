@@ -44,6 +44,7 @@
 <div class="container">
 	<div class="row">
 		<input id="urlHome" type="hidden" value="<?php echo wp_logout_url(home_url()); ?>" />
+		<input id="urlCuenta" type="hidden" value="<?php echo home_url('/pagina-usuario/'); ?>" />
 		<input id="urlLogin" type="hidden" value="<?php echo home_url('/iniciar-de-sesion/'); ?>" />
 		<div id="idiomas2" class="col-xs-12 visible-xs visible-sm">
 			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/svg/Brasil.svg" style="" alt="icono de brasil" width="80" height="80" /> 

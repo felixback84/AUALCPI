@@ -21,6 +21,7 @@
 							'class' => 'img-circle',
 						)); ?>
 						<p><?php the_author_meta('user_nicename',$userId); ?></p>
+						<p><?php the_author_meta('user_login',$userId); ?></p>
 						<p><?php the_author_meta('user_email',$userId); ?></p>
 						<p><?php the_author_meta('twitter',$userId); ?></p>
 						<p><?php the_author_meta('user_meta_image',$userId); ?></p>
@@ -28,7 +29,7 @@
 					</div>
 				</div>
 			</div>
-			<?php $imagenPortada = get_the_author_meta('biografia',$userId);
+			<!-- <?php $imagenPortada = get_the_author_meta('biografia',$userId);
 				if(!empty($imagenPortada)){ ?>
 			<div class="item">
 				<div class="thumbnail"><?php 
@@ -44,11 +45,14 @@
 					</div>
 				</div>
 			</div>
-			<?php } ?>
+			<?php } ?> -->
 		</div>
 	</div>
 </div>
-<div class="container">
+/author/admin_programador/
+<p><?php $user_login=get_the_author_meta('user_login',$userId); ?></p>
+<?php wp_redirect( home_url('/author/'.$user_login.'/'));  ?>
+<!-- <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
 			<p class="author-description author-bio">
@@ -56,5 +60,5 @@
 		</p>
 		</div>
 	</div>
-</div>
+</div> -->
 <?php get_footer(); ?>

@@ -65,7 +65,7 @@ article>.row, .espacioBotton{
 			border-radius: 3px;
 		}
 }
-.avatar{
+/*.avatar{
 	.sombraInferior;
 }
 #wpadminbar{
@@ -73,7 +73,7 @@ article>.row, .espacioBotton{
 		-webkit-box-shadow: none;
 		box-shadow: none;
 	}
-}
+}*/
 #loginUser{
 	.input{
 		display: block;
@@ -196,6 +196,14 @@ article>.row, .espacioBotton{
 	ul{
 		border-left: #bbb solid 1px;
 	}
+	@media (min-width: 768px) and (max-width: 992px) {
+		ul{
+			width: 100%;
+			li{
+				width: 50%;
+			}
+		}
+	}
 	li{
 		border-right: 1px solid #bbb;
 		border-bottom: 1px solid #bbb;
@@ -243,12 +251,17 @@ article>.row, .espacioBotton{
 			color:white;
 		}
 	}
-
+	@media (max-width: 992px) {
+			&.navbar-default .navbar-nav>li>a{
+				line-height: 5px;
+			}
+		}
 	@media (max-width: 768px) {
 		&.navbar-default .navbar-nav>li>a{
 			line-height: 25px;
 		}
 	}
+	
 	&.navbar-default .navbar-nav>li:first-child>a{
 		color:white;
 	}
@@ -352,6 +365,8 @@ article>.row, .espacioBotton{
 		.dropdown-menu li{
 			background-color: #fff;
 			color:#21386f;
+			height: 42px;
+			padding: 0;
 			&:active>a,&:hover>a{
 				background-color: #d6d6d6;
 				color:#000;
@@ -420,8 +435,12 @@ article>.row, .espacioBotton{
 
 }
 .avatarFooter{
-		padding-top: 5px;
+	padding-top: 5px;
+	.avatar{
+		-webkit-box-shadow: none;
+		box-shadow: none; 
 	}
+}
 /*.FooterAdmin{*/
 	/*border-top: 1px dashed #333;*/
 	/*padding: 10px;*/

@@ -5,13 +5,13 @@
 	<footer>
 		<div id="footer1">
 			<div class="container quitarPadding">
-				<div id="redes" class="row">
+				<div id="redes" >
 					<div class="col-xs-6 col-sm-3 col-md-2 quitarPadding">
 						<div class="thumbnail ">
 							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logoBlanco.png" alt="" width="" height="" />
 						</div>
 					</div>
-					<div class="col-xs-6 col-sm-9 col-md-10  quitarPadding" >
+					<div class="col-xs-6 col-sm-9 col-md-10  quitarPadding">
 						<div id="iconosRedes" class="col-xs-11 col-sm-4 col-md-3 col-lg-2 col-lg-push-10 col-md-push-9 col-sm-push-8 col-xs-push-0">
 							<div class="row">
 								<div class="redes">
@@ -26,7 +26,7 @@
 								</div>
 								<div class="redes">
 									<a href="https://www.youtube.com/channel/UCIOGSj0E41KoIVk2u4TPbtg" target="_blank"> 
-										<span class="icon icon-youtube2"></span>
+										<span class="icon icon-youtube"></span>
 									</a>
 								</div>
 								<div class="redes">
@@ -38,7 +38,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-12 col-sm-8 col-md-6 col-lg-4  quitarPadding" style="color: white;">
+				<div class="col-xs-12 col-sm-8 col-md-5 col-lg-4  quitarPadding" style="color: white;">
 		        	<div class="col-xs-6 col-sm-6 datosFooter quitarPadding">
 						<?php  $usuarioId = false; $user1 = false;?>
 			        	<?php  	$usuarioId=get_post_meta(81,'UsuarioA')[0];
@@ -53,8 +53,8 @@
 		        	</div>
 					<div class="col-xs-6 col-sm-6 avatarFooter">
 			        	<?php if(!empty($user1) && $user1 != false ){ ?>
-			        		<div class="thumbnail pull-right">
-								<?php $avatar= get_avatar( $user1->ID, '150' ,'','logo usurio',array('class' => 'img-circle sombraInferior' ,)); ?> 
+			        		
+								<?php $avatar= get_avatar( $user1->ID, '150' ,'','logo usurio',array('class' => 'img-circle' ,)); ?> 
 								<?php 
 								if( !empty($avatar)): ?>
 									<div class="thumbnail">
@@ -63,7 +63,6 @@
 								<?php else: ?>
 									<div class="thumbnail"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/usuario.jpeg" alt="imagen de defecto" width="" height="" /></div>
 								<?php endif; ?>
-							</div>
 			        	<?php } ?>
 		        	</div>
 				</div>

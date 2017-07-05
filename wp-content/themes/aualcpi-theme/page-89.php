@@ -149,8 +149,10 @@
 				$idsUsuarios= array();
 
 			    foreach ($posts as $post){
-			    	//if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
-					$args = array(
+			    	if(!in_array($post->post_author,$idsUsuarios)){ 
+			    		array_push($idsUsuarios,$post->post_author);
+			    	}
+				/*	$args = array(
 				      'post_type' => 'contribuciones',
 				      'post_status' => 'publish',
 				      'post_parent' => $post->ID,
@@ -167,8 +169,9 @@
 							if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);}
 							$cont++;
 						}
-				    }  
+				    }*/  
 			    }
+			    //var_dump($idsUsuarios);
 			    $cont=0;
 			    foreach ($idsUsuarios as $id) {
 			    	$usuario = get_user_by('ID',$id);

@@ -3,19 +3,37 @@ jQuery(function ($) {
 
 
 //--muestra el contenido de los submenus cuando el mouse pasa sobre el 
-$("nav.menuPrimary ul.nav li").hover(function () { //When trigger is hovered...
-      $(this).children("ul.dropdown-menu").slideDown('fast');
-  }, function () {
-      $(this).children("ul.dropdown-menu").slideUp('slow');
-  });
+// $("nav.menuPrimary ul.nav li").mouseenter(function () { 
+//       $(this).children("ul.dropdown-menu").slideDown('fast');
+//   });
+// $("nav.menuPrimary ul.nav li").mouseleave(function () { 
+//       $(this).children("ul.dropdown-menu").slideUp('fast');
+// });
+
+
 //--anadir icono a menu email
 $('ul#menu-email a:first-child').append(' <span class="icon icon-mail3"> </span>');
 
 //--- al desplazarse verticalmente define si el menu principal debe fijarse o no 
+//---funciones en el menu
 var $win = $(window);
 var $pos = 225;
 $win.scroll(function () {
   if( $(document).width() > 767){
+    //click en el menu teniendo encuenta las otras funciones
+      $("nav.menuPrimary ul.nav li").click(function () { 
+        if($(this).children("ul.dropdown-menu").is(':visible')) {
+          $(this).css({'background':'#525256'});
+          $(this).children("a").css({'color':'white','background':'#525256'});
+          $(this).children("ul.dropdown-menu").toggle();
+        }
+      });
+      $("nav.menuPrimary ul.nav li").mouseenter(function () { 
+        $(this).children("ul.dropdown-menu").css('display','block');
+      });
+      $("nav.menuPrimary ul.nav li").mouseleave(function () { 
+            $(this).children("ul.dropdown-menu").css('display','none');
+      });
      if ($win.scrollTop() <= $pos){
         $('.menuPrimary').removeClass('navbar-fixed-top');
         $('.menuPrimary.navbar-fixed-top').removeClass('espacioObsionalNavFixed');
@@ -42,9 +60,9 @@ $win.scroll(function () {
 // }
 //----cambiar boton inicion de seccion
 if($('#wpadminbar').width()>0){
-  $('#menu-item-113 a').text('Cerrar sesión');
+  $('#menu-item-113 a').text('Mi Cuenta');
   //$('#menu-item-113 a').text($('#urlLogin').val());
-  $('#menu-item-113 a').attr("href",$('#urlHome').val());
+  $('#menu-item-113 a').attr("href",$('#urlCuenta').val());
 }else{
   $('#menu-item-113 a').text('Iniciar sesión');  
   $('#menu-item-113 a').attr("href",$('#urlLogin').val());

@@ -5,7 +5,7 @@
 			<div class="row"> -->
 				<?php $userId = get_queried_object_id(); //var_dump($userId);?>
 				<!-- This sets the $curauth variable -->
-			    <?php  $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));  ?>
+			    <?php  //$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));  ?>
 				<div id="carousel-dual-perfil" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
 						<div class="item active">
@@ -22,11 +22,12 @@
 									<div class="col-xs-12">
 										<?php if ($userId == wp_get_current_user()->ID){ echo '<h1 class="TituloAutor">Mi cuenta </h1>';}else{ echo '<h1 class="TituloAutor">Perfil profesional</h1>';}?>
 									</div>
-									
 									<div class="col-xs-12 col-md-3">
+										<div class="thumbnail">
 										<?php echo get_avatar( $userId, '150' ,'','logo usurio',array(
 											'class' => 'img-circle',
 										)); ?>
+										</div>
 									</div>
 									<div class="col-xs-12 col-md-9">
 										<h1><?php the_author_meta('display_name',$userId); ?> <a href="<?php echo home_url('wp-admin/profile.php');?>"><span class="icon icon-pencil"></span></a></h1>
@@ -44,6 +45,9 @@
 										<h4 class="ico-pag" style="margin-top: 20px;"><span class="icon icon-twitter"> </span>
 										<a href="https://twitter.com/<?php the_author_meta('twitter',$userId); ?>" target="_blank"><?php the_author_meta('twitter',$userId); ?></a></h4>
 										<h4 class="ico-pag"><span class="icon icon-linkedin"> </span><a href="https://www.linkedin.com/in/<?php the_author_meta('linkedin',$userId); ?>" target="_blank"><?php the_author_meta('linkedin',$userId); ?></a></h4>
+										<?php if ($userId == wp_get_current_user()->ID){ ?>
+											<a id="wp-submit" class="btn btn-default btn-cerrar" href="<?php echo wp_logout_url(home_url());?>" title="Logout">Cerrar sesión</a>
+										<?php } ?>
 									</div>
 								</div>
 						</div>
