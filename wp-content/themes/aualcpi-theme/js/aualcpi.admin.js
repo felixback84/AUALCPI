@@ -14,9 +14,9 @@ jQuery(document).ready(function ($) {
 		}
 
 		mediaUploader = wp.media.frames.file_frame = wp.media({
-			title: 'Choose a Profile Picture',
+			title: 'Seleccionar imagen de portada',
 			button: {
-				text: 'Choose Picture'
+				text: 'Seleccionar Picture'
 			},
 			multiple: false
 		});

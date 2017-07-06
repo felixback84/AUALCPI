@@ -7,6 +7,7 @@
 	
 	function aualcpiTheme_script_enqueue () {
 		//css
+		wp_enqueue_media();
 		wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7' , 'all' );
 		wp_enqueue_style( 'customstyleBoostrap', get_template_directory_uri() . '/css/bootstrap.vertical-tabs.min.css', array(), '1.0.0' , 'all' );
 		wp_enqueue_style( 'customstyle', get_template_directory_uri() . '/css/aualcpithemestyle.css', array(), '1.0.0' , 'all' );

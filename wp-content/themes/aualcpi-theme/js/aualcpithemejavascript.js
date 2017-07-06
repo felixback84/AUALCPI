@@ -534,6 +534,39 @@ $(".slider-loader-1").css({ 'display': "none" });
 $(".huge-it-wrap .huge-it-dot-wrap").css({ 'display': "none" });
 
 
+/*----- select de wordpress ---*/
+var mediaUploader;
+  $('#upload-button').on('click',function(e){
+    
+    e.preventDefault();
+    if(mediaUploader){
+      mediaUploader.open();
+      return;
+    }
+
+    mediaUploader = wp.media.frames.file_frame = wp.media({
+      title: 'Seleccionar imagen de portada',
+      button: {
+        text: 'Seleccionar Picture'
+      },
+      multiple: false
+    });
+    
+    mediaUploader.on('select', function(){
+      attachment = mediaUploader.state().get('selection').first().toJSON();
+      //alert(attachment);
+      $('#user_meta_image').val(attachment.url);
+      $('#user_meta_image_show').attr('src',attachment.url);
+    });
+
+    mediaUploader.open();
+  });
+
+  $('.btn-pass').click(function() {
+      $('#CbtnUPass').toggle();
+      $('#Pass').toggle();
+  });
+
 });
 
 
