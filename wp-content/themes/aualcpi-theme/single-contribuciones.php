@@ -2,17 +2,25 @@
 
 <?php if( have_posts() ):
 while( have_posts() ): the_post(); ?>
+<?php $author_obj = get_user_by( 'email',get_the_author_meta( 'user_email')); 
+					//var_dump($author_obj);
+					$userId=$author_obj->ID; ?>  	
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-8 col-md-push-2">
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<div class="topContribuciones">
-					<?php  //var_dump($post);
-					the_title('<h1 class="entry-title">','</h1>' ); ?>
+					<h1 class="entry-title"><?php  //var_dump($post);
+					echo get_the_title(); 
+					?>
+				<?php //echo $userId; echo wp_get_current_user()->ID; ?>
+<?php if($userId == wp_get_current_user()->ID){ ?>
+					<a href="<?php echo home_url('/author/'.$author_obj->user_login.'/?sr='.get_the_ID());?>"> <span class="icon icon-pencil"></span></a>
+<?php } ?>
+					</h1>
+					
 					<?php the_content(); ?>
-					<?php $author_obj = get_user_by( 'email',get_the_author_meta( 'user_email')); 
-					//var_dump($author_obj);
-					$userId=$author_obj->ID; ?>  	
+					
 					<div id="datosInfoContenido" class="col-xs-12">					  	
 						<a href="<?php echo home_url(); ?>/author/<?php echo $author_obj->user_login; ?>/" >
 							<div class="organizar-linea" style="width: 70px;">

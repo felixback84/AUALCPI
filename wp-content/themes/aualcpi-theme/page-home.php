@@ -638,35 +638,46 @@
 								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/VirtualeducaLogo.jpg"></div>
 							</a></div>
 							<div class="col-xs-3"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/ApiceLogo.jpg"></div>
 							</a></div>
 						</div>
 						<div class="item">	
 							<div class="col-xs-3"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/CABLogo.jpg"></div>
 							</a></div>
 							<div class="col-xs-3"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/EQUAALogo.jpg"></div>
 							</a></div>
 							<div class="col-xs-3"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/Escueladeguerracolombia.jpg"></div>
 							</a></div>
 							<div class="col-xs-3"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/ICDL.jpg"></div>
 							</a></div>
 						</div>
 						<div class="item">	
 							<div class="col-xs-3"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/ILTOLogo.jpg"></div>
 							</a></div>
 							<div class="col-xs-3"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/oui-ioheLogo.jpg"></div>
 							</a></div>
 							<div class="col-xs-3"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/ParlamentoLogo.jpg"></div>
 							</a></div>
 							<div class="col-xs-3"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/Uniondeuniversidadesdeamericalatinayelcaribelogo.jpg"></div>
+							</a></div>
+						</div>
+						<div class="item">	
+							<div class="col-xs-3"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UniversidadnacionaldeRosarioLogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UnleaLogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-3"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/usemexfusionLogo.jpg"></div>
 							</a></div>
 						</div>
 					</div>
@@ -713,39 +724,52 @@
 								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/VirtualeducaLogo.jpg"></div>
 							</a></div>
 							<div class="col-xs-6"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/ApiceLogo.jpg"></div>
 							</a></div>
 						</div>
 						<div class="item">	
 							<div class="col-xs-6"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/CABLogo.jpg"></div>
 							</a></div>
 							<div class="col-xs-6"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/EQUAALogo.jpg"></div>
 							</a></div>
 						</div>
 						<div class="item">
 							<div class="col-xs-6"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/Escueladeguerracolombia.jpg"></div>
 							</a></div>
 							<div class="col-xs-6"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/ICDL.jpg"></div>
 							</a></div>
 						</div>
 						<div class="item">	
 							<div class="col-xs-6"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/ILTOLogo.jpg"></div>
 							</a></div>
 							<div class="col-xs-6"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/oui-ioheLogo.jpg"></div>
 							</a></div>
 						</div>
 						<div class="item">
 							<div class="col-xs-6"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/ParlamentoLogo.jpg"></div>
 							</a></div>
 							<div class="col-xs-6"><a href="#"  target="_blank">
-								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UDCALogo.jpg"></div>
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/Uniondeuniversidadesdeamericalatinayelcaribelogo.jpg"></div>
+							</a></div>
+						</div>
+						<div class="item">
+							<div class="col-xs-6"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UniversidadnacionaldeRosarioLogo.jpg"></div>
+							</a></div>
+							<div class="col-xs-6"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/UnleaLogo.jpg"></div>
+							</a></div>
+						</div>
+						<div class="item">
+							<div class="col-xs-6"><a href="#"  target="_blank">
+								<div class="thumbnail"><img alt="logo Aliado" src="<?php echo get_stylesheet_directory_uri(); ?>/images/aliados/usemexfusionLogo.jpg"></div>
 							</a></div>
 						</div>
 					</div>

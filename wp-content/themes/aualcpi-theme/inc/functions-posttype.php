@@ -30,6 +30,14 @@ new MultiPostThumbnails(array(
 
  }
 
+ //-traer imagen destacada 2 y 3 de contricuciones
+ function urlImagenMultiPostThumbnailsContribuciones($idMultiPostThumbnails,$idPost)
+ {
+ $custom = MultiPostThumbnails::get_post_thumbnail_id('contribuciones', $idMultiPostThumbnails, $idPost); 
+	$custom=wp_get_attachment_image_src($custom,$idMultiPostThumbnails); 
+	return $custom[0];
+ }
+
 /*
 	===================================
 	Custom Type

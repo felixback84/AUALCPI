@@ -73,7 +73,10 @@ endif; ?>
 		while( have_posts() ): the_post(); ?>
 				<?php $hoy=date("M d, Y", time()); //echo 'hoy2'.$hoy; ?>
 
-			   
+		<?php 
+		//var_dump(wp_get_current_user());
+		$userLogin = wp_get_current_user();
+		$linkAportarIdeas =  home_url('/author/'.$userLogin->user_login.'/?srp='.get_the_ID()); ?>
 		<div id="" class="col-xs-12">
 			 <ul id="tabsInvestigacion" class="nav nav-tabs" role="tablist">
 			 	<?php $fechaInicio1 = date("M d, Y", get_post_meta(get_the_ID(), 'investigacionFechaIdeacion', true)); 
@@ -140,7 +143,7 @@ endif; ?>
 											<?php if($fechaInicio1 <= $hoy){ echo '<p><span class="contribuciones1" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio1.'</p>';} ?>
 											<?php  if(($fechaFin1 > $hoy) || (empty($fechaInicio1))){
 											if(is_user_logged_in()){ ?>
-												<a href="<?php echo admin_url('/post-new.php?post_type=contribuciones');?>" class="btn btnAporteIdeas">Aportar una idea</a>
+												<a href="<?php echo $linkAportarIdeas; ?>" class="btn btnAporteIdeas">Aportar una idea</a>
 											<?php }  }
 											?>
 										</div>
@@ -239,7 +242,7 @@ endif; ?>
 												<?php if($fechaInicio2 <= $hoy){ echo '<p><span class="contribuciones2" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio2.'</p>';} ?>
 												<?php if(($fechaInicio2 <= $hoy)&&($fechaFin2 > $hoy)){
 												if(is_user_logged_in()){ ?>
-													<a href="<?php echo admin_url('/post-new.php?post_type=contribuciones');?>" class="btn btnAporteIdeas">Aportar una idea</a>
+													<a href="<?php echo $linkAportarIdeas; ?>" class="btn btnAporteIdeas">Aportar una idea</a>
 												<?php }  }
 												?>
 											</div>
@@ -338,7 +341,7 @@ endif; ?>
 												<?php if($fechaInicio3 <= $hoy){ echo '<p><span class="contribuciones3" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio3.'</p>';} ?>
 												<?php if(($fechaInicio3 <= $hoy)&&($fechaFin3 > $hoy)){ 
 												if(is_user_logged_in()){ ?>
-													<a href="<?php echo admin_url('/post-new.php?post_type=contribuciones');?>" class="btn btnAporteIdeas">Aportar una idea</a>
+													<a href="<?php echo $linkAportarIdeas; ?>" class="btn btnAporteIdeas">Aportar una idea</a>
 												<?php }  }
 												?>
 											</div>
@@ -436,7 +439,7 @@ endif; ?>
 												<?php if($fechaInicio4 <= $hoy){ echo '<p><span class="contribuciones4" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio4.'</p>';} ?>
 												<?php  if(($fechaInicio4 <= $hoy)&&($fechaFin4 > $hoy)){ 
 												if(is_user_logged_in()){ ?>
-													<a href="<?php echo admin_url('/post-new.php?post_type=contribuciones');?>" class="btn btnAporteIdeas">Aportar una idea</a>
+													<a href="<?php echo $linkAportarIdeas; ?>" class="btn btnAporteIdeas">Aportar una idea</a>
 												<?php }  }
 												?>
 											</div>
@@ -534,7 +537,7 @@ endif; ?>
 												<?php if($fechaInicio5 <= $hoy){ echo '<p><span class="contribuciones5" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio5.'</p>';} ?>
 												<?php if(($fechaInicio5 <= $hoy)&&($fechaFin5 > $hoy)){ 
 												if(is_user_logged_in()){ ?>
-													<a href="<?php echo admin_url('/post-new.php?post_type=contribuciones');?>" class="btn btnAporteIdeas">Aportar una idea</a>
+													<a href="<?php echo $linkAportarIdeas; ?>" class="btn btnAporteIdeas">Aportar una idea</a>
 												<?php }  }
 												?>
 											</div>
@@ -632,7 +635,7 @@ endif; ?>
 												<?php if($fechaInicio6 <= $hoy){ echo '<p><span class="contribuciones6" ></span><span> contribuciones</span></p>'; }else{echo '<p>Empieza en '.$fechaInicio6.'</p>';} ?>
 												<?php if(($fechaInicio6 <= $hoy)&&($fechaInicio1 <= $hoy)){ 
 												if(is_user_logged_in()){ ?>
-													<a href="<?php echo admin_url('/post-new.php?post_type=contribuciones');?>" class="btn btnAporteIdeas">Aportar una idea</a>
+													<a href="<?php echo $linkAportarIdeas; ?>" class="btn btnAporteIdeas">Aportar una idea</a>
 												<?php }  }
 												?>
 											</div>

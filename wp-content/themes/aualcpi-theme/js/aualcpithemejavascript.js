@@ -555,8 +555,97 @@ var mediaUploader;
     mediaUploader.on('select', function(){
       attachment = mediaUploader.state().get('selection').first().toJSON();
       //alert(attachment);
+      //console.log(attachment);
       $('#user_meta_image').val(attachment.url);
       $('#user_meta_image_show').attr('src',attachment.url);
+    });
+
+    mediaUploader.open();
+  });
+
+var mediaUploader;
+$('#upload-button-thumbnail').on('click',function(e){
+  
+  e.preventDefault();
+  if(mediaUploader){
+    mediaUploader.open();
+    return;
+  }
+
+  mediaUploader = wp.media.frames.file_frame = wp.media({
+    title: 'Seleccionar imagen de portada 1',
+    button: {
+      text: 'Seleccionar Picture'
+    },
+    multiple: false
+  });
+  
+  mediaUploader.on('select', function(){
+    attachment = mediaUploader.state().get('selection').first().toJSON();
+    //alert(attachment);
+    //console.log(attachment);
+    $('#user_meta_thumbnail').val(attachment.url);
+    $('#user_meta_thumbnail_show').attr('src',attachment.url);
+    $('#user_meta_thumbnail_id').val(attachment.id);
+  });
+
+  mediaUploader.open();
+});
+
+var mediaUploader;
+  $('#upload-button-B').on('click',function(e){
+    
+    e.preventDefault();
+    if(mediaUploader){
+      mediaUploader.open();
+      return;
+    }
+
+    mediaUploader = wp.media.frames.file_frame = wp.media({
+      title: 'Seleccionar imagen de portada 2',
+      button: {
+        text: 'Seleccionar Picture'
+      },
+      multiple: false
+    });
+    
+    mediaUploader.on('select', function(){
+      attachment = mediaUploader.state().get('selection').first().toJSON();
+      //alert(attachment);
+      //console.log(attachment);
+      $('#user_meta_image_B').val(attachment.url);
+      $('#user_meta_image_show').attr('src',attachment.url);
+      $('#user_meta_image_id').val(attachment.id);
+    });
+
+    mediaUploader.open();
+  });
+
+
+var mediaUploader;
+  $('#upload-button-C').on('click',function(e){
+    
+    e.preventDefault();
+    if(mediaUploader){
+      mediaUploader.open();
+      return;
+    }
+
+    mediaUploader = wp.media.frames.file_frame = wp.media({
+      title: 'Seleccionar imagen de portada 3',
+      button: {
+        text: 'Seleccionar Picture'
+      },
+      multiple: false
+    });
+    
+    mediaUploader.on('select', function(){
+      attachment = mediaUploader.state().get('selection').first().toJSON();
+      //alert(attachment);
+      //console.log(attachment);
+      $('#user_meta_image_C').val(attachment.url);
+      $('#user_meta_image_show_C').attr('src',attachment.url);
+      $('#user_meta_image_id_C').val(attachment.id);
     });
 
     mediaUploader.open();
@@ -568,5 +657,6 @@ var mediaUploader;
   });
 
 });
+
 
 
