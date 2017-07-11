@@ -307,7 +307,7 @@ echo $success_msg;
 <div class="thumbnail">
     <img id="user_meta_image_show" src="<?php echo esc_url( get_the_author_meta( 'user_meta_image', $userId ) ); ?>" style="width:150px;">
 </div>
-    <input type='button' id="upload-button" class="button-primary" value="Upload Image" />
+    <input type='button' id="upload-button" class="button-primary" value="Cargar Imagen" />
     <input  type="text" name="user_meta_image" id="user_meta_image" value="<?php echo esc_url( get_the_author_meta( 'user_meta_image', $userId ) ); ?>" class="regular-text" />
     <div class="mini-faq">Selecionar una imagen para la portada.</div>
 </fieldset> 

@@ -3,24 +3,14 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="row"> -->
-<?php 
-	$userCurrent =get_currentuserinfo();
-	$postContribucionId= 0; 
-	$padreIdReto = 0;
-	if(isset($_GET['sr'])){
-	    $postContribucionId=$_GET['sr'];
-		$dataPost=get_post($postContribucionId);
-		$padreIdReto = $dataPost->post_parent;
-	}
-	//$postContribucionId = 370; 
-	if(isset($_GET['srp'])){
-	    $padreIdReto=$_GET['srp'];
-	}
- ?>
 				<?php $userId = get_queried_object_id(); //var_dump($userId);?>
 				<!-- This sets the $curauth variable -->
 			    <?php  //$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));  ?>
 				<div id="carousel-dual-perfil" class="carousel slide" data-ride="carousel">
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-dual-perfil" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-dual-perfil" data-slide-to="1" class=""></li>
+					</ol>
 					<div class="carousel-inner">
 						<div class="item active">
 							<div class="thumbnail sliderPerfilAltura">
@@ -91,8 +81,8 @@
 								</div>
 						</div>
 					</div>
-					<a class="left carousel-control" href="#carousel-dual-perfil" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-					<a class="right carousel-control" href="#carousel-dual-perfil" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+						<!-- <a class="left carousel-control" href="#carousel-dual-perfil" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+						<a class="right carousel-control" href="#carousel-dual-perfil" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> -->
 				</div>
 			   <?php //var_dump(get_term_by('name',get_the_author_meta( 'ciudad_user', $userId ),'ciudad_user'));?>
 			<!-- </div> 
@@ -144,14 +134,14 @@
 </div>
 <div class="carousel-nav sombraInferior">
 	<div class="container quitarPadding">	
-		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/contribuciones/');?>">MAS CONTRIBUCIONES</a></p>
+		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/contribuciones/');?>">Más contribuciones</a></p>
 		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de <span id="pagBC"></span></p>
 	</div>
 </div>	
 <div class="container  quitarPadding">
 	<div class="row">
 		<div class="col-sm-12">
-			<h4>Comentarios Resientes</h4>
+			<h4>Comentarios Recientes</h4>
 			<div id="carousel-example-generic-comments" class="carousel slide" data-ride="carousel" >
 				<div class="carousel-inner" role="listbox"> 
 					<?php 
@@ -183,6 +173,7 @@
 								</div>
 
 					<?php $cont++; endforeach; ?> 
+					<?php wp_reset_postdata(); ?>
 					</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
 					<?php }else{ echo ('<p class="text-center">No hay comentarios</p>'); } ?>
 					
@@ -207,27 +198,41 @@
 	</div>
 </div>
 <?php 
-
+$userCurrent =get_currentuserinfo();
 //var_dump($userCurrent);
 //verificamos que solo usuarios logeados  puedan contribuir
 if($userCurrent->ID != 0){
 //var_dump($userCurrent->user_login);
-$action_slug = home_url('/author/'.$userCurrent->user_login);
 //var_dump($dataPost);
 //-trae el id de post a contribuir
+	$postContribucionId = 0; 
+	$padreIdReto = 0;
+	if(isset($_GET['sr'])){
+	    $postContribucionId=$_GET['sr'];
+		$dataPost=get_post($postContribucionId);
+		$padreIdReto = $dataPost->post_parent;
+	}
+	if(isset($_GET['srp'])){
+	    $padreIdReto=$_GET['srp'];
+	}
+	$status = '';
+	if(isset($_GET['status'])){
+	    $status= $_GET['status'];
+	}
 
+$action_slug = home_url('/author/'.$userCurrent->user_login.'/?sr='.$postContribucionId);
 
 if ( isset($_POST['postSubmit']) ) {
 
 	$postTitulo = $_POST['postTitulo'];
 	$postSubtitulo = $_POST['postSubtitulo'];
 	$postContenido = $_POST['postContenido'];
-	$thumbnailUrlA = $_POST['user_meta_thumbnail'];
-	$thumbnailIDA = $_POST['user_meta_thumbnail_id'];
-	$thumbnailUrlB = $_POST['user_meta_image'];
-	$thumbnailIDB = $_POST['user_meta_image_id'];
-	$thumbnailUrlC = $_POST['user_meta_image_C'];
-	$thumbnailIDC = $_POST['user_meta_image_id_C'];
+	$thumbnailUrlA = $_POST['Mthumbnail'];
+	$thumbnailIDA = $_POST['Mthumbnailid'];
+	$thumbnailUrlB = $_POST['ImageB'];
+	$thumbnailIDB = $_POST['ImageBId'];
+	$thumbnailUrlC = $_POST['imageC'];
+	$thumbnailIDC = $_POST['imageIdC'];
 
 	//-verifica el select
 	if (isset($_POST['postParentId']) && !empty($_POST['postParentId'])){
@@ -264,6 +269,7 @@ if ( isset($_POST['postSubmit']) ) {
 	}else{
 
 		$post_arr = array(
+			'ID'		   => $postContribucionId,
 		    'post_title'   => esc_attr($postTitulo),
 		    'post_content' => esc_attr($postSubtitulo),
 		    'post_status'  => 'publish',
@@ -274,7 +280,8 @@ if ( isset($_POST['postSubmit']) ) {
 		        'Descripcion' => esc_attr($postContenido),
 			    ),
 			);
-			wp_update_post( $post_arr );
+			$idUpdate = wp_update_post( $post_arr );
+			echo "iU $idUpdate";
 			update_post_meta($postContribucionId,'_thumbnail_id',$thumbnailIDA);
 			update_post_meta($postContribucionId,'contribuciones_segunda-image-contribution_thumbnail_id',$thumbnailIDB);
 			update_post_meta($postContribucionId,'contribuciones_tercera-image-contribution_thumbnail_id',$thumbnailIDC);
@@ -282,23 +289,27 @@ if ( isset($_POST['postSubmit']) ) {
 			wp_redirect(home_url('/author/'.$userCurrent->user_login.'/?sr='.$postContribucionId.'&status=OU'));
 	}
 }
+// echo 'id:'.get_the_ID();
+//echo 'conid:'.$postContribucionId;
 
+// 	if($postContribucionId == 0){
+// 		//clear_global_post_cache(get_the_ID());
+// 	}
 ?>
-
-
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-8 col-sm-push-2">
-<h2>Nueva contribucion</h2>
-<div id="formContribucion">
+		<br/>
 <div class="alert alert-success" <?php if($status == 'OR'){ echo 'style="display: block;"';}else{echo 'style="display: none;"';} ?> >
     <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-    <p class="text-center">La contribución fue registrado</p>
+    <p class="text-center">La contribución fue registrada</p>
 </div>
 <div class="alert alert-success" <?php if($status == 'OU'){ echo 'style="display: block;"';}else{echo 'style="display: none;"';} ?> >
     <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-    <p class="text-center">La contribución fue actualizado</p>
+    <p class="text-center">La contribución fue actualizada</p>
 </div>
+<h2>Nueva contribución</h2>
+<div id="formContribucion">
 <form id="contribucion" action="<?php echo $action_slug; ?>" method="post" name="contribucion">
 	<fieldset class="required<?php echo $form_username_class; ?>">
 	 	<label>Titulo</label><span class="req">*</span>
@@ -324,31 +335,34 @@ if ( isset($_POST['postSubmit']) ) {
 	<fieldset>
 		<label for="user_meta_thumbnail">Seleccionar imagen destacada:</label>
 		<div class="thumbnail">
-		<?php if($postContribucionId != 0){ ?>
-	    	<img id="user_meta_thumbnail_show" src="<?php echo esc_url( get_the_post_thumbnail_url($postContribucionId)); ?>" style="width:150px;">
-	    <?php } ?>
+		<?php //if($postContribucionId != 0){ ?>
+	    	<img id="Mthumbnailshow" src="<?php echo esc_url(get_the_post_thumbnail_url($postContribucionId)); ?>" style="width:150px; <?php if($postContribucionId == 0){	echo 'display: none;'; } ?> ">
+	    <?php //} ?>
+
 		</div>
-	    <input type='button' id="upload-button-thumbnail" class="button-primary" value="Cargar imagen" />
-	    <input  type="text" name="user_meta_thumbnail" id="user_meta_thumbnail" value="<?php if($postContribucionId != 0){ echo esc_url(get_the_post_thumbnail_url($postContribucionId)); }?>" class="regular-text" />
-	    <input  type="hidden" name="user_meta_thumbnail_id" id="user_meta_thumbnail_id" value="<?php echo get_post_meta($postContribucionId,'_thumbnail_id',true); ?>" class="regular-text" />
+	    <input type='button' id="uploadthumbnail" class="button-primary" value="Cargar imagen" />
+	    <input  type="text" name="Mthumbnail" id="Mthumbnail" value="<?php if($postContribucionId != 0){ 
+	    	echo esc_url(get_the_post_thumbnail_url($postContribucionId)); 
+	    	}?>" class="regular-text" />
+	    <input  type="hidden" name="Mthumbnailid" id="Mthumbnailid" value="<?php echo get_post_meta($postContribucionId,'_thumbnail_id',true); ?>" class="regular-text" />
 	</fieldset> 
 	<fieldset>
-		<label for="user_meta_image">Seleccionar imagen destacada 2:</label>
+		<label>Seleccionar imagen destacada 2:</label>
 		<div class="thumbnail">
-	    	<img id="user_meta_image_show" src="<?php echo urlImagenMultiPostThumbnailsContribuciones('segunda-image-contribution',$postContribucionId); ?>" style="width:150px;">
+	    	<img id="ImageBShow" src="<?php echo urlImagenMultiPostThumbnailsContribuciones('segunda-image-contribution',$postContribucionId); ?>" style="width:150px;">
 		</div>
-	    <input type='button' id="upload-button-B" class="button-primary" value="Cargar imagen" />
-	    <input  type="text" name="user_meta_image" id="user_meta_image" value="<?php echo urlImagenMultiPostThumbnailsContribuciones('segunda-image-contribution',$postContribucionId); ?>" class="regular-text" />
-	    <input  type="hidden" name="user_meta_image_id" id="user_meta_image_id" value="<?php echo get_post_meta($postContribucionId,'contribuciones_segunda-image-contribution_thumbnail_id',true); ?>" class="regular-text" />
+	    <input type='button' id="uploadImageB" class="button-primary" value="Cargar imagen" />
+	    <input  type="text" name="ImageB" id="ImageB" value="<?php echo urlImagenMultiPostThumbnailsContribuciones('segunda-image-contribution',$postContribucionId); ?>" class="regular-text" />
+	    <input  type="hidden" name="ImageBId" id="ImageBId" value="<?php echo get_post_meta($postContribucionId,'contribuciones_segunda-image-contribution_thumbnail_id',true); ?>" class="regular-text" />
 	</fieldset>  
 	<fieldset>
-		<label for="user_meta_image">Seleccionar imagen destacada 3:</label>
+		<label>Seleccionar imagen destacada 3:</label>
 		<div class="thumbnail">
-	    	<img id="user_meta_image_show_C" src="<?php echo urlImagenMultiPostThumbnailsContribuciones('tercera-image-contribution',$postContribucionId); ?>" style="width:150px;">
+	    	<img id="imageShowC" src="<?php echo urlImagenMultiPostThumbnailsContribuciones('tercera-image-contribution',$postContribucionId); ?>" style="width:150px;">
 		</div>
-	    <input type='button' id="upload-button-C" class="button-primary" value="Cargar imagen" />
-	    <input  type="text" name="user_meta_image_C" id="user_meta_image_C" value="<?php echo urlImagenMultiPostThumbnailsContribuciones('tercera-image-contribution',$postContribucionId); ?>" class="regular-text" />
-	    <input  type="hidden" name="user_meta_image_id_C" id="user_meta_image_id_C" value="<?php echo get_post_meta($postContribucionId,'contribuciones_tercera-image-contribution_thumbnail_id',true); ?>" class="regular-text" />
+	    <input type='button' id="uploadImageC" class="button-primary" value="Cargar imagen" />
+	    <input  type="text" name="imageC" id="imageC" value="<?php echo urlImagenMultiPostThumbnailsContribuciones('tercera-image-contribution',$postContribucionId); ?>" class="regular-text" />
+	    <input  type="hidden" name="imageIdC" id="imageIdC" value="<?php echo get_post_meta($postContribucionId,'contribuciones_tercera-image-contribution_thumbnail_id',true); ?>" class="regular-text" />
 	</fieldset> 
 	<fieldset>
 			<input id="postSubmit" class="btn btn-primary" type="submit" name="postSubmit" value="<?php if($postContribucionId == 0){ echo 'Crear'; }else{ echo 'Actualizar';} ?>" />

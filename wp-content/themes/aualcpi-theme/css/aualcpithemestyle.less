@@ -4,6 +4,9 @@
 
 @import "basic.less";
 @import "iconosFonts.less";
+div[class*=slider-loader-]{
+	background: none !important;
+}
 
 /*--------------home-------------------*/
 body{
@@ -888,6 +891,11 @@ height: 100% !important;
 			font-weight: bold;
 		}
 	}
+	.carousel-indicators li{
+		width: 25px !important;
+		height: 25px !important;
+		border-radius: 25px;
+	}
 	.carousel-control.left, .carousel-control.right{
 		/*background-image: none;*/
 		color:black;
@@ -900,6 +908,37 @@ height: 100% !important;
 	.img-circle{
 		border: 1px solid #979797;
 	}
+
+	/*@media (min-width: 1450px) { 
+		.carousel-control.left, .carousel-control.right{
+		 	right:13%; 
+		}
+	}
+	@media (min-width: 1300px) and (max-width: 1449px) { 
+		.carousel-control.left, .carousel-control.right{
+		 	right:8%; 
+		}
+	}
+	@media (min-width: 1200px) and (max-width: 1299px){ 
+		.carousel-control.left, .carousel-control.right{
+		 	right:2.5%; 
+		}
+	}
+	@media (max-width: 1199px) { 
+		.carousel-control.left, .carousel-control.right{
+		 	right:7%; 
+		}
+	}
+	@media (max-width: 991px) { 
+		.carousel-control.left, .carousel-control.right{
+		 	right:7%; 
+		}
+	}
+	@media (max-width: 767px) { 
+		.carousel-control.left, .carousel-control.right{
+		 	right:2%; 
+		}
+	}*/
 	/*@media (max-width: 1199px) { 
 		.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{
 			max-width: 125%;

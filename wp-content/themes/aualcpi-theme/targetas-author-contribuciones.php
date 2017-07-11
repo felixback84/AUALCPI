@@ -3,7 +3,7 @@
 		<?php the_title( sprintf('<h4 class="entry-title"><a href="%s">', esc_url(get_permalink() )),'</a></h4>'); ?>
 		<small> Publicado el: <?php  the_time('F j, Y'); ?> a las <?php the_time('g:i a') ?>, in <?php the_category(); ?> </small>
 	</header> -->
-	<div class="bloqueTargeta">
+	<div class="bloqueTargeta  bloqueTargetaFormato">
 		<div class="row">
 			<div class="col-xs-8 col-sm-12 col-xs-push-2 col-sm-push-0">
 				<div class="panel panel-default">
@@ -14,7 +14,7 @@
 							<div class="thumbnail"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_aualcpi.png" alt="imagen de defecto" width="" height="" /></div>
 						<?php endif; ?>
 						<!-- <p>Posted on: <?php the_time('F j, Y'); ?> at <?php the_time('g:i a'); ?></p> -->
-						<h4><a href="<?php echo esc_url(get_permalink()); ?> "><?php the_title(); ?></a></h4>
+						<h4><a href="<?php echo esc_url(get_permalink()); ?> "><?php echo wp_trim_words(get_the_title(),9,'...'); ?></a></h4>
 						<p><?php  echo wp_trim_words(get_the_content(),30,'...'); ?></p> 
 						<?php $author_obj = get_user_by( 'email',get_the_author_meta( 'user_email')); 
 						$userId=$author_obj->ID; ?>
