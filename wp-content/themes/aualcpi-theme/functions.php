@@ -36,6 +36,30 @@ require get_template_directory().'/inc/walker.php';
 		functions verificar url para pagina usuario
 		===================================
 */
+
+function ocultarwpadminbar(){
+	if (current_user_can('contribuidor') ) {
+	  //show_admin_bar(false);
+	?>
+		<style type="text/css">
+			#wpadminbar {
+			    display: none;
+			}
+			.espacioObsionalNavFixed{
+				margin-top: 0 !important;
+			}
+		</style>
+    <?php
+	}
+}
+
+add_action( 'wp_footer', 'ocultarwpadminbar' );
+
+/*
+		===================================
+		functions verificar url para pagina usuario
+		===================================
+*/
 function formatoFechaEnEspañol($userId){
 	$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 	$date=date_format(date_create(get_the_author_meta('user_registered',$userId)),'d').' de '. $meses[date_format(date_create(get_the_author_meta('user_registered',$userId)),'n')-1].' de '.date_format(date_create(get_the_author_meta('user_registered',$userId)),'Y');

@@ -1,7 +1,6 @@
 jQuery(function ($) {
 // console.log( "ready!" );
 
-
 //--muestra el contenido de los submenus cuando el mouse pasa sobre el 
 // $("nav.menuPrimary ul.nav li").mouseenter(function () { 
 //       $(this).children("ul.dropdown-menu").slideDown('fast');
@@ -37,6 +36,7 @@ $win.scroll(function () {
       $("nav.menuPrimary ul.nav li").mouseleave(function () { 
             $(this).children("ul.dropdown-menu").css('display','none');
       });
+
      if ($win.scrollTop() <= $pos){
         $('.menuPrimary').removeClass('navbar-fixed-top');
         $('.menuPrimary.navbar-fixed-top').removeClass('espacioObsionalNavFixed');

@@ -11,7 +11,7 @@
 						<?php if( has_post_thumbnail( )): ?>
 							<div class="thumbnail"><?php the_post_thumbnail ('medium'); ?></div>
 						<?php else: ?>
-							<div class="thumbnail"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_aualcpi.png" alt="imagen de defecto" width="" height="" /></div>
+							<div class="thumbnail"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/cuadroPost.png" alt="imagen de defecto" width="" height="" /></div>
 						<?php endif; ?>
 						<h4><a href="<?php echo esc_url(get_permalink()); ?> "><?php echo wp_trim_words(get_the_title(),8,'...'); ?></a></h4>
 						<p><span class="textoGrisClaro">Por: <?php the_author(); ?></span></p>
