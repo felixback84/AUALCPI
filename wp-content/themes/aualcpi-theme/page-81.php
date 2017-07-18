@@ -173,7 +173,7 @@
 			<div class="thumbnail">
 				<!-- <img src="<?php //echo get_stylesheet_directory_uri(); ?>/images/imageContenidoNosotros.jpg" alt="" width="" height="" /> -->
 				<div id="contenidoTextAzulNuestra">
-					<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quam voluptas repellat fugiat facilis explicabo excepturi mollitia nesciunt voluptatibus ratione at itaque pariatur minus, libero minima, iusto amet commodi cupiditate.</h1>
+					<h1><?php echo get_post_meta(get_the_ID(),'Caja1',true); ?></h1>
 				</div>
 			</div>
 		</div>
@@ -181,12 +181,13 @@
 <div class="container quitarPadding">
 	<div class="espacioBotton">
 		<div class="col-xs-12">
-			<h1>Los miembros de nuestra Asocición</h1>
+			<h1>Los miembros de nuestra Asociación</h1>
 		</div>
-		<div class="col-xs-12 ">
-			<div class="google-maps">
+		<div  id="mapPluging" class="col-xs-12 quitarPadding">
+		<?php echo do_shortcode("[wpgmza id='1']"); ?>
+			<!-- <div class="google-maps">
 				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254508.3928105967!2d-74.24789151416464!3d4.648625932411766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bfd2da6cb29%3A0x239d635520a33914!2zQm9nb3TDoQ!5e0!3m2!1ses!2sco!4v1489598353928" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-			</div>
+			</div> -->
 		</div>	
 	</div>
 </div>

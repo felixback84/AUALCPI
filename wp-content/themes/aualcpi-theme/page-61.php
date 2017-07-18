@@ -96,7 +96,11 @@
 				</button>
 			</div>
 			<div class="row">
+				<div class="col-xs-12">
+					<h4>Busqueda de becas</h4>
+				</div>
 				<div class="col-sm-4">
+					
 					<h5>País</h5>
 					<?php
 						$now = get_terms( 'ciudad_becas', array( 'orderby' => 'name','fields' => 'ids','parent' => 0));
@@ -108,7 +112,7 @@
 					<h5>Categoría</h5>
 					<?php
 						$now = get_terms( 'categoria', array( 'orderby' => 'name','fields' => 'ids','parent' => 0));
-						$select = llenarSeleccion($now,'filterCategorias[]','Todos los paises');
+						$select = llenarSeleccion($now,'filterCategorias[]','Todos las categorias');
 						echo $select; 
 					?>
 				</div> 
@@ -126,63 +130,65 @@
 		<div class="well">
 			<div class="row">
 				<button id="btn-abrir" class="btn" type="button" data-toggle="collapse" data-target="#collapseExample-3" aria-expanded="false" aria-controls="collapseExample-3">
-				 ¿Qué estás buscando hoy? <span class="pull-right glyphicon glyphicon-search" > </span>
+				 ¿Qué becas estás buscando hoy? <span class="pull-right glyphicon glyphicon-search" > </span>
 				</button>
 			</div>
 		</div>
 	</div>
 </div>
+<!-- inicio becas-->
 <div class="container quitarPadding">
-	<div class="espacioBotton">
-		<div class="col-sm-12  quitarPadding">
-			<h1>Oferta de becas y programas disponibles</h1>
-			<div id="carousel-example-generic-beca" class="carousel slide" data-ride="carousel" data-type="multi">
-			<!-- Wrapper for slides -->
-				<div id="the-posts-becas" class="carousel-inner" role="listbox"> 
-					<?php $args = array (
-						'post_type' => 'becas',
-						'posts_per_page' => 10, 
-						'orderby' => 'id',
-						'order'   => 'DESC',
-					);
-					$lastBlog = new WP_Query ($args);
-					$cont=0;
-					$numeroElementos=3;
-					if($lastBlog->have_posts()):
-						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-							<?php if($cont == 0){ ?>
-								<div class="item active" cont="<?php echo $cont+1; ?>">
-							<?php }else{ ?> 
-									<div class="item" cont="<?php echo $cont+1; ?>">
-							<?php } ?> 
-								<div class="col-xs-12 col-sm-6 col-md-4">
-									<?php get_template_part('targetas-beca'); ?>
-								</div>
-							</div> 
-						 <?php $cont++; endwhile;
-					endif;	
-				    wp_reset_postdata(); ?>
-				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
-				<!-- Controls -->
-			<a class="right carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="next">
-			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			    <span class="sr-only">Next</span>
-			  </a>
-			  <a class="left carousel-control" href="#carousel-example-generic-beca" role="button" data-slide="prev">
-			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			    <span class="sr-only">Previous</span>
-			</a>
-			</div>
-		</div>
+	<div class="col-sm-12  quitarPadding">
+		<h1>Oferta de becas y programas disponibles</h1>
 	</div>
 </div>
+<?php 
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-<div class="carousel-nav sombraInferior">
-	<div class="container quitarPadding">		
-		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/becas/');?>">MAS BECAS</a></p>
-		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagB"></span>  de <span id="pagBC"></span></p>
+$data= new WP_Query(array(
+    'post_type'=>'becas', // your post type name
+    'posts_per_page' => 6, // post per page
+    'paged' => $paged,
+));?> 
+
+<?php if($data->have_posts()) : ?>
+<div class="container quitarPadding">
+	<div class="col-sm-12  quitarPadding">
+	  <?php  while($data->have_posts())  : $data->the_post();?>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+	          <?php get_template_part('targetas-beca'); ?>
+		</div>
+	    <?php endwhile;?> 
 	</div>
 </div>
+<div class="carousel-nav sombraInferior">
+	<div class="container quitarPadding">
+		<p class="tituloNavegacionCarousel" >
+			<a href="<?php echo home_url('/becas/');?>">Más becas</a>
+		</p>
+	    <?php $total_pages = $data->max_num_pages;
+	    if ($total_pages > 1){
+	        $current_page = max(1, get_query_var('paged'));
+					$arrayPagination =array(
+	            'base' => get_pagenum_link(1) . '%_%',
+	            'format' => '/page/%#%',
+	            'current' => $current_page,
+	            'total' => $total_pages,
+	            'prev_text'    => __('« prev'),
+	            'next_text'    => __('next »'),
+	        ); ?> 
+       	<p class="tituloNavegacionCarousel pull-right">
+       		<?php echo paginate_links($arrayPagination); ?> 
+       	</p>
+   		<?php } ?>
+	</div>  
+</div> 
+<?php else :?>
+	<h3><?php _e('404 Error&#58; Not Found', ''); ?></h3>
+<?php endif; ?>
+<?php wp_reset_postdata();?>
+<!-- fin becas-->
+
 <div class="container quitarPadding espacioTop">
 	<div class="col-sm-12 quitarPadding">
 		<h1>Descargas</h1>	
@@ -229,7 +235,7 @@
 <div class="espacioBotton">
 	<div class="carousel-nav sombraInferior">
 	<div class="container quitarPadding">
-		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/publicacion/');?>">MAS DESCARGAS</a></p>
+		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/publicacion/');?>">Más descargas</a></p>
 		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de <span id="pagPC"></span></p>
 	</div>
 	</div>

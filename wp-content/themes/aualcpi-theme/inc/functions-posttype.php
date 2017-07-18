@@ -1175,6 +1175,10 @@ function my_meta_init(){
 	{
 	add_meta_box('my_meta_nuestra_asociacion', 'Contenido de las pestañas negras', 'my_meta_nuestra_asociacion', 'page', 'normal', 'high');
 	}
+	if ($post_id == '85')
+	{
+	add_meta_box('my_meta_membresia', 'Contenido administrable', 'my_meta_membresia', 'page', 'normal', 'high');
+	}
 }
 
 /*----- page movilidad ------*/
@@ -1233,6 +1237,7 @@ function my_meta_nuestra_asociacion(){
 	$UsuarioBLabel = $custom["UsuarioBLabel"][0];
 	$UsuarioCLabel = $custom["UsuarioCLabel"][0];
 	$UsuarioDLabel = $custom["UsuarioDLabel"][0];
+	$Caja1 = $custom["Caja1"][0];
 	//var_dump($UsuarioA);
 	$argsTextarea = array(
 	    'textarea_rows' => 10,
@@ -1266,6 +1271,8 @@ function my_meta_nuestra_asociacion(){
 				wp_editor( $content, $editor_id ,$argsTextarea);
 			?>
 <div class="inside">
+	
+
 	<h3>Organigrama: Usuario 1</h3>	
 	<p><label for="UsuarioALabel">Titulo tarjeta:</label>
 	<input type="text" name="UsuarioALabel" value="<?php echo $UsuarioALabel; ?>"></p>
@@ -1276,6 +1283,8 @@ function my_meta_nuestra_asociacion(){
 			<option value="<?php echo $user->ID; ?>"  <?php if( $user->ID == $UsuarioA){ echo "selected";} ?>  ><?php echo $user->user_nicename; ?></option>
 		<?php } ?>
 	</select></p>
+	<h4>Notas: Aqui podra selecionar un usuario con Rol Administrador Aualcpi.</h4>
+	<h4>Este tambien sera el usuario que aparecera en el footer.</h4>
 </div>
 <div class="inside">
 	<h3>Organigrama: Usuario 2</h3>	
@@ -1289,6 +1298,7 @@ function my_meta_nuestra_asociacion(){
 		<?php } ?>
 	</select>
 	</p>
+	<h4>Selecione un usuario con Rol Administrador Aualcpi.</h4>
 </div>
 <div class="inside">
 	<h3>Organigrama: Usuario 3</h3>	
@@ -1301,6 +1311,7 @@ function my_meta_nuestra_asociacion(){
 			<option value="<?php echo $user->ID; ?>"  <?php if( $user->ID == $UsuarioC){ echo "selected";} ?>  ><?php echo $user->user_nicename; ?></option>
 		<?php } ?>
 	</select>
+	<h4>Selecione un usuario con Rol Administrador Aualcpi.</h4>
 </div>
 <div class="inside">
 	<h3>Organigrama: Usuario 4</h3>	
@@ -1313,7 +1324,14 @@ function my_meta_nuestra_asociacion(){
 			<option value="<?php echo $user->ID; ?>"  <?php if( $user->ID == $UsuarioD){ echo "selected";} ?>  ><?php echo $user->user_nicename; ?></option>
 		<?php } ?>
 	</select>
+	<h4>Selecione un usuario con Rol Administrador Aualcpi.</h4>
 </div>
+<label for="Caja1"><h3>Caja 1</h3></label>
+			<?php
+				$content = $Caja1;
+				$editor_id = 'Caja1';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
 <?php 
 }
 add_action('save_post','my_meta_nuestra_asociacion_save');
@@ -1352,6 +1370,113 @@ function my_meta_nuestra_asociacion_save(){
 	endif;
 	if(isset($_POST["UsuarioDLabel"])):
 		update_post_meta($post->ID, "UsuarioDLabel",$_POST["UsuarioDLabel"]);
+	endif;
+	if(isset($_POST["Caja1"])):
+		update_post_meta($post->ID, "Caja1",$_POST["Caja1"]);
+	endif;
+}
+
+
+/*----- page membresia ------*/
+function my_meta_membresia(){
+ 	global $post;
+	$custom = get_post_custom($post->ID);
+	//var_dump($custom);
+	$Caja1A = $custom["Caja1A"][0];
+	$Caja1B = $custom["Caja1B"][0];
+	$Caja2A = $custom["Caja2A"][0];
+	$Caja2B = $custom["Caja2B"][0];
+	$Estrella1 = $custom["Estrella1"][0];
+	$Estrella2 = $custom["Estrella2"][0];
+	$Estrella3 = $custom["Estrella3"][0];
+	$Estrella4 = $custom["Estrella4"][0];
+
+	$argsTextarea = array(
+	    'textarea_rows' => 10,
+	    'quicktags' => false,
+	    'media_buttons' => false,
+    	'tinymce' => true,
+	);
+ ?>
+ <h1>Informacion de Caja 1</h1>
+<label for="Caja1A"><h3>Contenido 1</h3></label>
+			<?php
+				$content = $Caja1A;
+				$editor_id = 'Caja1A';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+<label for="Caja1B"><h3>Contenido 2</h3></label>
+			<?php
+				$content = $Caja1B;
+				$editor_id = 'Caja1B';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+ <h1>Informacion de Caja 2</h1>
+<label for="Caja2A"><h3>Contenido 1</h3></label>
+			<?php
+				$content = $Caja2A;
+				$editor_id = 'Caja2A';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+<label for="Caja2B"><h3>Contenido 2</h3></label>
+			<?php
+				$content = $Caja2B;
+				$editor_id = 'Caja2B';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+<label for="Estrella1"><h3>Contenido cuadro estrella 1</h3></label>
+			<?php
+				$content = $Estrella1;
+				$editor_id = 'Estrella1';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+<label for="Estrella2"><h3>Contenido cuadro estrella 2</h3></label>
+			<?php
+				$content = $Estrella2;
+				$editor_id = 'Estrella2';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+<label for="Estrella3"><h3>Contenido cuadro estrella 3</h3></label>
+			<?php
+				$content = $Estrella3;
+				$editor_id = 'Estrella3';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+<label for="Estrella4"><h3>Contenido cuadro estrella 4</h3></label>
+			<?php
+				$content = $Estrella4;
+				$editor_id = 'Estrella4';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+ <?php 
+}
+add_action('save_post','my_meta_membresia_save');
+
+function my_meta_membresia_save(){
+	global $post;
+	if(isset($_POST["Caja1A"])):
+		update_post_meta($post->ID, "Caja1A",$_POST["Caja1A"] );
+	endif;
+	if(isset($_POST["Caja1B"])):
+		update_post_meta($post->ID, "Caja1B",$_POST["Caja1B"] );
+	endif;
+	if(isset($_POST["Caja2A"])):
+		update_post_meta($post->ID, "Caja2A",$_POST["Caja2A"] );
+	endif;
+	if(isset($_POST["Caja2B"])):
+		update_post_meta($post->ID, "Caja2B",$_POST["Caja2B"] );
+	endif;
+	if(isset($_POST["Estrella1"])):
+		update_post_meta($post->ID, "Estrella1",$_POST["Estrella1"]);
+	endif;
+	if(isset($_POST["Estrella2"])):
+		update_post_meta($post->ID, "Estrella2",$_POST["Estrella2"]);
+	endif;
+	if(isset($_POST["Estrella3"])):
+		update_post_meta($post->ID, "Estrella3",$_POST["Estrella3"]);
+	endif;
+	if(isset($_POST["Estrella4"])):
+		update_post_meta($post->ID, "Estrella4",$_POST["Estrella4"]);
 	endif;
 }
 

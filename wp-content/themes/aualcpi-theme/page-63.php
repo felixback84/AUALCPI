@@ -31,8 +31,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<h4>Busqueda de documentos, publicaciones y</h4>
-						<h4>formatos de aplicacion</h4>
+						<h4>Busqueda de documentos, publicaciones y formatos de aplicacion</h4>
 					</div>
 					<div class="col-sm-4">
 						<h5>Categoria:</h5>

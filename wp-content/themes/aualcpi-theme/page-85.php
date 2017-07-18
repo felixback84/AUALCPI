@@ -30,32 +30,15 @@
 				<div class="item active">
 					<div class="col-xs-8 col-xs-push-2 fichaCentral" style="">
 						<div class="col-xs-2 fichaLateralIzquierda" style=""></div>
-						<div class="thumbnail">
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco1.png" alt="imagen slider member 1" width="" height="" class="hidden-xs hidden-sm"/>
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco2.png" alt="imagen slider member 1" width="" height="" class="visible-sm"/>
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco3.png" alt="imagen slider member 1" width="" height="" class="visible-xs"/>
-						</div>
-						<div class="carousel-caption">
-							<h1>Contenido 1.</h1>
-							<div>Eos expedita odio deleniti cum fugit autem placeat commodi optio neque itaque iste asperiores recusandae veritatis, dignissimos sunt libero distinctio ratione voluptatum vero eaque est repellat, consequatur natus, sapiente quidem.</div>
-							<div>Officia accusamus, neque sit accusantium veritatis. Facilis quaerat laudantium repudiandae, minima nostrum non molestias harum, temporibus earum cum officiis impedit numquam eos facere mollitia fuga pariatur, debitis, est voluptatum amet.</div>
-						</div>
+						
+							<?php echo get_post_meta(get_the_ID(),'Caja1A',true); ?>
 						<div class="col-xs-2 fichaLateralDerecha" style=""></div>
 					</div>
 				</div>
 				<div class="item">
 					<div class="col-xs-8 col-xs-push-2 fichaCentral" style="">
 						<div class="col-xs-2 fichaLateralIzquierda" style=""></div>
-						<div class="thumbnail">
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco1.png" alt="imagen slider member 1" width="" height="" class="hidden-xs hidden-sm"/>
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco2.png" alt="imagen slider member 1" width="" height="" class="visible-sm"/>
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco3.png" alt="imagen slider member 1" width="" height="" class="visible-xs"/>
-						</div>
-						<div class="carousel-caption">
-							<h1>Contenido 2.</h1>
-							<div>Eos expedita odio deleniti cum fugit autem placeat commodi optio neque itaque iste asperiores recusandae veritatis, dignissimos sunt libero distinctio ratione voluptatum vero eaque est repellat, consequatur natus, sapiente quidem.</div>
-							<div>Officia accusamus, neque sit accusantium veritatis. Facilis quaerat laudantium repudiandae, minima nostrum non molestias harum, temporibus earum cum officiis impedit numquam eos facere mollitia fuga pariatur, debitis, est voluptatum amet.</div>
-						</div>
+						<?php echo get_post_meta(get_the_ID(),'Caja1B',true); ?>
 						<div class="col-xs-2 fichaLateralDerecha" style=""></div>
 					</div>
 				</div>	
@@ -76,9 +59,7 @@
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco3.png" alt="imagen slider member 1" width="" height="" class="visible-xs"/>
 					</div>
 					<div class="carousel-caption">
-						<h1>¿Cuáles son lo requisitos para ingresar?</h1>
-						<p>Eos expedita odio deleniti cum fugit autem placeat commodi optio neque itaque iste asperiores recusandae veritatis, dignissimos sunt libero distinctio ratione voluptatum vero eaque est repellat, consequatur natus, sapiente quidem.</p>
-						<p>Officia accusamus, neque sit accusantium veritatis. Facilis quaerat laudantium repudiandae, minima nostrum non molestias harum, temporibus earum cum officiis impedit numquam eos facere mollitia fuga pariatur, debitis, est voluptatum amet.</p>
+						<?php echo get_post_meta(get_the_ID(),'Caja2A',true); ?>
 						<a href="<?php echo home_url('/suscribirme/');?>" class="btn btnSuscribirme">SUSCRIBIRME</a>
 					</div>
 				</div>
@@ -89,9 +70,7 @@
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fotoSliderBlanco3.png" alt="imagen slider member 1" width="" height="" class="visible-xs"/>
 					</div>
 					<div class="carousel-caption">
-						<h1>Contenidos 2</h1>
-						<p>Eos expedita odio deleniti cum fugit autem placeat commodi optio neque itaque iste asperiores recusandae veritatis, dignissimos sunt libero distinctio ratione voluptatum vero eaque est repellat, consequatur natus, sapiente quidem.</p>
-						<p>Officia accusamus, neque sit accusantium veritatis. Facilis quaerat laudantium repudiandae, minima nostrum non molestias harum, temporibus earum cum officiis impedit numquam eos facere mollitia fuga pariatur, debitis, est voluptatum amet.</p>
+						<?php echo get_post_meta(get_the_ID(),'Caja2B',true); ?>
 					</div>
 				</div>
 			</div>
@@ -113,8 +92,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/estrellas.png" alt="">
-						<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea eius, iure sunt veritatis harum aperiam doloremque ipsa. Provident odio, dolorem, ipsum cumque non facere ea corrupti repellendus? Perspiciatis, dolorum, ipsa?</div>
-						<div>Consequatur autem, delectus beatae. Rerum amet voluptatem et placeat commodi vitae a molestias accusamus dolores accusantium ullam, ad laborum illo eos odio aliquid nam quam veritatis, est atque soluta. Dicta!</div>
+						<?php echo get_post_meta(get_the_ID(),'Estrella1',true); ?>
 					</div>
 				</div>
 			</div>
@@ -122,9 +100,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/estrellas.png" alt="">
-						<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad culpa, dicta molestias accusamus qui voluptates esse deserunt veritatis quam sunt rerum fuga officia cupiditate impedit illum ex consequatur, quod enim.</div>
-						<div>Illum eius accusamus temporibus labore eveniet. Necessitatibus voluptatem, sed, commodi quas reprehenderit accusantium inventore distinctio suscipit mollitia, asperiores totam consequatur, eius dolorum possimus nihil ad voluptate doloribus aut! Dolor, enim.</div>
-						<div>Natus deserunt quo, et ut laudantium veniam nostrum praesentium consequuntur earum ipsum numquam minus iste quasi. Soluta, nesciunt quas. Modi maxime ex consectetur ut, eveniet expedita illo quibusdam itaque autem.</div>
+						<?php echo get_post_meta(get_the_ID(),'Estrella2',true); ?>
 					</div>
 				</div>
 			</div>
@@ -134,7 +110,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/estrellas.png" alt="">
-						<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea eius, iure sunt veritatis harum aperiam doloremque ipsa. Provident odio, dolorem, ipsum cumque non facere ea corrupti repellendus? Perspiciatis, dolorum, ipsa?</div>
+						<?php echo get_post_meta(get_the_ID(),'Estrella3',true); ?>
 					</div>
 				</div>
 			</div>
@@ -142,7 +118,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/estrellas.png" alt="">
-						<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad culpa, dicta molestias accusamus qui voluptates esse deserunt veritatis quam sunt rerum fuga officia cupiditate impedit illum ex consequatur, quod enim.</div>
+						<?php echo get_post_meta(get_the_ID(),'Estrella4',true); ?>
 					</div>
 				</div>
 			</div>
