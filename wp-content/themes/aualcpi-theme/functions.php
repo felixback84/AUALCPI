@@ -464,6 +464,7 @@ function my_get_user()  {
 /*---  function filtro becas -----*/
   function my_get_becas()  {
 	$cont=0;
+	$paginaActual = 1;
     if(is_array($_POST['catA'])){
 		$catA_id = implode(',',$_POST['catA']);
 	} else {
@@ -474,6 +475,9 @@ function my_get_user()  {
 	} else {
 		$catB_id = $_POST['catB'];
 	}
+	if(!empty($_POST['pagAct'])){
+		$paginaActual = $_POST['pagAct'];
+	}
 	//echo "<script>javascript: alert('id".var_dump($catA_id)."')></script>";
 	//var_dump('comentarios'.$comentarios);
 	
@@ -482,6 +486,8 @@ function my_get_user()  {
       'post_status' => 'publish',
       'order'=> 'DESC',
       'orderby' => 'date',
+      'posts_per_page' => 1, // post per page
+      'paged' => $paginaActual
     );
     $args['tax_query'] = array(
   		'relation' => 'AND'
@@ -504,30 +510,46 @@ function my_get_user()  {
 	}
 
 	global $post;
-    $posts =  query_posts($args);
+    //$posts =  query_posts($args);
+    $posts =  new WP_Query($args);
+    //var_dump($posts);
 	if(empty($posts)){
-		echo '<p class="text-center">No hay Becas</p>';
-	}
-    foreach ($posts as $post)   {
-		setup_postdata($post);
-		$args = array(
-	      'post_type' => 'becas',
-	      'post_status' => 'publish',
-	      'post_parent' => $post->ID,
-	      'order'=> 'DESC',
-	      'orderby' => 'date',
-	    );
-	    
-		if($cont == 0){
-			echo '<div class="item active" cont="'.($cont+1).'">';
-		}else{
-			echo '<div class="item" cont="'.($cont+1).'">';
-		}
-	   	echo '<div class="col-xs-12 col-sm-6 col-md-4">';
-		get_template_part( 'targetas-beca' ); 
+		echo '<p class="text-center">No hay descargas</p>';
+	}else{
+		echo '<div class="container quitarPadding">
+		<div class="col-sm-12  quitarPadding">';
+	    while ( $posts->have_posts() ) :
+	    	$posts->the_post();
+	    	echo '<div class="col-xs-12 col-sm-6 col-md-4">';
+			get_template_part( 'targetas-beca'); 
+			echo '</div>';
+		endwhile;
 		echo '</div></div>';
-		$cont++;
-    }
+	}
+	echo '<div class="carousel-nav sombraInferior"><div class="container quitarPadding"><p class="tituloNavegacionCarousel" ><a href="'.home_url('/becas/').'">Más becas</a>
+			</p><p class="tituloNavegacionCarousel pull-right">';
+	//echo "---- $cont ---";
+    $total_pages = $posts->max_num_pages;
+    //var_dump($total_pages);
+		    if ($total_pages > 1){
+		        $current_page = max(1, $paginaActual);
+		        //echo "paginaActual";
+		        //var_dump($current_page);
+		        //echo "get pagenun link";
+		        //var_dump(get_pagenum_link(1));
+		        //echo "----";
+				$arrayPagination =array(
+		            'base' => home_url('/movilidad/') . '%_%',
+		            'format' => '/page/%#%',
+		            'current' => $current_page,
+		            'total' => $total_pages,
+		            'prev_text'    => __('« prev'),
+		            'next_text'    => __('next »'),
+		        );  
+		        echo paginate_links($arrayPagination);
+		    } 
+		    echo '</p></div></div>';
+    //echo "<script language='javascript'> jQuery('#carousel-example-generic-investigacion .contador').attr('cont',$cont) </script>";
     wp_reset_postdata();
     exit;
   }

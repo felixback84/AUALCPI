@@ -136,110 +136,233 @@
 		</div>
 	</div>
 </div>
+
 <!-- inicio becas-->
 <div class="container quitarPadding">
 	<div class="col-sm-12  quitarPadding">
 		<h1>Oferta de becas y programas disponibles</h1>
 	</div>
 </div>
+<?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;?> 
 <?php 
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-$data= new WP_Query(array(
+$data = new WP_Query(array(
     'post_type'=>'becas', // your post type name
-    'posts_per_page' => 6, // post per page
+    'posts_per_page' => 1, // post per page
     'paged' => $paged,
 ));?> 
-
-<?php if($data->have_posts()) : ?>
-<div class="container quitarPadding">
-	<div class="col-sm-12  quitarPadding">
-	  <?php  while($data->have_posts())  : $data->the_post();?>
-		<div class="col-xs-12 col-sm-6 col-md-4">
-	          <?php get_template_part('targetas-beca'); ?>
-		</div>
-	    <?php endwhile;?> 
-	</div>
-</div>
-<div class="carousel-nav sombraInferior">
+<div id="the-posts-becas">
+	<?php if($data->have_posts()) : ?>
 	<div class="container quitarPadding">
-		<p class="tituloNavegacionCarousel" >
-			<a href="<?php echo home_url('/becas/');?>">Más becas</a>
-		</p>
-	    <?php $total_pages = $data->max_num_pages;
-	    if ($total_pages > 1){
-	        $current_page = max(1, get_query_var('paged'));
-					$arrayPagination =array(
-	            'base' => get_pagenum_link(1) . '%_%',
-	            'format' => '/page/%#%',
-	            'current' => $current_page,
-	            'total' => $total_pages,
-	            'prev_text'    => __('« prev'),
-	            'next_text'    => __('next »'),
-	        ); ?> 
-       	<p class="tituloNavegacionCarousel pull-right">
-       		<?php echo paginate_links($arrayPagination); ?> 
-       	</p>
-   		<?php } ?>
-	</div>  
-</div> 
-<?php else :?>
-	<h3><?php _e('404 Error&#58; Not Found', ''); ?></h3>
-<?php endif; ?>
+		<div class="col-sm-12  quitarPadding">
+		  <?php  while($data->have_posts())  : $data->the_post();?>
+			<div class="col-xs-12 col-sm-6 col-md-4">
+		          <?php get_template_part('targetas-beca'); ?>
+			</div>
+		    <?php endwhile;?> 
+		</div>
+	</div>
+	<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" >
+				<a href="<?php echo home_url('/becas/');?>">Más becas</a>
+			</p>
+		    
+	       	<p class="tituloNavegacionCarousel pull-right">
+	       	<?php $total_pages = $data->max_num_pages;
+		    if ($total_pages > 1){
+		        $current_page = max(1, get_query_var('paged'));
+						$arrayPagination =array(
+		            'base' => get_pagenum_link(1) . '%_%',
+		            'format' => '/page/%#%',
+		            'current' => $current_page,
+		            'total' => $total_pages,
+		            'prev_text'    => __('« prev'),
+		            'next_text'    => __('next »'),
+		        ); ?> 
+	       		<?php echo paginate_links($arrayPagination); ?> 
+	       	<?php } ?>
+	       		
+	       	</p>
+	   		
+		</div>  
+	</div> 
+	<?php else :?>
+		<h3><?php _e('404 Error&#58; Not Found', ''); ?></h3>
+	<?php endif; ?>
+</div>
+
 <?php wp_reset_postdata();?>
 <!-- fin becas-->
-
-<div class="container quitarPadding espacioTop">
-	<div class="col-sm-12 quitarPadding">
-		<h1>Descargas</h1>	
-		<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel"  data-type="multi">
-		<!-- Wrapper for slides -->
-			<div class="carousel-inner" role="listbox"> 
-				<?php $args = array (
+<!-- inicio descarga-->
+<?php $tituloDescarga = 'Descargas'; ?>
+<?php $tituloFooterDescarga = 'Más descargas'; ?>
+<?php $linkDescarga = home_url('/publicacion/'); ?>
+<div class="hidden-xs hidden-sm">
+	<div class="container paginaHome">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1><?php echo $tituloDescarga; ?></h1>	
+				<div id="carousel-example-generic-investigacion" class="carousel slide" data-ride="carousel"  data-type="mulsti">
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+					<?php $args = array (
 					'post_type' => 'publicacion',
 					'posts_per_page' => 10, 
 					'orderby' => 'id',
 					'order'   => 'DESC',
-				);
-				$lastBlog = new WP_Query ($args);
-				$cont=0;
-				$numeroElementos=3;
-				if($lastBlog->have_posts()):
-					while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-					<?php if($cont == 0){ ?>
-							<div class="item active" cont="<?php echo $cont+1; ?>">
-						<?php }else{ ?> 
-								<div class="item" cont="<?php echo $cont+1; ?>">
-						<?php } ?> 
-									<div class="col-xs-12 col-sm-6 col-md-4">
-										<?php get_template_part('targetas-publicacion'); ?>
-									</div>
-								</div>
-					 	<?php $cont++; endwhile;
-					endif;	
-			    wp_reset_postdata(); 
-//				     $fin+=2; ?>
-			</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
-			<!-- Controls -->
-			<a class="right carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="next">
-			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			    <span class="sr-only">Next</span>
-			  </a>
-			  <a class="left carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="prev">
-			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			    <span class="sr-only">Previous</span>
-			</a>   
+							);$lastBlog = new WP_Query ($args);
+								$cont=0;
+								$numeroElementos=3;
+								if($lastBlog->have_posts()):
+									while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+										<?php if($cont== 0){ ?>
+											<div class="item active" cont="1">
+										<?php } ?> 
+										<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+											</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+										<?php } ?> 
+												<div class="col-xs-12 col-sm-6 col-md-4">
+													<?php get_template_part('targetas-publicacion'); ?>
+												</div>	
+										<?php if($cont%$numeroElementos == 0){ ?> 
+											
+										<?php } ?> 								
+									 	<?php $cont++; endwhile;
+									endif;	
+								wp_reset_postdata(); 
+								//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
+					<!-- Controls -->
+					<a class="right carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					  <a class="left carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkDescarga;?>"><?php echo $tituloFooterDescarga; ?></a></p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI"></span>  de <span id="pagIC"></span></p>
 		</div>
 	</div>
 </div>
-<div class="espacioBotton">
+<div class="visible-sm">
+	<div class="container paginaHome">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1><?php echo $tituloDescarga; ?></h1>	
+				<div id="carousel-example-generic-investigacion-2" class="carousel slide" data-ride="carousel"  data-type="mulsti">
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+					<?php $args = array (
+					'post_type' => 'publicacion',
+					'posts_per_page' => 10, 
+					'orderby' => 'id',
+					'order'   => 'DESC',
+							);$lastBlog = new WP_Query ($args);
+								$cont=0;
+								$numeroElementos=2;
+								if($lastBlog->have_posts()):
+									while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+										<?php if($cont== 0){ ?>
+											<div class="item active" cont="1">
+										<?php } ?> 
+										<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+											</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+										<?php } ?> 
+												<div class="col-xs-12 col-sm-6 col-md-4">
+													<?php get_template_part('targetas-publicacion'); ?>
+												</div>	
+										<?php if($cont%$numeroElementos == 0){ ?> 
+											
+										<?php } ?> 								
+									 	<?php $cont++; endwhile;
+									endif;	
+								wp_reset_postdata(); 
+								//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
+					<!-- Controls -->
+					<a class="right carousel-control" href="#carousel-example-generic-investigacion-2" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					  <a class="left carousel-control" href="#carousel-example-generic-investigacion-2" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="carousel-nav sombraInferior">
-	<div class="container quitarPadding">
-		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/publicacion/');?>">Más descargas</a></p>
-		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de <span id="pagPC"></span></p>
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkDescarga;?>"><?php echo $tituloFooterDescarga; ?></a></p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI-2"></span>  de <span id="pagIC-2"></span></p>
+		</div>
 	</div>
+</div>
+<div class="visible-xs">
+	<div class="container paginaHome">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1><?php echo $tituloDescarga; ?></h1>	
+				<div id="carousel-example-generic-investigacion-3" class="carousel slide" data-ride="carousel"  data-type="mulsti">
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+					<?php $args = array (
+					'post_type' => 'publicacion',
+					'posts_per_page' => 10, 
+					'orderby' => 'id',
+					'order'   => 'DESC',
+							);$lastBlog = new WP_Query ($args);
+								$cont=0;
+								$numeroElementos=1;
+								if($lastBlog->have_posts()):
+									while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+										<?php if($cont== 0){ ?>
+											<div class="item active" cont="1">
+										<?php } ?> 
+										<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+											</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+										<?php } ?> 
+												<div class="col-xs-12 col-sm-6 col-md-4">
+													<?php get_template_part('targetas-publicacion'); ?>
+												</div>	
+										<?php if($cont%$numeroElementos == 0){ ?> 
+											
+										<?php } ?> 								
+									 	<?php $cont++; endwhile;
+									endif;	
+								wp_reset_postdata(); 
+								//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
+					<!-- Controls -->
+					<a class="right carousel-control" href="#carousel-example-generic-investigacion-3" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					  <a class="left carousel-control" href="#carousel-example-generic-investigacion-3" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>	
+	<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkDescarga;?>"><?php echo $tituloFooterDescarga; ?></a></p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI-3"></span>  de <span id="pagIC-3"></span></p>
+		</div>
+	</div>
+</div>
+<!-- fin descarga-->
 <div id="myModalBeca1" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

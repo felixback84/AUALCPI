@@ -388,49 +388,13 @@ function cargarBecas(urlAjax,taxonomiaA,taxonomiaB){
         'action': 'my_get_becas',
         'catA': taxonomiaA,
         'catB': taxonomiaB,
+        'pagAct' : pagActual,
       },
       success: function(data, textStatus, XMLHttpRequest)      {
           $("#the-posts-becas").append(data);
       },
       complete: function(XMLHttpRequest, textStatus)      {
         $('.loaderwp').hide();
-        //--- mostrar 3 post a la vez si el dispositibo es sm o mayor
-        $('#carousel-example-generic-beca[data-type="multi"] .item').each(function(){
-          var tamanioPantalla = $(window).width();
-             //alert (tamanioPantalla);
-            if( tamanioPantalla > 990){
-              //alert (tamanioPantalla);
-              var next = $(this).next();
-              if (!next.length) {
-                next = $(this).siblings(':first');
-              }
-              next.children(':first-child').clone().appendTo($(this));
-              
-              for (var i=0;i<1;i++) {
-                next=next.next();
-                if (!next.length) {
-                  next = $(this).siblings(':first');
-                }
-                next.children(':first-child').clone().appendTo($(this));
-              }
-            }
-            if((tamanioPantalla < 991) & (tamanioPantalla > 767)){
-                //alert (tamanioPantalla);
-                var next = $(this).next();
-                if (!next.length) {
-                  next = $(this).siblings(':first');
-                }
-                next.children(':first-child').clone().appendTo($(this));
-                
-                for (var i=0;i<1;i++) {
-                  next=next.next();
-                  if (!next.length) {
-                    next = $(this).siblings(':first');
-                  }
-                }
-            }
-        });
-        
       }
     });
   }
