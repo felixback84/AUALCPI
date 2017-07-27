@@ -26,8 +26,13 @@
 <div class="container espacioTop espacioBotton">
 	<div class="row">
 		<div class="col-xs-12 col-sm-8 col-sm-push-2">
+		<?php //echo get_post_meta(get_the_ID(),'videoYoutube',true); ?>
+		<?php $link = get_post_meta(get_the_ID(),'videoYoutube',true); 
+		$link = str_replace('https://www.youtube.com/watch?v=','https://www.youtube.com/embed/',$link);
+		//echo $link;
+		?>
 			<div class="youtube">
-				<iframe width="1280" height="720" src="https://www.youtube.com/embed/C85nRB-NnsU" frameborder="0" allowfullscreen></iframe>
+				<iframe width="1280" height="720" src="<?php echo $link; ?>" frameborder="0" allowfullscreen></iframe>
 			</div>
 		</div>
 	</div>
@@ -59,8 +64,8 @@
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="thumbnail">
 				<!-- <img src="<?php //echo get_stylesheet_directory_uri(); ?>/images/imageContenidoQueeslisi.jpg" alt="" width="" height="" /> -->
-				<div id="contenidoTextAzulRedLisi">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quam voluptas repellat fugiat facilis explicabo excepturi mollitia nesciunt voluptatibus ratione at itaque pariatur minus, libero minima, iusto amet commodi cupiditate.</p>
+				<div id="contenidoTextAzulNuestra">
+					<h1><?php echo get_post_meta(get_the_ID(),'Caja1',true); ?></h1>
 				</div>
 			</div>
 		</div>

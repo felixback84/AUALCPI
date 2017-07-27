@@ -377,7 +377,7 @@ $('.btn-cargar-becas').on('click',function(){
     cargarBecas(urlAjax,filterCiudades, filterCategorias);
 });
 
-function cargarBecas(urlAjax,taxonomiaA,taxonomiaB){
+function cargarBecas(urlAjax,taxonomiaA,taxonomiaB,pagBuscar = 1){
     $("#the-posts-becas").children().remove();
     //mostrar el loader en wordpress
     $('.loaderwp').show();
@@ -388,13 +388,34 @@ function cargarBecas(urlAjax,taxonomiaA,taxonomiaB){
         'action': 'my_get_becas',
         'catA': taxonomiaA,
         'catB': taxonomiaB,
-        'pagAct' : pagActual,
+        'pagAct' : pagBuscar,
       },
       success: function(data, textStatus, XMLHttpRequest)      {
           $("#the-posts-becas").append(data);
       },
       complete: function(XMLHttpRequest, textStatus)      {
         $('.loaderwp').hide();
+        $('#the-posts-becas .page-numbers').on('click',function(e){
+          e.preventDefault();
+          var href = $(this).attr('href');
+          paginaBuscar = href.substr(-1);
+          var numPag = $(e.target).text();
+          //alert(paginaBuscar);
+          var urlAjax = $('.btn-cargar-becas').data('url');
+          filterCiudades = [];
+          filterCategorias = [];
+          
+          $("select[name='filterCiudades[]'] option:selected").each(function ()  {
+              //alert(urlAjax);
+              filterCiudades.push(parseInt($(this).val()));
+          });
+          $("select[name='filterCategorias[]'] option:selected").each(function ()  {
+              //alert(urlAjax);
+              filterCategorias.push(parseInt($(this).val()));
+          });
+          //alert(checked);
+          cargarBecas(urlAjax,filterCiudades, filterCategorias,paginaBuscar);
+        });
       }
     });
   }

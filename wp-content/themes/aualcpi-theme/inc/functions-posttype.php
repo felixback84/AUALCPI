@@ -1175,6 +1175,10 @@ function my_meta_init(){
 	{
 	add_meta_box('my_meta_nuestra_asociacion', 'Contenido de las pestañas negras', 'my_meta_nuestra_asociacion', 'page', 'normal', 'high');
 	}
+	if ($post_id == '87')
+	{
+	add_meta_box('my_meta_redLisi', 'Contenido administrable', 'my_meta_redLisi', 'page', 'normal', 'high');
+	}
 	if ($post_id == '85')
 	{
 	add_meta_box('my_meta_membresia', 'Contenido administrable', 'my_meta_membresia', 'page', 'normal', 'high');
@@ -1222,7 +1226,7 @@ function my_meta_movilidad_save(){
 	endif;
 }
 
-/*----- page movilidad ------*/
+/*----- page nuestra asociacion ------*/
 function my_meta_nuestra_asociacion(){
  	global $post;
 	$custom = get_post_custom($post->ID);
@@ -1376,6 +1380,45 @@ function my_meta_nuestra_asociacion_save(){
 	endif;
 }
 
+/*----- page redLisi------*/
+function my_meta_redLisi(){
+ 	global $post;
+	$custom = get_post_custom($post->ID);
+	//var_dump($custom);
+	$videoYoutube = $custom["videoYoutube"][0];
+	$Caja1 = $custom["Caja1"][0];
+
+	$argsTextarea = array(
+	    'textarea_rows' => 10,
+	    'quicktags' => false,
+	    'media_buttons' => false,
+    	'tinymce' => true,
+	);
+ ?>
+<div class="inside">
+<h3>Video:</h3>	
+<p><label for="videoYoutube">Video de youtube:</label>
+<input type="text" name="videoYoutube" value="<?php echo $videoYoutube; ?>"></p>
+<label for="Caja1"><h3>Caja 1</h3></label>
+			<?php
+				$content = $Caja1;
+				$editor_id = 'Caja1';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+</div>
+ <?php 
+}
+add_action('save_post','my_meta_redLisi_save');
+
+function my_meta_redLisi_save(){
+	global $post;
+	if(isset($_POST["videoYoutube"])):
+		update_post_meta($post->ID, "videoYoutube",$_POST["videoYoutube"] );
+	endif;
+	if(isset($_POST["Caja1"])):
+		update_post_meta($post->ID, "Caja1",$_POST["Caja1"]);
+	endif;
+}
 
 /*----- page membresia ------*/
 function my_meta_membresia(){

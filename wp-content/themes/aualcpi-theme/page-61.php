@@ -147,7 +147,7 @@
 <?php 
 $data = new WP_Query(array(
     'post_type'=>'becas', // your post type name
-    'posts_per_page' => 1, // post per page
+    'posts_per_page' => 6, // post per page
     'paged' => $paged,
 ));?> 
 <div id="the-posts-becas">

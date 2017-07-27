@@ -486,7 +486,7 @@ function my_get_user()  {
       'post_status' => 'publish',
       'order'=> 'DESC',
       'orderby' => 'date',
-      'posts_per_page' => 1, // post per page
+      'posts_per_page' => 6, // post per page
       'paged' => $paginaActual
     );
     $args['tax_query'] = array(
@@ -508,7 +508,7 @@ function my_get_user()  {
 			);
 	    array_push($args['tax_query'],$argsCatB);
 	}
-
+	echo '<input id="paginaActual" type="hidden" value="'.$paginaActual.'" name="paginaActual">';
 	global $post;
     //$posts =  query_posts($args);
     $posts =  new WP_Query($args);
