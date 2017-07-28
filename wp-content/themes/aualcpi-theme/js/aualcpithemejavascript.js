@@ -228,74 +228,11 @@ $('.btn-cargar-investigacion').on('click',function(){
         //alert(filterComentarios);
     });
     //alert(checked);
-    cargarUsuarios(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus,filterAreasName);
+    //cargarUsuarios(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus,filterAreasName);
     cargarCategorias(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus,filterAreasName);
 });
-function cargarUsuarios(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,AreasName){
-    $("#the-posts-user").children().remove();
-    //mostrar el loader en wordpress
-    $('.loaderwp').show();
-    $.ajax({
-      type: 'POST',
-      url: urlAjax,
-      data: {
-        'action': 'my_get_user',
-        'comentarios': comentarios,
-        'catA': taxonomiaA,
-        'catB': taxonomiaB,
-        'catC': taxonomiaC,
-      },
-      success: function(data, textStatus, XMLHttpRequest)      {
-          $("#the-posts-user").append(data);
-          if(taxonomiaB != '0'){
-            $("#text-investigador").text('Investigadores regionales en '+AreasName);
-          }else{
-             $("#text-investigador").text('Investigadores regionales'); 
-          }
-      },
-      complete: function(XMLHttpRequest, textStatus)      {
-        $('.loaderwp').hide();
-        //--- mostrar 3 post a la vez si el dispositibo es sm o mayor
-        $('#carousel-example-generic-autores[data-type="multi"] .item').each(function(){
-         var tamanioPantalla = $(window).width();
-             //alert (tamanioPantalla);
-            if( tamanioPantalla > 990){
-              //alert (tamanioPantalla);
-              var next = $(this).next();
-              if (!next.length) {
-                next = $(this).siblings(':first');
-              }
-              next.children(':first-child').clone().appendTo($(this));
-              
-              for (var i=0;i<1;i++) {
-                next=next.next();
-                if (!next.length) {
-                  next = $(this).siblings(':first');
-                }
-                next.children(':first-child').clone().appendTo($(this));
-              }
-            }
-            if((tamanioPantalla < 991) & (tamanioPantalla > 767)){
-                //alert (tamanioPantalla);
-                var next = $(this).next();
-                if (!next.length) {
-                  next = $(this).siblings(':first');
-                }
-                next.children(':first-child').clone().appendTo($(this));
-                
-                for (var i=0;i<1;i++) {
-                  next=next.next();
-                  if (!next.length) {
-                    next = $(this).siblings(':first');
-                  }
-                }
-            }
-        });
-        
-      }
-    });
-  }
-function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,AreasName){
+
+function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,AreasName,pagBuscar = 1){
     $("#the-posts-inves").children().remove();
     //mostrar el loader en wordpress
     $('.loaderwp').show();
@@ -308,6 +245,7 @@ function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,A
         'catA': taxonomiaA,
         'catB': taxonomiaB,
         'catC': taxonomiaC,
+        'pagAct' : pagBuscar,
       },
       success: function(data, textStatus, XMLHttpRequest)      {
           $("#the-posts-inves").append(data);
@@ -319,41 +257,107 @@ function cargarCategorias(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,A
       },
       complete: function(XMLHttpRequest, textStatus)      {
         $('.loaderwp').hide();
-        //--- mostrar 3 post a la vez si el dispositibo es sm o mayor
-        $('#carousel-example-generic-investigacion[data-type="multi"] .item').each(function(){
-          var tamanioPantalla = $(window).width();
-             //alert (tamanioPantalla);
-            if( tamanioPantalla > 990){
-              //alert (tamanioPantalla);
-              var next = $(this).next();
-              if (!next.length) {
-                next = $(this).siblings(':first');
-              }
-              next.children(':first-child').clone().appendTo($(this));
-              
-              for (var i=0;i<1;i++) {
-                next=next.next();
-                if (!next.length) {
-                  next = $(this).siblings(':first');
-                }
-                next.children(':first-child').clone().appendTo($(this));
-              }
-            }
-            if((tamanioPantalla < 991) & (tamanioPantalla > 767)){
-                //alert (tamanioPantalla);
-                var next = $(this).next();
-                if (!next.length) {
-                  next = $(this).siblings(':first');
-                }
-                next.children(':first-child').clone().appendTo($(this));
-                
-                for (var i=0;i<1;i++) {
-                  next=next.next();
-                  if (!next.length) {
-                    next = $(this).siblings(':first');
-                  }
-                }
-            }
+        $('#the-posts-inves .page-numbers').on('click',function(e){
+          e.preventDefault();
+          var href = $(this).attr('href');
+          paginaBuscar = href.substr(-1);
+          var numPag = $(e.target).text();
+          //alert(paginaBuscar);
+          var urlAjax = $('.btn-cargar-investigacion').data('url');
+          filterCiudades = [];filterAreas = [];filterComentarios = [];filterStatus = [];filterAreasName = [];
+          $("select[name='filterComentarios[]'] option:selected").each(function ()  {
+              //alert(urlAjax);
+              filterComentarios.push($(this).val());
+              //alert(filterComentarios);
+          });
+          
+          $("select[name='filterCiudades[]'] option:selected").each(function ()  {
+              //alert(urlAjax);
+              filterCiudades.push(parseInt($(this).val()));
+          });
+          $("select[name='filterAreas[]'] option:selected").each(function ()  {
+              //alert(urlAjax);
+              filterAreas.push(parseInt($(this).val()));
+              filterAreasName.push($(this).text());
+          });
+          $("select[name='filterStatus[]'] option:selected").each(function ()  {
+              //alert(urlAjax);
+              filterStatus.push($(this).val());
+              //alert(filterComentarios);
+          });
+          cargarCategorias(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus,filterAreasName,paginaBuscar);
+        });
+      }
+    });
+  }
+
+//---- filtro de base de datos de investigadores ----
+$('.btn-cargar-investigadores').on('click',function(){
+    var urlAjax = $(this).data('url');
+    filterCiudades = []; filterAreas = [];filterComentarios = [];filterStatus = [];filterAreasName = [];
+    $("select[name='filterComentarios[]'] option:selected").each(function ()  {
+        filterComentarios.push($(this).val());
+    });
+  
+    $("select[name='filterCiudades[]'] option:selected").each(function ()  {
+        filterCiudades.push(parseInt($(this).val()));
+    });
+    $("select[name='filterAreas[]'] option:selected").each(function ()  {
+        filterAreas.push(parseInt($(this).val()));
+        filterAreasName.push($(this).text());
+    });
+    $("select[name='filterStatus[]'] option:selected").each(function ()  {
+        filterStatus.push($(this).val());
+    });
+    cargarUsuarios(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus,filterAreasName);
+});
+function cargarUsuarios(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,AreasName,pagBuscar = 1){
+    $("#the-posts-user").children().remove();
+    //mostrar el loader en wordpress
+    $('.loaderwp').show();
+    $.ajax({
+      type: 'POST',
+      url: urlAjax,
+      data: {
+        'action': 'my_get_user',
+        'comentarios': comentarios,
+        'catA': taxonomiaA,
+        'catB': taxonomiaB,
+        'catC': taxonomiaC,
+        'pagAct' : pagBuscar,
+      },
+      success: function(data, textStatus, XMLHttpRequest)      {
+          $("#the-posts-user").append(data);
+          if(taxonomiaB != '0'){
+            $("#text-investigador").text('Investigadores regionales en '+AreasName);
+          }else{
+             $("#text-investigador").text('Investigadores regionales'); 
+          }
+      },
+      complete: function(XMLHttpRequest, textStatus)      {
+        $('.loaderwp').hide();
+        $('#the-posts-user .page-numbers').on('click',function(e){
+          e.preventDefault();
+          var href = $(this).attr('href');
+          paginaBuscar = href.substr(-1);
+          var numPag = $(e.target).text();
+          //alert(paginaBuscar);
+          var urlAjax = $('.btn-cargar-investigadores').data('url');
+          filterCiudades = []; filterAreas = [];filterComentarios = [];filterStatus = [];filterAreasName = [];
+          $("select[name='filterComentarios[]'] option:selected").each(function ()  {
+              filterComentarios.push($(this).val());
+          });
+          $("select[name='filterCiudades[]'] option:selected").each(function ()  {
+              filterCiudades.push(parseInt($(this).val()));
+          });
+          $("select[name='filterAreas[]'] option:selected").each(function ()  {
+              filterAreas.push(parseInt($(this).val()));
+              filterAreasName.push($(this).text());
+          });
+          $("select[name='filterStatus[]'] option:selected").each(function ()  {
+              filterStatus.push($(this).val());
+          });
+          cargarUsuarios(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus,filterAreasName);
         });
       }
     });

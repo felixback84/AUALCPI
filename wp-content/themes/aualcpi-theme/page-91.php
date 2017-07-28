@@ -32,7 +32,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<h4>Busqueda de retos, proyectos e investigadores regionales</h4>
+						<h4>Busqueda de investigadores que pariticiparon retos, proyectos e investigadores regionales</h4>
 						<h5>Seleccionar país</h5>
 					</div>
 					<div class="col-sm-4">
@@ -71,7 +71,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						<a class="btn-cargar-investigacion btn btn-default" data-url="<?php echo admin_url('admin-ajax.php'); ?>">Buscar</a>	
+						<a class="btn-cargar-investigadores btn btn-default" data-url="<?php echo admin_url('admin-ajax.php'); ?>">Buscar</a>	
 						<a href="<?php home_url('/bases-de-datos-investigadoras/'); ?>" class="btn-cargar-becas btn btn-default">Limpiar filtros</a>
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Loading_icon.gif" style="display:none;" class="loaderwp" style="" width="25px" height="25px">
 					</div>
@@ -84,12 +84,107 @@
 		<div class="well">
 			<div class="row">
 				<button id="btn-abrir" class="btn" type="button" data-toggle="collapse" data-target="#collapseExample-2" aria-expanded="false" aria-controls="collapseExample-2">
-				 ¿Qué estás buscando hoy? <span class="pull-right glyphicon glyphicon-search" > </span>
+				 ¿Qué investigador estás buscando hoy? <span class="pull-right glyphicon glyphicon-search" > </span>
 				</button>
 			</div>
 		</div>
 	</div>
 </div>
+
+
+<!-- inicio investigadores-->
+<div class="container quitarPadding paginaHome">
+	<div class="col-sm-12  quitarPadding">
+		<h1 id="text-investigador">Retos regionales</h1>
+	</div>
+</div>
+<?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;?> 
+<?php 
+$idsUsuarios= array();
+$cont=0;
+$numeroPorPagina = 6;
+$args = array(
+  'post_type' => 'investigacion',
+  'post_status' => 'publish',
+  'order'=> 'DESC',
+  'orderby' => 'date',
+);
+$posts =  query_posts($args);
+foreach ($posts as $post){
+	//if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
+	$args = array(
+      'post_type' => 'contribuciones',
+      'post_status' => 'publish',
+      'post_parent' => $post->ID,
+      'order'=> 'DESC',
+      'orderby' => 'date',
+    );
+    $postContribuciones =  query_posts($args);
+   		( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
+	 	//echo $nContribuciones;
+
+		foreach ($postContribuciones as $postContribucion){
+ 	 	if($nContribuciones != '0'){
+			//echo 'idAutho'.$postContribucion->post_author;
+			if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);}
+			$cont++;
+		}
+    }  
+}
+$total_pages =  /$numeroPorPagina 
+foreach ($idsUsuarios as $id) {
+	$usuario = get_user_by('ID',$id);?>
+<div class="container quitarPadding">
+		<div class="col-sm-12  quitarPadding">
+		  <?php  while($data->have_posts())  : $data->the_post();?>
+			<div class="col-xs-12 col-sm-6 col-md-4">
+		         <?php set_query_var('user',$usuario);
+						get_template_part('targetas-autores'); ?>
+			</div>
+		    <?php endwhile;?> 
+		</div>
+	</div>
+<?php } wp_reset_postdata();?>
+
+<div id="the-posts-user"">
+	<?php if($data->have_posts()) : ?>
+
+	
+	<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" >
+				<a href="<?php echo home_url('/investigacion/');?>">Más retos regionales</a>
+			</p>
+		    
+	       	<p class="tituloNavegacionCarousel pull-right">
+	       	<?php $total_pages = $data->max_num_pages;
+		    if ($total_pages > 1){
+		        $current_page = max(1, get_query_var('paged'));
+						$arrayPagination =array(
+		            'base' => get_pagenum_link(1) . '%_%',
+		            'format' => '/page/%#%',
+		            'current' => $current_page,
+		            'total' => $total_pages,
+		            'prev_text'    => __('« prev'),
+		            'next_text'    => __('next »'),
+		        ); ?> 
+	       		<?php echo paginate_links($arrayPagination); ?> 
+	       	<?php } ?>
+	       		
+	       	</p>
+	   		
+		</div>  
+	</div> 
+
+
+	<?php else :?>
+		<h3><?php _e('404 Error&#58; Not Found', ''); ?></h3>
+	<?php endif; ?>
+</div>
+
+<?php wp_reset_postdata();?>
+<!-- fin investigadores-->
+
 <div class="container  quitarPadding">
 		<div class="col-xs-12 quitarEspacio">
 		<h1 id="text-investigador">Investigadores regionales</h1>
@@ -155,49 +250,175 @@
 		<p class="tituloNavegacionCarousel alinear-derecha" >Página <span id="pagA"></span> de <span id="pagAC"></span> </p>
 	</div>
 </div>
-<div class="container quitarPadding espacioTop">
-		<div class="col-xs-12  quitarEspacio">
-			<h1 id="text-retos">Retos regionales</h1>
-			<div id="carousel-example-generic-investigacion" class="carousel slide" data-ride="carousel" data-type="multi" >
-				<div id="the-posts-inves" class="carousel-inner" role="listbox"> 
-						<?php $args = array(
-					      'post_type' => 'investigacion',
-					      'post_status' => 'publish',
-					      'order'=> 'DESC',
-					      'orderby' => 'date',
-						  'posts_per_page' => 10, 
-					    );
-						$lastBlog = new WP_Query ($args);
-						$cont=0;
-						if($lastBlog->have_posts()):
-						while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-						<?php if($cont == 0){ ?><div class="item active"  cont="<?php echo $cont+1; ?>"><?php }else{ ?><div class="item"  cont="<?php echo $cont+1; ?>"><?php } ?> 
-								<div class="col-xs-12 col-sm-6 col-md-4">
-										<?php get_template_part('targetas-inves-inves'); ?>
-								</div>
-							</div>
-							 <?php $cont++; 
-							 endwhile;
-						endif;	
-					    wp_reset_postdata(); ?>
-				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
-				<a class="right carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				  </a>
-				  <a class="left carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				</a>
+
+<!-- inicio Retosregionales-->
+<?php $tituloRetos = 'Retos regionales'; ?>
+<?php $tituloFooterRetos = 'Más Retos regionales'; ?>
+<?php $linkRetos = home_url('/investigacion/'); ?>
+<div class="hidden-xs hidden-sm">
+	<div class="container paginaHome">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1><?php echo $tituloRetos; ?></h1>	
+				<div id="carousel-example-generic-investigacion" class="carousel slide" data-ride="carousel"  data-type="mulsti">
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+					<?php $args = array (
+					'post_type' => 'investigacion',
+					'posts_per_page' => 10, 
+					'orderby' => 'id',
+					'order'   => 'DESC',
+							);$lastBlog = new WP_Query ($args);
+								$cont=0;
+								$numeroElementos=3;
+								if($lastBlog->have_posts()):
+									while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+										<?php if($cont== 0){ ?>
+											<div class="item active" cont="1">
+										<?php } ?> 
+										<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+											</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+										<?php } ?> 
+												<div class="col-xs-12 col-sm-6 col-md-4">
+													<?php get_template_part('targetas-inves-inves'); ?>
+												</div>	
+										<?php if($cont%$numeroElementos == 0){ ?> 
+											
+										<?php } ?> 								
+									 	<?php $cont++; endwhile;
+									endif;	
+								wp_reset_postdata(); 
+								//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
+					<!-- Controls -->
+					<a class="right carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					  <a class="left carousel-control" href="#carousel-example-generic-investigacion" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+				</div>
 			</div>
 		</div>
-</div>
-<div class="espacioBotton">
+	</div>
 	<div class="carousel-nav sombraInferior">
-	<div class="container quitarPadding">
-		<p class="tituloNavegacionCarousel" ><a href="<?php echo home_url('/investigacion/');?>">MAS INVESTIGACIONES</a></p>
-		<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI"></span>  de <span id="pagIC"></span></p>
-	</div>
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkRetos;?>"><?php echo $tituloFooterRetos; ?></a></p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI"></span>  de <span id="pagIC"></span></p>
+		</div>
 	</div>
 </div>
+<div class="visible-sm">
+	<div class="container paginaHome">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1><?php echo $tituloRetos; ?></h1>	
+				<div id="carousel-example-generic-investigacion-2" class="carousel slide" data-ride="carousel"  data-type="mulsti">
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+					<?php $args = array (
+					'post_type' => 'investigacion',
+					'posts_per_page' => 10, 
+					'orderby' => 'id',
+					'order'   => 'DESC',
+							);$lastBlog = new WP_Query ($args);
+								$cont=0;
+								$numeroElementos=2;
+								if($lastBlog->have_posts()):
+									while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+										<?php if($cont== 0){ ?>
+											<div class="item active" cont="1">
+										<?php } ?> 
+										<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+											</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+										<?php } ?> 
+												<div class="col-xs-12 col-sm-6 col-md-4">
+													<?php get_template_part('targetas-inves-inves'); ?>
+												</div>	
+										<?php if($cont%$numeroElementos == 0){ ?> 
+											
+										<?php } ?> 								
+									 	<?php $cont++; endwhile;
+									endif;	
+								wp_reset_postdata(); 
+								//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
+					<!-- Controls -->
+					<a class="right carousel-control" href="#carousel-example-generic-investigacion-2" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					  <a class="left carousel-control" href="#carousel-example-generic-investigacion-2" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkRetos;?>"><?php echo $tituloFooterRetos; ?></a></p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI-2"></span>  de <span id="pagIC-2"></span></p>
+		</div>
+	</div>
+</div>
+<div class="visible-xs">
+	<div class="container paginaHome">
+		<div class="row">
+			<div class="col-sm-12 quitarEspacio">
+				<h1><?php echo $tituloRetos; ?></h1>	
+				<div id="carousel-example-generic-investigacion-3" class="carousel slide" data-ride="carousel"  data-type="mulsti">
+				<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox"> 
+					<?php $args = array (
+					'post_type' => 'investigacion',
+					'posts_per_page' => 10, 
+					'orderby' => 'id',
+					'order'   => 'DESC',
+							);$lastBlog = new WP_Query ($args);
+								$cont=0;
+								$numeroElementos=1;
+								if($lastBlog->have_posts()):
+									while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+										<?php if($cont== 0){ ?>
+											<div class="item active" cont="1">
+										<?php } ?> 
+										<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
+											</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
+										<?php } ?> 
+												<div class="col-xs-12 col-sm-6 col-md-4">
+													<?php get_template_part('targetas-inves-inves'); ?>
+												</div>	
+										<?php if($cont%$numeroElementos == 0){ ?> 
+											
+										<?php } ?> 								
+									 	<?php $cont++; endwhile;
+									endif;	
+								wp_reset_postdata(); 
+								//$fin+=2; ?></div>
+					</div><div class="contador"  cont="<?php echo round($cont/$numeroElementos); ?>"></div>
+					<!-- Controls -->
+					<a class="right carousel-control" href="#carousel-example-generic-investigacion-3" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					  <a class="left carousel-control" href="#carousel-example-generic-investigacion-3" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkRetos;?>"><?php echo $tituloFooterRetos; ?></a></p>
+			<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagI-3"></span>  de <span id="pagIC-3"></span></p>
+		</div>
+	</div>
+</div>
+<!-- fin Retosregionales-->
 <?php get_footer(); ?>

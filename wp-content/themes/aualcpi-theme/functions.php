@@ -181,39 +181,32 @@ function llenarSeleccion($argsIdsTaxonomias,$nameSelect,$labelGeneral = 'Selecci
 	return $select;
 }
 
+
 /*---  mostrar los post correspondientes a lo selecionado -----*/
 
 function my_get_posts()  {
 	$cont=0;
-	if(is_array($_POST['comentarios'])){
-		$comentarios = implode(',',$_POST['comentarios']);
-	} else {
-		$comentarios = $_POST['comentarios'];
-	}
-    if(is_array($_POST['catA'])){
-		$catA_id = implode(',',$_POST['catA']);
-	} else {
-		$catA_id = $_POST['catA'];
-	}
-	if(is_array($_POST['catB'])){
-		$catB_id = implode(',',$_POST['catB']);
-	} else {
-		$catB_id = $_POST['catB'];
-	}
-	if(is_array($_POST['catC'])){
-		$catC_id = implode(',',$_POST['catC']);
-	} else {
-		$catC_id = $_POST['catC'];
-	}
+	$paginaActual = 1;
+	if(is_array($_POST['comentarios'])){$comentarios = implode(',',$_POST['comentarios']);
+	} else {$comentarios = $_POST['comentarios'];}
+    if(is_array($_POST['catA'])){$catA_id = implode(',',$_POST['catA']);
+	} else {$catA_id = $_POST['catA'];}
+	if(is_array($_POST['catB'])){$catB_id = implode(',',$_POST['catB']);
+	} else {$catB_id = $_POST['catB'];}
+	if(is_array($_POST['catC'])){$catC_id = implode(',',$_POST['catC']);
+	} else {$catC_id = $_POST['catC'];}
+	if(!empty($_POST['pagAct'])){$paginaActual = $_POST['pagAct'];}
 	//echo "<script>javascript: alert('id".var_dump($catA_id)."')></script>";
 	//var_dump('comentarios'.$comentarios);
-	
-    $args = array(
+	$args = array(
       'post_type' => 'investigacion',
       'post_status' => 'publish',
       'order'=> 'DESC',
       'orderby' => 'date',
+      'posts_per_page' => 6, // post per page
+      'paged' => $paginaActual
     );
+
     $args['tax_query'] = array(
   		'relation' => 'AND'
 	);
@@ -248,68 +241,41 @@ function my_get_posts()  {
 	    array_push($args['tax_query'],$argsCatC);
 	}
 
-	
-    //echo "<script>javascript: alert('".var_dump($args)."')></script>";
-    //$comentarios = 'LosComentarios';
+	echo '<input id="paginaActual" type="hidden" value="'.$paginaActual.'" name="paginaActual">';
 	global $post;
-    $posts =  query_posts($args);
- 	//echo "<script>javascript: alert('".var_dump($posts)."')></script>";
-
-	//var_dump($posts);
+    $posts =  new WP_Query($args);
 	if(empty($posts)){
-		echo '<p class="text-center">No hay Articulos</p>';
+		echo '<p class="text-center">No hay descargas</p>';
+	}else{
+		echo '<div class="container quitarPadding">
+		<div class="col-sm-12  quitarPadding">';
+	    while ( $posts->have_posts() ) :
+	    	$posts->the_post();
+	    	echo '<div class="col-xs-12 col-sm-6 col-md-4">';
+			get_template_part( 'targetas-inves-inves' ); 
+			echo '</div>';
+		endwhile;
+		echo '</div></div>';
 	}
-    foreach ($posts as $post)   {
-		setup_postdata($post);
-		//var_dump($post);
-		//var_dump('post id'.$post->ID);
-		//if($post){}
-		$args = array(
-	      'post_type' => 'contribuciones',
-	      'post_status' => 'publish',
-	      'post_parent' => $post->ID,
-	      'order'=> 'DESC',
-	      'orderby' => 'date',
-	    );
-	    $postContribuciones =  query_posts($args);
-	    ( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
-	    //echo $nContribuciones;
-		if($nContribuciones == '0' && $comentarios == 'SinContribuciones' ){
-			if($cont == 0){
-				echo '<div class="item active" cont="'.($cont+1).'">';
-			}else{
-				echo '<div class="item" cont="'.($cont+1).'">';
-			}
-		   	echo '<div class="col-xs-12 col-sm-6 col-md-4">';
-			get_template_part( 'targetas-inves-inves' ); 
-			echo '</div></div>';
-			$cont++;
-		}
-		if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
-			if($cont == 0){
-				echo '<div class="item active" cont="'.($cont+1).'">';
-			}else{
-				echo '<div class="item" cont="'.($cont+1).'">';
-			}
-			echo '<div class="col-xs-12 col-sm-6 col-md-4">';
-			get_template_part( 'targetas-inves-inves' ); 
-			echo '</div></div>';
-			$cont++;
-		}
-		if($comentarios == 'Contribuciones' ){
-			if($cont == 0){
-				echo '<div class="item active" cont="'.($cont+1).'">';
-			}else{
-				echo '<div class="item" cont="'.($cont+1).'">';
-			}
-			echo '<div class="col-xs-12 col-sm-6 col-md-4">';
-			get_template_part( 'targetas-inves-inves' );
-			echo '</div></div>'; 
-			$cont++;
-		}
-		
-		wp_reset_postdata();
-    }
+	echo '<div class="carousel-nav sombraInferior"><div class="container quitarPadding"><p class="tituloNavegacionCarousel" ><a href="'.home_url('/investigacion/').'">Más retos regionales</a>
+			</p><p class="tituloNavegacionCarousel pull-right">';
+    $total_pages = $posts->max_num_pages;
+    //var_dump($total_pages);
+		    if ($total_pages > 1){
+		        $current_page = max(1, $paginaActual);
+				$arrayPagination =array(
+		            'base' => home_url('/movilidad/') . '%_%',
+		            'format' => '/page/%#%',
+		            'current' => $current_page,
+		            'total' => $total_pages,
+		            'prev_text'    => __('« prev'),
+		            'next_text'    => __('next »'),
+		        );  
+		        echo paginate_links($arrayPagination);
+		    } 
+		    echo '</p></div></div>';
+		    wp_reset_postdata();
+    
     exit;
   }
  
