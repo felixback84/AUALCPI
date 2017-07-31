@@ -1,5 +1,6 @@
 # Object file
 wp-admin/
 wp-includes/
-
+.htaccess
+.wp-config.php
 # Ada Library Information
