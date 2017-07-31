@@ -245,7 +245,7 @@ function my_get_posts()  {
 	global $post;
     $posts =  new WP_Query($args);
 	if(empty($posts)){
-		echo '<p class="text-center">No hay descargas</p>';
+		echo '<p class="text-center">No hay retos</p>';
 	}else{
 		echo '<div class="container quitarPadding">
 		<div class="col-sm-12  quitarPadding">';
@@ -264,7 +264,7 @@ function my_get_posts()  {
 		    if ($total_pages > 1){
 		        $current_page = max(1, $paginaActual);
 				$arrayPagination =array(
-		            'base' => home_url('/movilidad/') . '%_%',
+		            'base' => home_url('/retos-regionales/') . '%_%',
 		            'format' => '/page/%#%',
 		            'current' => $current_page,
 		            'total' => $total_pages,
@@ -287,6 +287,8 @@ function my_get_posts()  {
 
 function my_get_user()  {
 	$cont=0;
+	$paginaActual = 1;
+	$numeroShowPorPagina = 1;
 	if(is_array($_POST['comentarios'])){$comentarios = implode(',',$_POST['comentarios']);
 	} else { $comentarios = $_POST['comentarios']; }
     if(is_array($_POST['catA'])){ $catA_id = implode(',',$_POST['catA']);
@@ -295,7 +297,8 @@ function my_get_user()  {
 	} else { $catB_id = $_POST['catB']; }
 	if(is_array($_POST['catC'])){ $catC_id = implode(',',$_POST['catC']);
 	} else { $catC_id = $_POST['catC']; }
-	
+	if(!empty($_POST['pagAct'])){$paginaActual = $_POST['pagAct'];}
+
     $args = array(
       'post_type' => 'investigacion',
       'post_status' => 'publish',
@@ -332,15 +335,17 @@ function my_get_user()  {
 			);
 	    array_push($args['tax_query'],$argsCatC);
 	}
+	echo '<input id="paginaActual" type="hidden" value="'.$paginaActual.'" name="paginaActual">';
+
 	global $post;
     $posts =  query_posts($args);
 
 	//var_dump($posts);
-	
 	$idsUsuarios= array();
 	$idsTodosUsuarios= array();
     foreach ($posts as $post)   {
-    	if(!in_array($post->post_author,$idsTodosUsuarios)){ array_push($idsTodosUsuarios,$post->post_author);}
+    	//if(!in_array($post->post_author,$idsTodosUsuarios)){ array_push($idsTodosUsuarios,$post->post_author);}
+    	if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);$cont++;}
 		setup_postdata($post);
 		//var_dump($post);
 		//var_dump('post id'.$post->ID);
@@ -351,67 +356,87 @@ function my_get_user()  {
 	      'order'=> 'DESC',
 	      'orderby' => 'date',
 	    );
-	    
-	 //    $postContribuciones =  query_posts($args);
-	 //    ( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
-	 //    //echo $nContribuciones;
-		// if($nContribuciones == '0' && $comentarios == 'SinContribuciones' ){
-		// 	//echo 'idAutho'.$post->post_author;
-		// 	if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
-		// 	$cont++;
-		// }
-		// if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
-		// 	//echo 'idAutho'.$post->post_author;
-		// 	if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
-		// 	$cont++;
-		// }
-		// if($comentarios == 'Contribuciones' ){
-		// 	//echo 'idAutho'.$post->post_author;
-		// 	if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
-		// 	$cont++;
-		// }
-
   		 $postContribuciones =  query_posts($args);
 	 	   ( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
 	 	 //echo $nContribuciones;
 	 	 foreach ($postContribuciones as $postContribucion){
 	 	 	if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
 				//echo 'idAutho'.$postContribucion->post_author;
-				if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);}
-				$cont++;
+				if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);$cont++;}
+				
 			}
 			if($comentarios == 'Contribuciones' ){
 				//echo 'idAutho'.$postContribucion->post_author;
-				if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);}
-				$cont++;
+				if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);$cont++;}
+				
 			}
 	    }  
 		if($nContribuciones == '0' && $comentarios == 'SinContribuciones' ){
 			//echo 'idAutho'.$post->post_author;
-			if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
-			$cont++;
+			if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);$cont++;}
+			
 		}
     }
-
-		
-
     //var_dump($idsUsuarios);
-    if($catA_id == '0' && $catB_id == '0' && $catC_id == '0' && $comentarios == 'Contribuciones'){
-    	foreach ($idsTodosUsuarios as $key => $id) {
-			//echo "AidsU-i".$id;
-			mostrarUsuariosInvestigacion($id,$key);
-		}
-    }else{
-	    foreach ($idsUsuarios as $key => $id) {
+    $total_pages = round($cont /$numeroShowPorPagina) ;
+	//echo "hola";
+	//var_dump($idsUsuarios); 
+	$limitShowPaged=$numeroShowPorPagina*$paginaActual;
+	$initShowPaged=$numeroShowPorPagina*($paginaActual-1);
+	//var_dump($limitShowPaged,$initShowPaged);
+	//echo "page: $paginaActual";
+	//echo "limit: $limitShowPaged";
+	//echo "init: $initShowPaged";
+
+
+  //   if($catA_id == '0' && $catB_id == '0' && $catC_id == '0' && $comentarios == 'Contribuciones'){
+  //   	foreach ($idsTodosUsuarios as $key => $id) {
+		// 	//echo "AidsU-i".$id;
+		// 	mostrarUsuariosInvestigacion($id,$key);
+		// }
+  //   }else{
+ 	if(!empty($idsUsuarios)){
+ 		echo '<div class="container quitarPadding"><div class="col-sm-12  quitarPadding">';
+	   
 			//echo "BidsU-i".$id;
-			mostrarUsuariosInvestigacion($id,$key);
-		}
+			foreach ($idsUsuarios as $key => $id) {
+				if($key<$limitShowPaged && $key >= $initShowPaged){
+				//echo "id: $id";
+				$usuario = get_user_by('ID',$id);
+				echo'<div class="col-xs-12 col-sm-6 col-md-4">';
+			        set_query_var('user',$usuario);
+					get_template_part('targetas-autores'); 
+				echo'</div>';
+		     } }
+		echo '</div></div>';
+		echo'<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+			<p class="tituloNavegacionCarousel" >
+				<a href="'.home_url('/investigadores/').'">Más investigadores</a>
+			</p>
+	       	<p class="tituloNavegacionCarousel pull-right">';
+		    if ($total_pages > 1){
+				$arrayPagination =array(
+		            'base' => home_url('/bases-de-datos-investigadoras/') . '%_%',
+		            'format' => '/page/%#%',
+		            'current' => max(1,$paginaActual),
+		            'total' => $total_pages,
+		            'prev_text'    => __('« prev'),
+		            'next_text'    => __('next »'),
+		        ); 
+		       // var_dump($arrayPagination); ?> 
+	       		<?php echo paginate_links($arrayPagination); ?> 
+	       	<?php } 
+	       	echo'</p></div></div> ';
 	}
+	//}
+
 	wp_reset_postdata();
     exit;
   }
 
  function mostrarUsuariosInvestigacion($idAuthor,$cont){
+ 	//---funcion para borrar si no la funcion anterior no se utilizar array $idsTodosUsuarios
  	$usuario = get_user_by('ID',$idAuthor);
  	//echo $cont;
  	if($cont == 0){
@@ -480,7 +505,7 @@ function my_get_user()  {
     $posts =  new WP_Query($args);
     //var_dump($posts);
 	if(empty($posts)){
-		echo '<p class="text-center">No hay descargas</p>';
+		echo '<p class="text-center">No hay becas</p>';
 	}else{
 		echo '<div class="container quitarPadding">
 		<div class="col-sm-12  quitarPadding">';
@@ -523,9 +548,68 @@ function my_get_user()  {
   add_action('wp_ajax_my_get_becas', 'my_get_becas');
   add_action('wp_ajax_nopriv_my_get_becas', 'my_get_becas');
 
+
+  /*---  llenar comentarios usuario -----*/
+  function my_get_CommentsUser()  {
+	$cont=0;
+	$paginaActual = 1;
+	$userId = 1;
+	$numeroShowPorPagina = 6;
+	if(!empty($_POST['pagAct'])){
+		$paginaActual = $_POST['pagAct'];
+	}
+	if(!empty($_POST['userId'])){
+		$userId = $_POST['userId'];
+	}
+
+	$args = array (
+	'post_type' => 'contribuciones' ,
+	'orderby' => 'id',
+	'order'   => 'DESC',
+	'author' => $userId,
+	'posts_per_page' => $numeroShowPorPagina, // post per page
+    'post_status' => 'publish',
+    'paged' => $paginaActual,
+	);
+	$data = new WP_Query ($args);
+	echo '<input id="paginaActual" type="hidden" value="'.$paginaActual.'" name="paginaActual">';
+	if($data->have_posts()) : 
+	echo '<div class="container quitarPadding"><div class="col-sm-12  quitarPadding">';
+		  while($data->have_posts())  : $data->the_post();
+			echo '<div class="col-xs-12 col-sm-6 col-md-4">';
+		    get_template_part('targetas-author-contribuciones'); 
+			echo '</div>';
+		  endwhile;
+	echo'</div></div>';
+	echo '<div class="carousel-nav sombraInferior"><div class="container quitarPadding"><p class="tituloNavegacionCarousel alinear-derecha">';
+	       	$total_pages = $data->max_num_pages;
+		    if ($total_pages > 1){
+		        $current_page = max(1, $paginaActual);
+				$arrayPagination =array(
+		            'base' => get_pagenum_link(1) . '%_%',
+		            'format' => '/page/%#%',
+		            'current' => $current_page,
+		            'total' => $total_pages,
+		            'prev_text'    => __('« prev'),
+		            'next_text'    => __('next »'),
+		        ); ?> 
+	       		<?php echo paginate_links($arrayPagination); ?> 
+	       	<?php } 
+	       	echo '</p></div></div>';
+	 else :?>
+		<h3><?php _e('404 Error&#58; Not Found', ''); ?></h3>
+	<?php endif; 
+    wp_reset_postdata();
+    exit;
+  }
+ 
+  add_action('wp_ajax_my_get_CommentsUser', 'my_get_CommentsUser');
+  add_action('wp_ajax_nopriv_my_get_CommentsUser', 'my_get_CommentsUser');
+
 /*---  function filtro publicaciones -  -----*/
   function my_get_publicacion() {
 	$cont=0;
+	$paginaActual = 1;
     if(is_array($_POST['catA'])){
 		$catA_id = implode(',',$_POST['catA']);
 	} else {
@@ -536,6 +620,7 @@ function my_get_user()  {
 	} else {
 		$catB_id = $_POST['catB'];
 	}
+	if(!empty($_POST['pagAct'])){ $paginaActual = $_POST['pagAct'];}
 	//echo "<script>javascript: alert('id".var_dump($catA_id)."')></script>";
 	//var_dump('comentarios'.$comentarios);
 	
@@ -544,6 +629,8 @@ function my_get_user()  {
       'post_status' => 'publish',
       'order'=> 'DESC',
       'orderby' => 'date',
+      'posts_per_page' => 6, // post per page
+      'paged' => $paginaActual
     );
     $args['tax_query'] = array(
   		'relation' => 'AND'
@@ -564,33 +651,47 @@ function my_get_user()  {
 			);
 	    array_push($args['tax_query'],$argsCatB);
 	}
-
+	echo '<input id="paginaActual" type="hidden" value="'.$paginaActual.'" name="paginaActual">';
 	global $post;
-    $posts =  query_posts($args);
+    //$posts =  query_posts($args);
+    $posts =  new WP_Query($args);
+    //var_dump($posts);
 	if(empty($posts)){
 		echo '<p class="text-center">No hay descargas</p>';
-	}
-    foreach ($posts as $post)   {
-		setup_postdata($post);
-		$args = array(
-	      'post_type' => 'publicacion',
-	      'post_status' => 'publish',
-	      'post_parent' => $post->ID,
-	      'order'=> 'DESC',
-	      'orderby' => 'date',
-	    );
-	    
-		if($cont == 0){
-			echo '<div class="item active" cont="'.($cont+1).'">';
-		}else{
-			echo '<div class="item" cont="'.($cont+1).'">';
-		}
-	   	echo '<div class="col-xs-12 col-sm-6 col-md-4">';
-		get_template_part( 'targetas-publicacion' ); 
+	}else{
+		echo '<div class="container quitarPadding">
+		<div class="col-sm-12  quitarPadding">';
+	    while ( $posts->have_posts() ) :
+	    	$posts->the_post();
+	    	echo '<div class="col-xs-12 col-sm-6 col-md-4">';
+			get_template_part( 'targetas-publicacion' ); 
+			echo '</div>';
+		endwhile;
 		echo '</div></div>';
-		$cont++;
-    }
-    //echo "<script language='javascript'> jQuery('#carousel-example-generic-investigacion .contador').attr('cont',$cont) </script>";
+	}
+	echo '<div class="carousel-nav sombraInferior"><div class="container quitarPadding"><p class="tituloNavegacionCarousel" ><a href="'.home_url('/publicacion/').'">Más descargas</a>
+			</p><p class="tituloNavegacionCarousel pull-right">';
+	//echo "---- $cont ---";
+    $total_pages = $posts->max_num_pages;
+    //var_dump($total_pages);
+		    if ($total_pages > 1){
+		        $current_page = max(1, $paginaActual);
+		        //echo "paginaActual";
+		        //var_dump($current_page);
+		        //echo "get pagenun link";
+		        //var_dump(get_pagenum_link(1));
+		        //echo "----";
+				$arrayPagination =array(
+		            'base' => home_url('/descargas/') . '%_%',
+		            'format' => '/page/%#%',
+		            'current' => $current_page,
+		            'total' => $total_pages,
+		            'prev_text'    => __('« prev'),
+		            'next_text'    => __('next »'),
+		        );  
+		        echo paginate_links($arrayPagination);
+		    } 
+		    echo '</p></div></div>';
     wp_reset_postdata();
     exit;
   }

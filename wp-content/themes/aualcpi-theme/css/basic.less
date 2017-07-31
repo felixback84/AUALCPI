@@ -116,6 +116,11 @@ article>.row, .espacioBotton{
 .alinear-derecha{
 	float: right!important;
 }
+
+#carousel-aliados,#carousel-aliados-2{
+ 	.thumbnail > img{max-width: 70%;}
+}
+
 .btnAporteIdeas,.btnSuscribirme{
 	color: #000;
 	background-color: #fff;
@@ -434,11 +439,29 @@ article>.row, .espacioBotton{
 .alinearDerecha{
 
 }
-.avatarFooter{
-	padding-top: 5px;
-	.avatar{
-		-webkit-box-shadow: none;
-		box-shadow: none; 
+#footerUser{
+	float:right;
+	margin-bottom: 100px;
+	&>div{ 
+		@media (max-width: 767px) { 
+				margin-right: 25px;
+				text-align: right;
+				float: right; 
+			}
+	}
+	.avatarFooter{
+		padding: 0;
+		padding-top: 5px;
+		float:right;
+		.avatar{
+			margin: 0;
+    		float: right;
+			-webkit-box-shadow: none;
+			box-shadow: none; 
+			/* @media (max-width: 767px) { 
+				padding-right: 25px;
+			} */
+		}
 	}
 }
 /*.FooterAdmin{*/
@@ -471,6 +494,7 @@ article>.row, .espacioBotton{
 	}
 }
 */
+
 #footer1{
 	background-color: #000;
 	/*padding-left: 25px;*/

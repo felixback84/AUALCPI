@@ -89,179 +89,72 @@
 		</div>
 	</div>
 </div> -->
+<!-- inicio contribuciones autor-->
+<div class="container quitarPadding paginaHome">
+	<div class="col-sm-12  quitarPadding">
+		<h1 id="text-investigador">Contribuciones retos regionales</h1>
+	</div>
+</div>
+<?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;?> 
+<?php 
+//var_dump($paged);
+$idsUsuarios= array();
+$cont=0;
+$numeroShowPorPagina = 6;
+$args = array (
+	'post_type' => 'contribuciones' ,
+	'orderby' => 'id',
+	'order'   => 'DESC',
+	'author' => $userId,
+	'posts_per_page' => $numeroShowPorPagina, // post per page
+    'post_status' => 'publish',
+    'paged' => $paged,
+);
+$data = new WP_Query ($args); ?>
+<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Loading_icon.gif" style="display:none;" class="loaderwp" width="25px" height="25px">
+ <div id="the-posts-author" data-url="<?php echo admin_url('admin-ajax.php'); ?>" data-id="<?php echo $userId; ?>" >
+<?php echo '<input id="paginaActual" type="hidden" value="'.$paged.'PAGE" name="paginaActual">'; ?>
+	<?php if($data->have_posts()) : ?>
+	<div class="container quitarPadding">
+		<div class="col-sm-12  quitarPadding">
+		  <?php  while($data->have_posts())  : $data->the_post();?>
+			<div class="col-xs-12 col-sm-6 col-md-4">
+		         <?php get_template_part('targetas-author-contribuciones'); ?>
+			</div>
+		    <?php endwhile;?> 
+		</div>
+	</div>
+	<div class="carousel-nav sombraInferior">
+		<div class="container quitarPadding">
+	       	<p class="tituloNavegacionCarousel alinear-derecha">
+	       	<?php $total_pages = $data->max_num_pages;
+		    if ($total_pages > 1){
+		        $current_page = max(1, get_query_var('paged'));
+				$arrayPagination =array(
+		            'base' => get_pagenum_link(1) . '%_%',
+		            'format' => '/page/%#%',
+		            'current' => $current_page,
+		            'total' => $total_pages,
+		            'prev_text'    => __('« prev'),
+		            'next_text'    => __('next »'),
+		        ); ?> 
+	       		<?php echo paginate_links($arrayPagination); ?> 
+	       	<?php } ?>
+	       		
+	       	</p>
+	   		
+		</div>  
+	</div> 
+	<?php else :?>
+		<h3><?php _e('404 Error&#58; Not Found', ''); ?></h3>
+	<?php endif; ?>
+</div>
 
-<!-- inicio contribuciones-->
-<?php  $tituloContribuciones='Contribuciones recientes a retos regionales'; ?>
-<?php  $linkContribuciones= home_url('/contribuciones/'); ?>
-<div class="hidden-xs hidden-sm">
-	<div class="container paginaHome">
-		<div class="row">
-			<div class="col-sm-12 quitarEspacio">
-				<h1><?php echo $tituloContribuciones; ?></h1>	
-				<div id="carousel-example-generic-publicacion" class="carousel slide" data-ride="carousel"  data-type="mulsti">
-				<!-- Wrapper for slides -->
-					<div class="carousel-inner" role="listbox"> 
-						<?php $args = array (
-							'post_type' => 'contribuciones' ,
-							'posts_per_page' => 15, 
-							'orderby' => 'id',
-							'order'   => 'DESC',
-						);
-						$lastBlog = new WP_Query ($args);
-						$cont=0;
-						$numeroElementos=3;
-						if($lastBlog->have_posts()):
-							while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-								<?php if($cont== 0){ ?>
-									<div class="item active" cont="1">
-								<?php } ?> 
-								<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
-									</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
-								<?php } ?> 
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<?php get_template_part('targetas-author-contribuciones'); ?>
-										</div>	
-								<?php if($cont%$numeroElementos == 0){ ?> 
-									
-								<?php } ?> 								
-							 	<?php $cont++; endwhile;
-							endif;	
-						wp_reset_postdata(); 
-						//$fin+=2; ?></div>
-					</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
-					<!-- Controls -->
-						<a class="right carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="next">
-						    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-						    <span class="sr-only">Next</span>
-						  </a>
-						  <a class="left carousel-control" href="#carousel-example-generic-publicacion" role="button" data-slide="prev">
-						    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-						    <span class="sr-only">Previous</span>
-						</a>
-				</div>
-			</div>
-		</div>
-	</div>
-		<div class="carousel-nav sombraInferior">
-			<div class="container quitarPadding">
-				<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkContribuciones;?>">Más contribuciones</a></p>
-				<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP"></span>  de <span id="pagPC"></span></p>
-			</div>
-		</div>
+<?php wp_reset_postdata();?>
+
 </div>
-<div class="visible-sm">
-	<div class="container paginaHome">
-		<div class="row">
-			<div class="col-sm-12 quitarEspacio">
-				<h1><?php echo $tituloContribuciones; ?></h1>	
-				<div id="carousel-example-generic-publicacion-2" class="carousel slide" data-ride="carousel"  data-type="mulsti">
-				<!-- Wrapper for slides -->
-					<div class="carousel-inner" role="listbox"> 
-						<?php $args = array (
-							'post_type' => 'contribuciones' ,
-							'posts_per_page' => 15, 
-							'orderby' => 'id',
-							'order'   => 'DESC',
-						);
-						$lastBlog = new WP_Query ($args);
-						$cont=0;
-						$numeroElementos=2;
-						if($lastBlog->have_posts()):
-							while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-								<?php if($cont== 0){ ?>
-									<div class="item active" cont="1">
-								<?php } ?> 
-								<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
-									</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
-								<?php } ?> 
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<?php get_template_part('targetas-author-contribuciones'); ?>
-										</div>	
-								<?php if($cont%$numeroElementos == 0){ ?> 
-									
-								<?php } ?> 								
-							 	<?php $cont++; endwhile;
-							endif;	
-						wp_reset_postdata(); 
-						//$fin+=2; ?></div>
-					</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
-					<!-- Controls -->
-						<a class="right carousel-control" href="#carousel-example-generic-publicacion-2" role="button" data-slide="next">
-						    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-						    <span class="sr-only">Next</span>
-						  </a>
-						  <a class="left carousel-control" href="#carousel-example-generic-publicacion-2" role="button" data-slide="prev">
-						    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-						    <span class="sr-only">Previous</span>
-						</a>
-				</div>
-			</div>
-		</div>
-	</div>
-		<div class="carousel-nav sombraInferior">
-			<div class="container quitarPadding">
-				<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkContribuciones;?>">Más contribuciones</a></p>
-				<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP-2"></span>  de <span id="pagPC-2"></span></p>
-			</div>
-		</div>
-</div>
-<div class="visible-xs">
-	<div class="container paginaHome">
-		<div class="row">
-			<div class="col-sm-12 quitarEspacio">
-				<h1><?php echo $tituloContribuciones; ?></h1>	
-				<div id="carousel-example-generic-publicacion-3" class="carousel slide" data-ride="carousel"  data-type="mulsti">
-				<!-- Wrapper for slides -->
-					<div class="carousel-inner" role="listbox"> 
-						<?php $args = array (
-							'post_type' => 'contribuciones' ,
-							'posts_per_page' => 15, 
-							'orderby' => 'id',
-							'order'   => 'DESC',
-						);
-						$lastBlog = new WP_Query ($args);
-						$cont=0;
-						$numeroElementos=1;
-						if($lastBlog->have_posts()):
-							while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
-								<?php if($cont== 0){ ?>
-									<div class="item active" cont="1">
-								<?php } ?> 
-								<?php if($cont%$numeroElementos == 0 && $cont!= 0){ ?> 
-									</div><div class="item" cont="<?php echo (round($cont/$numeroElementos))+1; ?>">
-								<?php } ?> 
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<?php get_template_part('targetas-author-contribuciones'); ?>
-										</div>	
-								<?php if($cont%$numeroElementos == 0){ ?> 
-									
-								<?php } ?> 								
-							 	<?php $cont++; endwhile;
-							endif;	
-						wp_reset_postdata(); 
-						//$fin+=2; ?></div>
-					</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
-					<!-- Controls -->
-						<a class="right carousel-control" href="#carousel-example-generic-publicacion-3" role="button" data-slide="next">
-						    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-						    <span class="sr-only">Next</span>
-						  </a>
-						  <a class="left carousel-control" href="#carousel-example-generic-publicacion-3" role="button" data-slide="prev">
-						    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-						    <span class="sr-only">Previous</span>
-						</a>
-				</div>
-			</div>
-		</div>
-	</div>
-		<div class="carousel-nav sombraInferior">
-			<div class="container quitarPadding">
-				<p class="tituloNavegacionCarousel" ><a href="<?php echo $linkContribuciones;?>">Más contribuciones</a></p>
-				<p class="tituloNavegacionCarousel pull-right" >Página <span id="pagP-3"></span>  de <span id="pagPC-3"></span></p>
-			</div>
-		</div>
-</div>
-<!-- fin de contribuciones-->
+
+<!-- fin contribuciones autor-->
 <div class="container  quitarPadding">
 	<div class="row">
 		<div class="col-sm-12">

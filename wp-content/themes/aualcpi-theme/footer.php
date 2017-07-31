@@ -38,7 +38,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-12 col-sm-8 col-md-5 col-lg-4  quitarPadding" style="color: white;">
+				<div id="footerUser" class="col-xs-12 col-sm-8 col-md-5 col-lg-4  quitarPadding" style="color: white;">
 		        	<div class="col-xs-6 col-sm-6 datosFooter quitarPadding">
 						<?php  $usuarioId = false; $user1 = false;?>
 			        	<?php  	$usuarioId=get_post_meta(81,'UsuarioA')[0];

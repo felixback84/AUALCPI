@@ -340,6 +340,7 @@ function cargarUsuarios(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,Are
           e.preventDefault();
           var href = $(this).attr('href');
           paginaBuscar = href.substr(-1);
+          if(paginaBuscar === '/'){paginaBuscar = 1;}
           var numPag = $(e.target).text();
           //alert(paginaBuscar);
           var urlAjax = $('.btn-cargar-investigadores').data('url');
@@ -357,7 +358,7 @@ function cargarUsuarios(urlAjax,comentarios,taxonomiaA,taxonomiaB,taxonomiaC,Are
           $("select[name='filterStatus[]'] option:selected").each(function ()  {
               filterStatus.push($(this).val());
           });
-          cargarUsuarios(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus,filterAreasName);
+          cargarUsuarios(urlAjax,filterComentarios,filterCiudades, filterAreas,filterStatus,filterAreasName,paginaBuscar);
         });
       }
     });
@@ -441,7 +442,7 @@ $('.btn-cargar-publicacion').on('click',function(){
     cargarPublicacion(urlAjax,filterCategorias, filterTipos);
 });
 
-function cargarPublicacion(urlAjax,taxonomiaA,taxonomiaB){
+function cargarPublicacion(urlAjax,taxonomiaA,taxonomiaB,paginaBuscar = 1){
     $("#the-posts-publicacion").children().remove();
     //mostrar el loader en wordpress
     $('.loaderwp').show();
@@ -452,49 +453,83 @@ function cargarPublicacion(urlAjax,taxonomiaA,taxonomiaB){
         'action': 'my_get_publicacion',
         'catA': taxonomiaA,
         'catB': taxonomiaB,
+        'pagAct' : paginaBuscar,
       },
       success: function(data, textStatus, XMLHttpRequest)      {
           $("#the-posts-publicacion").append(data);
       },
       complete: function(XMLHttpRequest, textStatus)      {
         $('.loaderwp').hide();
-        //--- mostrar 3 post a la vez si el dispositibo es sm o mayor
-        $('#carousel-example-generic-publicacion[data-type="multi"] .item').each(function(){
-           var tamanioPantalla = $(window).width();
-             //alert (tamanioPantalla);
-            if( tamanioPantalla > 990){
-              //alert (tamanioPantalla);
-              var next = $(this).next();
-              if (!next.length) {
-                next = $(this).siblings(':first');
-              }
-              next.children(':first-child').clone().appendTo($(this));
-              
-              for (var i=0;i<1;i++) {
-                next=next.next();
-                if (!next.length) {
-                  next = $(this).siblings(':first');
-                }
-                next.children(':first-child').clone().appendTo($(this));
-              }
-            }
-            if((tamanioPantalla < 991) & (tamanioPantalla > 767)){
-                //alert (tamanioPantalla);
-                var next = $(this).next();
-                if (!next.length) {
-                  next = $(this).siblings(':first');
-                }
-                next.children(':first-child').clone().appendTo($(this));
-                
-                for (var i=0;i<1;i++) {
-                  next=next.next();
-                  if (!next.length) {
-                    next = $(this).siblings(':first');
-                  }
-                }
-            }
+        $('#the-posts-publicacion .page-numbers').on('click',function(e){
+          e.preventDefault();
+          var href = $(this).attr('href');
+          paginaBuscar = href.substr(-1);
+          //var numPag = $(e.target).text();
+          //alert(paginaBuscar);
+          var urlAjax = $('.btn-cargar-publicacion').data('url');
+          //alert(urlAjax);
+          filterCategorias = [];  filterTipos = [];
+          $("select[name='filterCategorias[]'] option:selected").each(function ()  {
+              //alert(urlAjax);
+              filterCategorias.push(parseInt($(this).val()));
+          });
+          $("select[name='filterTipos[]'] option:selected").each(function ()  {
+              //alert(urlAjax);
+              filterTipos.push(parseInt($(this).val()));
+          });
+          //alert(checked);
+          cargarPublicacion(urlAjax,filterCategorias, filterTipos,paginaBuscar);
         });
-        
+      }
+    });
+  }
+
+
+
+/*----- cargar informacion usuario ---*/
+$('#the-posts-author .page-numbers').on('click',function(e){
+    e.preventDefault();
+    var href = $(this).attr('href');
+    paginaBuscar = href.substr(-1);
+    if(paginaBuscar === '/'){paginaBuscar = 1;}
+    //alert(paginaBuscar);
+    var urlAjax = $('#the-posts-author').data('url');
+    var userId = $('#the-posts-author').data('id');
+    //alert(urlAjax);
+    //alert(userId);
+    cargarComentariosUser(urlAjax,paginaBuscar,userId);
+});
+
+function cargarComentariosUser(urlAjax,paginaBuscar = 1,userId = 1){
+    $("#the-posts-author").children().remove();
+    //mostrar el loader en wordpress
+    //alert('hola');
+    $('.loaderwp').show();
+    $.ajax({
+      type: 'POST',
+      url: urlAjax,
+      data: {
+        'action': 'my_get_CommentsUser',
+        'pagAct' : paginaBuscar,
+        'userId' : userId,
+      },
+      success: function(data, textStatus, XMLHttpRequest)      {
+          $("#the-posts-author").append(data);
+      },
+      complete: function(XMLHttpRequest, textStatus)      {
+        $('.loaderwp').hide();
+        $('#the-posts-author .page-numbers').on('click',function(e){
+            e.preventDefault();
+            var href = $(this).attr('href');
+            paginaBuscar = href.substr(-1);
+            if(paginaBuscar === '/'){paginaBuscar = 1;}
+            //alert(paginaBuscar);
+            var urlAjax = $('#the-posts-author').data('url');
+            var userId = $('#the-posts-author').data('id');
+            //alert(urlAjax);
+            //alert(userId);
+            cargarComentariosUser(urlAjax,paginaBuscar,userId);
+        });
       }
     });
   }
@@ -519,7 +554,6 @@ cont=$('#contContribuciones5').val();
 $('.contribuciones5').text(cont);
 cont=$('#contContribuciones6').val();
 $('.contribuciones6').text(cont);
-
 
 
 

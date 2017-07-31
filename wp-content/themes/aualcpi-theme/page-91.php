@@ -100,9 +100,10 @@
 </div>
 <?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;?> 
 <?php 
+//var_dump($paged);
 $idsUsuarios= array();
 $cont=0;
-$numeroPorPagina = 6;
+$numeroShowPorPagina = 6;
 $args = array(
   'post_type' => 'investigacion',
   'post_status' => 'publish',
@@ -111,7 +112,9 @@ $args = array(
 );
 $posts =  query_posts($args);
 foreach ($posts as $post){
-	//if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
+	if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);
+		$cont++;
+	}
 	$args = array(
       'post_type' => 'contribuciones',
       'post_status' => 'publish',
@@ -126,130 +129,73 @@ foreach ($posts as $post){
 		foreach ($postContribuciones as $postContribucion){
  	 	if($nContribuciones != '0'){
 			//echo 'idAutho'.$postContribucion->post_author;
-			if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);}
+			if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);
 			$cont++;
+			}
 		}
     }  
 }
-$total_pages =  /$numeroPorPagina 
-foreach ($idsUsuarios as $id) {
-	$usuario = get_user_by('ID',$id);?>
+//echo "cont :$cont";
+$total_pages = round($cont /$numeroShowPorPagina) ;
+//var_dump($total_pages);
+//echo "hola";
+//var_dump($idsUsuarios); 
+$limitShowPaged=$numeroShowPorPagina*$paged;
+$initShowPaged=$numeroShowPorPagina*($paged-1);
+//var_dump($limitShowPaged,$initShowPaged);
+//echo "page: $paged";
+//echo "limit: $limitShowPaged";
+//echo "init: $initShowPaged";
+?>
+
+<div id="the-posts-user">
+<?php if(!empty($idsUsuarios)){ ?>
 <div class="container quitarPadding">
 		<div class="col-sm-12  quitarPadding">
-		  <?php  while($data->have_posts())  : $data->the_post();?>
-			<div class="col-xs-12 col-sm-6 col-md-4">
-		         <?php set_query_var('user',$usuario);
-						get_template_part('targetas-autores'); ?>
-			</div>
-		    <?php endwhile;?> 
+			<?php foreach ($idsUsuarios as $key => $id) {
+				if($key<$limitShowPaged && $key >= $initShowPaged){
+				//echo "id: $id";
+				$usuario = get_user_by('ID',$id);?>
+				<div class="col-xs-12 col-sm-6 col-md-4">
+			         <?php set_query_var('user',$usuario);
+							get_template_part('targetas-autores'); ?>
+				</div>
+		    <?php } } ?> 
 		</div>
 	</div>
-<?php } wp_reset_postdata();?>
-
-<div id="the-posts-user"">
-	<?php if($data->have_posts()) : ?>
-
-	
 	<div class="carousel-nav sombraInferior">
 		<div class="container quitarPadding">
 			<p class="tituloNavegacionCarousel" >
-				<a href="<?php echo home_url('/investigacion/');?>">Más retos regionales</a>
+				<a href="<?php echo home_url('/investigadores/');?>">Más investigadores</a>
 			</p>
-		    
 	       	<p class="tituloNavegacionCarousel pull-right">
-	       	<?php $total_pages = $data->max_num_pages;
+	       	<?php //$total_pages = $data->max_num_pages;
+	       	//var_dump($total_pages);
 		    if ($total_pages > 1){
-		        $current_page = max(1, get_query_var('paged'));
-						$arrayPagination =array(
-		            'base' => get_pagenum_link(1) . '%_%',
+		       	//$current_page = max(1, get_query_var('paged'));
+		        //echo "current: $current_page";
+		        //echo home_url('/bases-de-datos-investigadoras/');
+				$arrayPagination =array(
+		            'base' => home_url('/bases-de-datos-investigadoras/') . '%_%',
 		            'format' => '/page/%#%',
-		            'current' => $current_page,
+		            //'current' => $paged,
+		            'current' => max(1,$paged),
 		            'total' => $total_pages,
 		            'prev_text'    => __('« prev'),
 		            'next_text'    => __('next »'),
-		        ); ?> 
+		        ); 
+		       //var_dump($arrayPagination); ?> 
 	       		<?php echo paginate_links($arrayPagination); ?> 
 	       	<?php } ?>
-	       		
 	       	</p>
-	   		
 		</div>  
 	</div> 
-
-
-	<?php else :?>
-		<h3><?php _e('404 Error&#58; Not Found', ''); ?></h3>
-	<?php endif; ?>
+<?php }else{ ?>
+	<h3><?php _e('No hay usuarios con estas descripciones', ''); ?></h3>
+<?php } wp_reset_postdata();?>
 </div>
 
-<?php wp_reset_postdata();?>
 <!-- fin investigadores-->
-
-<div class="container  quitarPadding">
-		<div class="col-xs-12 quitarEspacio">
-		<h1 id="text-investigador">Investigadores regionales</h1>
-		<div id="carousel-example-generic-autores" class="carousel slide" data-ride="carousel" data-type="multi" >
-				<div id="the-posts-user" class="carousel-inner" role="listbox"> 
-				<?php 
-				$args = array(
-			      'post_type' => 'investigacion',
-			      'post_status' => 'publish',
-			      'order'=> 'DESC',
-			      'orderby' => 'date',
-			    );
-
-			    $posts =  query_posts($args);
-				$idsUsuarios= array();
-
-			    foreach ($posts as $post){
-			    	//if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);}
-					$args = array(
-				      'post_type' => 'contribuciones',
-				      'post_status' => 'publish',
-				      'post_parent' => $post->ID,
-				      'order'=> 'DESC',
-				      'orderby' => 'date',
-				    );
-				    $postContribuciones =  query_posts($args);
-		 	   ( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
-			 	 	//echo $nContribuciones;
-				
-			 		foreach ($postContribuciones as $postContribucion){
-				 	 	if($nContribuciones != '0'){
-							//echo 'idAutho'.$postContribucion->post_author;
-							if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);}
-							$cont++;
-						}
-				    }  
-			    }
-			    $cont=0;
-			    foreach ($idsUsuarios as $id) {
-			    	$usuario = get_user_by('ID',$id);
-					//var_dump($usuario); ?>
-					<?php if($cont == 0){ ?><div class="item active" cont="<?php echo $cont+1; ?>"><?php }else{ ?><div class="item" cont="<?php echo $cont+1; ?>"><?php } ?>
-					<div class="col-xs-12 col-sm-6 col-md-4">
-						<?php set_query_var('user',$usuario);
-						get_template_part('targetas-autores'); ?>
-					</div></div>
-				<?php $cont++; } wp_reset_postdata();?>
-					
-				</div><div class="contador"  cont="<?php echo $cont; ?>"></div>
-				<a class="right carousel-control" href="#carousel-example-generic-autores" role="button" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				  </a>
-				  <a class="left carousel-control" href="#carousel-example-generic-autores" role="button" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				</a>
-			</div>
-		</div>
-</div>
-<div class="carousel-nav sombraInferior">
-	<div class="container quitarPadding">
-		<p class="tituloNavegacionCarousel alinear-derecha" >Página <span id="pagA"></span> de <span id="pagAC"></span> </p>
-	</div>
-</div>
 
 <!-- inicio Retosregionales-->
 <?php $tituloRetos = 'Retos regionales'; ?>

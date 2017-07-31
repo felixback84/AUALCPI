@@ -3,7 +3,7 @@
 		<?php the_title( sprintf('<h4 class="entry-title"><a href="%s">', esc_url(get_permalink() )),'</a></h4>'); ?>
 		<small> Publicado el: <?php  the_time('F j, Y'); ?> a las <?php the_time('g:i a') ?>, in <?php the_category(); ?> </small>
 	</header> -->
-	<div class="bloqueTargeta  bloqueTargetaFormato">
+	<div class="bloqueTargeta bloqueTargetaFormatoContribucionAutor">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12">
 				<div class="panel panel-default">
