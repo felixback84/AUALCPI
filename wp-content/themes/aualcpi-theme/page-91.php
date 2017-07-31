@@ -84,7 +84,7 @@
 		<div class="well">
 			<div class="row">
 				<button id="btn-abrir" class="btn" type="button" data-toggle="collapse" data-target="#collapseExample-2" aria-expanded="false" aria-controls="collapseExample-2">
-				 ¿Qué investigador estás buscando hoy? <span class="pull-right glyphicon glyphicon-search" > </span>
+				 ¿Qué investigador buscas hoy? <span class="pull-right glyphicon glyphicon-search" > </span>
 				</button>
 			</div>
 		</div>

@@ -14,7 +14,10 @@
 							<div class="thumbnail"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/cuadroPost.png" alt="imagen de defecto" width="" height="" /></div>
 						<?php endif; ?>
 						<h4><a href="<?php echo esc_url(get_permalink()); ?> "><?php echo wp_trim_words(get_the_title(),8,'...'); ?></a></h4>
-						<p><span class="textoGrisClaro">Por: <?php the_author(); ?></span></p>
+						<!-- <p><span class="textoGrisClaro">Por: <?php //the_author(); ?></span></p> -->
+						<p><span class="textoGrisClaro"><?php $terms_list=wp_get_post_terms($post->ID,'author_publicaciones');
+							echo "Autor: ".mostrarCategorias($terms_list,'|');
+						?></span></p>
 						<p><span class="textoGrisClaro"><?php $terms_list=wp_get_post_terms($post->ID,'tipo_publicaciones');
 							echo "Categoria: ".mostrarCategorias($terms_list,'|');
 						?></span></p>

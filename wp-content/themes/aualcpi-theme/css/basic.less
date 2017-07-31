@@ -441,15 +441,11 @@ article>.row, .espacioBotton{
 }
 #footerUser{
 	float:right;
-	margin-bottom: 100px;
-	&>div{ 
-		@media (max-width: 767px) { 
-				margin-right: 25px;
-				text-align: right;
-				float: right; 
-			}
-	}
+	margin-bottom: 20px;
+	margin-top:-25px;
+	background: red;
 	.avatarFooter{
+		width: 160px;
 		padding: 0;
 		padding-top: 5px;
 		float:right;
@@ -464,6 +460,21 @@ article>.row, .espacioBotton{
 		}
 	}
 }
+@media (min-width: 768px) {
+	#footerUser{
+		margin-top:-65px;
+	}
+}
+@media (max-width: 767px) { 
+	#footerUser{
+		&>div{ 
+		margin-right: 25px;
+		text-align: right;
+		float: right; 
+			}
+	}
+}
+
 /*.FooterAdmin{*/
 	/*border-top: 1px dashed #333;*/
 	/*padding: 10px;*/

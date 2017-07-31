@@ -38,8 +38,8 @@
 						</div>
 					</div>
 				</div>
-				<div id="footerUser" class="col-xs-12 col-sm-8 col-md-5 col-lg-4  quitarPadding" style="color: white;">
-		        	<div class="col-xs-6 col-sm-6 datosFooter quitarPadding">
+				<div id="footerUser" class="col-xs-12 col-sm-6 col-md-5 col-lg-4  quitarPadding" style="color: white;">
+		        	<div class="col-xs-12 col-sm-6 datosFooter quitarPadding">
 						<?php  $usuarioId = false; $user1 = false;?>
 			        	<?php  	$usuarioId=get_post_meta(81,'UsuarioA')[0];
 			        			$cargo1=get_post_meta(81,'UsuarioALabel')[0];
@@ -51,7 +51,7 @@
 							<p class="correo"><?php echo $user1->user_email; ?></p>
 			        	<?php } ?>
 		        	</div>
-					<div class="col-xs-6 col-sm-6 avatarFooter">
+					<div class="col-xs-12 col-sm-6 avatarFooter">
 			        	<?php if(!empty($user1) && $user1 != false ){ ?>
 			        		
 								<?php $avatar= get_avatar( $user1->ID, '150' ,'','logo usurio',array('class' => 'img-circle' ,)); ?> 

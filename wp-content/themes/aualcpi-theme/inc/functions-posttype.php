@@ -591,6 +591,35 @@ flush_rewrite_rules();
 		===================================
 */
 
+
+function awesome_custom_taxonomies_publicaciones_author() {
+	//add new taxonomy no hierarchical
+	$labels = array(
+		'name' => 'Autores',
+		'singular_name' => 'Autor',
+		'search_items' => 'Search Types',
+		'all_items' => 'All Types',
+		'parent_item' => 'Parent Type',
+		'parent_item_colon' => 'Parent Type:',
+		'edit_item' => 'Edit Type',
+		'update_item' => 'Update Type',
+		'add_new_item' => 'Add New Work Type',
+		'new_item_name' => 'New Type Name',
+		'menu_name' => 'Autores'
+	);
+	$args = array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'author_publicaciones' )
+	);
+	register_taxonomy('author_publicaciones', array('publicacion'), $args);
+}
+
+add_action( 'init' , 'awesome_custom_taxonomies_publicaciones_author');
+
 function awesome_custom_taxonomies_categoria_conocimiento() {
 	
 	//add new taxonomy hierarchical
@@ -678,6 +707,7 @@ function awesome_custom_taxonomies_publicaciones_tag() {
 }
 
 add_action( 'init' , 'awesome_custom_taxonomies_publicaciones_tag');
+
 
 /*
 		===================================
