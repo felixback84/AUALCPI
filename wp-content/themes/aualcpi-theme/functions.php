@@ -345,7 +345,11 @@ function my_get_user()  {
 	$idsTodosUsuarios= array();
     foreach ($posts as $post)   {
     	//if(!in_array($post->post_author,$idsTodosUsuarios)){ array_push($idsTodosUsuarios,$post->post_author);}
-    	if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);$cont++;}
+    	$author_obj = get_user_by('ID',$postContribucion->post_author);
+				//var_dump($author_obj); 
+		if($author_obj->roles['0']== 'Investigador'){
+    		if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);$cont++;}
+    	}
 		setup_postdata($post);
 		//var_dump($post);
 		//var_dump('post id'.$post->ID);
@@ -360,22 +364,27 @@ function my_get_user()  {
 	 	   ( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
 	 	 //echo $nContribuciones;
 	 	 foreach ($postContribuciones as $postContribucion){
-	 	 	if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
-				//echo 'idAutho'.$postContribucion->post_author;
-				if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);$cont++;}
+	 	 	$author_obj = get_user_by('ID',$postContribucion->post_author);
+				//var_dump($author_obj); 
+			if($author_obj->roles['0']== 'Investigador'){
+		 	 	if($nContribuciones != '0' && $comentarios == 'ConContribuciones' ){
+					//echo 'idAutho'.$postContribucion->post_author;
+					if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);$cont++;}
+					
+				}
+				if($comentarios == 'Contribuciones' ){
+					//echo 'idAutho'.$postContribucion->post_author;
+					if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);$cont++;}
+					
+				}
+			if($nContribuciones == '0' && $comentarios == 'SinContribuciones' ){
 				
+				//echo 'idAutho'.$post->post_author;
+					if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);$cont++;}
+				}
 			}
-			if($comentarios == 'Contribuciones' ){
-				//echo 'idAutho'.$postContribucion->post_author;
-				if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);$cont++;}
-				
-			}
-	    }  
-		if($nContribuciones == '0' && $comentarios == 'SinContribuciones' ){
-			//echo 'idAutho'.$post->post_author;
-			if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);$cont++;}
 			
-		}
+	    }  
     }
     //var_dump($idsUsuarios);
     $total_pages = round($cont /$numeroShowPorPagina) ;
