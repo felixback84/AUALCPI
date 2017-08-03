@@ -100,54 +100,71 @@
 </div>
 <?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;?> 
 <?php 
-//var_dump($paged);
-$idsUsuarios= array();
 $cont=0;
 $numeroShowPorPagina = 6;
+$numeroElementos=3;
+$idsUsuarios= array();
 $args = array(
-  'post_type' => 'investigacion',
-  'post_status' => 'publish',
-  'order'=> 'DESC',
-  'orderby' => 'date',
-);
-$posts =  query_posts($args);
-foreach ($posts as $post){
-	$author_obj = get_user_by('ID',$postContribucion->post_author);
-				//var_dump($author_obj); 
-				if($author_obj->roles['0']== 'Investigador'){
-		if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);
-			$cont++;
-		}
+'role'         => 'Investigador',
+'orderby'      => 'ID',
+'order'        => 'DESC',
+); 
+	$users = get_users( $args ); 
+if(!empty($users)){
+foreach ($users as $usuario) { 
+	if(!in_array($usuario->ID,$idsUsuarios)){ array_push($idsUsuarios,$usuario->ID);
+		$cont++;
 	}
-	$args = array(
-      'post_type' => 'contribuciones',
-      'post_status' => 'publish',
-      'post_parent' => $post->ID,
-      'order'=> 'DESC',
-      'orderby' => 'date',
-    );
-    $postContribuciones =  query_posts($args);
-    //var_dump($postContribuciones);
-   		( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
-	 	//echo $nContribuciones;
+//var_dump($usuario->ID); ?>
+<?php  } } wp_reset_postdata();  ?>
+<?php 
+//$args = array(
+//  'post_type' => 'investigacion',
+//   'post_status' => 'publish',
+//   'order'=> 'DESC',
+//   'orderby' => 'date',
+// );
+// $posts =  query_posts($args);
+// foreach ($posts as $post){
+// 	$author_obj = get_user_by('ID',$postContribucion->post_author);
+// 				//var_dump($author_obj); 
+// 				if($author_obj->roles['0']== 'Investigador'){
+// 		if(!in_array($post->post_author,$idsUsuarios)){ array_push($idsUsuarios,$post->post_author);
+// 			$cont++;
+// 		}
 
-		foreach ($postContribuciones as $postContribucion){
- 	 	if($nContribuciones != '0'){
-			//echo 'idAutho'.$postContribucion->post_author;
-			$author_obj = get_user_by('ID',$postContribucion->post_author);
-			//var_dump($author_obj); 
-			if($author_obj->roles['0']== 'Investigador'){
-    			//var_dump($postContribucion->post_author);
-				//var_dump($author_obj->roles['0']);
-				if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);
-							$cont++;
-					}
-			}
+// 		}
+// 	$args = array(
+//       'post_type' => 'contribuciones',
+//       'post_status' => 'publish',
+//       'post_parent' => $post->ID,
+//       'order'=> 'DESC',
+//       'orderby' => 'date',
+//     );
+//     $postContribuciones =  query_posts($args);
+//     //var_dump($postContribuciones);
+//    		( is_array($postContribuciones) && !empty($postContribuciones)) ? $nContribuciones = '1': $nContribuciones = '0';
+// 	 	//echo $nContribuciones;
+
+// 		foreach ($postContribuciones as $postContribucion){
+//  	 	if($nContribuciones != '0'){
+// 			//echo 'idAutho'.$postContribucion->post_author;
+// 			$author_obj = get_user_by('ID',$postContribucion->post_author);
+// 			//var_dump($author_obj); 
+// 			if($author_obj->roles['0']== 'Investigador'){
+//     			//var_dump($postContribucion->post_author);
+// 				//var_dump($author_obj->roles['0']);
+// 				if(!in_array($postContribucion->post_author,$idsUsuarios)){ array_push($idsUsuarios,$postContribucion->post_author);
+// 							$cont++;
+// 					}
+// 			}
 			
-		}
-    }  
-}
-//echo "cont :$cont";
+// 		}
+//     }  
+// }
+ ?>			
+
+<?php  //echo "cont :$cont";
 $total_pages = round($cont /$numeroShowPorPagina) ;
 //var_dump($total_pages);
 //echo "hola";
