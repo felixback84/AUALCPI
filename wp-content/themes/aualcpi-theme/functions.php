@@ -710,7 +710,11 @@ function my_get_user()  {
 
 /*
 		===================================
-		facebook add sdk
+		graficos
 		===================================
 */
-  
+ 
+ /*------------ porcentage----*/
+ function porcentaje($numero, $numeroTotal){
+ 	return (($numero*100)/$numeroTotal);
+ }

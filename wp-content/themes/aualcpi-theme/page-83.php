@@ -47,13 +47,41 @@ foreach ($terms_list as $term) {
 //var_dump($cont);
 //listado de paises
 //var_dump($categoria);
-var_dump(count ($categoria));
+//var_dump(count ($categoria));
 ?>
 
 <?php //$terms_list=wp_get_post_terms($post->ID,'ciudad_becas'); ?>
 
-		
-
+<?php $args = array (
+    'post_type' => 'becas',
+    'orderby' => 'id',
+    'order'   => 'DESC',
+);
+$numeroTotal =0;
+$lastBlog = new WP_Query ($args);
+if($lastBlog->have_posts()):
+    while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+            <?php $terms_list=wp_get_post_terms($post->ID,'ciudad_becas',array('parent'=> 0)); 
+            //var_dump(count ($terms_list));
+            foreach ($categoria as $key => $value) {
+             foreach ($terms_list as $term) {
+                  // var_dump('key'.$key);
+                  // var_dump('name'.$term->name);
+                  // var_dump('--');
+                  if($key === $term->name){
+                    $categoria[$key] = $value+1;
+                    $numeroTotal += 1;
+                    //$categoria = array_replace($categoria,
+                    //var_dump('value'.$value);
+                    //var_dump('value'.$categoria[$key]);
+                    //echo "--";
+                  }
+              }
+            }
+            ?>                             
+        <?php  endwhile;
+    endif;  
+wp_reset_postdata();   ?>
 
 			<div id="GraficoBecasA" style="height: 400px"></div>
 				<script type="text/javascript">
@@ -88,72 +116,280 @@ Highcharts.chart('GraficoBecasA', {
         type: 'pie',
         name: 'Porcentaje',
         data: [
-            {
-                name: 'Chrome',
-                y: 12.8,
-                sliced: true,
-                selected: true
-            },
-            ['IE', 26.8],
-            ['Firefox', 45.0],
-            ['Safari', 8.5],
-            ['Opera', 6.2],
-            ['Others', 0.7],
+            <?php //var_dump($categoria); 
+                $primero = '1';
+                foreach ($categoria as $key => $value){
+                    $porcentaje = porcentaje($value, $numeroTotal);
+                    if($primero === '1'){
+                        $primero = '2';
+                        //echo $key.'-'.$value;
+                        echo "{
+                            name: '$key',
+                            y: $porcentaje,
+                            sliced: true,
+                            selected: true
+                        },";
+                    }else{
+                        echo "['$key', $porcentaje],";
+                    }
+                }
+            ?>
         ]
     }]
 });
 		</script>
-		</div>
-		<div class="col-xs-12 col-sm-6">
-			<div id="GraficoBecasB" style="height: 400px"></div>
-				<script type="text/javascript">
 
+
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+<?php 
+$categoria = array(); $cont =0;
+$terms_list = get_terms( 'categoria' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
+foreach ($terms_list as $term) {
+        $cont++;
+        $categoria[$term->name]= 0;
+} ?>
+<?php $args = array ( 'post_type' => 'becas', 'orderby' => 'id', 'order'   => 'DESC', );
+$numeroTotal =0;
+$lastBlog = new WP_Query ($args);
+if($lastBlog->have_posts()):
+    while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+            <?php $terms_list=wp_get_post_terms($post->ID,'categoria',array('parent'=> 0)); 
+            foreach ($categoria as $key => $value) {
+             foreach ($terms_list as $term) {
+                  if($key === $term->name){$categoria[$key] = $value+1;$numeroTotal += 1;}
+              } }?>                             
+<?php  endwhile; endif; wp_reset_postdata();   ?>
+<div id="GraficoBecasB" style="height: 400px"></div>
+<script type="text/javascript">
 Highcharts.chart('GraficoBecasB', {
-    chart: {
-        type: 'pie',
-        options3d: {
-            enabled: true,
-            alpha: 45,
-            beta: 0
-        }
+    chart: {type: 'pie', options3d: {enabled: true, alpha: 45,beta: 0}
     },
-    title: {
-        text: 'Becas por categorias'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
+    title: { text: 'Becas por categorias'},
+    tooltip: {pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},
     plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            depth: 35,
-            dataLabels: {
-                enabled: true,
-                format: '{point.name}'
+        pie: {allowPointSelect: true,cursor: 'pointer',depth: 35,dataLabels: {
+                enabled: true,format: '{point.name}'
             }
         }
     },
-    series: [{
-        type: 'pie',
-        name: 'Porcentaje',
+    series: [{ type: 'pie',name: 'Porcentaje',
         data: [
-            ['Firefox', 45.0],
-            ['IE', 26.8],
-            {
-                name: 'Chrome',
-                y: 12.8,
-                sliced: true,
-                selected: true
-            },
-            ['Safari', 8.5],
-            ['Opera', 6.2],
-            ['Others', 0.7]
+            <?php $primero = '1';
+                foreach ($categoria as $key => $value){$porcentaje = porcentaje($value, $numeroTotal);
+                    if($primero === '1'){$primero = '2';
+                        echo "{ name: '$key',y: $porcentaje,sliced: true,selected: true},";
+                    }else{
+                        echo "['$key', $porcentaje],";
+                    }
+                }
+            ?>
+        ]
+    }]
+});
+        </script>
+        </div>
+
+		</div>
+
+        <div class="col-xs-12 col-sm-6">
+<?php 
+$categoria = array(); $cont =0;
+$terms_list = get_terms( 'ciudad_investigaciones' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
+foreach ($terms_list as $term) {
+        $cont++;
+        $categoria[$term->name]= 0;
+} ?>
+<?php $args = array ( 'post_type' => 'investigacion', 'orderby' => 'id', 'order'   => 'DESC', );
+$numeroTotal =0;
+$lastBlog = new WP_Query ($args);
+if($lastBlog->have_posts()):
+    while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+            <?php $terms_list=wp_get_post_terms($post->ID,'ciudad_investigaciones',array('parent'=> 0)); 
+            foreach ($categoria as $key => $value) {
+             foreach ($terms_list as $term) {
+                  if($key === $term->name){$categoria[$key] = $value+1;$numeroTotal += 1;}
+              } }?>                             
+<?php  endwhile; endif; wp_reset_postdata();   ?>
+<div id="GraficoRetosB" style="height: 400px"></div>
+<script type="text/javascript">
+Highcharts.chart('GraficoRetosB', {
+    chart: {type: 'pie', options3d: {enabled: true, alpha: 45,beta: 0}
+    },
+    title: { text: 'Retos por pais'},
+    tooltip: {pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},
+    plotOptions: {
+        pie: {allowPointSelect: true,cursor: 'pointer',depth: 35,dataLabels: {
+                enabled: true,format: '{point.name}'
+            }
+        }
+    },
+    series: [{ type: 'pie',name: 'Porcentaje',
+        data: [
+            <?php $primero = '1';
+                foreach ($categoria as $key => $value){$porcentaje = porcentaje($value, $numeroTotal);
+                    if($primero === '1'){$primero = '2';
+                        echo "{ name: '$key',y: $porcentaje,sliced: true,selected: true},";
+                    }else{
+                        echo "['$key', $porcentaje],";
+                    }
+                }
+            ?>
+        ]
+    }]
+});
+        </script>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+<?php 
+$categoria = array(); $cont =0;
+$terms_list = get_terms( 'areas' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
+foreach ($terms_list as $term) {
+        $cont++;
+        $categoria[$term->name]= 0;
+} ?>
+<?php $args = array ( 'post_type' => 'investigacion', 'orderby' => 'id', 'order'   => 'DESC', );
+$numeroTotal =0;
+$lastBlog = new WP_Query ($args);
+if($lastBlog->have_posts()):
+    while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+            <?php $terms_list=wp_get_post_terms($post->ID,'areas',array('parent'=> 0)); 
+            foreach ($categoria as $key => $value) {
+             foreach ($terms_list as $term) {
+                  if($key === $term->name){$categoria[$key] = $value+1;$numeroTotal += 1;}
+              } }?>                             
+<?php  endwhile; endif; wp_reset_postdata();   ?>
+<div id="GraficoRetosA" style="height: 400px"></div>
+<script type="text/javascript">
+Highcharts.chart('GraficoRetosA', {
+    chart: {type: 'pie', options3d: {enabled: true, alpha: 45,beta: 0}
+    },
+    title: { text: 'Retos por categorias'},
+    tooltip: {pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},
+    plotOptions: {
+        pie: {allowPointSelect: true,cursor: 'pointer',depth: 35,dataLabels: {
+                enabled: true,format: '{point.name}'
+            }
+        }
+    },
+    series: [{ type: 'pie',name: 'Porcentaje',
+        data: [
+            <?php $primero = '1';
+                foreach ($categoria as $key => $value){$porcentaje = porcentaje($value, $numeroTotal);
+                    if($primero === '1'){$primero = '2';
+                        echo "{ name: '$key',y: $porcentaje,sliced: true,selected: true},";
+                    }else{
+                        echo "['$key', $porcentaje],";
+                    }
+                }
+            ?>
+        ]
+    }]
+});
+        </script>
+        </div>
+
+
+        <div class="col-xs-12 col-sm-6">
+<?php 
+$categoria = array(); $cont =0;
+$terms_list = get_terms( 'author_publicaciones' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
+foreach ($terms_list as $term) {
+        $cont++;
+        $categoria[$term->name]= 0;
+} ?>
+<?php $args = array ( 'post_type' => 'publicacion', 'orderby' => 'id', 'order'   => 'DESC', );
+$numeroTotal =0;
+$lastBlog = new WP_Query ($args);
+if($lastBlog->have_posts()):
+    while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+            <?php $terms_list=wp_get_post_terms($post->ID,'author_publicaciones',array('parent'=> 0)); 
+            foreach ($categoria as $key => $value) {
+             foreach ($terms_list as $term) {
+                  if($key === $term->name){$categoria[$key] = $value+1;$numeroTotal += 1;}
+              } }?>                             
+<?php  endwhile; endif; wp_reset_postdata();   ?>
+<div id="GraficoPublicacionesA" style="height: 400px"></div>
+<script type="text/javascript">
+Highcharts.chart('GraficoPublicacionesA', {
+    chart: {type: 'pie', options3d: {enabled: true, alpha: 45,beta: 0}
+    },
+    title: { text: 'Retos por categorias'},
+    tooltip: {pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},
+    plotOptions: {
+        pie: {allowPointSelect: true,cursor: 'pointer',depth: 35,dataLabels: {
+                enabled: true,format: '{point.name}'
+            }
+        }
+    },
+    series: [{ type: 'pie',name: 'Porcentaje',
+        data: [
+            <?php $primero = '1';
+                foreach ($categoria as $key => $value){$porcentaje = porcentaje($value, $numeroTotal);
+                    if($primero === '1'){$primero = '2';
+                        echo "{ name: '$key',y: $porcentaje,sliced: true,selected: true},";
+                    }else{
+                        echo "['$key', $porcentaje],";
+                    }
+                }
+            ?>
+        ]
+    }]
+});
+        </script>
+        </div>
+
+		<div class="col-xs-12 col-sm-6">
+<?php 
+$categoria = array(); $cont =0;
+$terms_list = get_terms( 'tipo_publicaciones' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
+foreach ($terms_list as $term) {
+        $cont++;
+        $categoria[$term->name]= 0;
+} ?>
+<?php $args = array ( 'post_type' => 'publicacion', 'orderby' => 'id', 'order'   => 'DESC', );
+$numeroTotal =0;
+$lastBlog = new WP_Query ($args);
+if($lastBlog->have_posts()):
+    while( $lastBlog->have_posts() ): $lastBlog->the_post();?>
+            <?php $terms_list=wp_get_post_terms($post->ID,'tipo_publicaciones',array('parent'=> 0)); 
+            foreach ($categoria as $key => $value) {
+             foreach ($terms_list as $term) {
+                  if($key === $term->name){$categoria[$key] = $value+1;$numeroTotal += 1;}
+              } }?>                             
+<?php  endwhile; endif; wp_reset_postdata();   ?>
+<div id="GraficoPublicacionesB" style="height: 400px"></div>
+<script type="text/javascript">
+Highcharts.chart('GraficoPublicacionesB', {
+    chart: {type: 'pie', options3d: {enabled: true, alpha: 45,beta: 0}
+    },
+    title: { text: 'Retos por categorias'},
+    tooltip: {pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},
+    plotOptions: {
+        pie: {allowPointSelect: true,cursor: 'pointer',depth: 35,dataLabels: {
+                enabled: true,format: '{point.name}'
+            }
+        }
+    },
+    series: [{ type: 'pie',name: 'Porcentaje',
+        data: [
+            <?php $primero = '1';
+                foreach ($categoria as $key => $value){$porcentaje = porcentaje($value, $numeroTotal);
+                    if($primero === '1'){$primero = '2';
+                        echo "{ name: '$key',y: $porcentaje,sliced: true,selected: true},";
+                    }else{
+                        echo "['$key', $porcentaje],";
+                    }
+                }
+            ?>
         ]
     }]
 });
 		</script>
 		</div>
+
 	</div>
 </div>
 <?php get_template_part('targetas-aliados'); ?>
