@@ -1,32 +1,9 @@
 <?php get_header(); ?>
-<!-- pagina nuestra asociacion-->
-<div class="hidden-xs">
-	<div id="imagenTop" class="carousel slide espacioBotton" data-ride="carousel">
-		<div class="carousel-inner">
-			<div class="item active">
-				<?php if(!empty(get_the_post_thumbnail (83,'post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']))){ ?>
-					<div class="thumbnail"><?php the_post_thumbnail ('post-thumbnail', ['class' => 'img-responsive responsive--full sombraInferior', 'title' => 'Feature image','alt'   => 'imagen de inicio de la publicacion subida']); ?></div>
-				<?php } else { ?>
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fondoPerfil.png" alt="imagen de inicio de la publicacion"  class="sombraInferior" width="" height="" />
-				<?php }?>
-				<div class="container">
-					<div class="carousel-caption">
-						<?php
-						$post = get_post(83); 
-						$contenido = $post->post_content;
-						echo $contenido;
-						?>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
+<!-- pagina graficos-->
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/highcharts.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/highcharts-3d.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/exporting.js"></script>
-<div class="container">
+<div class="container"  style="margin-top: 40px;">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6">
 
@@ -83,7 +60,7 @@ if($lastBlog->have_posts()):
     endif;  
 wp_reset_postdata();   ?>
 
-			<div id="GraficoBecasA" style="height: 400px"></div>
+			<div id="GraficoBecasA" style="height: 0px"></div>
 				<script type="text/javascript">
 
 Highcharts.chart('GraficoBecasA', {
@@ -111,6 +88,9 @@ Highcharts.chart('GraficoBecasA', {
                 format: '{point.name}'
             }
         }
+    },
+    credits: {
+        enabled: false
     },
     series: [{
         type: 'pie',
@@ -174,6 +154,9 @@ Highcharts.chart('GraficoBecasB', {
             }
         }
     },
+    credits: {
+        enabled: false
+    },
     series: [{ type: 'pie',name: 'Porcentaje',
         data: [
             <?php $primero = '1';
@@ -190,8 +173,6 @@ Highcharts.chart('GraficoBecasB', {
 });
         </script>
         </div>
-
-		</div>
 
         <div class="col-xs-12 col-sm-6">
 <?php 
@@ -213,30 +194,23 @@ if($lastBlog->have_posts()):
               } }?>                             
 <?php  endwhile; endif; wp_reset_postdata();   ?>
 <div id="GraficoRetosB" style="height: 400px"></div>
+
 <script type="text/javascript">
-Highcharts.chart('GraficoRetosB', {
-    chart: {type: 'pie', options3d: {enabled: true, alpha: 45,beta: 0}
-    },
-    title: { text: 'Retos por pais'},
-    tooltip: {pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},
-    plotOptions: {
-        pie: {allowPointSelect: true,cursor: 'pointer',depth: 35,dataLabels: {
-                enabled: true,format: '{point.name}'
-            }
+Highcharts.chart('GraficoRetosB', { chart: {type: 'area'},
+    title: {text: 'Retos por pais'},
+    xAxis: {categories: [<?php foreach ($categoria as $key => $value){ echo "'$key',";}?>]},
+    yAxis: {title: {text: 'Numeración'},labels: {
+            formatter: function () {return this.value;}
         }
     },
-    series: [{ type: 'pie',name: 'Porcentaje',
-        data: [
-            <?php $primero = '1';
-                foreach ($categoria as $key => $value){$porcentaje = porcentaje($value, $numeroTotal);
-                    if($primero === '1'){$primero = '2';
-                        echo "{ name: '$key',y: $porcentaje,sliced: true,selected: true},";
-                    }else{
-                        echo "['$key', $porcentaje],";
-                    }
-                }
-            ?>
-        ]
+    tooltip: {
+        formatter: function () {return '<b>' + this.series.name + '</b><br/>' +
+                this.x + ': ' + this.y;
+        }
+    },
+    area: { fillOpacity: 0.5},
+    credits: {enabled: false},
+    series: [{name: 'Becas',data: [ <?php foreach ($categoria as $key => $value){ echo "$value,";}?>]
     }]
 });
         </script>
@@ -263,29 +237,21 @@ if($lastBlog->have_posts()):
 <?php  endwhile; endif; wp_reset_postdata();   ?>
 <div id="GraficoRetosA" style="height: 400px"></div>
 <script type="text/javascript">
-Highcharts.chart('GraficoRetosA', {
-    chart: {type: 'pie', options3d: {enabled: true, alpha: 45,beta: 0}
-    },
-    title: { text: 'Retos por categorias'},
-    tooltip: {pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},
-    plotOptions: {
-        pie: {allowPointSelect: true,cursor: 'pointer',depth: 35,dataLabels: {
-                enabled: true,format: '{point.name}'
-            }
+Highcharts.chart('GraficoRetosA', { chart: {type: 'area'},
+    title: {text: 'Retos por categoria'},
+    xAxis: {categories: [<?php foreach ($categoria as $key => $value){ echo "'$key',";}?>]},
+    yAxis: {title: {text: 'Numeración'},labels: {
+            formatter: function () {return this.value;}
         }
     },
-    series: [{ type: 'pie',name: 'Porcentaje',
-        data: [
-            <?php $primero = '1';
-                foreach ($categoria as $key => $value){$porcentaje = porcentaje($value, $numeroTotal);
-                    if($primero === '1'){$primero = '2';
-                        echo "{ name: '$key',y: $porcentaje,sliced: true,selected: true},";
-                    }else{
-                        echo "['$key', $porcentaje],";
-                    }
-                }
-            ?>
-        ]
+    tooltip: {
+        formatter: function () {return '<b>' + this.series.name + '</b><br/>' +
+                this.x + ': ' + this.y;
+        }
+    },
+    area: { fillOpacity: 0.5},
+    credits: {enabled: false},
+    series: [{name: 'Becas',data: [ <?php foreach ($categoria as $key => $value){ echo "$value,";}?>]
     }]
 });
         </script>
@@ -313,32 +279,28 @@ if($lastBlog->have_posts()):
 <?php  endwhile; endif; wp_reset_postdata();   ?>
 <div id="GraficoPublicacionesA" style="height: 400px"></div>
 <script type="text/javascript">
+
 Highcharts.chart('GraficoPublicacionesA', {
-    chart: {type: 'pie', options3d: {enabled: true, alpha: 45,beta: 0}
+    chart: {type: 'column', options3d: {enabled: true,alpha: 10,beta: 25,depth: 70}
     },
-    title: { text: 'Retos por categorias'},
-    tooltip: {pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},
-    plotOptions: {
-        pie: {allowPointSelect: true,cursor: 'pointer',depth: 35,dataLabels: {
-                enabled: true,format: '{point.name}'
-            }
-        }
+    title: { text: 'Publicaciones por Autor'},
+    // subtitle: { text: 'Notice the difference between a 0 value and a null point'},
+    plotOptions: {column: { depth: 15} },
+    xAxis: {
+         categories: [<?php foreach ($categoria as $key => $value){echo "'$key',";} ?>]
+            // ['Admin', 'aualcpi', 'investigador', 'contribuidores']
     },
-    series: [{ type: 'pie',name: 'Porcentaje',
-        data: [
-            <?php $primero = '1';
-                foreach ($categoria as $key => $value){$porcentaje = porcentaje($value, $numeroTotal);
-                    if($primero === '1'){$primero = '2';
-                        echo "{ name: '$key',y: $porcentaje,sliced: true,selected: true},";
-                    }else{
-                        echo "['$key', $porcentaje],";
-                    }
-                }
-            ?>
-        ]
+    credits: {
+        enabled: false
+    },
+    yAxis: {title: {text: null}},
+    series: [{name: 'Autores',
+        // data: [2, 3, null, 4]
+        data: [<?php foreach ($categoria as $key => $value){echo "$value,";} ?>]
     }]
 });
         </script>
+
         </div>
 
 		<div class="col-xs-12 col-sm-6">
@@ -362,32 +324,27 @@ if($lastBlog->have_posts()):
 <?php  endwhile; endif; wp_reset_postdata();   ?>
 <div id="GraficoPublicacionesB" style="height: 400px"></div>
 <script type="text/javascript">
+
 Highcharts.chart('GraficoPublicacionesB', {
-    chart: {type: 'pie', options3d: {enabled: true, alpha: 45,beta: 0}
+    chart: {type: 'column', options3d: {enabled: true,alpha: 10,beta: 25,depth: 70}
     },
-    title: { text: 'Retos por categorias'},
-    tooltip: {pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},
-    plotOptions: {
-        pie: {allowPointSelect: true,cursor: 'pointer',depth: 35,dataLabels: {
-                enabled: true,format: '{point.name}'
-            }
-        }
+    title: { text: 'Publicaciones por categoria'},
+    // subtitle: { text: 'Notice the difference between a 0 value and a null point'},
+    plotOptions: {column: { depth: 15} },
+    xAxis: {
+         categories: [<?php foreach ($categoria as $key => $value){echo "'$key',";} ?>]
+            // ['Admin', 'aualcpi', 'investigador', 'contribuidores']
     },
-    series: [{ type: 'pie',name: 'Porcentaje',
-        data: [
-            <?php $primero = '1';
-                foreach ($categoria as $key => $value){$porcentaje = porcentaje($value, $numeroTotal);
-                    if($primero === '1'){$primero = '2';
-                        echo "{ name: '$key',y: $porcentaje,sliced: true,selected: true},";
-                    }else{
-                        echo "['$key', $porcentaje],";
-                    }
-                }
-            ?>
-        ]
+    yAxis: {title: {text: null}},
+    credits: {
+        enabled: false
+    },
+    series: [{name: 'Categorias',
+        // data: [2, 3, null, 4]
+        data: [<?php foreach ($categoria as $key => $value){echo "$value,";} ?>]
     }]
 });
-		</script>
+        </script>
 		</div>
 
 	</div>

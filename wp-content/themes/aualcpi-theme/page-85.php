@@ -1,27 +1,33 @@
 <?php get_header(); ?>
 <!-- paquina membresia-->
+<?php
+	// $post = get_post(85); 
+	// $contenido = $post->post_content;
+	// echo $contenido;
+?>
+<?php 
+//$idPost = 388; 
+$urlImagenTop=get_stylesheet_directory_uri().'/images/fondoPerfil.png';
+ //if(!empty(get_the_post_thumbnail ($idPost,'post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image'])))	{ 
+ 		//$urlImagenTop =get_the_post_thumbnail_url($idPost); } 
+ if(!empty(get_the_post_thumbnail ()))	{ $urlImagenTop =get_the_post_thumbnail_url(); 		} 
+ 		?>
 <div class="hidden-xs">
-	<div id="imagenTop" class="carousel slide espacioBotton" data-ride="carousel">
-		<div class="carousel-inner">
-			<div class="item active">
-				<?php if(!empty(get_the_post_thumbnail (85,'post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']))){ ?>
-					<div class="thumbnail"><?php the_post_thumbnail ('post-thumbnail', ['class' => 'img-responsive responsive--full sombraInferior', 'title' => 'Feature image','alt'   => 'imagen de inicio de la publicacion subida']); ?></div>
-				<?php } else { ?>
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fondoPerfil.png" alt="imagen de inicio de la publicacion"  class="sombraInferior" width="" height="" />
-				<?php } ?>
-				<div class="container">
-					<div class="carousel-caption">
-						<?php
-							$post = get_post(85); 
-							$contenido = $post->post_content;
-							echo $contenido;
-						?>
-					</div>
-				</div>
-			</div>
+	<div class="jumbotron" style="background-image: url('<?php echo $urlImagenTop; ?>');">
+		<div class="container">
+			<p>
+		  	<?php
+			//$post = get_post($idPost); 
+			$post = get_post(); 
+			//var_dump($post);
+			$contenido = $post->post_content;
+			echo $contenido;
+			?>
+			</p>
 		</div>
+	  	
 	</div>
-</div>
+</div> 					
 <div class="container">
 	<div class="row espacioBotton">
 		<h1 class="text-center">Descubre todos los beneficios que tenemos para ti</h1>

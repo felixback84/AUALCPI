@@ -8,6 +8,7 @@ div[class*=slider-loader-]{
 	background: none !important;
 }
 
+
 /*--------------home-------------------*/
 body{
 	font-size: 14px;
@@ -305,16 +306,18 @@ Panel
 	}
 	#ai1ec-calendar-view .ai1ec-pull-left>.ai1ec-pagination.ai1ec-btn-group{ display: none; }
 	div.ai1ec-pagination.ai1ec-btn-group{
-		padding-top: 5px;
+		padding-top: 0px;
 		padding-bottom: 5px;
 		a{
-			font-size: 9px;
+			font-size: 6px !important;
 			.ai1ec-calendar-title, .ai1ec-calendar-title-short{
-				font-size: 9px;
+				font-size: 6px !important;
 			}
 		}
 	}
-
+	.ai1ec-btn-group > a.ai1ec-btn-sm:first-child{
+		font-size: 0px;
+	}
 	.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
 			background-color:black;
 			color:white;
@@ -329,7 +332,7 @@ Panel
 	}
 	.tab-content{
 		.contenido-tabs{
-			height: 510px; 
+			height: 365px; 
 			overflow-y: scroll;
 			padding: 2px;
 			background: #525256;
@@ -351,7 +354,7 @@ Panel
 	#tabsEventoTwitter{
 		.tab-content{
 			.contenido-tabs{
-				height: 615px;
+				height: 442px;
 			}
 		}
 		div.ai1ec-views-dropdown.ai1ec-btn-group{
@@ -369,6 +372,16 @@ Panel
 				}
 			}
 		}
+		div.ai1ec-pagination.ai1ec-btn-group{
+		padding-top: 5px;
+		padding-bottom: 5px;
+		a{
+			font-size: 7px !important;
+			.ai1ec-calendar-title, .ai1ec-calendar-title-short{
+				font-size: 7px !important;
+			}
+		}
+	}
 	}
 }
 /*----------------nuestra -sociedad page------------------------*/
@@ -491,7 +504,7 @@ height: 100% !important;
 	min-height: 350px;
 	.tab-pane{
 		padding:10px 5px 0;
-		&#home-r,&#mision-r,&#vision-r,&#programaMovilidad-quien-r,&#categoriasMovilidad-r,&#programaMovilidad-aplicar-r{
+		&#home-r,&#mision-r,&#vision-r,&#programaMovilidad-quien-r,&#categoriasMovilidad-r,&#programaMovilidad-aplicar-r,&#Metodologia-r{
 			padding:40px 10px 10px;
 			font-size: 20px;
 		}
@@ -557,7 +570,7 @@ height: 100% !important;
 		}
 	}
 }
-#tabVerticalNegroMovilidad.tabVerticalNegro{
+#tabVerticalNegroMovilidad.tabVerticalNegro ,#tabVerticalNegroCatedra.tabVerticalNegro{
 	li{	
 		text-align: right;
 		/*padding: 20px 0;*/
@@ -618,8 +631,13 @@ height: 100% !important;
 		margin-top: -7px;
 	}
 }
+
+#tabVerticalNegroCatedra.tabVerticalNegro{
+	margin-bottom: 0px;
+}
+
 @media (max-width: 768px) { 
-	#cajaNegraAsociacion, #tabVerticalNegroMovilidad{
+	#cajaNegraAsociacion, #tabVerticalNegroMovilidad, #tabVerticalNegroCatedra{
 		.ElementoHijo{position: relative;}
 		.tabs-right{border:none;}
 		.col-xs-3,.col-xs-9,.col-xs-7,.col-xs-5{width: 100%;}
@@ -627,6 +645,11 @@ height: 100% !important;
 			float:left;
 		}
 		.col-xs-9{padding: 0;}
+	}
+	#tabVerticalNegroCatedra.tabVerticalNegro{
+		.nav>li>a{
+			padding: 10px 15px;
+		}
 	}
 }
 /*--------------------pagina members-------------------*/
@@ -1269,4 +1292,8 @@ height: 100% !important;
 			min-height: 40px;
 		}
 	}
+}
+/*-- no export hight...-*/
+g.highcharts-button.highcharts-contextbutton{
+	display: none;
 }

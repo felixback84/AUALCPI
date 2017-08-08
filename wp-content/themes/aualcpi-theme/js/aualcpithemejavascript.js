@@ -159,6 +159,10 @@ function cambiarNumeracionAutor(){
   $("#pagA").text($("#carousel-example-generic-autores .active").attr("cont"));
   $("#pagAC").text($("#carousel-example-generic-autores .contador").attr("cont"));
 }
+function cambiarNumeracionEstadisticas(){
+  $("#pagE").text($("#carousel-graficos .active").attr("cont"));
+  $("#pagE-2").text($("#carousel-graficos-2 .active").attr("cont"));
+}
 
 setInterval(function(){
    cambiarNumeracionNoticias();
@@ -166,6 +170,7 @@ setInterval(function(){
    cambiarNumeracionInvestigaciones();
    cambiarNumeracionBecas();
    cambiarNumeracionAutor();
+   cambiarNumeracionEstadisticas();
 },1000);
 
 

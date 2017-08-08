@@ -1196,6 +1196,8 @@ add_action('save_post', 'save_custom_meta_data_upload_publicidad');
 add_action('admin_init','my_meta_init');
 function my_meta_init(){
 	$post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+	//var_dump($post_id);
+	//echo '<script language="javascript">alert("'.$post_id.'");</script>'; 
 	// checks for post/page ID
 	if ($post_id == '61')
 	{
@@ -1212,6 +1214,16 @@ function my_meta_init(){
 	if ($post_id == '85')
 	{
 	add_meta_box('my_meta_membresia', 'Contenido administrable', 'my_meta_membresia', 'page', 'normal', 'high');
+	}
+	//catedra - produccion
+	if ($post_id == '388')
+	{
+		add_meta_box('my_meta_catedra', 'Contenido administrable', 'my_meta_catedra', 'page', 'normal', 'high');
+	}
+	//catedra - vivo
+	if ($post_id == '600')
+	{	
+		add_meta_box('my_meta_catedra', 'Contenido administrable', 'my_meta_catedra', 'page', 'normal', 'high');
 	}
 }
 
@@ -1447,6 +1459,67 @@ function my_meta_redLisi_save(){
 	endif;
 	if(isset($_POST["Caja1"])):
 		update_post_meta($post->ID, "Caja1",$_POST["Caja1"]);
+	endif;
+}
+/*----- page catedra------*/
+function my_meta_catedra(){
+ 	global $post;
+	$custom = get_post_custom($post->ID);
+	$Presentacion = $custom["Presentacion"][0];
+	$Definicion = $custom["Definicion"][0];
+	$Objetivos = $custom["Objetivos"][0];
+	$Metodologia = $custom["Metodologia"][0];
+	$argsTextarea = array(
+	    'textarea_rows' => 10,
+	    'quicktags' => false,
+	    'media_buttons' => false,
+    	'tinymce' => true,
+	);
+
+?>
+<label for="Presentacion"><h3>Informacion en pestaña Presentación</h3></label>
+			<?php
+				$content = $Presentacion;
+				$editor_id = 'Presentacion';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+<label for="Definicion"><h3>Informacion en pestaña Definición</h3></label>
+			<?php
+				$content = $Definicion;
+				$editor_id = 'Definicion';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+<label for="Objetivos"><h3>Informacion en pestaña Objetivos</h3></label>
+			<?php
+				$content = $Objetivos;
+				$editor_id = 'Objetivos';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+<label for="Metodologia"><h3>Informacion en pestaña Metodología</h3></label>
+			<?php
+				$content = $Metodologia;
+				$editor_id = 'Metodologia';
+				wp_editor( $content, $editor_id ,$argsTextarea);
+			?>
+ ?>
+
+ <?php 
+}
+add_action('save_post','my_meta_catedra_save');
+
+function my_meta_catedra_save(){
+	global $post;
+	if(isset($_POST["Presentacion"])):
+		update_post_meta($post->ID, "Presentacion",$_POST["Presentacion"] );
+	endif;
+	if(isset($_POST["Definicion"])):
+		update_post_meta($post->ID, "Definicion",$_POST["Definicion"]);
+	endif;
+	if(isset($_POST["Objetivos"])):
+		update_post_meta($post->ID, "Objetivos",$_POST["Objetivos"]);
+	endif;
+	if(isset($_POST["Metodologia"])):
+		update_post_meta($post->ID, "Metodologia",$_POST["Metodologia"]);
 	endif;
 }
 
