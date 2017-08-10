@@ -32,7 +32,7 @@ $urlImagenTop=get_stylesheet_directory_uri().'/images/fondoPerfil.png';
 <div class="container espacioBotton">
 	<div id="cajaNegraAsociacion" class="row bordetabVerticalNegro espacioBotton tabVerticalNegro ElementoPadre sombraInferior">
       <ul class="nav nav-tabs tabs-right ElementoHijo col-xs-3">
-        <li class="active"><a href="#home-r" data-toggle="tab">Home</a></li>
+        <li class="active"><a href="#home-r" data-toggle="tab">¿Qué es AUALCPI?</a></li>
         <li><a href="#mision-r" data-toggle="tab">Misión</a></li>
         <li><a href="#vision-r" data-toggle="tab">Visión</a></li>
         <li><a href="#organigrama-r" data-toggle="tab"><span class="hidden-sm">Organigrama</span><span class="visible-sm">Organigra..</span></a></li>
@@ -48,7 +48,7 @@ $urlImagenTop=get_stylesheet_directory_uri().'/images/fondoPerfil.png';
         	<p><?php echo get_post_meta($post->ID,'Vision')[0]; ?></p>
         </div>
         <div class="tab-pane" id="organigrama-r">
-	        <div class="hidden-xs hidden-sm">
+	        <div class="hidden-xs hidden-sm" style="margin-top:18px;">
 	        	<div class="col-xs-12 col-sm-6">
 		        	<?php  $usuarioId = false;
 		        	$cargo = '';
@@ -102,7 +102,7 @@ $urlImagenTop=get_stylesheet_directory_uri().'/images/fondoPerfil.png';
 		        	<?php } ?>
 	        	</div>
         	</div>
-        	<div class="visible-xs visible-sm">
+        	<div class="visible-xs visible-sm" style="margin-top:18px; padding: 0 15px;">
         		<div id="carousel-id" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
 						<div class="item active">

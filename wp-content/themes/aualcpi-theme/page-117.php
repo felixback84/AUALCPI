@@ -32,7 +32,7 @@ $urlImagenTop=get_stylesheet_directory_uri().'/images/fondoPerfil.png';
 </div> 
 <div class="container espacioBotton espacioTop">
 	<div class="row">
-		<h1 class="text-center">E-mail</h1>
+		<h1 class="text-center">Contáctanos</h1>
 		<div class="col-sx-12 Fpadding">
 			<div class="contactForm">
 				<?php echo do_shortcode('[contact-form-7 id="353" title="Contact form 1"]'); ?>

@@ -74,6 +74,8 @@ article>.row, .espacioBotton{
 		box-shadow: none;
 	}
 }*/
+
+
 #loginUser{
 	.input{
 		display: block;
@@ -130,6 +132,7 @@ article>.row, .espacioBotton{
 	padding: 15px;
 	width: 250px;
 	margin: 0 auto;
+	display: block;
 	&:hover{
 		background-color: #DDD;
 	}
@@ -169,7 +172,14 @@ article>.row, .espacioBotton{
 		}
 	}
 }
-
+.CompartirRedes{
+	margin-bottom: 20px;
+	.CompartirRedesSociales{
+		height: 20px;
+		margin: 5px;
+		margin-left: 15px;
+	}
+}
 /*--- baner top------*/
 .jumbotron{
 	background-color: lightblue;
@@ -421,6 +431,14 @@ article>.row, .espacioBotton{
 			/*border-right: 1px solid #666;	*/
 		}
 	}
+	@media (min-width: 768px)and (max-width:992px ) {
+		#menu-email{
+			a{
+				font-size: 0;
+				padding-top: 25px;
+			}
+		}
+	}
 	.navbar-nav>li>a{
 		background-color: @BackgroundMenuPrimary;
 		color: white;
@@ -453,13 +471,6 @@ article>.row, .espacioBotton{
 		}
 }*/
 
-#carousel-graficos-2 .carousel-inner .highcharts-container{
-	width: 100% !important;
-	/*background:red !important;*/
-	svg.highcharts-root{
-		width: 100% !important;
-	}
-}
 
 
 /*-------------------Footer------------------*/
@@ -605,26 +616,54 @@ article>.row, .espacioBotton{
 			width: 36px;
     		height: 36px;
 		}
+		#iconosRedes{
+			text-align: right;
+		}
 		@media (max-width: 767px) { 
 			.thumbnail>img{
-				margin-left: 25px;
+				/*margin-left: 25px;*/
+				margin: 0 auto;
+			}
+			#iconosRedes{
+				text-align: center;
+				height: 46px;
+				margin-bottom: 40px;
 			}
 		}
 
 	}
+	.divMenuFooter{
+		.MenuFooter{
+			color:white;
+			padding-left: 15px;
+		}
+	}
 	@media (max-width: 767px) { 
-			.datosFooter{
-				margin-left: 25px;
+		.datosFooter{
+			padding: 5px;
+			text-align: center;
+			float: none;
+		}
+		#footerUser .avatarFooter{
+			width: 100%;
+			margin: 0;
+			.avatar{
+				margin: 0 auto;
+				float: none;
 			}
 		}
-	#menuFooter{
-		min-height: 190px;
-		margin-left: 25px;
+		.divMenuFooter{
+			margin-bottom: 60px;
+			.MenuFooter{
+				text-align: center;
+				padding: 0;
+				list-style:none;
+			}
+		}
 	}
+	
 }
-#iconosRedes{
-	text-align: right;
-}
+
 /*@media (min-width: 767px) { 
 	#redes{
 		#iconosRedes{

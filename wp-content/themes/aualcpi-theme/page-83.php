@@ -1,11 +1,33 @@
 <?php get_header(); ?>
 <!-- pagina graficos-->
+<?php 
+//$idPost = 388;
+$urlImagenTop=get_stylesheet_directory_uri().'/images/fondoPerfil.png';
+ //if(!empty(get_the_post_thumbnail ($idPost,'post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image'])))    { 
+        //$urlImagenTop =get_the_post_thumbnail_url($idPost); } 
+ if(!empty(get_the_post_thumbnail ()))  { $urlImagenTop =get_the_post_thumbnail_url();      } 
+        ?>
+<div class="hidden-xs">
+    <div class="jumbotron" style="background-image: url('<?php echo $urlImagenTop; ?>');">
+        <div class="container">
+            <p>
+            <?php
+            //$post = get_post($idPost); 
+            $post = get_post(); 
+            //var_dump($post);
+            $contenido = $post->post_content;
+            echo $contenido;
+            ?>
+            </p>
+        </div>
+    </div>
+</div> 
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/highcharts.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/highcharts-3d.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/exporting.js"></script>
-<div class="container"  style="margin-top: 40px;">
+<div class="container">
 	<div class="row">
-		<div class="col-xs-12 col-sm-6">
+		<div class="col-xs-12 col-sm-6 targetasGraficos">
 
 <?php 
 $categoria = array();
@@ -60,7 +82,7 @@ if($lastBlog->have_posts()):
     endif;  
 wp_reset_postdata();   ?>
 
-			<div id="GraficoBecasA" style="height: 0px"></div>
+			<div id="GraficoBecasA" style="height: 400px"></div>
 				<script type="text/javascript">
 
 Highcharts.chart('GraficoBecasA', {
@@ -122,7 +144,7 @@ Highcharts.chart('GraficoBecasA', {
 
         </div>
 
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-6 targetasGraficos">
 <?php 
 $categoria = array(); $cont =0;
 $terms_list = get_terms( 'categoria' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -174,7 +196,7 @@ Highcharts.chart('GraficoBecasB', {
         </script>
         </div>
 
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-6 targetasGraficos">
 <?php 
 $categoria = array(); $cont =0;
 $terms_list = get_terms( 'ciudad_investigaciones' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -216,7 +238,7 @@ Highcharts.chart('GraficoRetosB', { chart: {type: 'area'},
         </script>
         </div>
 
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-6 targetasGraficos">
 <?php 
 $categoria = array(); $cont =0;
 $terms_list = get_terms( 'areas' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -258,7 +280,7 @@ Highcharts.chart('GraficoRetosA', { chart: {type: 'area'},
         </div>
 
 
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-6 targetasGraficos">
 <?php 
 $categoria = array(); $cont =0;
 $terms_list = get_terms( 'author_publicaciones' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -303,7 +325,7 @@ Highcharts.chart('GraficoPublicacionesA', {
 
         </div>
 
-		<div class="col-xs-12 col-sm-6">
+		<div class="col-xs-12 col-sm-6 targetasGraficos">
 <?php 
 $categoria = array(); $cont =0;
 $terms_list = get_terms( 'tipo_publicaciones' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));

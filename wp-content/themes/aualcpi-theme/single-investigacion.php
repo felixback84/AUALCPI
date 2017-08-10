@@ -5,58 +5,65 @@ $idPost;?>
 	while( have_posts() ): the_post(); ?>
 	<?php //$idPost=$post->ID; 
 	//echo $idPost; ?>
-		<div class="singleInvestigaciones espacioBotton">
-			<div id="imagenTop" class="carousel slide" data-ride="carousel">
-				<div class="carousel-inner">
-					<div class="item active">
-						<?php if( has_post_thumbnail() ): ?>
-							<div class="thumbnail"><?php the_post_thumbnail('full'); ?></div>
-						<?php endif; ?>
-						<div class="container">
-							<div class="carousel-caption">
-								<?php the_title('<h1 class="entry-title">','</h1>' ); ?>
-							</div>
-						</div>
-					</div>
+
+	<div class="singleInvestigaciones espacioBotton">
+		<?php 
+		//$idPost = 388;  
+		$urlImagenTop=get_stylesheet_directory_uri().'/images/fondoPerfil.png';
+		 //if(!empty(get_the_post_thumbnail ($idPost,'post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image'])))	{ 
+		 		//$urlImagenTop =get_the_post_thumbnail_url($idPost); } 
+		 if(!empty(get_the_post_thumbnail ()))	{ $urlImagenTop =get_the_post_thumbnail_url(); 		} 
+		 		?>
+		<div class="hidden-xs">
+			<div class="jumbotron" style="background-image: url('<?php echo $urlImagenTop; ?>');">
+				<div class="container">
+					<p>
+				  	<?php
+					//$post = get_post($idPost); 
+					$post = get_post(); 
+					//var_dump($post);
+					$contenido = $post->post_content;
+					echo $contenido;
+					?>
+					</p>
 				</div>
 			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12" style="">
-						<p>
-							<?php $terms_list=wp_get_post_terms($post->ID,'areas');
-							if(count($terms_list)!=0) { echo ('Areas de conocimiento: ');
-							echo mostrarCategorias($terms_list,'\\'); }
-							$terms_list= null;
-							?>
-							<?php $terms_list=wp_get_post_terms($post->ID,'universidades_investigacion');
-							if(count($terms_list)!=0) { echo (' || Universidad: ');
-							echo mostrarCategorias($terms_list,'\\'); }
-							$terms_list= null;
-							?>
-							<?php $terms_list=wp_get_post_terms($post->ID,'status_inves');
-							if(count($terms_list)!=0) { echo (' || Status: ');
-							echo mostrarCategorias($terms_list,'\\');}
-							$terms_list= null;
-							?>
-							<?php $terms_list=wp_get_post_terms($post->ID,'ciudad_investigaciones');
-							if(count($terms_list)!=0) { echo (' || Pais/Ciudad: ');
-							echo mostrarCategorias($terms_list,' |');}
-							$terms_list= null;
-							?>
-							<?php $terms_list=wp_get_post_terms($post->ID,'tag_investigacion');
-							if(count($terms_list)!=0) { echo (' || Tag: ');
-							echo mostrarCategorias($terms_list,'\\');}
-							$terms_list= null;
-							?>
-							<?php if( current_user_can('manage_options') ) {
-							//echo '|| ';  edit_post_link(); 
-							} ?>
-						</p>
-					</div>
-				</div>
+		</div> 
+		<div class="container">
+			<div class="col-xs-12">
+				<p style="text-align: center;">
+					<?php $terms_list=wp_get_post_terms($post->ID,'areas');
+					if(count($terms_list)!=0) { echo ('Areas de conocimiento: ');
+					echo mostrarCategorias($terms_list,'\\'); }
+					$terms_list= null;
+					?>
+					<?php $terms_list=wp_get_post_terms($post->ID,'universidades_investigacion');
+					if(count($terms_list)!=0) { echo (' || Universidad: ');
+					echo mostrarCategorias($terms_list,'\\'); }
+					$terms_list= null;
+					?>
+					<?php $terms_list=wp_get_post_terms($post->ID,'status_inves');
+					if(count($terms_list)!=0) { echo (' || Status: ');
+					echo mostrarCategorias($terms_list,'\\');}
+					$terms_list= null;
+					?>
+					<?php $terms_list=wp_get_post_terms($post->ID,'ciudad_investigaciones');
+					if(count($terms_list)!=0) { echo (' || Pais/Ciudad: ');
+					echo mostrarCategorias($terms_list,' |');}
+					$terms_list= null;
+					?>
+					<?php $terms_list=wp_get_post_terms($post->ID,'tag_investigacion');
+					if(count($terms_list)!=0) { echo (' || Tag: ');
+					echo mostrarCategorias($terms_list,'\\');}
+					$terms_list= null;
+					?>
+					<?php if( current_user_can('manage_options') ) {
+					//echo '|| ';  edit_post_link(); 
+					} ?>
+				</p>
 			</div>
 		</div>
+	</div>
 	<?php endwhile;
 endif; ?>
 
@@ -68,7 +75,7 @@ endif; ?>
 	</div>
 </div>
 <div class="container">
-	<div class="row">
+	<div class="">
 	<?php if( have_posts() ):
 		while( have_posts() ): the_post(); ?>
 				<?php $hoy=date("M d, Y", time()); //echo 'hoy2'.$hoy; ?>
@@ -132,7 +139,7 @@ endif; ?>
 			    <div role="tabpanel" class="tab-pane <?php if(($fechaFin1 > $hoy) || (empty($fechaInicio1))){ echo ' active';}?> " id="Ideacion">
 					<div class="contenido-tabs">
 						<!--inicion ideacion-->
-						<div class="col-xs-12">
+						<div class="col-xs-12 quitarEspacio">
 							<?php $idPost=$post->ID; ?>
 							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 								<div class="singleInvestigaciones">										
@@ -231,7 +238,7 @@ endif; ?>
 			    <div role="tabpanel" class="tab-pane <?php if(($fechaInicio2 <= $hoy)&&($fechaFin2 > $hoy)){ echo ' active';}?>" id="RetroAlimentacion">
 			     	<div class="contenido-tabs">
 						
-						<div class="col-xs-12">
+						<div class="col-xs-12 quitarEspacio">
 							<?php $idPost=$post->ID; ?>
 								<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 									<div class="singleInvestigaciones">										
@@ -330,7 +337,7 @@ endif; ?>
 			    <div role="tabpanel" class="tab-pane <?php if(($fechaInicio3 <= $hoy)&&($fechaFin3 > $hoy)){ echo ' active';}?>" id="Refinar">
 			     	<div class="contenido-tabs">
 						
-						<div class="col-xs-12">
+						<div class="col-xs-12 quitarEspacio">
 							<?php $idPost=$post->ID; ?>
 								<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 									<div class="singleInvestigaciones">										
@@ -428,7 +435,7 @@ endif; ?>
 			    <div role="tabpanel" class="tab-pane <?php if(($fechaInicio4 <= $hoy)&&($fechaFin4 > $hoy)){ echo ' active';}?>" id="2daRetroAlimentación">
 			     	<div class="contenido-tabs">
 						
-						<div class="col-xs-12">
+						<div class="col-xs-12 quitarEspacio">
 							<?php $idPost=$post->ID; ?>
 								<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 									<div class="singleInvestigaciones">										
@@ -526,7 +533,7 @@ endif; ?>
 			    <div role="tabpanel" class="tab-pane <?php if(($fechaInicio5 <= $hoy)&&($fechaFin5 > $hoy)){ echo ' active';}?>" id="IdeasTop">
 			     	<div class="contenido-tabs">
 						
-						<div class="col-xs-12">
+						<div class="col-xs-12 quitarEspacio">
 							<?php $idPost=$post->ID; ?>
 								<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 									<div class="singleInvestigaciones">										
@@ -624,7 +631,7 @@ endif; ?>
 			    <div role="tabpanel" class="tab-pane <?php if(($fechaInicio6 <= $hoy)&&($fechaInicio1 <= $hoy)){ echo ' active';}?>" id="Impacto">
 			     	<div class="contenido-tabs">
 						
-						<div class="col-xs-12">
+						<div class="col-xs-12 quitarEspacio">
 							<?php $idPost=$post->ID; ?>
 								<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 									<div class="singleInvestigaciones">										

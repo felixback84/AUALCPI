@@ -11,9 +11,9 @@
     Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
   <meta property="og:url"           content="<?php echo esc_url(get_permalink()); ?>" />
   <meta property="og:type"          content="website" />
-  <meta property="og:title"         content="Aualcpi" />
-  <meta property="og:description"   content="<?php the_title(); ?>" />
-  <meta property="og:image"         content="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_aualcpi.png" />
+  <meta property="og:title"         content="Aualcpi - <?php echo get_the_title(); ?>" />
+  <meta property="og:description"   content="<?php echo get_the_content(); ?>" />
+  <meta property="og:image"         content="<?php if(has_post_thumbnail()){the_post_thumbnail_url();}else{echo get_stylesheet_directory_uri().'/images/logo_aualcpi.png';} ?>"/>
   
 <link rel="shortcut icon" type="image/x-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon.ico" />
 

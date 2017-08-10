@@ -127,6 +127,18 @@ carousel
 }
 
 /*
+pagina graficos
+----------------*/
+.targetasGraficos{
+	margin: 20px 0 20px 0;
+	&>div{
+		-webkit-box-shadow: 3px 3px 7px 0.5px #B8B8B8;
+		box-shadow: 3px 3px 7px 0.5px #B8B8B8;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+	}
+}
+/*
 carousel -noticias
 ----------------*/
 #carousel-example-generic-noticias{ 
@@ -140,7 +152,7 @@ carousel -noticias
 		left: 0%;
 		padding: 10px 30px;
 		bottom: 0;
-		background-color: rgba(250,250,250,0.5);
+		background-color: rgba(219, 219, 219,0.8);
 		h4{
 			color:black;
 			margin-bottom: 10px;
@@ -515,6 +527,9 @@ height: 100% !important;
 	}
 	li{
 		height: 70px;
+		&:first-child{
+			height:80px;
+		}
 	}
 	ul.listaMovilidad li{
 		/*height: 120px;*/
@@ -563,6 +578,7 @@ height: 100% !important;
 		line-height: 40px;
 		font-size: 30px;
 		border:none;
+		text-align: right;
 		&:hover{
 			background-color: black;
 			color: #00b9f7;
@@ -593,6 +609,7 @@ height: 100% !important;
 		margin: auto 0;
 		padding:0;
 		border:none;
+		text-align: right;
 		&:hover{
 			background-color: black;
 			color: #00b9f7;
@@ -641,6 +658,7 @@ height: 100% !important;
 		.ElementoHijo{position: relative;}
 		.tabs-right{border:none;}
 		.col-xs-3,.col-xs-9,.col-xs-7,.col-xs-5{width: 100%;}
+		li{height: auto;}
 		.nav-tabs>li{
 			float:left;
 		}
@@ -1285,7 +1303,13 @@ height: 100% !important;
 		min-height: 90px;
 	}*/
 }
-
+@media (min-width: 992px) and (max-width: 1200px) {
+	.tarjetasQuienes{
+		.panel-body{
+			line-height: 1.2;
+		}
+	}
+}
 #carousel-id { 
 	.tarjetasQuienes{
 		.dobleLinea2{
@@ -1296,4 +1320,12 @@ height: 100% !important;
 /*-- no export hight...-*/
 g.highcharts-button.highcharts-contextbutton{
 	display: none;
+}
+
+#carousel-graficos-2 .carousel-inner .highcharts-container, #carousel-graficos .carousel-inner .highcharts-container{
+	width: 100% !important;
+	/*background:red !important;*/
+	svg.highcharts-root{
+		width: 100% !important;
+	}
 }

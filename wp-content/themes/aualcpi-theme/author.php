@@ -34,7 +34,7 @@
 										</div>
 									</div>
 									<div class="col-xs-12 col-md-9">
-										<h1><?php the_author_meta('display_name',$userId); ?> <a href="<?php echo home_url('/suscribirme/?sr='.$userId);?>"><span class="icon icon-pencil"></span></a></h1>
+										<h3><?php the_author_meta('display_name',$userId); ?> <a href="<?php echo home_url('/suscribirme/?sr='.$userId);?>"><span class="icon icon-pencil"></span></a></h3>
 										<?php 
 										$date=formatoFechaEnEspañol($userId);
 										?>

@@ -24,6 +24,7 @@ $urlImagenTop=get_stylesheet_directory_uri().'/images/fondoPerfil.png';
 			echo $contenido;
 			?>
 			</p>
+			<a href="<?php echo home_url('/suscribirme/');?>" class="btn btnSuscribirme">Quiero ser miembro</a>
 		</div>
 	</div>
 </div> 

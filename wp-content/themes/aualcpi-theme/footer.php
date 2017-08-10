@@ -6,13 +6,23 @@
 		<div id="footer1">
 			<div class="container quitarPadding">
 				<div id="redes" >
-					<div class="col-xs-6 col-sm-3 col-md-2 quitarPadding">
-						<div class="thumbnail ">
+					<div class="col-xs-12 col-sm-4 col-md-3 quitarPadding">
+						<div class="thumbnail">
 							<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logoBlanco.png" alt="" width="" height="" />
 						</div>
+						<div class="hidden-xs divMenuFooter">
+							<?php 
+								wp_nav_menu(array(
+									'menu'=> 'FooterFinal',
+									'container' => false,
+									'menu_class' => 'MenuFooter',
+									)
+								); 
+							?>
+						</div>
 					</div>
-					<div class="col-xs-6 col-sm-9 col-md-10  quitarPadding">
-						<div id="iconosRedes" class="col-xs-11 col-sm-4 col-md-3 col-lg-2 col-lg-push-10 col-md-push-9 col-sm-push-8 col-xs-push-0">
+					<div class="col-xs-12 col-sm-8 col-md-9  quitarPadding">
+						<div id="iconosRedes" class="col-xs-12">
 							<div class="row">
 								<div class="redes">
 									<a href="https://www.facebook.com/aualcpi.reduniversitaria" target="_blank">
@@ -30,15 +40,25 @@
 									</a>
 								</div>
 								<div class="redes">
-									<a href="#" target="_blank"> 
+									<a href="skype:AUALCPI?call" target="_blank"> 
 										<span class="icon icon-skype"></span>
 									</a>
 								</div>
 							</div>
 						</div>
+						<div class="visible-xs divMenuFooter">
+							<?php 
+								wp_nav_menu(array(
+									'menu'=> 'FooterFinal',
+									'container' => false,
+									'menu_class' => 'MenuFooter',
+									)
+								); 
+							?>
+						</div>
 					</div>
 				</div>
-				<div id="footerUser" class="col-xs-12 col-sm-6 col-md-5 col-lg-4  quitarPadding" style="color: white;">
+				<div id="footerUser" class="col-xs-12 col-sm-6 col-md-5 col-lg-4 quitarPadding" style="color: white;">
 		        	<div class="col-xs-12 col-sm-6 datosFooter quitarPadding">
 						<?php  $usuarioId = false; $user1 = false;?>
 			        	<?php  	$usuarioId=get_post_meta(81,'UsuarioA')[0];

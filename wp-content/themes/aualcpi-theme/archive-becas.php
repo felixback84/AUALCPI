@@ -11,10 +11,16 @@
 					?>
 				</header>
 				<?php while( have_posts() ): the_post(); ?>
-					<?php get_template_part('content', 'archive'); ?>
+					<?php get_template_part('content', 'archive-becas'); ?>
 				<?php endwhile; ?>
 				<div class="col-xs-12 text-center">
-					<?php the_posts_navigation(); ?>
+					<?php 
+					$args=  array(
+					'prev_text'          => 'Siguiente',
+		            'next_text'          => 'Anterior',
+		            'screen_reader_text' => 'Becas'
+					);
+					the_posts_navigation($args); ?>
 				</div>
 				<?php endif; ?>
 			</div>

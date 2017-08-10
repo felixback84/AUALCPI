@@ -429,7 +429,7 @@
 	<div id="carousel-graficos" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="item active" cont="1">
-				<div class="col-xs-12 col-sm-6">
+				<div class="col-xs-12 col-sm-6 targetasGraficos">
 					<?php 
 					$categoria = array();$cont =0;
 					$terms_list = get_terms( 'ciudad_becas' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -497,7 +497,7 @@
 					});
 							</script>
 					</div>
-					<div class="col-xs-12 col-sm-6">
+					<div class="col-xs-12 col-sm-6 targetasGraficos">
 					<?php 
 					$categoria = array(); $cont =0;
 					$terms_list = get_terms( 'categoria' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -550,7 +550,7 @@
 		        </div>
 			</div>
 			<div class="item" cont="2">
-				<div class="col-xs-12 col-sm-6">
+				<div class="col-xs-12 col-sm-6 targetasGraficos">
 					<?php 
 					$categoria = array(); $cont =0;
 					$terms_list = get_terms( 'ciudad_investigaciones' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -591,7 +591,7 @@
 					});
 	        		</script>
 	        	</div>
-	        	<div class="col-xs-12 col-sm-6">
+	        	<div class="col-xs-12 col-sm-6 targetasGraficos">
 					<?php 
 					$categoria = array(); $cont =0;
 					$terms_list = get_terms( 'areas' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -633,7 +633,7 @@
 			    </div>
 			</div>
 			<div class="item" cont="3">
-				<div class="col-xs-12 col-sm-6">
+				<div class="col-xs-12 col-sm-6 targetasGraficos">
 					<?php 
 					$categoria = array(); $cont =0;
 					$terms_list = get_terms( 'author_publicaciones' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -676,7 +676,7 @@
 					});
 					</script>
 	        	</div>
-				<div class="col-xs-12 col-sm-6">
+				<div class="col-xs-12 col-sm-6 targetasGraficos">
 					<?php 
 					$categoria = array(); $cont =0;
 					$terms_list = get_terms( 'tipo_publicaciones' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -745,7 +745,7 @@
 	<div id="carousel-graficos-2" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="item active" cont="1">
-				<div class="col-xs-12">
+				<div class="col-xs-12 targetasGraficos">
 					<?php 
 					$categoria = array();$cont =0;
 					$terms_list = get_terms( 'ciudad_becas' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -815,7 +815,7 @@
 				</div>
 			</div>
 			<div class="item" cont="2">
-				<div class="col-xs-12">
+				<div class="col-xs-12 targetasGraficos">
 					<?php 
 					$categoria = array(); $cont =0;
 					$terms_list = get_terms( 'categoria' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -868,7 +868,7 @@
 		        </div>
 			</div>
 			<div class="item" cont="3">
-				<div class="col-xs-12">
+				<div class="col-xs-12 targetasGraficos">
 					<?php 
 					$categoria = array(); $cont =0;
 					$terms_list = get_terms( 'ciudad_investigaciones' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -911,7 +911,7 @@
 	        	</div>
 	        </div>
 			<div class="item" cont="4">
-	        	<div class="col-xs-12">
+	        	<div class="col-xs-12 targetasGraficos">
 					<?php 
 					$categoria = array(); $cont =0;
 					$terms_list = get_terms( 'areas' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -953,7 +953,7 @@
 			    </div>
 			</div>
 			<div class="item" cont="5">
-				<div class="col-xs-12">
+				<div class="col-xs-12 targetasGraficos">
 					<?php 
 					$categoria = array(); $cont =0;
 					$terms_list = get_terms( 'author_publicaciones' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));
@@ -998,7 +998,7 @@
 	        	</div>
 	        </div>
 			<div class="item" cont="6">
-				<div class="col-xs-12 col-sm-6">
+				<div class="col-xs-12 col-sm-6 targetasGraficos">
 					<?php 
 					$categoria = array(); $cont =0;
 					$terms_list = get_terms( 'tipo_publicaciones' , array( 'orderby' => 'name','parent' => 0,'hide_empty' => false));

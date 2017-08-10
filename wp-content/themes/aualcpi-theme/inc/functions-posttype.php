@@ -709,6 +709,8 @@ function awesome_custom_taxonomies_publicaciones_tag() {
 add_action( 'init' , 'awesome_custom_taxonomies_publicaciones_tag');
 
 
+
+
 /*
 		===================================
 		meta box - investigacion 
@@ -1123,7 +1125,7 @@ function save_informacion_contribucion_descripcion(){
 
 /*
 		===================================
-		meta box - investigaciones 
+		meta box - publicaciones 
 		===================================
 */
 //		ya esta declarada arriba 
@@ -1185,6 +1187,91 @@ function save_custom_meta_data_upload_publicidad($id) {
      
 } // end save_custom_meta_data_upload_publicidad
 add_action('save_post', 'save_custom_meta_data_upload_publicidad');
+
+
+/*
+		===================================
+		meta box - becas 
+		===================================
+*/
+
+function add_custom_meta_boxes_becas() {
+ 
+    // Define the custom attachment for posts
+    add_meta_box(
+        'wp_custom_box_becas',
+        'Campos administrables',
+        'wp_custom_box_becas',
+        'becas', 
+        'normal', 
+        'high'
+    );
+ 
+} // end add_custom_meta_boxes
+add_action('add_meta_boxes', 'add_custom_meta_boxes_becas');
+
+
+function mytheme_tinymce_settings( $tinymce_init_settings ) {
+    $tinymce_init_settings['forced_root_block'] = false;
+    return $tinymce_init_settings;
+}
+add_filter( 'tiny_mce_before_init', 'mytheme_tinymce_settings' );
+
+function wp_custom_box_becas() { 
+	global $post;
+	//echo $post->ID;
+	$custom = get_post_custom($post->ID);
+	$becasDisponibles = $custom["becasDisponibles"][0];
+	$categoriaA = $custom["categoriaA"][0]; 
+	$categoriaB = $custom["categoriaB"][0]; 
+	$categoriaC = $custom["categoriaC"][0]; 
+	$Definicion = $custom["Definicion"][0];
+	$argsTextarea = array(
+	    'textarea_rows' => 10,
+	    'quicktags' => true,
+	    'media_buttons' => false,
+    	'tinymce' => true,
+	);
+	 ?>
+	<p><label for="becasDisponibles">Total becas disponibles:</label></p>
+	<p><input type="text" name="becasDisponibles" value="<?php echo $becasDisponibles; ?>"></p>
+	<p><label for="categoriaA">Categoría I (estudiantil):</label></p>
+	<p><input type="text" name="categoriaA" value="<?php echo $categoriaA; ?>"></p>
+	<p><label for="categoriaB">Categoría II (investigadores y docentes):</label></p>
+	<p><input type="text" name="categoriaB" value="<?php echo $categoriaB; ?>"></p>
+	<p><label for="categoriaC">Categoría III (gestores institucionales):</label></p>
+	<p><input type="text" name="categoriaC" value="<?php echo $categoriaC; ?>"></p>
+
+	<label for="Definicion"><h3>Descripción:</h3></label>
+				<?php
+					$content = $Definicion;
+					$editor_id = 'Definicion';
+					wp_editor( $content, $editor_id ,$argsTextarea);
+				?>
+	<?php
+	} 
+
+function save_custom_meta_becas() {
+ 	global $post;
+    if(isset($_POST["becasDisponibles"])):
+		update_post_meta($post->ID, "becasDisponibles",$_POST["becasDisponibles"] );
+	endif;
+	if(isset($_POST["categoriaA"])):
+		update_post_meta($post->ID, "categoriaA",$_POST["categoriaA"]);
+	endif;
+	if(isset($_POST["categoriaB"])):
+		update_post_meta($post->ID, "categoriaB",$_POST["categoriaB"]);
+	endif;
+	if(isset($_POST["categoriaC"])):
+		update_post_meta($post->ID, "categoriaC",$_POST["categoriaC"]);
+	endif;
+	if(isset($_POST["Definicion"])):
+		update_post_meta($post->ID, "Definicion",$_POST["Definicion"]);
+	endif;
+     
+} // end save_post
+add_action('save_post', 'save_custom_meta_becas');
+
 
 /*
 		===================================
@@ -1267,6 +1354,7 @@ function my_meta_movilidad_save(){
 		update_post_meta($post->ID, "Proceso",$_POST["Proceso"]);
 	endif;
 }
+global $post;
 
 /*----- page nuestra asociacion ------*/
 function my_meta_nuestra_asociacion(){
@@ -1645,3 +1733,13 @@ function sitePlus(){
 }
 
 add_action('wp_footer','sitePlus');
+
+
+/*---- mostrar el contenido del custom wp_editor  -----*/
+
+add_filter( 'meta_content', 'wptexturize' );
+add_filter( 'meta_content', 'convert_smilies' );
+add_filter( 'meta_content', 'convert_chars' );
+add_filter( 'meta_content', 'wpautop' );
+add_filter( 'meta_content', 'shortcode_unautop' );
+add_filter( 'meta_content', 'prepend_attachment' );
