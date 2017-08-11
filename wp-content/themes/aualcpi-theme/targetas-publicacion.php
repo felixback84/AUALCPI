@@ -18,9 +18,17 @@
 						<p><span class="textoGrisClaro"><?php $terms_list=wp_get_post_terms($post->ID,'author_publicaciones');
 							echo "Autor: ".mostrarCategorias($terms_list,'|');
 						?></span></p>
-						<p><span class="textoGrisClaro"><?php $terms_list=wp_get_post_terms($post->ID,'tipo_publicaciones');
-							echo "Categoria: ".mostrarCategorias($terms_list,'|');
-						?></span></p>
+						<p class="categoriasAzules"><?php $terms_list=wp_get_post_terms($post->ID,'tipo_publicaciones');
+							if(count($terms_list)!=0) { echo ('Categoria: ');} ?>
+							<span class="textoAzul">
+							<?php
+							 if(!empty($terms_list[0])){
+							 	echo '<a href="'.get_term_link($terms_list[0]).'" >'.$terms_list[0]->name.'</a>';
+							 }
+							 if(!empty($terms_list[1])){
+							 	echo ' | <a href="'.get_term_link($terms_list[1]).'" >'.$terms_list[1]->name.'</a>';
+							 }
+						?>
 						<p><?php  echo wp_trim_words(get_the_content(),30,'...'); ?></p>
 						<?php $linkPublicacion = get_post_meta(get_the_ID(),'publicacion_meta_file',true)[0];  //var_dump($linkPublicacion); ?>
 						<a class="pull-right" href="<?php echo $linkPublicacion; ?> " target="_blank" >Descargar</a> 
