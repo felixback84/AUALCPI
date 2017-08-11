@@ -191,7 +191,8 @@ carousel -noticias
 Panel
 ----------------*/
 .bloqueTargeta {
-	padding: 0 20px;
+	/*background: red;*/
+	padding: 0 10px;
 	margin-bottom: 30px;
 	.panel>{
 		margin: 0 11px;
@@ -276,11 +277,15 @@ Panel
 	min-height: 510px;
 }
 .bloqueTargetaFormatoBecas {
-	min-height: 300px;
+	min-height: 425px;
+	margin-bottom: 30px;
+}
+.bloqueTargetaFormatoInvesInves{
+	min-height: 554px;
 }
 .bloqueTargetaFormatoPublicacion{
-	min-height: 670px;
-	margin-bottom: 10px;
+	min-height: 630px;
+	margin-bottom: 30px;
   .thumbnail{
   	 &>img{
   	 	margin-left: 10px;
@@ -288,6 +293,24 @@ Panel
   }
 }
 
+@media (min-width: 1200px){
+	.bloqueTargetaFormatoContribucionAutor{
+		min-height: 510px;
+		margin-bottom: 10px;
+	}
+	.bloqueTargetaFormatoBecas {
+		min-height: 425px;
+		margin-bottom: 10px;
+	}
+	.bloqueTargetaFormatoInvesInves{
+		min-height: 554px;
+		margin-bottom: 10px;
+	}
+	.bloqueTargetaFormatoPublicacion{
+		min-height: 600px;
+		margin-bottom: 10px;
+	}
+}
 #tabsEventoTwitter{
 	/*padding-left:5%;*/
 	padding-right: 0;
