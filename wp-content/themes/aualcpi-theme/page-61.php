@@ -51,7 +51,7 @@ $urlImagenTop=get_stylesheet_directory_uri().'/images/fondoPerfil.png';
 				    'taxonomy' => 'categoria',
 				    'hide_empty' => false,
 					'posts_per_page' => 3, 
-					'orderby' => 'name',
+					'orderby' => 'Slug',
 					'order'   => 'DESC',
 				));
 					if ( $terms ) {

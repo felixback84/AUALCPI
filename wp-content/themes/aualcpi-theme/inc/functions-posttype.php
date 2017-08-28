@@ -1312,6 +1312,15 @@ function my_meta_init(){
 	{	
 		add_meta_box('my_meta_catedra', 'Contenido administrable', 'my_meta_catedra', 'page', 'normal', 'high');
 	}
+	if ($post_id == '91')
+	{
+	add_meta_box('my_meta_baseDeDatosInvestigadores', 'Contenido administrable', 'my_meta_baseDeDatosInvestigadores', 'page', 'normal', 'high');
+	}
+	if ($post_id == '89')
+	{
+
+	add_meta_box('my_meta_retosRegionales', 'Contenido administrable', 'my_meta_retosRegionales', 'page', 'normal', 'high');
+	}
 }
 
 /*----- page movilidad ------*/
@@ -1516,6 +1525,7 @@ function my_meta_redLisi(){
 	$custom = get_post_custom($post->ID);
 	//var_dump($custom);
 	$videoYoutube = $custom["videoYoutube"][0];
+	$linkQuieres = $custom["linkQuieres"][0];
 	$Caja1 = $custom["Caja1"][0];
 
 	$argsTextarea = array(
@@ -1526,6 +1536,9 @@ function my_meta_redLisi(){
 	);
  ?>
 <div class="inside">
+<h3>Quieres ser miembro:</h3>	
+<p><label for="linkQuieres">Link:</label>
+<input type="text" name="linkQuieres" value="<?php echo $linkQuieres; ?>"></p>
 <h3>Video:</h3>	
 <p><label for="videoYoutube">Video de youtube:</label>
 <input type="text" name="videoYoutube" value="<?php echo $videoYoutube; ?>"></p>
@@ -1544,6 +1557,9 @@ function my_meta_redLisi_save(){
 	global $post;
 	if(isset($_POST["videoYoutube"])):
 		update_post_meta($post->ID, "videoYoutube",$_POST["videoYoutube"] );
+	endif;
+	if(isset($_POST["linkQuieres"])):
+		update_post_meta($post->ID, "linkQuieres",$_POST["linkQuieres"] );
 	endif;
 	if(isset($_POST["Caja1"])):
 		update_post_meta($post->ID, "Caja1",$_POST["Caja1"]);
@@ -1713,7 +1729,47 @@ function my_meta_membresia_save(){
 		update_post_meta($post->ID, "Estrella4",$_POST["Estrella4"]);
 	endif;
 }
+/*------ base de datos de investigadores ------*/
+function my_meta_baseDeDatosInvestigadores(){
+ 	global $post;
+	$custom = get_post_custom($post->ID);
+	//var_dump($custom);
+	$linkQuieres = $custom["linkQuieres"][0];
+ ?>
+<h3>Quieres ser miembro:</h3>	
+<p><label for="linkQuieres">Link:</label>
+<input type="text" name="linkQuieres" value="<?php echo $linkQuieres; ?>"></p>
+ <?php 
+}
+add_action('save_post','my_meta_baseDeDatosInvestigadores_save');
 
+function my_meta_baseDeDatosInvestigadores_save(){
+	global $post;
+	if(isset($_POST["linkQuieres"])):
+		update_post_meta($post->ID, "linkQuieres",$_POST["linkQuieres"] );
+	endif;
+}
+
+/*------ retos regionales ------*/
+function my_meta_retosRegionales(){
+ 	global $post;
+	$custom = get_post_custom($post->ID);
+	//var_dump($custom);
+	$linkQuieres = $custom["linkQuieres"][0];
+ ?>
+<h3>Quieres ser miembro:</h3>	
+<p><label for="linkQuieres">Link:</label>
+<input type="text" name="linkQuieres" value="<?php echo $linkQuieres; ?>"></p>
+ <?php 
+}
+add_action('save_post','my_meta_retosRegionales_save');
+
+function my_meta_retosRegionales_save(){
+	global $post;
+	if(isset($_POST["linkQuieres"])):
+		update_post_meta($post->ID, "linkQuieres",$_POST["linkQuieres"] );
+	endif;
+}
 /*------ post mas popular --*/
 
 function sitePlus(){
